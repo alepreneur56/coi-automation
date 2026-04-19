@@ -1,0 +1,7 @@
+flask==3.0.3
+anthropic==0.40.0
+pymupdf==1.25.5
+sendgrid==6.11.0
+twilio==9.3.7
+requests==2.32.3
+gunicorn==22.0.0

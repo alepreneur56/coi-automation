@@ -1,0 +1,493 @@
+{
+  "registry_version": "1.0",
+  "producer": {
+    "name": "USI Insurance Services, LLC/CL",
+    "address": "201 Alhambra Circle, Suite 900",
+    "city_state_zip": "Coral Gables, FL 33134-5108",
+    "phone": "305 669-6000",
+    "contact_name": "Alejandro Bello",
+    "contact_phone": "786-355-0449",
+    "contact_email": "Alejandro.bello@usi.com"
+  },
+  "clients": [
+    {
+      "client_id": "305_power_corp",
+      "canonical_name": "305 Power Corp",
+      "aliases": [
+        "305 power",
+        "305power",
+        "tres cero cinco power",
+        "power corp"
+      ],
+      "insured_address": "14028 SW 140TH BAY 14, Miami, FL 33186",
+      "trade": "Electrical Contractor",
+      "license_number": "EC13004447",
+      "templates": [
+        {
+          "template_id": "305_power_wc",
+          "filename": "305_Power_WC_COI_Template.pdf",
+          "description": "Workers Compensation only",
+          "lines_of_coverage": ["WC"],
+          "is_default": true,
+          "selection_rule": "Only template available. Use for all requests.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "Bengoa Construction, Inc\n2200 N. Dixie Hwy.\nHollywood, FL 33020",
+              "notes": "Replace entire certificate holder block with requester's info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "04/14/2026",
+              "notes": "Update to today's date on each issuance"
+            },
+            "description_of_operations": {
+              "editable": false,
+              "current_value": "Electrical Contractor - License Number: EC13004447\n\nEmployer's Liability policy provide a Blanket Waiver of Subrogation when required by written contract, except as prohibited by law.",
+              "notes": "Do not modify unless client specifically requests project name addition"
+            }
+          },
+          "carriers": [
+            {"letter": "A", "name": "LUBA Casualty Ins Co", "naic": "12472"}
+          ],
+          "policies": [
+            {
+              "line": "Workers Compensation",
+              "insurer_letter": "A",
+              "policy_number": "WC307-0132038-2026A",
+              "eff_date": "04/11/2026",
+              "exp_date": "04/25/2027",
+              "limits": {
+                "el_each_accident": "1,000,000",
+                "el_disease_ea_employee": "1,000,000",
+                "el_disease_policy_limit": "1,000,000"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "client_id": "rolandos_hvac",
+      "canonical_name": "Rolando's HVAC LLC",
+      "aliases": [
+        "rolando",
+        "rolandos hvac",
+        "rolando hvac",
+        "rolando's",
+        "hvac de rolando"
+      ],
+      "insured_address": "5117 W Rio Vista Ave, Tampa, FL 33634",
+      "trade": "HVAC Contractor",
+      "license_number": "CAC1815707",
+      "templates": [
+        {
+          "template_id": "rolandos_hvac_gl_auto",
+          "filename": "Rolando_s_HVAC_COI_Template.pdf",
+          "description": "General Liability + Commercial Auto",
+          "lines_of_coverage": ["GL", "Auto"],
+          "is_default": true,
+          "selection_rule": "Only template available. Use for all requests.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME\nADDRESS\nSTATE, CITY ZIP CODE",
+              "notes": "Replace NAME / ADDRESS / STATE, CITY ZIP CODE block with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "HVAC Contractor License Number: CAC1815707\nProject name & Address ( If Applicable)\nGeneral Liability & Commercial Auto policies includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. General Liability policy applies on a primary & non-contributory basis. A Blanket Waiver of Subrogation applies for General Liability and Commercial Auto policies.",
+              "notes": "If client provides a project name and address, insert it after 'Project name & Address ( If Applicable)'. Do not alter the rest of the boilerplate language."
+            }
+          },
+          "carriers": [
+            {"letter": "A", "name": "Trisura Specialty Insurance Company", "naic": "16188"},
+            {"letter": "B", "name": "Ascendant Commercial Insurance, Inc", "naic": "13683"}
+          ],
+          "policies": [
+            {
+              "line": "Commercial General Liability",
+              "insurer_letter": "A",
+              "policy_number": "NRG-DBG-GL 15062",
+              "eff_date": "07/15/2025",
+              "exp_date": "07/15/2026",
+              "addl_insured": true,
+              "subr_wvd": true,
+              "limits": {
+                "each_occurrence": "1,000,000",
+                "damage_to_rented_premises": "100,000",
+                "med_exp": "5,000",
+                "personal_adv_injury": "1,000,000",
+                "general_aggregate": "2,000,000",
+                "products_comp_op_agg": "2,000,000"
+              }
+            },
+            {
+              "line": "Commercial Auto",
+              "insurer_letter": "A",
+              "policy_number": "CA-74829",
+              "eff_date": "12/15/2025",
+              "exp_date": "12/25/2026",
+              "addl_insured": true,
+              "subr_wvd": true,
+              "limits": {
+                "combined_single_limit": "1,000,000"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "client_id": "emp3_solutions",
+      "canonical_name": "EMP 3 Solutions, Inc",
+      "aliases": [
+        "emp 3",
+        "emp3",
+        "emp three",
+        "emp tres",
+        "emp 3 solutions",
+        "emp3solutions"
+      ],
+      "insured_address": "3440 NW 73rd Ave, Miami, FL 33122",
+      "trade": "HVAC Contractor",
+      "templates": [
+        {
+          "template_id": "emp3_trisura_v1",
+          "filename": "EMP_3_Solutions_Template.pdf",
+          "description": "GL + Auto + WC (Trisura/Infinity/LUBA)",
+          "lines_of_coverage": ["GL", "Auto", "WC"],
+          "is_default": true,
+          "license_number": "CAC1822997",
+          "selection_rule": "Default template. Use when client requests GL, Auto, or WC, or does not specify.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME\nADDRESS LINE 1\nCITY, STATE ZIP CODE",
+              "notes": "Replace three-line placeholder with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "HVAC Contractor License Number: CAC1822997\nProject name & Address ( If Applicable)\nGeneral Liability & Commercial Auto policies includes an automatic Additional Insured endorsement...",
+              "notes": "Insert project name/address if provided. Do not alter boilerplate language."
+            }
+          },
+          "carriers": [
+            {"letter": "A", "name": "Trisura Specialty Insurance Company", "naic": "16188"},
+            {"letter": "B", "name": "Infinity Assurance Insurance Company", "naic": "39497"},
+            {"letter": "C", "name": "LUBA Casualty Ins Co", "naic": "12472"}
+          ]
+        }
+      ]
+    },
+    {
+      "client_id": "central_comfort_ac",
+      "canonical_name": "Central Comfort Air Conditioning",
+      "aliases": [
+        "central comfort",
+        "central comfort ac",
+        "central comfort air",
+        "central comfort air conditioning",
+        "aire central comfort",
+        "central air"
+      ],
+      "insured_address": "12320 SW 129th Ct, Miami, Miami, FL 33186",
+      "trade": "HVAC Contractor",
+      "license_number": "CAC057552",
+      "templates": [
+        {
+          "template_id": "central_comfort_gl_wc",
+          "filename": "Central_Comfort_Air_Conditioning_Inc_COI.pdf",
+          "description": "GL + WC + Property (United Fire/LUBA) — no Auto",
+          "lines_of_coverage": ["GL", "WC", "Property"],
+          "is_default": true,
+          "selection_rule": "Only template available. Use for all requests.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME\nADDRESS LINE 1\nCITY, STATE ZIP CODE",
+              "notes": "Replace three-line placeholder with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "HVAC Contractor License Number: CAC057552\nProject name & Address ( If Applicable)\nGeneral Liability policy includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. General Liability policy applies on a primary & non-contributory basis. A Blanket Waiver of Subrogation applies for General Liability and Employer's Liability policies.",
+              "notes": "Insert project name/address if provided. Do not alter boilerplate."
+            }
+          },
+          "carriers": [
+            {"letter": "A", "name": "United Fire & Casualty Company", "naic": "13021"},
+            {"letter": "B", "name": "LUBA Casualty Ins Co", "naic": "12472"}
+          ],
+          "policies": [
+            {
+              "line": "Commercial General Liability",
+              "insurer_letter": "A",
+              "policy_number": "10176227110",
+              "eff_date": "12/26/2025",
+              "exp_date": "12/26/2026",
+              "addl_insured": true,
+              "subr_wvd": true,
+              "limits": {
+                "each_occurrence": "1,000,000",
+                "damage_to_rented_premises": "100,000",
+                "med_exp": "10,000",
+                "personal_adv_injury": "1,000,000",
+                "general_aggregate": "2,000,000",
+                "products_comp_op_agg": "2,000,000"
+              }
+            },
+            {
+              "line": "Workers Compensation",
+              "insurer_letter": "B",
+              "policy_number": "WC30701316502025A",
+              "eff_date": "12/26/2025",
+              "exp_date": "12/26/2026",
+              "limits": {
+                "el_each_accident": "1,000,000",
+                "el_disease_ea_employee": "1,000,000",
+                "el_disease_policy_limit": "1,000,000"
+              }
+            },
+            {
+              "line": "Property",
+              "insurer_letter": "A",
+              "policy_number": "10176227110",
+              "eff_date": "12/26/2025",
+              "exp_date": "12/26/2026",
+              "limits": {
+                "property": "5,000"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "client_id": "gd_mechanical",
+      "canonical_name": "G & D Mechanical Services LLC",
+      "aliases": [
+        "g and d mechanical",
+        "g&d mechanical",
+        "gd mechanical",
+        "g & d",
+        "g y d mechanical",
+        "g y d"
+      ],
+      "insured_address": "14449 Mandolin Dr, Orlando, FL 32837",
+      "trade": "HVAC Contractor",
+      "license_number": "CAC1815707",
+      "templates": [
+        {
+          "template_id": "gd_mechanical_full",
+          "filename": "G___D_Mechanical_Services_COI_Template.pdf",
+          "description": "GL + Auto + Umbrella + WC",
+          "lines_of_coverage": ["GL", "Auto", "Umbrella", "WC"],
+          "is_default": true,
+          "selection_rule": "Only template available. Use for all requests.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME\nADDRESS LINE 1\nCITY, STATE ZIP CODE",
+              "notes": "Replace three-line placeholder with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "HVAC Contractor License Number: CAC1815707\nProject name & Address ( If Applicable)\nGeneral Liability, Umbrella, & Commercial Auto policies includes an automatic Additional Insured endorsement...",
+              "notes": "Insert project name/address if provided. Do not alter boilerplate."
+            }
+          },
+          "carriers": [
+            {"letter": "A", "name": "United Fire & Casualty Company", "naic": "13021"},
+            {"letter": "B", "name": "Infinity Assurance Insurance Company", "naic": "39497"},
+            {"letter": "C", "name": "LUBA Casualty Insurance Company", "naic": "12472"}
+          ]
+        }
+      ]
+    },
+    {
+      "client_id": "absolute_air_solutions",
+      "canonical_name": "Absolute Air Solutions LLC",
+      "aliases": [
+        "absolute air",
+        "absolute air solutions",
+        "absolute hvac",
+        "absolute",
+        "aire absoluto"
+      ],
+      "insured_address": "PO Box 6930, North Port, FL 34290",
+      "trade": "HVAC Contractor",
+      "license_number": "CMC1249546",
+      "templates": [
+        {
+          "template_id": "absolute_air_symbol789",
+          "filename": "Absolute_Air_Solutions_COI_Symbol_789.pdf",
+          "description": "Commercial Auto only — Symbol 789 (Scheduled/Hired/Non-Owned)",
+          "lines_of_coverage": ["Auto"],
+          "is_default": true,
+          "selection_rule": "DEFAULT. Use this template unless the client or requester specifically requests Symbol 1 or 'any auto' coverage.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME\nADDRESS LINE 1\nCITY, STATE ZIP CODE",
+              "notes": "Replace three-line placeholder with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "HVAC Contractor License Number: CMC1249546\nProject name & Address ( If Applicable)\nCommercial Auto policy includes an automatic Additional Insured endorsement...",
+              "notes": "Insert project name/address if provided."
+            }
+          },
+          "carriers": [
+            {"letter": "B", "name": "Infinity Assurance Insurance Company", "naic": "39497"}
+          ]
+        },
+        {
+          "template_id": "absolute_air_symbol1",
+          "filename": "Absolute_Air_Solutions_COI_Symbol_1-_Copy.pdf",
+          "description": "Commercial Auto only — Symbol 1 (Any Auto)",
+          "lines_of_coverage": ["Auto"],
+          "is_default": false,
+          "selection_rule": "Use ONLY when: (1) requester explicitly asks for 'any auto', (2) client sends instructions specifying Symbol 1, or (3) the insurance requirements document provided requires Symbol 1 or 'any auto' coverage.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME\nADDRESS LINE 1\nCITY, STATE ZIP CODE",
+              "notes": "Replace three-line placeholder with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "HVAC Contractor License Number: CMC1249546\nProject name & Address ( If Applicable)\nCommercial Auto policy includes an automatic Additional Insured endorsement...",
+              "notes": "Insert project name/address if provided."
+            }
+          },
+          "carriers": [
+            {"letter": "B", "name": "Infinity Assurance Insurance Company", "naic": "39497"}
+          ]
+        }
+      ]
+    },
+    {
+      "client_id": "ajf_roofing",
+      "canonical_name": "AJF Roofing, Inc.",
+      "aliases": [
+        "ajf roofing",
+        "ajf",
+        "a.j.f. roofing",
+        "ajf roofing inc",
+        "techado ajf"
+      ],
+      "insured_address": "7495 NW 7th Street, Suite 10, Miami, FL 33126",
+      "trade": "Roofing Contractor",
+      "license_number": "CCC1331111",
+      "templates": [
+        {
+          "template_id": "ajf_roofing_full",
+          "filename": "AJF_Roofing_Inc_COI_Template.pdf",
+          "description": "GL + Auto + Umbrella + WC (CNA/Hartford carriers)",
+          "lines_of_coverage": ["GL", "Auto", "Umbrella", "WC"],
+          "is_default": true,
+          "selection_rule": "Only template available. Use for all requests.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME \nADDRESS\nSTATE, CITY ZIP CODE",
+              "notes": "Replace three-line placeholder with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "Roofing Contractor License Number: CCC1331111\nProject name & Address (If Applicable)\nGeneral Liability, Umbrella, & Commercial Auto policies includes an automatic Additional Insured endorsement...",
+              "notes": "Insert project name/address if provided. Do not alter boilerplate."
+            }
+          },
+          "carriers": [
+            {"letter": "A", "name": "National Fire Insurance Co. of Hartford", "naic": "20478"},
+            {"letter": "B", "name": "Continental Insurance Company", "naic": "35289"},
+            {"letter": "C", "name": "Valley Forge Insurance Company", "naic": "20508"}
+          ]
+        }
+      ]
+    },
+    {
+      "client_id": "apogee_hvac",
+      "canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+      "aliases": [
+        "apogee",
+        "apogee hvac",
+        "apogee hvac solutions",
+        "apogee solutions"
+      ],
+      "insured_address": "640 S Miami Avenue, Suite 201, Miami FL 33130",
+      "trade": "HVAC Contractor",
+      "license_number": "CMC022377",
+      "templates": [
+        {
+          "template_id": "apogee_hvac_full",
+          "filename": "Apogee_HVAC_Solutions_COI_Template.pdf",
+          "description": "GL + Auto + Excess + WC (5 carriers)",
+          "lines_of_coverage": ["GL", "Auto", "Excess", "WC"],
+          "is_default": true,
+          "selection_rule": "Only template available. Use for all requests.",
+          "editable_fields": {
+            "certificate_holder": {
+              "editable": true,
+              "placeholder_text": "NAME\nADDRESS\nSTATE, CITY ZIP CODE",
+              "notes": "Replace three-line placeholder with requester info"
+            },
+            "date": {
+              "editable": true,
+              "current_value": "MM/DD/YYYY",
+              "notes": "Insert today's date"
+            },
+            "description_of_operations": {
+              "editable": true,
+              "current_value": "HVAC Contractor License Number: CMC022377\nProject name & Address (If Applicable)\nGeneral Liability, Excess, & Commercial Auto policies includes an automatic Additional Insured endorsement...",
+              "notes": "Insert project name/address if provided. Do not alter boilerplate."
+            }
+          },
+          "carriers": [
+            {"letter": "A", "name": "MS Transverse Specialty Insurance Company", "naic": "41807"},
+            {"letter": "B", "name": "Lexington Insurance Company", "naic": "19437"},
+            {"letter": "C", "name": "Scottsdale Insurance Company", "naic": "41297"},
+            {"letter": "D", "name": "LUBA Casualty Insurance Company", "naic": "12472"},
+            {"letter": "E", "name": "Infinity Assurance Insurance Company", "naic": "39497"}
+          ]
+        }
+      ]
+    }
+  ]
+}
