@@ -300,27 +300,44 @@ def health():
 @app.route("/email", methods=["POST"])
 def email_webhook():
     """
-    Receives parsed email data.
-    Expected JSON body:
-    {
-        "from": "sender@example.com",
-        "subject": "COI Request",
-        "body": "plain text body",
-        "attachments": [
-            {"filename": "req.pdf", "content_type": "application/pdf", "data": "<base64>"}
-        ]
-    }
+    Receives email data from Make.com.
+    Accepts JSON, form-encoded, or raw data.
     """
-    data = request.get_json(force=True)
+    # Try JSON first
+    data = request.get_json(force=True, silent=True)
+
+    # If not JSON, try form data
     if not data:
-        return jsonify({"error": "No JSON body"}), 400
+        data = {
+            "from": request.form.get("from", request.form.get("sender", "")),
+            "subject": request.form.get("subject", ""),
+            "body": request.form.get("body", request.form.get("text", "")),
+            "attachments": []
+        }
+
+    # If still nothing, try raw urlencoded
+    if not data.get("from") and not data.get("body"):
+        try:
+            from urllib.parse import parse_qs
+            raw = request.data.decode("utf-8")
+            parsed = parse_qs(raw)
+            data = {
+                "from": parsed.get("from", [""])[0],
+                "subject": parsed.get("subject", [""])[0],
+                "body": parsed.get("body", [""])[0],
+                "attachments": []
+            }
+        except:
+            pass
 
     sender      = data.get("from", "")
     body        = data.get("body", "")
     subject     = data.get("subject", "")
     attachments = data.get("attachments", [])
 
-    # Combine subject + body for context
+    if not sender and not body:
+        return jsonify({"error": "No data received"}), 400
+
     full_message = f"Subject: {subject}\n\n{body}" if subject else body
 
     result = run_coi_pipeline(
