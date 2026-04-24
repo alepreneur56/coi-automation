@@ -595,43 +595,116 @@ Address lines are always appended to the bottom of every split COI — never omi
 ## CERTIFICATE HOLDERS (PLURAL) — BOILERPLATE EDIT
 
 ### Rule
-When a request has MORE THAN ONE certificate holder entity (regardless of whether it fits in one COI or needs splitting), the Description of Operations boilerplate must be updated:
+When a request has MORE THAN ONE certificate holder entity, the Description of Operations boilerplate must be updated to say "Certificate Holders" instead of "Certificate Holder" in the mid-paragraph reference.
 
-- Find every span in the Description of Operations that contains the text `Certificate Holder`
-- Replace `Certificate Holder` with `Certificate Holders` in that span
-- Redact the original span and reinsert with the updated text
+This applies to EVERY COI produced for the request. If the request splits into 2 COIs, both COIs get the plural edit.
 
-This applies to EVERY COI produced for the request. If the request splits into 2 COIs, both COIs get `Certificate Holders` in the boilerplate.
+If there is only ONE certificate holder entity, leave the boilerplate unchanged.
 
-If there is only ONE certificate holder entity, leave the boilerplate unchanged (`Certificate Holder` singular).
+### CRITICAL — Structure of the boilerplate
+The boilerplate paragraph is split into MULTIPLE spans across the PDF, NOT one single span. For example on Central Comfort's template:
 
-### Implementation
+- Span 1: y=599-609, x=21.6-556.1 → "General Liability policy includes an automatic Additional Insured endorsement that provides Additional Insured status to the " (ends with a space)
+- Span 2: y=610-620, x=21.6-96.6 → "Certificate Holder" (own isolated span)
+- Span 3: y=610-620, x=96.6-547 → " as required by written contract. General Liability policy applies on a primary & non-contributory basis. A " (adjacent span starting right where span 2 ends)
+- Span 4: y=621-631 → "Blanket Waiver of Subrogation applies..."
+
+The phrase "Certificate Holder" is typically its OWN isolated span — DO NOT redact across the whole line.
+
+### Critical issue: "Holders" is wider than "Holder"
+The plural version is wider by about 4-5 pts. If you reinsert "Certificate Holders" starting at the same x0 as the original, it will overlap into the adjacent span to the right. This WIPES OUT the adjacent text.
+
+### Correct implementation
 ```python
-# Scan all spans in the description of operations area (y between 595 and 645)
+# Find ONLY spans whose text is EXACTLY "Certificate Holder" or starts with it
+# NOT spans that merely contain the phrase mid-sentence
+plural_spans = []
+blocks = page.get_text("dict")["blocks"]
 for b in blocks:
     if b["type"] == 0:
         for line in b["lines"]:
             for span in line["spans"]:
-                if "Certificate Holder" in span["text"] and 595 < span["bbox"][1] < 645:
-                    # Redact original span
-                    cx0, cy0, cx1, cy1 = span["bbox"]
-                    page.add_redact_annot(
-                        fitz.Rect(cx0-0.5, cy0-0.3, desc_safe_right, cy1+0.3),
-                        fill=(1,1,1)
-                    )
-                    # After apply_redactions(), reinsert with plural
-                    new_text = span["text"].replace("Certificate Holder", "Certificate Holders")
-                    page.insert_text(
-                        (cx0, cy0 + span["size"]),
-                        new_text,
-                        fontsize=span["size"],
-                        fontname="hebo",
-                        color=(0,0,0)
-                    )
+                txt = span["text"].strip()
+                # Only target isolated spans, not mid-sentence inclusions
+                if txt == "Certificate Holder" and 595 < span["bbox"][1] < 645:
+                    plural_spans.append(span)
+
+# For each target span:
+# 1. Redact ONLY that span's bbox — NOT the full line width
+# 2. Reinsert "Certificate Holders" at the original x0 and y0
+# 3. Because "Holders" is longer, we need to also redact a few extra pts to the right
+#    BUT ONLY if the adjacent text is a continuation with a leading space
+for span in plural_spans:
+    cx0, cy0, cx1, cy1 = span["bbox"]
+
+    # Calculate the new text width
+    new_text = "Certificate Holders"
+    new_width = fitz.get_text_length(new_text, fontname="hebo", fontsize=span["size"])
+    original_width = cx1 - cx0
+    extra_width_needed = new_width - original_width  # ~4-5pt
+
+    # Redact the original span bbox tightly
+    page.add_redact_annot(
+        fitz.Rect(cx0 - 0.3, cy0 - 0.3, cx1 + 0.3, cy1 + 0.3),
+        fill=(1, 1, 1)
+    )
+
+    # Check if there is an adjacent span to the right on the same line
+    adjacent_span = None
+    for b in blocks:
+        if b["type"] == 0:
+            for line in b["lines"]:
+                for other in line["spans"]:
+                    if other == span:
+                        continue
+                    oy = other["bbox"][1]
+                    ox0 = other["bbox"][0]
+                    # Same line, starts right where ours ends
+                    if abs(oy - cy0) < 1 and abs(ox0 - cx1) < 2:
+                        adjacent_span = other
+
+    if adjacent_span:
+        # The plural adds width. If the original text was "Certificate Holder" (cx0 to cx1)
+        # and we need to insert "Certificate Holders" which is wider,
+        # we must shift the adjacent span to the right by extra_width_needed.
+        # Redact the adjacent span too and reinsert shifted
+        ax0, ay0, ax1, ay1 = adjacent_span["bbox"]
+        page.add_redact_annot(
+            fitz.Rect(ax0 - 0.3, ay0 - 0.3, min(ax1 + 0.5, 591.0), ay1 + 0.3),
+            fill=(1, 1, 1)
+        )
+
+# After apply_redactions:
+page.apply_redactions()
+
+# Reinsert plural at original position
+for span in plural_spans:
+    cx0, cy0 = span["bbox"][0], span["bbox"][1]
+    page.insert_text(
+        (cx0, cy0 + span["size"]),
+        "Certificate Holders",
+        fontsize=span["size"],
+        fontname="hebo",
+        color=(0, 0, 0)
+    )
+
+# Reinsert adjacent spans shifted right by the width difference
+if adjacent_span:
+    new_adj_x = cx0 + new_width  # start where plural ended
+    page.insert_text(
+        (new_adj_x, adjacent_span["bbox"][1] + adjacent_span["size"]),
+        adjacent_span["text"],
+        fontsize=adjacent_span["size"],
+        fontname="hebo",
+        color=(0, 0, 0)
+    )
 ```
 
-### Critical — tight redaction bounds apply here too
-The redaction for the boilerplate span must stay within x=591.0 (safe_right). Never extend to the right border at x=593.8. The same border protection rules apply to all redactions on the COI without exception.
+### Summary of the fix
+- Only target spans whose text is EXACTLY "Certificate Holder" (not mid-sentence inclusions)
+- Redact ONLY the narrow bbox of that span
+- When the adjacent span on the same line is a continuation (starts where our span ends), that adjacent span must also be redacted and reinserted shifted right to compensate for the extra width of "Holders" vs "Holder"
+- NEVER extend a redaction across the full width of the page just to be safe — it always destroys adjacent content
 
 
 ---
@@ -814,6 +887,31 @@ Process normally following all COI rules. The conversation context counts — if
 - Keep replies to 1-2 sentences maximum for WhatsApp
 - No bullet points or formal structure in WhatsApp replies — plain conversational text only
 - Do not confirm receipt with long acknowledgments — just act or ask
+
+
+---
+
+## DATE FIELD — PRECISE REDACTION BOUNDS
+
+### The issue
+The date field area contains two elements stacked vertically:
+- `DATE (MM/DD/YYYY)` label at y=24.90-33.16 (small 6pt label — part of the form shell)
+- The actual date value at y=35.25-45.29 (9pt — this is what gets replaced)
+
+The redaction rectangle must ONLY cover the date value line, never the label above it.
+
+### Correct redaction bounds for the date field
+```python
+# DATE label sits at y=24.9-33.2 — DO NOT touch this
+# Date value sits at y=35.25-45.29, x=522.0-579.0
+# Safe redaction:
+date_rect = fitz.Rect(510, 34.0, 592, 46.5)
+# Starts at y=34.0 — safely below the label which ends at y=33.2
+# Never use y=28 or any value above y=34 for the date redaction
+```
+
+### Rule
+Always start the date redaction rect at y=34.0 minimum. Never go above that. The `DATE (MM/DD/YYYY)` label is part of the form shell and must never be touched.
 
 ## REGISTRY
 
