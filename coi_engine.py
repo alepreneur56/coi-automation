@@ -196,9 +196,9 @@ def build_single_coi(
     if today_str is None:
         today_str = date.today().strftime("%m/%d/%Y")
 
-    # Open and repair the template in memory to fix any broken xref objects
+    # Open and scrub the template in memory to fix any broken xref objects
     _raw = fitz.open(template_path)
-    doc = fitz.open("pdf", _raw.tobytes(repair=True))
+    doc = fitz.open("pdf", _raw.tobytes(garbage=3, deflate=True))
     _raw.close()
     page = doc[0]
 
