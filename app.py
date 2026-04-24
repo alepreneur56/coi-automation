@@ -416,6 +416,66 @@ def test_endpoint():
     return jsonify(result)
 
 
+@app.route("/generate-pdf", methods=["POST"])
+def generate_pdf_endpoint():
+    """
+    Endpoint for external workflow tools (Pipedream, etc.) to generate
+    a COI PDF from a pre-parsed JSON request (already processed by Claude elsewhere).
+    
+    Input JSON: the full parsed Claude response with status, template_filename,
+                certificate_holder, etc.
+    
+    Output JSON:
+        {
+            "status": "ready",
+            "filename": "...",
+            "pdf_base64": "...",
+            "pdf_size_bytes": 12345
+        }
+    """
+    import base64
+    from coi_engine import process_request
+    
+    parsed = request.get_json(force=True)
+    if not parsed:
+        return jsonify({"status": "error", "reason": "No JSON body"}), 400
+    
+    if parsed.get("status") != "ready":
+        return jsonify({
+            "status": "not_ready",
+            "reason": parsed.get("status", "unknown"),
+            "flags": parsed.get("flags", [])
+        })
+    
+    try:
+        output_files = process_request(parsed, TEMPLATES_DIR, OUTPUT_DIR)
+        if not output_files:
+            return jsonify({"status": "error", "reason": "No files produced"}), 500
+        
+        # Return first (or all) PDFs as base64
+        pdfs = []
+        for filepath in output_files:
+            with open(filepath, "rb") as f:
+                pdf_bytes = f.read()
+            pdfs.append({
+                "filename": os.path.basename(filepath),
+                "pdf_base64": base64.b64encode(pdf_bytes).decode("utf-8"),
+                "pdf_size_bytes": len(pdf_bytes)
+            })
+        
+        return jsonify({
+            "status": "ready",
+            "client_name": parsed.get("client_canonical_name"),
+            "pdfs": pdfs,
+            "count": len(pdfs)
+        })
+    
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"status": "error", "reason": str(e)}), 500
+
+
 # ---------------------------------------------------------------------------
 # ENTRY POINT
 # ---------------------------------------------------------------------------
