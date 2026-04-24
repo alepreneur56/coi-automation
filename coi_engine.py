@@ -196,7 +196,10 @@ def build_single_coi(
     if today_str is None:
         today_str = date.today().strftime("%m/%d/%Y")
 
-    doc = fitz.open(template_path)
+    # Open and repair the template in memory to fix any broken xref objects
+    _raw = fitz.open(template_path)
+    doc = fitz.open("pdf", _raw.tobytes(repair=True))
+    _raw.close()
     page = doc[0]
 
     # --- Locate key spans ---
@@ -317,7 +320,7 @@ def build_single_coi(
         color=(0, 0, 0)
     )
 
-    doc.save(output_path)
+    doc.save(output_path, garbage=3, deflate=True)
     doc.close()
 
 
