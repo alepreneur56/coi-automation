@@ -234,9 +234,11 @@ def build_single_coi(
         fitz.Rect(HOLDER_BOX_X0, HOLDER_BOX_Y0, HOLDER_BOX_X1, HOLDER_BOX_Y1),
         fill=(1, 1, 1)
     )
-    # 2. Date field
+    # 2. Date field — tight to value area only; preserves label and box borders
+    #    Box borders: top y≈23.5-24.6, bottom y≈47.6-48.7, sides x≈509-510.1 / 592.8-593.9
+    #    Label "DATE (MM/DD/YYYY)" lives at y≈24.9-33.16 — leave it alone
     page.add_redact_annot(
-        fitz.Rect(510, 28, 592, 48),
+        fitz.Rect(510.5, 34.0, 592.5, 47.0),
         fill=(1, 1, 1)
     )
     # 3. Project name placeholder — tight bounds, never touch borders
