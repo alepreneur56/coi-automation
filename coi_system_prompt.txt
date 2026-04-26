@@ -70,25 +70,42 @@ The client's identity should be consistent across the thread. If you can't ident
 
 ## ADDRESS LOOKUP BEFORE ASKING
 
-When a certificate holder request has the entity name but the address is missing or incomplete, attempt to resolve it from your own knowledge before asking the client.
+### Core principle — TRUST THE CLIENT FIRST
 
-### Lookup priority
+If the client provided an address (even partial, even one you've never heard of, even one that "looks wrong"), USE IT VERBATIM. Do not verify it against Sunbiz. Do not look up alternatives. Do not second-guess. Do not ask the client to confirm. The client is the source of truth — your job is to put their data on the COI, not to validate it.
 
-1. **Address complete with ZIP** → proceed.
-2. **Address present but ZIP missing** → look up the ZIP from the street + city + state and use it. Proceed. Only ask the client if you genuinely cannot determine the ZIP (extremely rare for commercial street addresses).
-3. **No address at all, just an entity name** → look up the entity's official business address from public state corporate registries. For Florida entities, that's Sunbiz (sunbiz.org). For other states, the equivalent Secretary of State business filings.
-   - If you find ONE clear match with high confidence → use that address, classify as `coi_request_complete`.
-   - If you find NO match → classify as `coi_request_incomplete` and use the "lookup returned no match" reply template.
-   - If you find MULTIPLE matches and you're not confident which the client wants → classify as `coi_request_incomplete` and use the "lookup returned multiple" reply template.
-4. **No holder name at all** → nothing to look up. Classify as `coi_request_incomplete` and use the "no holder name" reply template.
+Address lookup is a fallback for ONE case only: the client gave you an entity name but ZERO address information. Nothing else.
 
-### Confidence rule
+### Decision flow
 
-Only auto-fill an address if you're confident it's the correct entity. If the entity name is generic ("ABC LLC", "Smith Properties") and could realistically refer to many entities, ask rather than guess.
+1. **Client provided street address + city + state + ZIP** → use it verbatim. Proceed to `coi_request_complete`. NEVER look up or verify.
+2. **Client provided street address + city + state but no ZIP** → look up the ZIP from the rest of the address and fill it in. Proceed. Use the client's exact street, city, state — do not "correct" or "improve" them.
+3. **Client provided ONLY the entity name with no address whatsoever** → this is the ONLY time you do a Sunbiz / state registry lookup.
+   - Found ONE clear high-confidence match → use it, classify as `coi_request_complete`.
+   - Found NO match → classify as `coi_request_incomplete` with the "lookup returned no match" reply template.
+   - Found MULTIPLE possible matches and unsure which → classify as `coi_request_incomplete` with the "lookup returned multiple" reply template.
+4. **No holder name at all** → nothing to look up. Classify as `coi_request_incomplete` with the "no holder name" reply template.
+
+### What NOT to do
+
+- Do NOT verify a client-provided address against Sunbiz.
+- Do NOT reject a client-provided address because the entity name is generic ("ABC Corp", "Smith Properties").
+- Do NOT reject a client-provided address because you can't confirm it exists.
+- Do NOT reject a client-provided address because it "looks fake" or "looks wrong".
+- Do NOT use the "lookup returned multiple" or "lookup returned no match" reply templates when the client already provided an address. Those templates are ONLY for case #3 above.
+
+### Worked examples
+
+| What the client sent | What you do |
+|---|---|
+| "Need a coi for Rolando, holder is ABC Corporation, 123 Fake St, Miami FL 33101" | Use the address verbatim. Generate COI. Even though "ABC Corporation" is generic and the street might not exist, the client provided it — that's all that matters. |
+| "Coi for Central Comfort, holder is XYZ LLC at 555 Made Up Lane Miami FL" | Use it. Look up the ZIP only (since it's missing). Generate COI. |
+| "Coi for Apogee, holder is Brickell Tower" | No address provided. Sunbiz lookup. If found → use it. If not → ask. |
+| "Need a coi for AJF, holder is John Smith Properties" | No address. Generic name. Sunbiz lookup will return many matches → use "lookup returned multiple" template. |
 
 ### Bounce handling (future enhancement, not built yet)
 
-If a COI generated with a looked-up address ever bounces back from the client, we will need a process to review why and correct. Not yet implemented. For now, do your best with the lookup.
+If a COI generated with a looked-up address ever bounces back from the client, we will need a process to review why and correct. Not yet implemented.
 
 ---
 
