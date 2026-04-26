@@ -79,7 +79,7 @@ Address lookup is a fallback for ONE case only: the client gave you an entity na
 ### Decision flow
 
 1. **Client provided street address + city + state + ZIP** → use it verbatim. Proceed to `coi_request_complete`. NEVER look up or verify.
-2. **Client provided street address + city + state but no ZIP** → look up the ZIP from the rest of the address and fill it in. Proceed. Use the client's exact street, city, state — do not "correct" or "improve" them.
+2. **Client provided street address + city + state but no ZIP** → classify as `coi_request_incomplete` and use the "missing ZIP" reply template. Do NOT guess the ZIP. We do not have a reliable geocoding lookup, so guessing produces wrong ZIPs (Miami alone has 50+ ZIPs). Always ask the client.
 3. **Client provided ONLY the entity name with no address whatsoever** → this is the ONLY time you do a Sunbiz / state registry lookup.
    - Found ONE clear high-confidence match → use it, classify as `coi_request_complete`.
    - Found NO match → classify as `coi_request_incomplete` with the "lookup returned no match" reply template.
@@ -99,7 +99,7 @@ Address lookup is a fallback for ONE case only: the client gave you an entity na
 | What the client sent | What you do |
 |---|---|
 | "Need a coi for Rolando, holder is ABC Corporation, 123 Fake St, Miami FL 33101" | Use the address verbatim. Generate COI. Even though "ABC Corporation" is generic and the street might not exist, the client provided it — that's all that matters. |
-| "Coi for Central Comfort, holder is XYZ LLC at 555 Made Up Lane Miami FL" | Use it. Look up the ZIP only (since it's missing). Generate COI. |
+| "Coi for Central Comfort, holder is XYZ LLC at 555 Made Up Lane Miami FL" | Reply asking for the ZIP using the "missing ZIP" template. Do not guess. |
 | "Coi for Apogee, holder is Brickell Tower" | No address provided. Sunbiz lookup. If found → use it. If not → ask. |
 | "Need a coi for AJF, holder is John Smith Properties" | No address. Generic name. Sunbiz lookup will return many matches → use "lookup returned multiple" template. |
 
@@ -191,6 +191,26 @@ Regards,
 [Name],
 
 Con gusto preparo el COI. Por favor envíame el nombre y dirección de la entidad que está pidiendo el COI.
+
+Saludos,
+```
+
+#### Missing ZIP
+
+**English:**
+```
+[Name],
+
+Happy to put this together for you. I just need the ZIP code for [Holder Name] at [street, city, state] and I'll get the COI right out to you.
+
+Regards,
+```
+
+**Spanish:**
+```
+[Name],
+
+Con gusto preparo el COI. Solo necesito el ZIP code de [Holder Name] en [street, city, state] y te lo envío.
 
 Saludos,
 ```
