@@ -98,8 +98,15 @@ When the classification requires a `reply_text`, generate it from these template
 
 ### Style rules — NON-NEGOTIABLE
 
-- **Open with the client's name + comma**, then go straight into the body. NEVER use Hi, Hello, or Hey.
-- **Format:** `[Name], [body text]` all on one line.
+- **Open with the client's name + comma on its own line**, then a blank line, then the body starting with a capital letter, then a blank line, then the closer (`Regards,` in English or `Saludos,` in Spanish). NEVER use Hi, Hello, or Hey.
+- **Format (exact):**
+  ```
+  [Name],
+
+  [Body starting with capital letter, no greeting words.]
+
+  Regards,
+  ```
 - **No dashes anywhere in the body.** No em dashes, no en dashes, no hyphens used as separators.
 - **Match the language of the NEW EMAIL.** English email → English reply. Spanish email → Spanish reply.
 - **English replies end with `Regards,`** before the signature.
@@ -115,14 +122,18 @@ When the classification requires a `reply_text`, generate it from these template
 
 **English:**
 ```
-[Name], happy to put this together for you. I tried looking up the address for [Holder Name] but couldn't find a match. Please send the address the certificate holder wants on the COI.
+[Name],
+
+Happy to put this together for you. I tried looking up the address for [Holder Name] but couldn't find a match. Please send the address the certificate holder wants on the COI.
 
 Regards,
 ```
 
 **Spanish:**
 ```
-[Name], con gusto preparo el COI. Intenté buscar la dirección de [Holder Name] pero no la encontré. Por favor envíame la dirección que el certificate holder quiere en el COI.
+[Name],
+
+Con gusto preparo el COI. Intenté buscar la dirección de [Holder Name] pero no la encontré. Por favor envíame la dirección que el certificate holder quiere en el COI.
 
 Saludos,
 ```
@@ -131,14 +142,18 @@ Saludos,
 
 **English:**
 ```
-[Name], happy to put this together for you. I tried looking up the address for [Holder Name] and found a few different ones. Please send the exact address the certificate holder wants on the COI.
+[Name],
+
+Happy to put this together for you. I tried looking up the address for [Holder Name] and found a few different ones. Please send the exact address the certificate holder wants on the COI.
 
 Regards,
 ```
 
 **Spanish:**
 ```
-[Name], con gusto preparo el COI. Intenté buscar la dirección de [Holder Name] y encontré varias. Por favor envíame la dirección exacta que el certificate holder quiere en el COI.
+[Name],
+
+Con gusto preparo el COI. Intenté buscar la dirección de [Holder Name] y encontré varias. Por favor envíame la dirección exacta que el certificate holder quiere en el COI.
 
 Saludos,
 ```
@@ -147,14 +162,18 @@ Saludos,
 
 **English:**
 ```
-[Name], happy to put this together for you. Please send the entity name and address of who is requesting the COI.
+[Name],
+
+Happy to put this together for you. Please send the entity name and address of who is requesting the COI.
 
 Regards,
 ```
 
 **Spanish:**
 ```
-[Name], con gusto preparo el COI. Por favor envíame el nombre y dirección de la entidad que está pidiendo el COI.
+[Name],
+
+Con gusto preparo el COI. Por favor envíame el nombre y dirección de la entidad que está pidiendo el COI.
 
 Saludos,
 ```
@@ -163,14 +182,18 @@ Saludos,
 
 **English:**
 ```
-[Name], thanks for the message. Alejandro will review and follow up shortly.
+[Name],
+
+Thanks for the message. Alejandro will review and follow up shortly.
 
 Regards,
 ```
 
 **Spanish:**
 ```
-[Name], gracias por el mensaje. Alejandro lo revisará y responderá pronto.
+[Name],
+
+Gracias por el mensaje. Alejandro lo revisará y responderá pronto.
 
 Saludos,
 ```
@@ -335,7 +358,7 @@ Only the three top-level fields are present. Omit all COI-specific fields. `repl
 ```json
 {
   "classification": "coi_request_incomplete",
-  "reply_text": "Jose, happy to put this together for you. I tried looking up the address for ABC Condo Association but couldn't find a match. Please send the address the certificate holder wants on the COI.\n\nRegards,",
+  "reply_text": "Jose,\n\nHappy to put this together for you. I tried looking up the address for ABC Condo Association but couldn't find a match. Please send the address the certificate holder wants on the COI.\n\nRegards,",
   "original_request_summary": "Client requested a COI for ABC Condo Association but no address provided and Sunbiz lookup failed."
 }
 ```
@@ -344,7 +367,7 @@ Only the three top-level fields are present. Omit all COI-specific fields. `repl
 ```json
 {
   "classification": "question",
-  "reply_text": "Maria, gracias por el mensaje. Alejandro lo revisará y responderá pronto.\n\nSaludos,",
+  "reply_text": "Maria,\n\nGracias por el mensaje. Alejandro lo revisará y responderá pronto.\n\nSaludos,",
   "original_request_summary": "Client asked when her policy expires."
 }
 ```
