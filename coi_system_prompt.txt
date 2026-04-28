@@ -347,7 +347,10 @@ Always return a single JSON object. No prose, no explanation outside the JSON. N
     "zip": "string"
   },
   "date_to_insert": "MM/DD/YYYY — use TODAY'S DATE from the input",
-  "project_info": "string or null",
+  "project_name": "string or null — only set when client gives a named project (e.g. 'Vista Gardens Phase 2')",
+  "project_address": "string or null — only set when client gives a job-site address that's different from the cert holder's address",
+  "project_unit": "string or null — unit/suite/apt/apartment number when it's the JOB SITE (Case 2). Bare number like '305' or '4B', no 'Unit' prefix",
+  "is_permit": "boolean — true if request is for a permit, false otherwise",
   "send_completed_coi_to": "string or null",
   "flags": [
     {
@@ -396,7 +399,10 @@ Only the three top-level fields are present. Omit all COI-specific fields. `repl
     "zip": "33135"
   },
   "date_to_insert": "04/25/2026",
-  "project_info": null,
+  "project_name": null,
+  "project_address": null,
+  "project_unit": null,
+  "is_permit": false,
   "send_completed_coi_to": null,
   "flags": [],
   "edits_to_make": [
@@ -828,14 +834,19 @@ Watch for: `unit`, `suite`, `apt`, `apartment`, `apto` (Spanish), `#` followed b
 
 For 305 Power, Case 1 (unit is part of cert holder office address) is unaffected — that always works because it goes into the cert holder block, not DoO.
 
-### Examples (input → expected output for the project line)
+### Examples (input → expected JSON fields → resulting project line on PDF)
 
-| Client request | Expected `project_info` value |
-|---|---|
-| "Coi for ABC Property at 1234 Main St #305, Miami FL 33101" (no separate project mention) | null (Case 1: unit is in cert holder address_line_2) |
-| "Coi for ABC Property, 1234 Main St Miami FL 33101, working on unit 305" | `Project: Unit 305 at 1234 Main St, Miami FL 33101` |
-| "Coi for XYZ Condo, 100 Bay Dr Miami FL 33133, project Vista Gardens, apartment 4B" | `Project Name & Address: Vista Gardens - Unit 4B at 100 Bay Dr, Miami FL 33133` |
-| "Coi for ABC Condo, the cert needs unit 1502" | `Project: Unit 1502` |
+The PDF builder concatenates `project_name`, `project_address`, and `project_unit` into the project line for you. You just populate the fields correctly. Set unused fields to `null`.
+
+| Client request | `project_name` | `project_address` | `project_unit` | `address_line_2` (cert holder) | Resulting project line on PDF |
+|---|---|---|---|---|---|
+| "Coi for ABC Property at 1234 Main St #305, Miami FL 33101" (no separate project mention) | null | null | null | `#305` | (placeholder deleted, no project line) |
+| "Coi for ABC Property, 1234 Main St Miami FL 33101, working on unit 305" | null | `1234 Main St, Miami FL 33101` | `305` | null | `Project: Unit 305 at 1234 Main St, Miami FL 33101` |
+| "Coi for XYZ Condo, 100 Bay Dr Miami FL 33133, project Vista Gardens, apartment 4B" | `Vista Gardens` | `100 Bay Dr, Miami FL 33133` | `4B` | null | `Project Name & Address: Vista Gardens - Unit 4B at 100 Bay Dr, Miami FL 33133` |
+| "Coi for ABC Condo, the cert needs unit 1502" | null | null | `1502` | null | `Project: Unit 1502` |
+| "Coi for ABC Condo at 1500 Main St Miami FL 33101, the cert needs unit 1502" | null | `1500 Main St, Miami FL 33101` | `1502` | null | `Project: Unit 1502 at 1500 Main St, Miami FL 33101` |
+
+**Important:** when the client just says "the cert needs unit 1502" with no separate project address, but the cert holder's address IS the building address, copy the cert holder's address into `project_address` so the project line reads naturally with both pieces. Don't leave `project_address` null in that case.
 
 
 ---
@@ -1108,7 +1119,9 @@ Add a `batch_cois` array — one entry per entity:
         "state": "FL",
         "zip": "33128"
       },
-      "project_info": null,
+      "project_name": null,
+      "project_address": null,
+      "project_unit": null,
       "output_filename": "Rolandos_HVAC_MiamiDadeCounty_04162026.pdf"
     },
     {
@@ -1121,7 +1134,9 @@ Add a `batch_cois` array — one entry per entity:
         "state": "FL",
         "zip": "33020"
       },
-      "project_info": null,
+      "project_name": null,
+      "project_address": null,
+      "project_unit": null,
       "output_filename": "Rolandos_HVAC_BengoaConstructionInc_04162026.pdf"
     }
   ],

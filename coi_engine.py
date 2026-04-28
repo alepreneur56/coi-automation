@@ -330,17 +330,41 @@ def build_single_coi(
 # PROJECT TEXT BUILDER
 # ---------------------------------------------------------------------------
 
-def build_project_text(project_name=None, project_address=None, is_permit=False):
+def build_project_text(project_name=None, project_address=None, project_unit=None, is_permit=False):
     """
     Format the project line for Description of Operations.
     Returns None if nothing to insert (placeholder will be deleted).
+
+    Handles unit/suite/apartment numbers when the unit is the JOB SITE
+    (cert holder office unit numbers go in cert_holder.address_line_2,
+    not here).
     """
+    # Normalize empty strings to None
+    project_name = project_name.strip() if isinstance(project_name, str) and project_name.strip() else None
+    project_address = project_address.strip() if isinstance(project_address, str) and project_address.strip() else None
+    project_unit = project_unit.strip() if isinstance(project_unit, str) and project_unit.strip() else None
+
     if is_permit and project_address:
         return f"Permit - {project_address}"
-    if project_name and project_address:
-        return f"Project Name & Address: {project_name} - {project_address}"
+
+    # Build the address-side fragment, optionally prefixed with the unit
+    if project_unit and project_address:
+        addr_frag = f"Unit {project_unit} at {project_address}"
+    elif project_unit:
+        addr_frag = f"Unit {project_unit}"
+    elif project_address:
+        addr_frag = project_address
+    else:
+        addr_frag = None
+
+    # Combine with project name based on what's present
+    if project_name and addr_frag:
+        return f"Project Name & Address: {project_name} - {addr_frag}"
     if project_name:
         return f"Project Name: {project_name}"
+    if project_unit:
+        # Unit (with or without address) but no project name → "Project: Unit X..."
+        return f"Project: {addr_frag}"
     if project_address:
         return f"Project Address: {project_address}"
     return None
@@ -394,6 +418,7 @@ def process_request(request_json, templates_dir, output_dir):
             project_text = build_project_text(
                 project_name=item.get("project_name"),
                 project_address=item.get("project_address"),
+                project_unit=item.get("project_unit"),
                 is_permit=item.get("is_permit", False)
             )
 
@@ -437,6 +462,7 @@ def process_request(request_json, templates_dir, output_dir):
     project_text = build_project_text(
         project_name=req.get("project_name"),
         project_address=req.get("project_address"),
+        project_unit=req.get("project_unit"),
         is_permit=req.get("is_permit", False)
     )
 
