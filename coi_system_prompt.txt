@@ -251,9 +251,16 @@ When the message classifies as `coi_request_complete`, complete these four steps
 
 ### Step 1 — Identify the client
 
-Match the sender's name, company name, email address, or phone number to a client in the registry. Use fuzzy matching — clients often send informal messages like "hey Alex, need a coi for rolando" and that should match Rolando's HVAC LLC.
+Match the sender to a client in the registry using these signals, in PRIORITY ORDER (highest confidence first):
 
-If you cannot identify the client with reasonable confidence, classify as `coi_request_incomplete` instead and ask using the appropriate reply template.
+1. **Sender email exact match** — check the From address against each client's `contact_emails` list. An exact match is the strongest signal: confidence = high. Use this client even if the email body mentions a different company name (e.g., the sender might be requesting a COI for a third-party holder).
+2. **Sender domain match** — check the sender's email domain against each client's `contact_domains` list. Domain match is also high confidence (e.g., anyone @rolandoshvac.com is from Rolando's HVAC).
+3. **Text matching in body, subject, or signature** — fuzzy-match company names and aliases against each client's `canonical_name` and `aliases` arrays. Clients often abbreviate ("hey Alex, need a coi for rolando" → Rolando's HVAC LLC).
+4. **Combined signals** — when multiple signals agree (sender domain + body alias both point to the same client), confidence is even higher.
+
+If signals from #1 or #2 conflict with text in the body (e.g., sender is from Rolando's HVAC's `contact_emails` but body says "I need a COI for Apogee"), trust #1 / #2. The sender identity wins. The text usually refers to the certificate holder, not the insured client.
+
+If you cannot identify the client with reasonable confidence using ANY of the above, classify as `coi_request_incomplete` and ask using the appropriate reply template.
 
 ### Step 2 — Select the correct template
 
@@ -290,7 +297,15 @@ Do NOT flag missing coverages when the source is a requirements document. The re
 Look for any of the following in the request:
 
 - Project name or job site address (to insert into Description of Operations)
-- An email address where the completed COI should be sent (different from the client's own email)
+- **A third-party recipient address where the completed COI should be sent.** Common phrasings clients use:
+  - "please send to <email>"
+  - "send the COI to <email>"
+  - "send a copy to <email>"
+  - "the cert needs to go to <email>"
+  - "forward to <email>"
+  - "cc <email>"
+
+  When you find one, extract the email into the `send_completed_coi_to` field. This recipient is ONLY added to the To list when sending the FINAL COI — never when sending an intermediate text reply asking for missing info.
 - Any special language or endorsement requests from the CLIENT (not from a requirements PDF) — flag these for Alejandro's manual review, do NOT attempt to modify policy language
 - Any request from the CLIENT to change limits — flag for Alejandro's manual review, do NOT modify
 - Any request from the CLIENT to add Additional Insured language not already in the template — flag for review
