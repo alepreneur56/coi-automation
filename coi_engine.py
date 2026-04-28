@@ -241,9 +241,42 @@ def build_single_coi(
         fitz.Rect(510.5, 34.0, 592.5, 47.0),
         fill=(1, 1, 1)
     )
-    # 3. Project name placeholder — tight bounds, never touch borders
+    # 3. Project name placeholder — tight bounds, never touch borders OR neighboring spans.
+    #    Some templates (e.g. 305 Power Corp) have spans whose bboxes overlap vertically
+    #    due to ascender/descender padding. We must clamp the redaction y-range so it
+    #    never extends into the span directly above or below.
+    above_y1 = None  # bottom edge of the nearest span above project
+    below_y0 = None  # top edge of the nearest span below project
+    for _b in page.get_text("dict")["blocks"]:
+        if _b.get("type") != 0:
+            continue
+        for _line in _b["lines"]:
+            for _sp in _line["spans"]:
+                _sy0, _sy1 = _sp["bbox"][1], _sp["bbox"][3]
+                # Skip the project span itself
+                if abs(_sy0 - py0) < 0.1 and abs(_sy1 - py1) < 0.1:
+                    continue
+                # Span sits above the project (its bottom is above project's top)
+                if _sy1 <= py0 + 0.5 and _sy1 > 540:
+                    if above_y1 is None or _sy1 > above_y1:
+                        above_y1 = _sy1
+                # Span sits below the project (its top is below project's bottom)
+                # We accept any span whose top is greater than project's top — even if its
+                # bbox overlaps ours due to padding — and clamp to its top y0.
+                if _sy0 > py0 + 0.5 and _sy0 < 660:
+                    if below_y0 is None or _sy0 < below_y0:
+                        below_y0 = _sy0
+
+    redact_top = py0 - 0.3
+    if above_y1 is not None and redact_top < above_y1 + 0.3:
+        redact_top = above_y1 + 0.3
+
+    redact_bottom = py1 + 0.3
+    if below_y0 is not None and redact_bottom > below_y0 - 0.3:
+        redact_bottom = below_y0 - 0.3
+
     page.add_redact_annot(
-        fitz.Rect(px0 - 0.5, py0 - 0.3, DESC_SAFE_RIGHT, py1 + 0.3),
+        fitz.Rect(px0 - 0.5, redact_top, DESC_SAFE_RIGHT, redact_bottom),
         fill=(1, 1, 1)
     )
     # 4. Boilerplate area (only if project text overflows)
