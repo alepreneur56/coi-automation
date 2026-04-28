@@ -297,6 +297,7 @@ Do NOT flag missing coverages when the source is a requirements document. The re
 Look for any of the following in the request:
 
 - Project name or job site address (to insert into Description of Operations)
+- **Unit / suite / apartment number** for the job site — see "UNIT NUMBER HANDLING" section below for full rules. Goes into the Description of Operations as part of the project line for any client EXCEPT 305 Power Corp (whose template has no project line yet).
 - **A third-party recipient address where the completed COI should be sent.** Common phrasings clients use:
   - "please send to <email>"
   - "send the COI to <email>"
@@ -705,6 +706,9 @@ When a project name and/or address is provided, insert it into the Description o
 - **Project name AND address provided** → `Project Name & Address: [project name] - [project address]`
 - **Project address only (no name)** → `Project Address: [address]`
 - **Project name only (no address)** → `Project Name: [project name]`
+- **Unit number + address (no project name)** → `Project: Unit [X] at [address]`
+- **Unit number only (no address, no project name)** → `Project: Unit [X]`
+- **Project name + unit number + address** → `Project Name & Address: [project name] - Unit [X] at [address]`
 - **"For a permit" + address** → `Permit - [address]`
 - **Nothing provided** → delete the placeholder line entirely, insert nothing
 
@@ -777,6 +781,61 @@ Insert each project line at:
 - y = proj_span_y0 + font_size + (line_index * line_height)
 
 Where `proj_span_y0` is the exact y0 coordinate of the original `Project name & Address ( If Applicable)` span extracted dynamically.
+
+
+---
+
+## UNIT NUMBER HANDLING
+
+Unit / suite / apartment numbers can show up in TWO different places in a request, and they belong in DIFFERENT fields on the COI. You must distinguish between them based on context.
+
+### Case 1: Unit is part of the certificate holder's office address
+
+The unit number is part of where the cert holder is located — usually their main office or mailing address. Examples:
+
+- "Need a COI for ABC Property Management, 1234 SW 54th St Suite 200, Miami FL 33135"
+- "ABC Property at 1234 Main St #200, Miami FL 33101"
+- The cert holder's office is in Suite 200 / Unit 200
+
+→ Put it in the `certificate_holder.address_line_2` field (e.g., `"Suite 200"` or `"Unit 200"`). Do NOT add anything to the project line.
+
+### Case 2: Unit is the JOB SITE / project location (this is the more common scenario)
+
+The cert holder is a property manager, building owner, condo association, etc., and they want the COI to reference a specific unit at the building because that's where the work is being done. Examples:
+
+- "Need a COI for ABC Property Management, holder address 1234 SW 54th St Miami FL 33135, we are working on Unit 305"
+- "ABC Condo Association, the cert needs Unit 305 of the building at 1500 Main St Miami FL 33101"
+- "Coi for XYZ Property, unit 1502"
+- "Cert for ABC at 100 Main St, the job is in apartment 4B"
+
+→ Put it in the project line of the Description of Operations using `Project: Unit [X] at [address]` (or one of the combined formats from "Output format rules" above when a project name is also provided).
+
+### How to disambiguate
+
+Read the FULL request and figure out the most likely intent. Heuristics:
+
+1. **If the unit is listed inline within the cert holder's address** (no separate phrase about it) → assume it's the cert holder's office (Case 1). Example: `"ABC Property, 1234 Main St Suite 200, Miami FL"` → Suite 200 = office.
+2. **If the unit is mentioned separately from the cert holder address** with phrases like "we are working on", "the job is", "the cert needs", "for unit", "in apartment" → it's the job site (Case 2).
+3. **If ambiguous and you cannot tell** → default to Case 2 (project line). Property managers and condo associations far more often request unit references for the job site than have multi-unit office addresses.
+
+### Phrasings to detect
+
+Watch for: `unit`, `suite`, `apt`, `apartment`, `apto` (Spanish), `#` followed by a number, `condo` followed by a number. Look for the number directly after these words: "unit 305", "Suite 200", "Apt 4B", "#1502", "apartamento 305".
+
+### Special case: 305 Power Corp
+
+305 Power's current template does NOT have a project line in the Description of Operations. If a request comes in for 305 Power that includes a unit number for the JOB SITE (Case 2), classify the request as `coi_request_complete` BUT add a flag of type `manual_review_required` with description: `"305 Power's current template does not support project / unit info in DoO. Manual review needed until template is updated."` Still generate the COI without the unit info — the cert holder name and address still go on it normally.
+
+For 305 Power, Case 1 (unit is part of cert holder office address) is unaffected — that always works because it goes into the cert holder block, not DoO.
+
+### Examples (input → expected output for the project line)
+
+| Client request | Expected `project_info` value |
+|---|---|
+| "Coi for ABC Property at 1234 Main St #305, Miami FL 33101" (no separate project mention) | null (Case 1: unit is in cert holder address_line_2) |
+| "Coi for ABC Property, 1234 Main St Miami FL 33101, working on unit 305" | `Project: Unit 305 at 1234 Main St, Miami FL 33101` |
+| "Coi for XYZ Condo, 100 Bay Dr Miami FL 33133, project Vista Gardens, apartment 4B" | `Project Name & Address: Vista Gardens - Unit 4B at 100 Bay Dr, Miami FL 33133` |
+| "Coi for ABC Condo, the cert needs unit 1502" | `Project: Unit 1502` |
 
 
 ---
