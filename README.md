@@ -44,7 +44,7 @@ Place all client COI template PDFs in the `templates/` folder.
 Filenames must match exactly what is in `coi_client_registry.json`.
 
 Current templates:
-- 305_Power_WC_COI_Template.pdf
+- 305_Power_Corp_COI_Template.pdf
 - Rolando_s_HVAC_COI_Template.pdf
 - EMP_3_Solutions_Template.pdf
 - Central_Comfort_Air_Conditioning_Inc_COI.pdf

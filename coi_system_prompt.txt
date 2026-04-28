@@ -375,7 +375,7 @@ Do NOT flag missing coverages when the source is a requirements document. The re
 Look for any of the following in the request:
 
 - Project name or job site address (to insert into Description of Operations)
-- **Unit / suite / apartment number** for the job site — see "UNIT NUMBER HANDLING" section below for full rules. Goes into the Description of Operations as part of the project line for any client EXCEPT 305 Power Corp (whose template has no project line yet).
+- **Unit / suite / apartment number** for the job site — see "UNIT NUMBER HANDLING" section below for full rules. Goes into the Description of Operations as part of the project line.
 - **A third-party recipient address where the completed COI should be sent.** Common phrasings clients use:
   - "please send to <email>"
   - "send the COI to <email>"
@@ -905,12 +905,6 @@ Read the FULL request and figure out the most likely intent. Heuristics:
 ### Phrasings to detect
 
 Watch for: `unit`, `suite`, `apt`, `apartment`, `apto` (Spanish), `#` followed by a number, `condo` followed by a number. Look for the number directly after these words: "unit 305", "Suite 200", "Apt 4B", "#1502", "apartamento 305".
-
-### Special case: 305 Power Corp
-
-305 Power's current template does NOT have a project line in the Description of Operations. If a request comes in for 305 Power that includes a unit number for the JOB SITE (Case 2), classify the request as `coi_request_complete` BUT add a flag of type `manual_review_required` with description: `"305 Power's current template does not support project / unit info in DoO. Manual review needed until template is updated."` Still generate the COI without the unit info — the cert holder name and address still go on it normally.
-
-For 305 Power, Case 1 (unit is part of cert holder office address) is unaffected — that always works because it goes into the cert holder block, not DoO.
 
 ### Examples (input → expected JSON fields → resulting project line on PDF)
 

@@ -24,12 +24,12 @@
       "license_number": "EC13004447",
       "templates": [
         {
-          "template_id": "305_power_wc",
-          "filename": "305_Power_WC_COI_Template.pdf",
-          "description": "Workers Compensation only",
-          "lines_of_coverage": ["WC"],
+          "template_id": "305_power_full",
+          "filename": "305_Power_Corp_COI_Template.pdf",
+          "description": "GL + Auto + Excess + WC (Clear Blue / Progressive / LUBA)",
+          "lines_of_coverage": ["GL", "Auto", "Excess", "WC"],
           "is_default": true,
-          "selection_rule": "Only template available. Use for all requests.",
+          "selection_rule": "DEFAULT. Use for all standard COI requests. Contains GL, Auto, Excess, and WC.",
           "editable_fields": {
             "certificate_holder": {
               "editable": true,
@@ -42,21 +42,68 @@
               "notes": "Update to today's date on each issuance"
             },
             "description_of_operations": {
-              "editable": false,
-              "current_value": "Electrical Contractor - License Number: EC13004447\n\nEmployer's Liability policy provide a Blanket Waiver of Subrogation when required by written contract, except as prohibited by law.",
-              "notes": "Do not modify unless client specifically requests project name addition"
+              "editable": true,
+              "current_value": "Electrical Contractor - License Number: EC13004447\nProject name & Address ( If Applicable)\nGeneral Liability & Commercial Auto policies includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. General Liability policy applies on a primary & non-contributory basis. A Blanket Waiver of Subrogation applies for General Liability, Umbrella, and Employer's Liability policies.",
+              "notes": "If client provides a project name and address, insert it after 'Project name & Address ( If Applicable)'. Do not alter the boilerplate language."
             }
           },
           "carriers": [
-            {"letter": "A", "name": "LUBA Casualty Ins Co", "naic": "12472"}
+            {"letter": "A", "name": "Clear Blue Insurance Company", "naic": "28860"},
+            {"letter": "B", "name": "Progressive Express Ins Co", "naic": "10193"},
+            {"letter": "C", "name": "LUBA Casualty Ins Co", "naic": "12472"}
           ],
           "policies": [
             {
-              "line": "Workers Compensation",
+              "line": "Commercial General Liability",
               "insurer_letter": "A",
+              "policy_number": "BGFL9010651400",
+              "eff_date": "07/15/2025",
+              "exp_date": "07/15/2026",
+              "addl_insured": true,
+              "subr_wvd": true,
+              "occur": true,
+              "aggregate_basis": "PRO-JECT",
+              "limits": {
+                "each_occurrence": "1,000,000",
+                "damage_to_rented_premises": "300,000",
+                "med_exp": "10,000",
+                "personal_adv_injury": "1,000,000",
+                "general_aggregate": "2,000,000",
+                "products_comp_op_agg": "2,000,000"
+              }
+            },
+            {
+              "line": "Commercial Auto",
+              "insurer_letter": "B",
+              "policy_number": "862396417",
+              "eff_date": "08/29/2025",
+              "exp_date": "08/29/2026",
+              "addl_insured": true,
+              "subr_wvd": true,
+              "auto_type": "Any Auto",
+              "limits": {
+                "combined_single_limit": "1,000,000"
+              }
+            },
+            {
+              "line": "Excess Liability",
+              "insurer_letter": "A",
+              "policy_number": "BXFL9000890400",
+              "eff_date": "07/15/2025",
+              "exp_date": "07/15/2026",
+              "occur": true,
+              "limits": {
+                "each_occurrence": "2,000,000",
+                "aggregate": "2,000,000"
+              }
+            },
+            {
+              "line": "Workers Compensation",
+              "insurer_letter": "C",
               "policy_number": "WC307-0132038-2026A",
               "eff_date": "04/11/2026",
               "exp_date": "04/25/2027",
+              "subr_wvd": true,
               "limits": {
                 "el_each_accident": "1,000,000",
                 "el_disease_ea_employee": "1,000,000",
