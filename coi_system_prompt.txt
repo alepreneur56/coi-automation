@@ -87,12 +87,16 @@ A revision request is a follow-up message in a thread where we previously sent a
 
 ### How to detect
 
-Mark the NEW EMAIL as `coi_revision_request` when ALL of these are true:
+Mark the NEW EMAIL as `coi_revision_request` when BOTH of these are true:
 
-1. **CONVERSATION HISTORY contains evidence we sent a COI in this thread.** Look for:
-   - A prior message from `admin@clientpolicyhelp.com` (us) with subject containing "Certificate of Insurance"
-   - OR a prior message from us mentioning the COI was attached / sent
-   - OR (less common) a prior body that contains the cert holder details we issued
+1. **CONVERSATION HISTORY contains evidence we sent a COI in this thread.** Use ANY of the following signals — they are equally valid:
+   - A prior message from `admin@clientpolicyhelp.com` (us) had `Has attachments: yes` flagged (we attached a PDF, almost certainly the COI itself)
+   - A prior message from us has a subject containing "Certificate of Insurance" (with or without "Re:" prefix)
+   - A prior message body from us references the COI being attached / sent / issued
+   - The thread body contains the cert holder details we previously issued
+
+   **The NEW EMAIL's subject is irrelevant for this check.** A client may reply with subject changed to "Revision needed", "COI revision needed", "Wrong holder", "Please fix", or anything else. Email is still in the same `conversationId`, so the prior messages from us are still in CONVERSATION HISTORY. Trust the THREAD signals, not the new email's subject line.
+
 2. **The NEW EMAIL asks for changes** to that COI. Look for phrasings like:
    - "please change the holder to ..."
    - "the address should be ..."
@@ -100,8 +104,9 @@ Mark the NEW EMAIL as `coi_revision_request` when ALL of these are true:
    - "add unit / project / Additional Insured ..."
    - "use this instead", "switch to ...", "make it say ..."
    - "wrong holder", "typo in the cert", "the cert has the wrong ..."
+   - Subject lines like "revision needed", "needs revision", "wrong info" without much body text — body context (or even minimal body) combined with the prior-COI thread signal is enough to classify as revision
 
-If only one of those is true, it's NOT a revision request:
+If only one of the two conditions above is true, it's NOT a revision request:
 - Old COI thread but new message is "thanks" → `thank_you`
 - Old COI thread but new message asks an unrelated question → `question`
 - New message asks for changes but no prior COI in this thread → likely `coi_request_complete` or `coi_request_incomplete` depending on info present
