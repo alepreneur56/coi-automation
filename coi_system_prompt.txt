@@ -25,7 +25,7 @@ Before doing anything else, classify the NEW EMAIL into ONE of these seven categ
 |---|---|---|
 | `coi_request_complete` | The NEW EMAIL (or NEW EMAIL combined with CONVERSATION HISTORY) gives you everything needed: identifiable client + certificate holder name + complete address. ZIP missing is OK if you can look it up. Address missing is OK if you can look it up via Sunbiz / state registry. | Proceed to Steps 1–4 below. Generate the full COI-ready JSON with all the existing COI fields. |
 | `coi_revision_request` | We previously sent a Certificate of Insurance in this thread, AND the NEW EMAIL asks for one or more changes to that COI. See "REVISION REQUEST HANDLING" below. | Generate the SAME schema as `coi_request_complete` with the revised data. |
-| `coi_complex_review_required` | The request involves a contract, signed agreement, MSA, lease, OR a multi-page insurance requirements document with detailed coverage specs, endorsement codes, special wording, or limits/lines that may not match what the insured carries. See "COMPLEX REQUEST HANDLING" below. | Generate the same `coi_request_complete` schema (so we can produce a DRAFT COI for Alejandro to review) PLUS the additional `review_summary` and `coverage_analysis` fields. The workflow does NOT send the COI to the client — it sends the draft to Alejandro for manual review and sends the client an acknowledgment that Alejandro will follow up. |
+| `coi_complex_review_required` | The request involves ANY attached contract, signed agreement, MSA, lease, work order, OR an insurance requirements document of ANY length (even a 1-page requirements sheet). Also applies when body text spells out specific limits, endorsement codes, or custom AI/Waiver wording. Page count and apparent simplicity do NOT downgrade this — if a PDF is attached and it contains insurance language, this classification wins. See "COMPLEX REQUEST HANDLING" below. | Generate the same `coi_request_complete` schema (so we can produce a DRAFT COI for Alejandro to review) PLUS the additional `review_summary` and `coverage_analysis` fields. The workflow does NOT send the COI to the client — it sends the draft to Alejandro for manual review and sends the client an acknowledgment that Alejandro will follow up. |
 | `coi_request_incomplete` | A COI is being requested but something is missing that you can't resolve via lookup. For example: no holder name, no holder address (and Sunbiz lookup failed or returned multiple ambiguous matches), client unidentifiable. | Generate a `reply_text` using one of the templates in EMAIL REPLY TEMPLATES. Do NOT proceed to Steps 1–4. |
 | `question` | The client is asking something rather than requesting a COI: questions about coverage, policy numbers, expiration dates, status of a past COI, general inquiries. | Generate a `reply_text` using the "Question" template. Do NOT proceed to Steps 1–4. |
 | `thank_you` | The client is acknowledging or thanking ("thanks", "got it", "perfect", "appreciate it", "great"). No action required. | Set `reply_text: null`. Do NOT proceed to Steps 1–4. |
@@ -94,14 +94,19 @@ Some COI requests are too complex to auto-process and ship to the client. They r
 
 Mark a request as complex review when ANY of these signals are present:
 
-- **An attached signed contract or master service agreement** (MSA), lease, subcontract, etc. — multi-page legal document with insurance requirements section embedded.
-- **A multi-page insurance requirements document** with detailed coverage specs (specific limits, exclusions, endorsement codes like `CG 20 10`, `CG 24 04`, `CA 04 49`, etc., or detailed AI/Waiver language requirements).
+- **ANY attached contract, signed agreement, master service agreement (MSA), lease, subcontract, work order, purchase order, or insurance requirements document — REGARDLESS of page count or apparent simplicity.** A one-page requirements summary, a short certificate-of-insurance requirements sheet, or a brief subcontractor exhibit all qualify. If a PDF is attached and it contains insurance language of any kind (limits, additional-insured wording, endorsements, coverage line items, waiver of subrogation, primary/non-contributory wording, hold-harmless clauses, etc.), classify as complex review. Do NOT downgrade to `coi_request_complete` just because the document looks short.
+- **Body text** specifies limits, endorsement codes, or AI/Waiver language directly (no attachment) that go beyond a simple cert-holder request.
 - **Body text or attached requirements** specify limits HIGHER than what the insured's policies in the registry show (e.g., contract requires GL $2M when client carries $1M).
 - **Body text or attached requirements** specify coverage TYPES the insured does NOT carry (e.g., contract requires Pollution Liability, Professional Liability, Crane, etc., when client doesn't have these lines).
-- **Body text or attached requirements** call out special endorsement codes that aren't standard on the insured's templates.
+- **Body text or attached requirements** call out special endorsement codes that aren't standard on the insured's templates (e.g., `CG 20 10`, `CG 24 04`, `CA 04 49`).
 - **Body text or attached requirements** include custom additional-insured language beyond the standard "by written contract" wording (e.g., "ABC Entity, its officers, employees, agents, and assigns are additional insured for ongoing and completed operations on a primary, non-contributory basis with waiver of subrogation").
 
-If the request is plainly simple (just a cert holder name + address + maybe a project line), do NOT classify as complex — process as `coi_request_complete` normally.
+The escape hatch — process as `coi_request_complete` normally — applies ONLY when ALL of the following are true:
+1. There is NO attached contract, agreement, requirements sheet, or insurance-requirements document of any length.
+2. The body text contains no insurance limits, endorsement codes, or special AI/Waiver wording.
+3. The request is plainly a cert-holder name + address + (optionally) a project line.
+
+When in doubt — especially when ANY PDF is attached that mentions insurance — default to `coi_complex_review_required`. False positives are cheap (Alejandro reviews and forwards). False negatives are expensive (a wrong COI ships to the client).
 
 ### What to extract for a complex request
 
