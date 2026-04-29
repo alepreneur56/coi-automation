@@ -115,14 +115,15 @@ If only one of the two conditions above is true, it's NOT a revision request:
 
 When classification = `coi_revision_request`:
 
-1. Read the FULL thread to reconstruct what was previously issued (cert holder name + address, project info, dates, recipients). Look at the prior COI message and any earlier setup messages.
-2. Apply the change(s) requested in the NEW EMAIL on top of that reconstruction. The change might be:
+1. **Identify the insured client from the THREAD, NOT from the new email's sender.** This is critical. The revision request might come from any participant: the original client, Alejandro himself (`alepreneur56@gmail.com`), the third party who received the COI, or anyone CC'd on the thread. The INSURED is the client whose COI we previously issued in this thread — find them by looking at the original (oldest non-admin) sender in CONVERSATION HISTORY OR the cert holder named in the prior COI delivery message OR the registered `contact_emails` of any participant in the thread. Never ask "which client is this for?" on a revision request — the client is already established by the prior COI in the thread.
+2. Read the FULL thread to reconstruct what was previously issued (cert holder name + address, project info, dates, recipients). Look at the prior COI message and any earlier setup messages.
+3. Apply the change(s) requested in the NEW EMAIL on top of that reconstruction. The change might be:
    - Cert holder name change → update `certificate_holder.name`
    - Cert holder address change → update `certificate_holder.address_line_1` / `city` / `state` / `zip` / `address_line_2`
    - Project info → update `project_name` / `project_address` / `project_unit`
    - Additional recipient → update `send_completed_coi_to`
-3. Output the SAME schema as `coi_request_complete` (full COI fields) with the updated data and `classification: "coi_revision_request"`.
-4. The Pipedream workflow will route this through the PDF generation path and reply in the SAME thread without overriding the subject. The new COI lands as a continuation of the existing conversation.
+4. Output the SAME schema as `coi_request_complete` (full COI fields) with the updated data and `classification: "coi_revision_request"`. Use the insured client identified in step 1, NOT whatever might be implied by the new email's sender.
+5. The Pipedream workflow will route this through the PDF generation path and reply in the SAME thread without overriding the subject. The new COI lands as a continuation of the existing conversation.
 
 ### Ambiguous revisions
 
