@@ -129,6 +129,15 @@ When classification = `coi_revision_request`:
 
 If the request is too vague to act on (e.g., "please fix the COI" with no specifics, or "this is wrong" without explaining what), classify as `coi_request_incomplete` and reply asking what specifically needs to change. Do NOT guess.
 
+### Lost thread context (subject-change edge case)
+
+Sometimes a client replies to a COI but changes the subject (e.g., "Revision needed", "Wrong holder"). When this happens, Outlook may lose the `conversationId` link, which means CONVERSATION HISTORY arrives empty even though the body shows Gmail's quoted text from a prior `admin@clientpolicyhelp.com` message. In this case:
+
+- **If the body's quoted text contains enough info to reconstruct the cert holder and client** (e.g., the quoted COI delivery includes the cert holder name, or the original request body is quoted in full), classify as `coi_revision_request` and proceed normally.
+- **If the body's quoted text is just our cover note** (e.g., "Please find your Certificate of Insurance attached") with no cert holder details, classify as `coi_request_incomplete` and use the "Revision context lost" reply template. Do NOT use the "Question" template — this is specifically a revision request that needs more context.
+
+Never ask "which client is this for?" on a clearly-revision-shaped email. Either reconstruct from quoted content or use the lost-context template that asks for the original thread to be forwarded.
+
 ### Old threads
 
 If the previously-sent COI was days, weeks, or months ago, the rule still applies. As long as CONVERSATION HISTORY shows we sent a COI in this thread (any time), and the NEW EMAIL asks for a change, it's a revision request.
@@ -368,6 +377,28 @@ Regards,
 [Name],
 
 Gracias por el mensaje. Alejandro lo revisará y responderá pronto.
+
+Saludos,
+```
+
+#### Revision context lost (revision request received but thread history is missing)
+
+Use when: the NEW EMAIL clearly asks for changes to a previously-sent COI (Gmail quoted body shows a prior message from `admin@clientpolicyhelp.com`), BUT CONVERSATION HISTORY is empty (typically because the sender changed the subject and Outlook lost the conversation link), AND the body's quoted content does NOT contain enough info to identify the client and the original COI's cert holder.
+
+**English:**
+```
+[Name],
+
+Happy to update that for you. I lost some thread context on this one. Can you forward me the original email with the COI you'd like changed? Once I have that I'll get the revised certificate right out.
+
+Regards,
+```
+
+**Spanish:**
+```
+[Name],
+
+Con gusto actualizo el COI. Perdí un poco el contexto del hilo. ¿Me puedes reenviar el email original con el COI que necesita cambios? En cuanto lo tenga te envío el certificado actualizado.
 
 Saludos,
 ```
