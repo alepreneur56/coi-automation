@@ -1,0 +1,16 @@
+# Nixpacks build config for the Railway deployment.
+# Adds LibreOffice to the system image so /convert-word-to-pdf can shell out to
+# `libreoffice --headless --convert-to pdf`. Without this, Word -> PDF
+# conversion fails with "libreoffice: command not found" at runtime.
+#
+# This is a real ~500MB add to the image but only happens at build time.
+# Runtime cold starts are negligibly affected since LibreOffice is invoked as
+# a subprocess and stays warm in the page cache after first use.
+
+[phases.setup]
+aptPkgs = [
+  "libreoffice",
+  "libreoffice-writer",
+  "fonts-liberation",
+  "fonts-dejavu"
+]

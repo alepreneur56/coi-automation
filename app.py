@@ -416,6 +416,196 @@ def test_endpoint():
     return jsonify(result)
 
 
+@app.route("/convert-word-to-pdf", methods=["POST"])
+def convert_word_to_pdf():
+    """
+    A6 Phase 2 — Word -> PDF conversion via LibreOffice headless.
+
+    Used by the Pipedream fetch_attachments step when a client emails a .docx
+    or .doc attachment. We convert to PDF here (so formatting is preserved)
+    and Pipedream then sends the resulting PDF to Claude as a document block.
+
+    Input JSON:
+        {
+            "filename": "contract.docx",
+            "content_base64": "..."
+        }
+
+    Output JSON on success:
+        {
+            "status": "ok",
+            "filename": "contract.pdf",
+            "pdf_base64": "...",
+            "pdf_size_bytes": 12345
+        }
+    """
+    import base64
+    import os
+    import subprocess
+    import tempfile
+
+    data = request.get_json(force=True, silent=True) or {}
+    content_b64 = data.get("content_base64")
+    filename = data.get("filename", "input.docx")
+    if not content_b64:
+        return jsonify({"status": "error", "error": "Missing content_base64"}), 400
+
+    # Reject obviously wrong filenames (must be Word)
+    lower = filename.lower()
+    if not (lower.endswith(".docx") or lower.endswith(".doc")):
+        return jsonify({
+            "status": "error",
+            "error": f"Filename must end in .docx or .doc, got: {filename}"
+        }), 400
+
+    try:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            input_path = os.path.join(tmpdir, os.path.basename(filename))
+            with open(input_path, "wb") as f:
+                f.write(base64.b64decode(content_b64))
+
+            # LibreOffice headless conversion. -env:UserInstallation isolates
+            # per-call so concurrent invocations don't fight over the profile.
+            user_dir = os.path.join(tmpdir, ".lo-profile")
+            result = subprocess.run(
+                [
+                    "libreoffice",
+                    f"-env:UserInstallation=file://{user_dir}",
+                    "--headless",
+                    "--convert-to", "pdf",
+                    "--outdir", tmpdir,
+                    input_path,
+                ],
+                capture_output=True, text=True, timeout=90
+            )
+
+            if result.returncode != 0:
+                return jsonify({
+                    "status": "error",
+                    "error": "libreoffice conversion failed",
+                    "returncode": result.returncode,
+                    "stderr": (result.stderr or "")[:500],
+                    "stdout": (result.stdout or "")[:500],
+                }), 500
+
+            # Find the output PDF (LibreOffice names it <basename>.pdf)
+            base_no_ext = os.path.splitext(os.path.basename(filename))[0]
+            output_path = os.path.join(tmpdir, base_no_ext + ".pdf")
+            if not os.path.exists(output_path):
+                pdfs = [f for f in os.listdir(tmpdir) if f.lower().endswith(".pdf")]
+                if not pdfs:
+                    return jsonify({
+                        "status": "error",
+                        "error": "No PDF produced",
+                        "tmpdir_contents": os.listdir(tmpdir),
+                    }), 500
+                output_path = os.path.join(tmpdir, pdfs[0])
+
+            with open(output_path, "rb") as f:
+                pdf_bytes = f.read()
+
+            return jsonify({
+                "status": "ok",
+                "filename": os.path.basename(output_path),
+                "pdf_base64": base64.b64encode(pdf_bytes).decode("utf-8"),
+                "pdf_size_bytes": len(pdf_bytes),
+            })
+    except subprocess.TimeoutExpired:
+        return jsonify({"status": "error", "error": "conversion timeout"}), 504
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"status": "error", "error": str(e)}), 500
+
+
+@app.route("/pdf-pages-to-images", methods=["POST"])
+def pdf_pages_to_images():
+    """
+    A6 Phase 2 — Render PDF pages as PNG images.
+
+    Used by the Pipedream fetch_attachments step when an incoming PDF has no
+    extractable text (i.e., it's a scan or image-only PDF). Pipedream sends
+    the raw PDF here, we render each page as a PNG, and Pipedream then passes
+    the images to Claude as image content blocks for vision-based OCR.
+
+    Input JSON:
+        {
+            "content_base64": "...",
+            "max_pages": 20      (optional, default 20)
+            "dpi": 150           (optional, default 150)
+        }
+
+    Output JSON:
+        {
+            "status": "ok",
+            "page_count": 5,
+            "rendered_count": 5,
+            "has_extractable_text": false,
+            "pages": [
+                {
+                    "page_number": 1,
+                    "media_type": "image/png",
+                    "content_base64": "...",
+                    "size_bytes": 12345
+                },
+                ...
+            ]
+        }
+    """
+    import base64
+    import fitz  # PyMuPDF (already installed for the COI engine)
+
+    data = request.get_json(force=True, silent=True) or {}
+    content_b64 = data.get("content_base64")
+    if not content_b64:
+        return jsonify({"status": "error", "error": "Missing content_base64"}), 400
+
+    max_pages = int(data.get("max_pages", 20))
+    dpi = int(data.get("dpi", 150))
+
+    doc = None
+    try:
+        pdf_bytes = base64.b64decode(content_b64)
+        doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+
+        # Detect whether this PDF has any extractable text. We surface this so
+        # Pipedream can decide downstream whether to also pass the original PDF
+        # as a document block (text PDFs) or only the rendered images.
+        has_text = any((page.get_text() or "").strip() for page in doc)
+
+        pages = []
+        for i, page in enumerate(doc):
+            if i >= max_pages:
+                break
+            zoom = dpi / 72.0  # PDF points = 72 dpi base
+            mat = fitz.Matrix(zoom, zoom)
+            pix = page.get_pixmap(matrix=mat, alpha=False)
+            png_bytes = pix.tobytes("png")
+            pages.append({
+                "page_number": i + 1,
+                "media_type": "image/png",
+                "content_base64": base64.b64encode(png_bytes).decode("utf-8"),
+                "size_bytes": len(png_bytes),
+            })
+
+        return jsonify({
+            "status": "ok",
+            "page_count": doc.page_count,
+            "rendered_count": len(pages),
+            "has_extractable_text": has_text,
+            "dpi": dpi,
+            "pages": pages,
+        })
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify({"status": "error", "error": str(e)}), 500
+    finally:
+        if doc is not None:
+            try:
+                doc.close()
+            except Exception:
+                pass
+
+
 @app.route("/generate-pdf", methods=["POST"])
 def generate_pdf_endpoint():
     """
