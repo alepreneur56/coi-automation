@@ -219,9 +219,11 @@ def build_complex_review_body(client_name, request_summary, review_summary,
                     cov, ("required_limit", "required_each_occurrence"))
                 insured_limit = _cov_field(
                     cov, ("insured_limit", "client_each_occurrence", "client_limit"))
+                note = _cov_field(cov, ("note", "notes"), default="")
+                note_html = f"<br><i>{note}</i>" if note else ""
                 parts.append(
                     f"<li><b>{line}</b> — required: {required_limit} | "
-                    f"insured carries: {insured_limit}{flag}</li>"
+                    f"insured carries: {insured_limit}{flag}{note_html}</li>"
                 )
             parts.append("</ul>")
         endorsements = coverage_analysis.get("required_endorsements") or []
