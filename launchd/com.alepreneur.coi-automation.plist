@@ -16,18 +16,18 @@
     <string>com.alepreneur.coi-automation</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/.venv/bin/python</string>
-        <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/main.py</string>
+        <string>/Users/alepreneur/coi-automation/.venv/bin/python</string>
+        <string>/Users/alepreneur/coi-automation/main.py</string>
     </array>
     <key>WorkingDirectory</key>
-    <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation</string>
+    <string>/Users/alepreneur/coi-automation</string>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/logs/launchd.log</string>
+    <string>/Users/alepreneur/coi-automation/logs/launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/logs/launchd-err.log</string>
+    <string>/Users/alepreneur/coi-automation/logs/launchd-err.log</string>
 </dict>
 </plist>
