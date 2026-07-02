@@ -35,9 +35,17 @@ def process_message(graph, msg, dry_run=False):
     sender = msg.get("from", {}).get("emailAddress", {}).get("address", "")
     subject = msg.get("subject", "")
 
-    # Never process our own outbound mail (e.g. self-CC loops)
+    # Never process our own outbound mail (e.g. self-CC loops) — EXCEPT
+    # simulated client emails injected by tests/live_test.py, which carry an
+    # X-COI-Test header. The loop's own replies never carry that header, so
+    # reply loops remain impossible.
     if sender.lower() == config.COI_MAILBOX.lower():
-        return {"skipped": True, "reason": "message from our own mailbox"}
+        hdrs = {
+            (h.get("name") or "").lower()
+            for h in graph.get_message_headers(msg_id)
+        }
+        if "x-coi-test" not in hdrs:
+            return {"skipped": True, "reason": "message from our own mailbox"}
 
     state.log_event("processing_start", msg_id=msg_id, sender=sender, subject=subject)
 
