@@ -11,6 +11,45 @@ are added to the prompt**.
 - Re-scoring after a prompt change: same command — results are keyed to the
   prompt hash, so a changed prompt automatically re-runs every case.
 
+## UPDATE 2026-07-02 — prompt safety patch re-score (`feat/prompt-safety`)
+
+Targeted prompt edits (no runtime code changes) fixing the two behaviors called
+out below: address hallucination (bench-13, plus non-US address rejection
+bench-9) and reference-COI routing bypassing the ABSOLUTE RULE (bench-4/19/22).
+New prompt sha256: `505370808af9213e`. `training/benchmark_results.json` now
+holds this run.
+
+| Metric | Baseline | After patch |
+|---|---|---|
+| Classification (acceptable-adjacent) | 16/26 (62%) | **20/26 (77%)** |
+| Client identification | 22/23 (96%) | **22/23 (96%)** |
+| Holder NAME | 15/16 (94%) | **15/15 (100%)** |
+| Holder ADDRESS | 12/15 (80%) | **13/14 (93%)** |
+
+Named failure cases:
+
+- **bench-13** (address hallucination): now `coi_request_incomplete`, asks for
+  the holder name + address. No fabricated address. Its remaining "client"
+  miss is structural — the incomplete schema carries no client fields.
+- **bench-9** (Canadian holder): now `coi_request_complete` with the Scarborough
+  ON address used verbatim (`state: "ON"`, `zip: "M1W 2P3"`).
+- **bench-4 / bench-19 / bench-22** (reference-COI attachments): all route to
+  `coi_complex_review_required`; extraction from the reference COI preserved.
+- **bench-26** additionally moved from revision to complex_review (correct lane).
+- **bench-15 / bench-16** (revision-on-fresh-thread replay artifacts): left
+  as-is per the note below; still misfire under replay's empty thread history.
+- **bench-5** is a NEW nominal miss that is a replay artifact: the body says
+  "Attached, please find a sample for reference" but the archive lost the
+  attachment, so the replay sent none. The patched prompt routes the mentioned
+  sample to review — in production the PDF would be present and review is the
+  mandated route. Denominator changes (15/15, 13/14) are because correctly
+  classifying bench-13 as incomplete removes it from the holder-scorable pool
+  while bench-9 (now complete) joins it.
+
+`tests/pipeline_review.py`: 13/13 scenarios pass after the patch (including
+`revision_change_address` — the in-thread, no-attachment revision lane is
+unchanged).
+
 ## Headline numbers
 
 | Metric | Score |

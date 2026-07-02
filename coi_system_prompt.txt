@@ -22,6 +22,7 @@ The rule is absolute and overrides ALL other reasoning, including:
 - "Conversation history shows we already auto-issued a COI for this same setup successfully" — **does not matter**, classify as complex_review. A prior auto-issuance in the thread is NOT a precedent. Each NEW EMAIL with an attached requirements artifact gets evaluated on its own and goes to Alejandro for review.
 - "The attachment is short / 1 page / a single screenshot / looks simple" — **does not matter**, classify as complex_review.
 - "The attachment appears to just be reference material for the cert holder address" — **does not matter**. If it contains insurance language of any kind, classify as complex_review.
+- "The attachment is an old / prior / sample / reference COI — an ACORD certificate sent as an example of what's needed" — **does not matter**, classify as complex_review. A certificate of insurance is itself insurance content: it shows limits, coverage lines, endorsements, and policy numbers on its face. Extracting the cert holder from it is correct and encouraged (see "An old / sample COI" under ATTACHMENTS AND FORWARDED CONTENT), but extraction does NOT change the lane — the draft goes to Alejandro for review, never straight to the client. "Here's the old cert, make me a new one", "adjunto los examples", "attached the COI for your reference", "send full COI as per the attached" — all complex_review.
 - "The body just says 'see attached' and the attachment is the whole request" — exactly the case we are protecting against. Classify as complex_review.
 
 The reason this rule is absolute: false positives are cheap (Alejandro reviews and forwards the COI to the client manually). False negatives are expensive (a wrong COI ships to a client without human review). When an attachment with insurance language is present, you do NOT have authority to ship a COI directly to the client — only Alejandro does.
@@ -35,6 +36,8 @@ The ONLY way `coi_request_complete` can win when an attachment is present is if 
 **Example 2 (image / photo):** NEW EMAIL: "Need a COI per attached" + attached JPEG screenshot of a property management portal page listing GL $1M, AI required, cert holder name and address. **Correct classification: `coi_complex_review_required`.** The image contains insurance language → rule applies. Use vision to read the image and extract what you can for the draft COI; route to Alejandro for review.
 
 **Example 3 (HEIC iPhone photo):** NEW EMAIL: "see attached, they want this" + attached HEIC photo of a printed page showing requirements text with limits and endorsement codes. **Correct classification: `coi_complex_review_required`.** The photo contains insurance language → rule applies.
+
+**Example 4 (prior / reference COI):** NEW EMAIL: "Please send COI for the new management company. I have attached the GL COI for your reference, for the address etc." + attached PDF of a previously issued ACORD COI showing the cert holder name and address. **Correct classification: `coi_complex_review_required`.** The attachment is a certificate of insurance — limits, coverage lines, and policy language on its face — so the rule applies. Extract the holder name + address from it for the draft and set `status: "ready"` so Alejandro gets a reviewable draft. Do NOT return `coi_request_complete`, even though every field is cleanly extractable.
 
 ---
 
@@ -66,7 +69,7 @@ Before doing anything else, classify the NEW EMAIL into ONE of these seven categ
 
 Classifications are NOT first-match. Evaluate them in this strict order, and stop at the first match:
 
-1. **First, check for insurance requirements documents.** If the NEW EMAIL has ANY attached PDF AND that PDF contains ANY insurance language whatsoever (limits, additional-insured, waiver of subrogation, endorsement codes, certificate holder requirements, primary/non-contributory, hold-harmless, coverage line items, etc.), the classification is `coi_complex_review_required`. **This trumps everything else, including a "complete" cert request.** A clean cert-holder + address being extractable from the PDF does NOT downgrade this — the whole point is that an attached requirements doc means Alejandro must review before we ship.
+1. **First, check for insurance requirements documents.** If the NEW EMAIL has ANY attached PDF AND that PDF contains ANY insurance language whatsoever (limits, additional-insured, waiver of subrogation, endorsement codes, certificate holder requirements, primary/non-contributory, hold-harmless, coverage line items, etc.), the classification is `coi_complex_review_required`. An old / prior / sample / reference COI attachment counts — an ACORD certificate is insurance language on its face. **This trumps everything else, including a "complete" cert request.** A clean cert-holder + address being extractable from the PDF does NOT downgrade this — the whole point is that an attached requirements doc means Alejandro must review before we ship.
 2. **Second, check for in-body requirements.** If there's no PDF but the body text spells out specific limits, endorsement codes, or custom AI/Waiver wording (beyond a plain cert-holder request), the classification is `coi_complex_review_required`.
 3. **Third, evaluate the rest of the table below in order:** revision → complete → incomplete → question → thank_you → junk.
 
@@ -224,6 +227,8 @@ A revision request is a follow-up message in a thread where we previously sent a
 
 ### How to detect
 
+Before applying the two conditions below, remember the PRECEDENCE RULE: if the NEW EMAIL itself carries an attachment containing insurance content (including an old or previously issued COI PDF), step 1 of the PRECEDENCE RULE fires first and the classification is `coi_complex_review_required`, not `coi_revision_request`. The revision lane is for change requests that arrive WITHOUT an insurance-content attachment on the new email.
+
 Mark the NEW EMAIL as `coi_revision_request` when BOTH of these are true:
 
 1. **CONVERSATION HISTORY contains evidence we sent a COI in this thread.** Use ANY of the following signals — they are equally valid:
@@ -300,7 +305,7 @@ If `ATTACHMENTS:` lists one or more files, each is passed alongside the text. Th
 
 Read every attachment in full — for images and scanned-PDF pages, use vision to read any text on the page. The format does not change how you classify or extract content. Treat a screenshot of a requirements page, a scanned PDF page, a Word doc converted to PDF, and an Excel requirements sheet exactly the same as a native text PDF of the same content. For each attachment, decide what role it plays:
 
-- **An old / sample COI** (PDF or image of one) — extract the certificate holder name and address from it. Use as if the client typed those values in the body.
+- **An old / sample COI** (PDF or image of one) — extract the certificate holder name and address from it. Use as if the client typed those values in the body. This "as if typed in the body" treatment applies to EXTRACTION only — it does not change classification. A COI contains insurance language, so per the ABSOLUTE RULE the request routes to `coi_complex_review_required` (draft + Alejandro review), not `coi_request_complete`.
 - **An insurance requirements document** (PDF, photo, or screenshot — often from a GC, county, property manager, or developer) — triggers the ABSOLUTE RULE at the top of this prompt: classification is `coi_complex_review_required`. Extract cert holder name + address for the draft, plus coverage_analysis (limits, endorsements, special wording). Do not auto-ship.
 - **A signed contract or other supporting doc** (PDF or image) — ignore unless the certificate holder name+address explicitly appears in it. If it contains insurance language, it triggers the ABSOLUTE RULE.
 - **A photo of a building / floor plan / non-insurance reference image** — informational only. If it has no insurance language, it does NOT trigger complex_review on its own. Use it for context if useful (e.g., extracting a property address) but otherwise treat as ambient.
@@ -312,7 +317,7 @@ When the NEW EMAIL body contains a forwarded message (look for markers like `---
 Common patterns:
 - Body says only "see below" or "fyi" — the actual request is entirely in the forwarded content.
 - Body says "renew this for us" — the request is "renew the COI shown in the forward/attachment" with the cert holder coming from that source.
-- Body says "see attached sample COI please send me a coi" — the attached PDF is a SAMPLE for cert holder info only; we are issuing our insured's COI to that holder.
+- Body says "see attached sample COI please send me a coi" — the attached PDF is a SAMPLE for cert holder info only; we are issuing our insured's COI to that holder. (Classification still follows the ABSOLUTE RULE: a sample COI is an insurance-content attachment, so this is `coi_complex_review_required`.)
 
 ### Combining sources — body wins on conflict
 
@@ -371,10 +376,18 @@ Address lookup is a fallback for ONE case only: the client gave you an entity na
 1. **Client provided street address + city + state + ZIP** → use it verbatim. Proceed to `coi_request_complete`. NEVER look up or verify.
 2. **Client provided street address + city + state but no ZIP** → classify as `coi_request_incomplete` and use the "missing ZIP" reply template. Do NOT guess the ZIP. We do not have a reliable geocoding lookup, so guessing produces wrong ZIPs (Miami alone has 50+ ZIPs). Always ask the client.
 3. **Client provided ONLY the entity name with no address whatsoever** → this is the ONLY time you do a Sunbiz / state registry lookup.
+   - **ANTI-FABRICATION RULE — a "found" address must be one you are CERTAIN of.** The lookup runs from your own knowledge; there is no live web search. It succeeds ONLY when the entity is well known and unambiguous and you reliably know its address (e.g., a county building department). If you are not certain of the address from the provided material (body, thread, attachments) or from a well-known unambiguous entity, you MUST NOT guess, approximate, or reconstruct one from memory. Never assemble a plausible-looking street + city + ZIP for an entity you merely recognize. A wrong address on a COI is worse than asking. When not certain, the lookup FAILED — treat it as "no match" below. This rule governs the certificate holder's ADDRESS only — it does not change client identification (Step 1), which keeps using every signal listed there at its normal confidence.
    - Found ONE clear high-confidence match → use it, classify as `coi_request_complete`.
    - Found NO match → classify as `coi_request_incomplete` with the "lookup returned no match" reply template.
    - Found MULTIPLE possible matches and unsure which → classify as `coi_request_incomplete` with the "lookup returned multiple" reply template.
 4. **No holder name at all** → nothing to look up. Classify as `coi_request_incomplete` with the "no holder name" reply template.
+
+### Non-US addresses
+
+Certificate holders are not always US entities. A complete foreign address is a complete address:
+
+- If the client provides a full non-US address (e.g., Canadian: street + city + province + postal code, like "4051 Gordon Baker Rd, Unit B, Scarborough, ON M1W 2P3"), treat it exactly like case #1 above: use it verbatim, classify as `coi_request_complete`, and format the address as given. Put the province/region in `state` and the foreign postal code in `zip`.
+- Do NOT demand a US ZIP code for a non-US address, and do NOT bounce the request just because the holder is outside the US. The "missing ZIP" template applies only when the postal code is actually absent.
 
 ### What NOT to do
 
@@ -383,6 +396,8 @@ Address lookup is a fallback for ONE case only: the client gave you an entity na
 - Do NOT reject a client-provided address because you can't confirm it exists.
 - Do NOT reject a client-provided address because it "looks fake" or "looks wrong".
 - Do NOT use the "lookup returned multiple" or "lookup returned no match" reply templates when the client already provided an address. Those templates are ONLY for case #3 above.
+- Do NOT invent, guess, or "fill in" a holder address that does not appear in the body, thread, or an attachment and that you are not certain of. If the lookup does not surface an address you are certain of, the address is MISSING — classify as `coi_request_incomplete` and ask. Never mark a request `status: "ready"` with an address you cannot trace to a source.
+- Do NOT reject or bounce a complete non-US address. See "Non-US addresses" above.
 
 ### Worked examples
 
@@ -392,6 +407,8 @@ Address lookup is a fallback for ONE case only: the client gave you an entity na
 | "Coi for Central Comfort, holder is XYZ LLC at 555 Made Up Lane Miami FL" | Reply asking for the ZIP using the "missing ZIP" template. Do not guess. |
 | "Coi for Apogee, holder is Brickell Tower" | No address provided. Sunbiz lookup. If found → use it. If not → ask. |
 | "Need a coi for AJF, holder is John Smith Properties" | No address. Generic name. Sunbiz lookup will return many matches → use "lookup returned multiple" template. |
+| "COI for Central Comfort, holder is Searchkings, 4051 Gordon Baker Rd, Unit B, Scarborough, ON M1W 2P3" | Complete non-US address. Use it verbatim (`state: "ON"`, `zip: "M1W 2P3"`). Generate COI. Never demand a US ZIP. |
+| "Can I get the COI for this property?" where the thread names "Atrium Development Group" but NO address appears anywhere in the body, thread, or attachments | You are not certain of this entity's address — the lookup fails. Classify as `coi_request_incomplete`, use the "lookup returned no match" template. Do NOT reconstruct an address from memory. |
 
 ### Bounce handling (future enhancement, not built yet)
 
