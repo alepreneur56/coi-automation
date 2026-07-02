@@ -1,0 +1,47 @@
+# coi-automation.service — systemd unit for the COI automation polling loop.
+#
+# Runs main.py forever as the dedicated non-root user 'coi', restarts it on
+# any crash with exponential backoff (5s doubling up to 5 min, never gives
+# up — the loop must outlive transient network/DNS outages unattended), and
+# sends all stdout/stderr to journald.
+#
+# No EnvironmentFile: secrets live in /opt/coi-automation/.env, which
+# config.py reads itself at startup.
+#
+# Install (provision.sh does this):
+#   cp deploy/coi-automation.service /etc/systemd/system/
+#   systemctl daemon-reload
+#   systemctl enable --now coi-automation
+
+[Unit]
+Description=COI automation polling loop (Graph inbox -> Claude -> PDF -> reply)
+Documentation=file:///opt/coi-automation/deploy/RUNBOOK.md
+After=network-online.target
+Wants=network-online.target
+# Never hit a permanent start-limit lockout; RestartMaxDelaySec below is the brake.
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=coi
+Group=coi
+WorkingDirectory=/opt/coi-automation
+ExecStart=/opt/coi-automation/.venv/bin/python /opt/coi-automation/main.py
+Restart=always
+RestartSec=5
+RestartSteps=6
+RestartMaxDelaySec=300
+# print() lines must reach the journal immediately, not on buffer flush
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=coi-automation
+
+# Light hardening — the app only needs its own directory and outbound HTTPS
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
