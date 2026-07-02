@@ -15,18 +15,83 @@ Usage:
 """
 
 import argparse
+import os
 import sys
 import time
 import traceback
 
 import config
+import db
 import state
 from attachments import fetch_attachments
 from classifier import classify, load_system_prompt
+from coi_engine import build_project_text
 from graph_client import GraphClient, GraphError
 from pipeline import decide_action
 from sender import execute_action
 from thread_fetch import fetch_thread
+
+
+def record_sent_cois(msg, parsed, decision):
+    """A10: write one history-DB row per generated PDF after a real send.
+
+    Batch requests get one row per batch_cois item; single/multi-entity
+    requests get one row per output PDF (splits share the same holder).
+    """
+    msg_id = msg.get("id")
+    subject = msg.get("subject", "")
+    pdf_paths = decision.get("pdf_paths", [])
+    client_id = parsed.get("client_id")
+
+    if parsed.get("request_type") == "batch":
+        for i, item in enumerate(parsed.get("batch_cois", [])):
+            ch = item.get("certificate_holder") or {}
+            path = pdf_paths[i] if i < len(pdf_paths) else None
+            db.record_coi(
+                client_id=client_id,
+                holder_name=ch.get("name", ""),
+                address_line_1=ch.get("address_line_1"),
+                address_line_2=ch.get("address_line_2"),
+                city=ch.get("city"),
+                state=ch.get("state"),
+                zip_code=ch.get("zip"),
+                project_text=build_project_text(
+                    project_name=item.get("project_name"),
+                    project_address=item.get("project_address"),
+                    project_unit=item.get("project_unit"),
+                    is_permit=item.get("is_permit", False),
+                ),
+                pdf_filename=os.path.basename(path) if path else None,
+                pdf_path=path,
+                msg_id=msg_id,
+                thread_subject=subject,
+                source="live",
+            )
+        return
+
+    ch = parsed.get("certificate_holder") or {}
+    project_text = build_project_text(
+        project_name=parsed.get("project_name"),
+        project_address=parsed.get("project_address"),
+        project_unit=parsed.get("project_unit"),
+        is_permit=parsed.get("is_permit", False),
+    )
+    for path in pdf_paths:
+        db.record_coi(
+            client_id=client_id,
+            holder_name=ch.get("name", ""),
+            address_line_1=ch.get("address_line_1"),
+            address_line_2=ch.get("address_line_2"),
+            city=ch.get("city"),
+            state=ch.get("state"),
+            zip_code=ch.get("zip"),
+            project_text=project_text,
+            pdf_filename=os.path.basename(path),
+            pdf_path=path,
+            msg_id=msg_id,
+            thread_subject=subject,
+            source="live",
+        )
 
 
 def process_message(graph, msg, dry_run=False):
@@ -96,6 +161,14 @@ def process_message(graph, msg, dry_run=False):
         type=send_result.get("type"),
         error=send_result.get("error") or send_result.get("review_email_error"),
     )
+
+    # A10: record delivered COIs in the history DB. A DB failure must NEVER
+    # break email processing — log and move on.
+    if send_result.get("sent") and decision.get("action") in ("send_pdf", "send_complex_review"):
+        try:
+            record_sent_cois(msg, parsed, decision)
+        except Exception as e:
+            state.log_event("db_error", msg_id=msg_id, error=str(e))
 
     if not dry_run:
         graph.mark_read(msg_id)
