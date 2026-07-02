@@ -8,5 +8,6 @@ venv/
 .venv/
 state/
 logs/
+data/
 tests/review_output/
 tests/pipeline_output/
