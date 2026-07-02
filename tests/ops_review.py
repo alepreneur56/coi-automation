@@ -32,6 +32,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import config
 import ops
+import state
+
+# ISOLATION: ops functions persist run_state via state.save_state, which
+# writes to the REAL state file. Redirect it to a temp path for the whole
+# test run — clobbering the live watermark/processed_ids once cost us a
+# production state reset (2026-07-02).
+_TEST_STATE_DIR = tempfile.mkdtemp(prefix="ops-review-state-")
+state.STATE_PATH = os.path.join(_TEST_STATE_DIR, "runtime_state.json")
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ops_output")
