@@ -1,0 +1,1937 @@
+{
+ "generated": "2026-07-02T17:14:26.675850",
+ "model": "claude-sonnet-4-5",
+ "prompt_sha": "63c11ba81bb27227",
+ "case_count": 26,
+ "results": [
+  {
+   "case_id": "bench-1",
+   "thread": "(no subject)",
+   "subject": "(no subject)",
+   "from": "rkoo@ajfroofingfl.com",
+   "date": "2026-01-27 19:58:35",
+   "attachments_sent": [
+    "AJF Roofing X623 -3055 Burris Owner 8.23.24.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "HI Alejandro Could you please send me a certificate to: 3055 BURRIS OWNER LLC 3055 BURRIS ROAD DAVIE FL 33314 Thank you\nRomy Koo Accounts Payable & Human Resources | AJF Roofing D: (786) 409-6988 C: (305) 456-8006 EXT 6988 7495 NW 7 th Street Suite #10, Miami, FL 33126 E: rkoo@ajfroofingfl.com | Web: www.ajfroofingfl.",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_complete"
+    ],
+    "client_id": "ajf_roofing",
+    "holder": {
+     "name": "3055 Burris Owner, LLC",
+     "addr_lines": [
+      "3055 Burris Road"
+     ],
+     "zip": null,
+     "street_no": "3055"
+    },
+    "gt_note": "from AJF Roofing X623 -3055 Burris Owner 8.23.24.pdf (verdict=correct, overlap=1.00)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "ajf_roofing",
+    "client_canonical_name": "AJF Roofing, Inc.",
+    "certificate_holder": {
+     "name": "3055 Burris Owner, LLC",
+     "address_line_1": "3055 Burris Road",
+     "address_line_2": null,
+     "city": "Davie",
+     "state": "FL",
+     "zip": "33314"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for 3055 Burris Owner LLC with an attached old certificate from 2024 showing the same holder and project information.",
+    "reply_text": "Romy,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3228,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 958
+    }
+   }
+  },
+  {
+   "case_id": "bench-2",
+   "thread": "3 island condominium coi - apogee hvac solutions llc",
+   "subject": "3 Island Condominium COI - Apogee HVAC Solutions LLC",
+   "from": "Janice Lacayo",
+   "date": "2026-01-09 18:15:19",
+   "attachments_sent": [
+    "3 Island Condominium Association, Inc.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good afternoon Alejandro,\nI need an updated COI for 3 Island condominium as per the attached past form, adding a waiver of subrogation.\nThank you in advance.\nBest Regards,\nJanice Lacayo\nOffice\n640 S. Miami Avenue, Suite 201\nMiami, FL 33130\nMailing Address\nPO BOX 310305\nMiami, FL\nOffice (786) 294-0596\nDirect (786) 740-6750\nwww.apogeehvac.com",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete",
+     "coi_revision_request"
+    ],
+    "client_id": "apogee_hvac",
+    "holder": {
+     "name": "3 Island Condominium Association, Inc",
+     "addr_lines": [
+      "3 Island Ave.",
+      "Miami, FL 33139"
+     ],
+     "zip": "33139",
+     "street_no": "3"
+    },
+    "gt_note": "from 3 Island Condominium Association, Inc.pdf (verdict=questionable, overlap=0.56)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "apogee_hvac",
+    "client_canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+    "certificate_holder": {
+     "name": "3 Island Condominium Association, Inc",
+     "address_line_1": "3 Island Ave.",
+     "address_line_2": null,
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33139"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests updated COI for 3 Island Condominium Association with waiver of subrogation added, referencing attached past COI form.",
+    "reply_text": "Janice,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3173,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 836
+    }
+   }
+  },
+  {
+   "case_id": "bench-3",
+   "thread": "ajf roofing- burris",
+   "subject": "AJF ROOFING-  BURRIS",
+   "from": "rkoo@ajfroofingfl.com",
+   "date": "2026-02-11 18:50:20",
+   "attachments_sent": [
+    "AJF Roofing Inc_3055 Burris Owner, LLC.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Hola Alejandro Could you please fix this certificate. Project is IOV Burris Davie Industrial Center ' Thank uuuu\nRomy Koo Accounts Payable & Human Resources | AJF Roofing D: (786) 409-6988 C: (305) 456-8006 EXT 6988 7495 NW 7 th Street Suite #10, Miami, FL 33126 E: rkoo@ajfroofingfl.com | Web: www.ajfroofingfl.",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete",
+     "coi_revision_request"
+    ],
+    "client_id": "ajf_roofing",
+    "holder": null,
+    "gt_note": "request-attachment COI holder not corroborated by body",
+    "gt_confidence": "low",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_revision_request",
+    "client_id": "ajf_roofing",
+    "client_canonical_name": "AJF Roofing, Inc.",
+    "certificate_holder": {
+     "name": "3055 Burris Owner, LLC",
+     "address_line_1": "3055 Burris Road",
+     "address_line_2": null,
+     "city": "Davie",
+     "state": "FL",
+     "zip": "33314"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests revision to previously issued COI to add project name and number in description of operations.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 5179,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 829
+    }
+   }
+  },
+  {
+   "case_id": "bench-4",
+   "thread": "ajf roofing- coi & wc for burris & denver",
+   "subject": "AJF ROOFING- COI & WC for BURRIS & DENVER",
+   "from": "rkoo@ajfroofingfl.com",
+   "date": "2026-01-27 20:01:06",
+   "attachments_sent": [
+    "AJF Roofing X623 -3055 Burris Owner 8.23.24.pdf",
+    "AJF Roofing X623 -Denver CMC 8.23.24.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Sorry Alejandro Necesito estos dos certificados. Adjunto los examples. Gracias\nRomy Koo Accounts Payable & Human Resources | AJF Roofing D: (786) 409-6988 C: (305) 456-8006 EXT 6988 7495 NW 7 th Street Suite #10, Miami, FL 33126 E: rkoo@ajfroofingfl.com | Web: www.ajfroofingfl.",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "ajf_roofing",
+    "holder": null,
+    "gt_note": "request-attachment COI holder not corroborated by body",
+    "gt_confidence": "low",
+    "graded_coi_count": 2
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "ajf_roofing",
+    "client_canonical_name": "AJF Roofing, Inc.",
+    "certificate_holder": null,
+    "certificate_holder_lines": null,
+    "batch_cois": [
+     {
+      "index": 1,
+      "certificate_holder": {
+       "name": "3055 Burris Owner, LLC",
+       "address_line_1": "3055 Burris Road",
+       "address_line_2": null,
+       "city": "Davie",
+       "state": "FL",
+       "zip": "33314"
+      },
+      "project_name": "IOV Burris Industrial Center",
+      "project_address": null,
+      "project_unit": "X623",
+      "is_permit": false,
+      "send_completed_coi_to": null,
+      "output_filename": "AJF_Roofing_BurrisOwner_07022026.pdf"
+     },
+     {
+      "index": 2,
+      "certificate_holder": {
+       "name": "Denver CMC Group, Inc.",
+       "address_line_1": "Colorado Center, Tower 1",
+       "address_line_2": "2000 S Colorado Blvd Ste 10500",
+       "city": "Denver",
+       "state": "CO",
+       "zip": "80222"
+      },
+      "project_name": "IOV Burris Industrial Center",
+      "project_address": null,
+      "project_unit": "X623",
+      "is_permit": false,
+      "send_completed_coi_to": null,
+      "output_filename": "AJF_Roofing_DenverCMC_07022026.pdf"
+     }
+    ],
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": null,
+    "flags": [],
+    "summary": "Client requests renewal of 2 COIs for AJF Roofing: one for 3055 Burris Owner LLC and one for Denver CMC Group Inc, based on attached sample certificates.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": true,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 6190,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 645
+    }
+   }
+  },
+  {
+   "case_id": "bench-5",
+   "thread": "ajf roofing- coi & wc for mercova group",
+   "subject": "AJF ROOFING- COI & WC for MERCOVA GROUP",
+   "from": "rkoo@ajfroofingfl.com",
+   "date": "2026-01-15 14:59:15",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "Buen Dia Alejandro: Another Certificate to The Mercova Group, LLC 8180 NW 36 Street, Suite 418 Miami, FL 33166 Attached, please find a sample for reference. Thank you.\nRomy Koo Accounts Payable & Human Resources | AJF Roofing D: (786) 409-6988 C: (305) 456-8006 EXT 6988 7495 NW 7 th Street Suite #10, Miami, FL 33126 E: rkoo@ajfroofingfl.com | Web: www.ajfroofingfl.",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_request_complete"
+    ],
+    "client_id": "ajf_roofing",
+    "holder": {
+     "name": "The Mercova Group, LLC",
+     "addr_lines": [
+      "8180 NW 36 Street, Suite 418",
+      "i FL 33166"
+     ],
+     "zip": "33166",
+     "street_no": "8180"
+    },
+    "gt_note": "from AJF Roofing Inc_The Mercova Group, LLC.pdf (verdict=questionable, overlap=0.92)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "ajf_roofing",
+    "client_canonical_name": "AJF Roofing, Inc.",
+    "certificate_holder": {
+     "name": "The Mercova Group, LLC",
+     "address_line_1": "8180 NW 36 Street",
+     "address_line_2": "Suite 418",
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33166"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for AJF Roofing with The Mercova Group, LLC as certificate holder.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": true,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 285,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 568
+    }
+   }
+  },
+  {
+   "case_id": "bench-6",
+   "thread": "another ---- barron development corp",
+   "subject": "another ----  Barron Development Corp",
+   "from": "rkoo@ajfroofingfl.com",
+   "date": "2026-01-13 17:00:26",
+   "attachments_sent": [
+    "AJF Roofing - General Liability Exp. 01-07-26 - Barron.pdf",
+    "AJF Roofing - Workers Comp. Exp. 01-01-26 - Barron.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Hello again Aqui otro Certificado'\nRomy Koo Accounts Payable & Human Resources | AJF Roofing D: (786) 409-6988 C: (305) 456-8006 EXT 6988 7495 NW 7 th Street Suite #10, Miami, FL 33126 E: rkoo@ajfroofingfl.com | Web: www.ajfroofingfl.",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "ajf_roofing",
+    "holder": {
+     "name": "Barron Development Corporation",
+     "addr_lines": [
+      "2890 Marina Mile BLVD. Suite",
+      "#115"
+     ],
+     "zip": null,
+     "street_no": "2890"
+    },
+    "gt_note": "from AJF Roofing - Workers Comp. Exp. 01-01-26 - Barron.pdf (verdict=incorrect, overlap=0.33)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 2
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "ajf_roofing",
+    "client_canonical_name": "AJF Roofing, Inc.",
+    "certificate_holder": {
+     "name": "Barron Development Corporation",
+     "address_line_1": "2890 Marina Mile Blvd",
+     "address_line_2": "Suite 115",
+     "city": "Fort Lauderdale",
+     "state": "FL",
+     "zip": "33312"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client forwarded a request from Barron Development Corp for a COI, with two attached old COIs showing the certificate holder details and coverage requirements.",
+    "reply_text": "Romy,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 6536,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 1038
+    }
+   }
+  },
+  {
+   "case_id": "bench-7",
+   "thread": "apogee hvac solutions coi",
+   "subject": "FW: Apogee HVAC Solutions COI",
+   "from": "Janice Lacayo",
+   "date": "2026-01-21 15:54:48",
+   "attachments_sent": [
+    "52491592_1 Homes South Beach 1 Hotel South Beach_01212026.pdf"
+   ],
+   "content_images_lost": [
+    "PHOTO-2026-01-21-10-51-20.jpg"
+   ],
+   "request_excerpt": "Hello Alejandro,\nI need this COI updated as soon as possible as per provided requirements. Certificate Holder needs to be listed as Sandy Lane Master Association. COI is also missing the 13 Additional Insured.\nThank you in advance.\nBest Regards,\nJanice Lacayo\nOffice\n640 S. Miami Avenue, Suite 201\nMiami, FL 33130\nMailing Address\nPO BOX 310305\nMiami, FL\nOffice (786) 294-0596\nDirect (786) 740-6750\nww",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete",
+     "coi_revision_request"
+    ],
+    "client_id": "apogee_hvac",
+    "holder": null,
+    "gt_note": "request-attachment COI holder not corroborated by body",
+    "gt_confidence": "low",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_revision_request",
+    "client_id": "apogee_hvac",
+    "client_canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+    "certificate_holder": {
+     "name": "Sandy Lane Master Association",
+     "address_line_1": null,
+     "address_line_2": null,
+     "city": null,
+     "state": null,
+     "zip": null
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [
+     {
+      "type": "missing_info",
+      "description": "Certificate holder address for Sandy Lane Master Association is missing. Attempting Sunbiz/state registry lookup."
+     },
+     {
+      "type": "manual_review_required",
+      "description": "Client requests adding '13 Additional Insured' to the COI. This appears to reference a specific endorsement form number. Alejandro must review whether this endorsement exists on the policy and whether it should be referenced in the Description of Operations or requires a policy change."
+     }
+    ],
+    "summary": "Client requests revision to previously-sent COI: change certificate holder to Sandy Lane Master Association and add 13 Additional Insured endorsement.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 5792,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 631
+    }
+   }
+  },
+  {
+   "case_id": "bench-8",
+   "thread": "coi",
+   "subject": "COI",
+   "from": "Lorena Leyva",
+   "date": "2026-01-15 15:42:17",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "Hey, I need a COI for Citrus County Building Division 3600 W Sovereign Path # 111, Lecanto, FL 34461 send it back to me only, thank you.",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_request_complete"
+    ],
+    "client_id": "rolandos_hvac",
+    "holder": null,
+    "gt_note": "graded COI does not match this request (subject-bucket collision)",
+    "gt_confidence": "low",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "rolandos_hvac",
+    "client_canonical_name": "Rolando's HVAC LLC",
+    "certificate_holder": {
+     "name": "Citrus County Building Division",
+     "address_line_1": "3600 W Sovereign Path # 111",
+     "address_line_2": null,
+     "city": "Lecanto",
+     "state": "FL",
+     "zip": "34461"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for Citrus County Building Division with address in Lecanto FL.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": true,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 150,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 561
+    }
+   }
+  },
+  {
+   "case_id": "bench-9",
+   "thread": "coi for new holder",
+   "subject": "COI for New Holder",
+   "from": "Gabriel Perez",
+   "date": "2026-02-19 16:24:57",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "Good morning Alejandro,\nPlease provide a COI for the holder below at your earliest convenience:\nSearchkings\n4051 Gordon Baker Rd, Unit B, Scarborough, ON M1W 2P3\nThank you,\nGabriel Perez\nCentral Comfort Air Conditioning\np:\n305-598-7575\na:\nSW 129 th Ct., Miami, FL 33 186\nw: e :\ncentralcomfortairconditioning.com\nadministration @centralcomfortac.com",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_request_complete"
+    ],
+    "client_id": "central_comfort_ac",
+    "holder": {
+     "name": "Searchkings",
+     "addr_lines": [
+      "4051 Gordon Baker Rd,",
+      "Unit B, Scarborough,"
+     ],
+     "zip": null,
+     "street_no": "4051"
+    },
+    "gt_note": "from Central Comfort AC COI_Searchkings.pdf (verdict=correct, overlap=1.00)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_incomplete",
+    "client_id": null,
+    "client_canonical_name": null,
+    "certificate_holder": null,
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": null,
+    "confidence": null,
+    "is_permit": null,
+    "flags": null,
+    "summary": "Client requests COI for Searchkings with an address in Scarborough, Ontario, Canada.",
+    "reply_text": "Gabriel,\n\nHappy to put this together for you. The address you provided appears to be in Canada (Scarborough, ON). I need a US ZIP code to process the COI. If the certificate holder is located in Canada, please confirm and I'll escalate this to Alejandro for review.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": false,
+    "holder_name_ok": false,
+    "holder_name_overlap": 0.0,
+    "holder_addr_ok": false
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 225,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 137
+    }
+   }
+  },
+  {
+   "case_id": "bench-10",
+   "thread": "coi request",
+   "subject": "COI Request",
+   "from": "Renier Portieles",
+   "date": "2026-01-14 17:34:41",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "Ale good morning Please I need COI under this information: Ruiz Electric Corporation 7350 NW 24th Street Miami, FL 33122 Thanks. Best Regards, Renier Portieles, President Master HVAC & Qualifier 3440 N.W. 73 Ave. Miami,\nFlorida 33122\nO:\n305.925.0230 * M: 305.206.8628\nE: renier@emp3solutions.com CAC1822997 TACLA151833R AIR CONDITIONING and POWER GENERATOR CONTRACTORS Integrity * Reliability * Compe",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_request_complete"
+    ],
+    "client_id": "emp3_solutions",
+    "holder": {
+     "name": "Ruiz Electric Corporation",
+     "addr_lines": [
+      "7350 NW 24th Street",
+      "Miami, FL 33122"
+     ],
+     "zip": "33122",
+     "street_no": "7350"
+    },
+    "gt_note": "from EMP 3 Solutions_Ruiz Electric Corporation.pdf (verdict=questionable, overlap=1.00)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 5
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "emp3_solutions",
+    "client_canonical_name": "EMP 3 Solutions, Inc",
+    "certificate_holder": {
+     "name": "Ruiz Electric Corporation",
+     "address_line_1": "7350 NW 24th Street",
+     "address_line_2": null,
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33122"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for EMP 3 Solutions with Ruiz Electric Corporation as certificate holder.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": true,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 247,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 542
+    }
+   }
+  },
+  {
+   "case_id": "bench-11",
+   "thread": "coi to charlotte county",
+   "subject": "COI TO Charlotte County",
+   "from": "Laritza Leyva",
+   "date": "2026-02-02 17:18:17",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "Charlotte County 18400 Murdock Circle Port Charlotte FL 33948 ContractorLicensing@charlottecountyfl.gov --",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_request_complete"
+    ],
+    "client_id": "rolandos_hvac",
+    "holder": {
+     "name": "Charlotte County",
+     "addr_lines": [
+      "18400 Murdock Circle",
+      "Port Charlotte FL 33948"
+     ],
+     "zip": "33948",
+     "street_no": "18400"
+    },
+    "gt_note": "from Rolando's HVAC COI_Charlotte County.pdf (verdict=questionable, overlap=1.00)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 4
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "rolandos_hvac",
+    "client_canonical_name": "Rolando's HVAC LLC",
+    "certificate_holder": {
+     "name": "Charlotte County",
+     "address_line_1": "18400 Murdock Circle",
+     "address_line_2": null,
+     "city": "Port Charlotte",
+     "state": "FL",
+     "zip": "33948"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for Charlotte County at 18400 Murdock Circle, Port Charlotte FL 33948.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": true,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 142,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 590
+    }
+   }
+  },
+  {
+   "case_id": "bench-12",
+   "thread": "dua coi - apogee hvac solutions llc",
+   "subject": "DUA COI - Apogee HVAC Solutions LLC",
+   "from": "Janice Lacayo",
+   "date": "2026-01-16 18:38:05",
+   "attachments_sent": [
+    "COI Sample.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good afternoon Alejandro,\nHope you are well.\nPlease help us with the attached COI at your earliest convenience, I read on the description that it needs waiver subrogation in favor of certificate holders.\nThank you in advance.\nBest Regards,\nJanice Lacayo\nOffice\n640 S. Miami Avenue, Suite 201\nMiami, FL 33130\nMailing Address\nPO BOX 310305\nMiami, FL\nOffice (786) 294-0596\nDirect (786) 740-6750\nwww.apog",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": null,
+    "holder": null,
+    "gt_note": "no graded COI in thread",
+    "gt_confidence": "low",
+    "graded_coi_count": 0
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "apogee_hvac",
+    "client_canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+    "certificate_holder": {
+     "name": "1300 S Miami Avenue Condominium Association, Inc.",
+     "address_line_1": "1300 Brickell Miami, LLC and FirstService Residential, Inc.",
+     "address_line_2": "1300 S Miami Avenue",
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33130"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI with an attached sample COI showing specific certificate holder and waiver of subrogation requirements.",
+    "reply_text": "Janice,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": null,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 1832,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 808
+    }
+   }
+  },
+  {
+   "case_id": "bench-13",
+   "thread": "hvac",
+   "subject": "Re: HVAC",
+   "from": "Hany Montero",
+   "date": "2026-02-23 21:01:34",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "Hey, good afternoon, can I get the COI for this property, please? Let me know if you need any additional information. Thank you! Hany Montero\nTeam Lead | Rolando's H.V.A.C LLC .\nAir Conditioning Contractor\nLicense Number: CAC1820272\n\ud83d\udccd 5117 W Rio Vista, Tampa, Florida 33634\n\ud83d\udcde Office: (813) 373-6804 | (813) 856-1188\n\ud83d\udcde Direct Line: (407) 433-1619\n\ud83d\udce7 Email: dispatch@rolandoshvac.com\n\ud83c\udf10 Website: www.rola",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_request_incomplete"
+    ],
+    "client_id": "rolandos_hvac",
+    "holder": {
+     "name": "Atrium Development Group Atrium Management Company",
+     "addr_lines": [
+      "201 S Bumby Ave",
+      "Orlando FL 32803"
+     ],
+     "zip": "32803",
+     "street_no": "201"
+    },
+    "gt_note": "from Rolando's HVAC COI_Atrium Development Group.pdf (verdict=questionable, overlap=0.42)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "rolandos_hvac",
+    "client_canonical_name": "Rolando's HVAC LLC",
+    "certificate_holder": {
+     "name": "Atrium Development Group",
+     "address_line_1": "3950 NW 11th St",
+     "address_line_2": null,
+     "city": "Ocala",
+     "state": "FL",
+     "zip": "34482"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for Atrium Development Group at 3950 NW 11th St, Ocala FL 34482 for the Ocala Industrial project.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 0.6,
+    "holder_addr_ok": false
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 627,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 636
+    }
+   }
+  },
+  {
+   "case_id": "bench-14",
+   "thread": "lagreca construction updated coi - apogee hvac solutions llc",
+   "subject": "LaGreca Construction Updated COI - Apogee HVAC Solutions LLC",
+   "from": "Janice Lacayo",
+   "date": "2026-01-09 18:09:05",
+   "attachments_sent": [
+    "PP_APOGEE_GL COI.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good afternoon Alejandro,\nHope you are doing well.\nPlease send me an updated COI for:\nLaGreca Construction, LLC\n12565 Orange Dr ' Suite 401C\nDavie, FL 33330\nAnd add Presidential Place Condominium Association, Inc. and LaGreca Construction, LLC are included as additional insured.\nThank you in advance.\nBest Regards,\nJanice Lacayo\nOffice\n640 S. Miami Avenue, Suite 201\nMiami, FL 33130\nMailing Address\n",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_complete",
+     "coi_revision_request"
+    ],
+    "client_id": "apogee_hvac",
+    "holder": {
+     "name": "LaGreca Construction, LLC",
+     "addr_lines": [
+      "12565 Orange Dr \u2013 Suite 401C",
+      "Davie, FL 33330"
+     ],
+     "zip": "33330",
+     "street_no": "12565"
+    },
+    "gt_note": "from PP_APOGEE_GL COI.pdf (verdict=correct, overlap=1.00)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "apogee_hvac",
+    "client_canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+    "certificate_holder": {
+     "name": "LaGreca Construction, LLC",
+     "address_line_1": "12565 Orange Dr",
+     "address_line_2": "Suite 401C",
+     "city": "Davie",
+     "state": "FL",
+     "zip": "33330"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests updated COI for LaGreca Construction with Presidential Place Condominium Association and LaGreca Construction as additional insureds, and attaches an existing COI showing the same setup.",
+    "reply_text": "Janice,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 5368,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 955
+    }
+   }
+  },
+  {
+   "case_id": "bench-15",
+   "thread": "notowitz residence - workers comp renewal",
+   "subject": "Notowitz Residence - Workers Comp Renewal",
+   "from": "rkoo@ajfroofingfl.com",
+   "date": "2026-01-13 15:05:54",
+   "attachments_sent": [
+    "AJF Roofing - Workers Comp. Exp. 01-01-26 - Notowitz.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good morning, Alejandro Here another request certificate: Thank you.\nRomy Koo Accounts Payable & Human Resources | AJF Roofing D: (786) 409-6988 C: (305) 456-8006 EXT 6988 7495 NW 7 th Street Suite #10, Miami, FL 33126 E: rkoo@ajfroofingfl.com | Web: www.ajfroofingfl.",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "ajf_roofing",
+    "holder": {
+     "name": "David & Aviva Notowitz",
+     "addr_lines": [
+      "5900 SW 37th Ave",
+      "Fort Lauderdale, FL  33312"
+     ],
+     "zip": "33312",
+     "street_no": "5900"
+    },
+    "gt_note": "from AJF Roofing - Workers Comp. Exp. 01-01-26 - Notowitz.pdf (verdict=incorrect, overlap=0.18)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_revision_request",
+    "client_id": "ajf_roofing",
+    "client_canonical_name": "AJF Roofing, Inc.",
+    "certificate_holder": {
+     "name": "David & Aviva Notowitz",
+     "address_line_1": "5900 SW 37th Ave",
+     "address_line_2": null,
+     "city": "Fort Lauderdale",
+     "state": "FL",
+     "zip": "33312"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests renewal of Workers Comp COI for David & Aviva Notowitz, previously issued 9/17/2025 with expiration 01/01/2026.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3279,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 741
+    }
+   }
+  },
+  {
+   "case_id": "bench-16",
+   "thread": "palmwood urgent re: coi - rolando's hvac - pasco county",
+   "subject": "PALMWOOD URGENT   RE: COI - Rolando's HVAC - Pasco County",
+   "from": "Beth-Ann Reed",
+   "date": "2026-02-12 20:26:19",
+   "attachments_sent": [
+    "Rolando's HVAC COI Pasco County.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Unfortunately, they need your Workers Comp and that is not listed on here. Can you please get that emailed over to them asap and include me again on the email.\nThanks and have a nice day,\nBeth-Ann Reed,\nOffice Manager & Permitting\nBeth-Ann@palmwoodconstruction.com\nPalmwood Construction\n8245 River Country Dr.\nSpring Hill FL 34607\nTel: (352) 597-2100 x201 (prefers email)\nFax: (352) 597-4487\nOffice H",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "rolandos_hvac",
+    "holder": {
+     "name": "Pasco County Building Construction Services Contractor Licensing",
+     "addr_lines": [
+      "8731 Citizens Dr"
+     ],
+     "zip": null,
+     "street_no": "8731"
+    },
+    "gt_note": "from Rolando's HVAC COI Pasco County.pdf (verdict=questionable, overlap=0.40)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_revision_request",
+    "client_id": "rolandos_hvac",
+    "client_canonical_name": "Rolando's HVAC LLC",
+    "certificate_holder": {
+     "name": "Pasco County Building Construction Services Contractor Licensing",
+     "address_line_1": "8731 Citizens Dr",
+     "address_line_2": null,
+     "city": "New Port Richey",
+     "state": "FL",
+     "zip": "34654"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [
+     {
+      "type": "manual_review_required",
+      "description": "Pasco County is requesting Workers Compensation coverage be added to the COI. Rolando's HVAC template (rolandos_hvac_gl_auto) only includes GL and Commercial Auto - no WC policy exists in the registry for this client. This requires Alejandro's review to determine if: (1) a WC policy exists but is not in the system, (2) the client needs to obtain WC coverage, or (3) an exemption applies. Cannot auto-issue without WC coverage confirmation."
+     }
+    ],
+    "summary": "Client forwarded a request from Pasco County Building Construction Services stating the previously-sent COI needs Workers Compensation added.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3589,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 727
+    }
+   }
+  },
+  {
+   "case_id": "bench-17",
+   "thread": "pasco county coi",
+   "subject": "PASCO COUNTY COI",
+   "from": "Laritza Leyva",
+   "date": "2026-02-09 20:37:09",
+   "attachments_sent": [
+    "ROLANDO'S_H.V.A.C.LLC_COI_-_193072707_-_Pasco_county_Building_.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "contractorlicensing@pascocountyfl.net -- Laritza Leyva ROLANDO'S H.V.A.C LLC. Air Conditioning Contractor License #: CAC1820272 5117 W Rio Vista Tampa FL 33634 O : 813-373-6804 C: 813 465 2221 Email: leyva.admin@rolandoshvac.com Email: contractor@rolandoshvac.com Website : www.rolandoshvac.com",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "rolandos_hvac",
+    "holder": null,
+    "gt_note": "request-attachment COI holder not corroborated by body",
+    "gt_confidence": "low",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "rolandos_hvac",
+    "client_canonical_name": "Rolando's HVAC LLC",
+    "certificate_holder": {
+     "name": "Pasco County Building Construction Services Contractor Licensing",
+     "address_line_1": "8731 Citizens Dr",
+     "address_line_2": null,
+     "city": "New Port Richey",
+     "state": "FL",
+     "zip": "34654"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client forwarded an old COI (dated 11/23/2023, expired 11/23/2024) for Pasco County Building Construction Services Contractor Licensing and appears to be requesting a renewal or new COI for the same holder.",
+    "reply_text": "Laritza,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3189,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 1053
+    }
+   }
+  },
+  {
+   "case_id": "bench-18",
+   "thread": "request",
+   "subject": "REQUEST",
+   "from": "Customer Service",
+   "date": "2026-03-02 16:55:36",
+   "attachments_sent": [
+    "COI The American Society for the Prevention of Cruelty to Animals.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Hello ,\nI have a request from one of our customers. Please let me know if this is something we can do. The coi attached was the one we had completed recently for this customer . Below is the customer\nrequest.\n-Certificate of Insurance:\n-Please provide coverages in the amounts shown on the sample COI sent to you in the following categories and amounts.\nSpecifically: Automobile Liability $1,000.000,",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "central_comfort_ac",
+    "holder": null,
+    "gt_note": "request-attachment COI holder not corroborated by body",
+    "gt_confidence": "low",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "central_comfort_ac",
+    "client_canonical_name": "Central Comfort Air Conditioning",
+    "certificate_holder": {
+     "name": "The American Society for the Prevention of Cruelty to Animals ASPCA",
+     "address_line_1": "1320 NW 62nd Street",
+     "address_line_2": null,
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33147"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client forwarded a customer request asking for increased limits (Auto $1M, Umbrella $5M) and custom Description of Operations language. Attached PDF contains insurance requirements.",
+    "reply_text": "Jessica,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 4909,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 1175
+    }
+   }
+  },
+  {
+   "case_id": "bench-19",
+   "thread": "request for auto coi",
+   "subject": "request for Auto COI",
+   "from": "MJ Judkins",
+   "date": "2026-01-12 18:15:45",
+   "attachments_sent": [
+    "COI GL WC for 9299 college.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good Afternoon,\nPlease send COI for the new management company for 9299 College Pkwy. I have attached the GL COI for your reference, for the address etc.\nPlease call, text, or email with any questions.\nKindest Regards,\nMJ\nThank you,\nTina \"MJ\" Judkins\nAbsolute Air Solutions LLC\nabsoluteairsolutions@live.com\nmj.absoairs@outlook.com\nOffice: 941-423-9908\nCell: 941-266-9061",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "absolute_air_solutions",
+    "holder": null,
+    "gt_note": "request-attachment COI holder not corroborated by body",
+    "gt_confidence": "low",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "absolute_air_solutions",
+    "client_canonical_name": "Absolute Air Solutions LLC",
+    "certificate_holder": {
+     "name": "AIO Realty & Property Management",
+     "address_line_1": "150 S Pine Island Rd, Suite #300",
+     "address_line_2": null,
+     "city": "Plantation",
+     "state": "FL",
+     "zip": "33324"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests an Auto COI for new management company at 9299 College Pkwy, attached GL/WC COI for reference.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": true,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3135,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 589
+    }
+   }
+  },
+  {
+   "case_id": "bench-20",
+   "thread": "rolando's hvac coi",
+   "subject": "RE: Rolando's HVAC COI",
+   "from": "BLDG_ContractorLicensing",
+   "date": "2026-01-14 19:40:32",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "You don't often get email from contractorlicensing@polkfl.gov.\nLearn why this is important\nGood afternoon,\nI could not process your insurance certificate as the document was still editable. Please contact your insurance company and have a correctly finalized version sent.\nWe also will need a renewed business tax receipt before you can resume permitting.\nThank you,\nAbalyn McMullen\nLicensing Technic",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_request_incomplete",
+     "coi_revision_request"
+    ],
+    "client_id": null,
+    "holder": null,
+    "gt_note": "no graded COI in thread",
+    "gt_confidence": "low",
+    "graded_coi_count": 0
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "question",
+    "client_id": null,
+    "client_canonical_name": null,
+    "certificate_holder": null,
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": null,
+    "confidence": null,
+    "is_permit": null,
+    "flags": null,
+    "summary": "Polk County Building Division rejected a previously sent COI because it was editable and requests a finalized version plus a renewed business tax receipt.",
+    "reply_text": "Laritza,\n\nThanks for the message. Alejandro will review and follow up shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": null,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 1117,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 98
+    }
+   }
+  },
+  {
+   "case_id": "bench-21",
+   "thread": "sample coi",
+   "subject": "Sample COI",
+   "from": "Administration",
+   "date": "2026-02-11 21:02:00",
+   "attachments_sent": [
+    "COI Sample ICONBAY.pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good Afternoon Alejandro,\nCan you please send me over a certificate of insurance with the following:\nCynthia Garrido\nCentral Comfort Air Conditioning\np:\n305-598-7575\na:\nSW 129 th Ct., Miami, FL 33 186\nw: e :\ncentralcomfortairconditioning.com\nadministration @centralcomfortac.com",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "central_comfort_ac",
+    "holder": {
+     "name": "Icon Bay Condominium Association KW Property Management & Consulting",
+     "addr_lines": [
+      "460 NE 28th Street",
+      "Miami, FL 33137"
+     ],
+     "zip": "33137",
+     "street_no": "460"
+    },
+    "gt_note": "from Central Comfort AC COI_Icon Bay Condominium Association KW Property Management & Consulting.pdf (verdict=questionable, overlap=0.13)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "central_comfort_ac",
+    "client_canonical_name": "Central Comfort Air Conditioning",
+    "certificate_holder": {
+     "name": "Icon Bay Condominium Association",
+     "address_line_1": "KW Property Management & Consulting",
+     "address_line_2": "460 NE 28th Street",
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33137"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client sent a sample COI with certificate holder Icon Bay Condominium Association / KW Property Management & Consulting and requested a COI for Central Comfort Air Conditioning.",
+    "reply_text": "Good afternoon,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3134,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 723
+    }
+   }
+  },
+  {
+   "case_id": "bench-22",
+   "thread": "sample coi for gale hotel",
+   "subject": "Sample COI for Gale Hotel",
+   "from": "Janice Lacayo",
+   "date": "2026-02-17 19:12:56",
+   "attachments_sent": [
+    "COI Sample Gale Hotel (1).pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good afternoon,\nHope you are well.\nTried doing this certificate via the portal but it only allows me a limited amount of characters. Please send me the full COI as per the attached certificate holder.\nThank you!\nBest Regards,\nJanice Lacayo\nOffice\n640 S. Miami Avenue, Suite 201\nMiami, FL 33130\nMailing Address\nPO BOX 310305\nMiami, FL\nOffice (786) 294-0596\nDirect (786) 740-6750\nwww.apogeehvac.com",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": null,
+    "holder": null,
+    "gt_note": "no graded COI in thread",
+    "gt_confidence": "low",
+    "graded_coi_count": 0
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "apogee_hvac",
+    "client_canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+    "certificate_holder": {
+     "name": "159 NE 6th Street Condominium 1",
+     "address_line_1": "601 NE 1st Avenue",
+     "address_line_2": null,
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33132"
+    },
+    "certificate_holder_lines": [
+     "159 NE 6th Street Condominium 1",
+     "159 NE 6th Street Condominium 2",
+     "601 Shared Components 1 LLC",
+     "601 Shared Components 2 LLC",
+     "Shared Facilities 601 LLC",
+     "601 NE 1st Avenue",
+     "Miami, FL 33132"
+    ],
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for multiple certificate holder entities at the Gale Hotel project using an attached sample COI as reference.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": null,
+    "holder_name_ok": null,
+    "holder_name_overlap": null,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 4422,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 792
+    }
+   }
+  },
+  {
+   "case_id": "bench-23",
+   "thread": "sample coi needed",
+   "subject": "FW: Sample COI Needed",
+   "from": "Administration",
+   "date": "2026-02-10 21:29:25",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "Good Afternoon Alejandro,\nCan you please send me a certificate with the following:\nThe certificate holder on the Certificate of Liability Insurance should read:\nThe Riviera at Coral Lakes Condominium Association, Inc.\nc/o Unlimited Property Management\n13250 SW 135th Avenue\nMiami, FL 33186\nCynthia Garrido\nCentral Comfort Air Conditioning\np:\n305-598-7575\na:\nSW 129 th Ct., Miami, FL 33 186\nw: e :\ncen",
+   "expected": {
+    "classification": "coi_request_complete",
+    "acceptable": [
+     "coi_request_complete"
+    ],
+    "client_id": "central_comfort_ac",
+    "holder": {
+     "name": "The Riviera at Coral Lakes Condominium Association, Inc. c/o Unlimited Property Management",
+     "addr_lines": [
+      "13250 SW 135th Avenue",
+      "Miami, FL 33186"
+     ],
+     "zip": "33186",
+     "street_no": "13250"
+    },
+    "gt_note": "from Central Comfort AC COI_The Riviera at Coral Lakes Condominium Association, Inc..pdf (verdict=correct, overlap=1.00)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "central_comfort_ac",
+    "client_canonical_name": "Central Comfort Air Conditioning",
+    "certificate_holder": {
+     "name": "The Riviera at Coral Lakes Condominium Association, Inc.",
+     "address_line_1": "c/o Unlimited Property Management",
+     "address_line_2": "13250 SW 135th Avenue",
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33186"
+    },
+    "certificate_holder_lines": null,
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for Central Comfort with The Riviera at Coral Lakes Condominium Association as certificate holder.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": true,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 981,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 626
+    }
+   }
+  },
+  {
+   "case_id": "bench-24",
+   "thread": "urgent",
+   "subject": "RE: URGENT",
+   "from": "Gina Ramos",
+   "date": "2026-01-16 15:48:44",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "500 Brickell Master Condominium Association;\n500 Brickell West Condo Association 500 East Condominium Association\nKW Property Management, LLC\n55 SE 6th St\nMiami, FL 33131",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_request_incomplete"
+    ],
+    "client_id": "central_comfort_ac",
+    "holder": {
+     "name": "KW PROPERTY MANAGEMENT & CONSULTING",
+     "addr_lines": [
+      "8200 NW 33RD ST, SUITE 300",
+      "MIAMI, FL 33122"
+     ],
+     "zip": "33122",
+     "street_no": "8200"
+    },
+    "gt_note": "from Central Comfort AC COI_KW PROPERTY MANAGEMENT & CONSULTING.pdf (verdict=correct, overlap=0.54)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 2
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "central_comfort_ac",
+    "client_canonical_name": "Central Comfort Air Conditioning",
+    "certificate_holder": {
+     "name": "500 Brickell Master Condominium Association",
+     "address_line_1": "55 SE 6th St",
+     "address_line_2": null,
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33131"
+    },
+    "certificate_holder_lines": [
+     "500 Brickell Master Condominium Association",
+     "500 Brickell West Condo Association",
+     "500 East Condominium Association",
+     "KW Property Management, LLC",
+     "55 SE 6th St",
+     "Miami, FL 33131"
+    ],
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI with multiple certificate holder entities for 500 Brickell condos and KW Property Management.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 0.75,
+    "holder_addr_ok": false
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 922,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 730
+    }
+   }
+  },
+  {
+   "case_id": "bench-25",
+   "thread": "urgent rush rush",
+   "subject": "URGENT RUSH RUSH",
+   "from": "Gina Ramos",
+   "date": "2026-02-18 15:26:39",
+   "attachments_sent": [],
+   "content_images_lost": [],
+   "request_excerpt": "certificate holder\nFour Seasons Residences\n1435 Brickell Avenue\n6th Floor Miami, FL 331 31\nAdditional Insured List:\nMillennium Tower Master Association, Inc.\nFSM Hotel Owner, LLC.\nMillennium Partners Florida Property Management, LLC.\nFour Seasons Hotels, Ltd.\nMillennium Tower Residences Condominium Association, Inc.\nMillennium Tower Condominium Hotel Association, Inc.\nFour Seasons Hotel Miami\nName",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_request_incomplete"
+    ],
+    "client_id": "central_comfort_ac",
+    "holder": {
+     "name": "Millennium Tower Master Association, Inc. FSM Hotel Owner, LLC. Millennium Partners Florida Property Management, LLC. Four Seasons Hotels, Ltd. Millennium Tower Residences Condominium Association, Inc. Millennium Tower Condominium Hotel Association, Inc. Four Seasons Hotel Miami",
+     "addr_lines": [],
+     "zip": null,
+     "street_no": null
+    },
+    "gt_note": "from Central Comfort AC COI_Four Seasons Residences.pdf (verdict=correct, overlap=1.00)",
+    "gt_confidence": "low",
+    "graded_coi_count": 1
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_request_complete",
+    "client_id": "central_comfort_ac",
+    "client_canonical_name": "Central Comfort Air Conditioning",
+    "certificate_holder": {
+     "name": "Four Seasons Residences",
+     "address_line_1": "1435 Brickell Avenue",
+     "address_line_2": "6th Floor",
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33131"
+    },
+    "certificate_holder_lines": [
+     "Four Seasons Residences",
+     "Millennium Tower Master Association, Inc.",
+     "FSM Hotel Owner, LLC.",
+     "Millennium Partners Florida Property Management, LLC.",
+     "Four Seasons Hotels, Ltd.",
+     "Millennium Tower Residences Condominium Association, Inc.",
+     "Millennium Tower Condominium Hotel Association, Inc.",
+     "Four Seasons Hotel Miami",
+     "1435 Brickell Avenue",
+     "6th Floor",
+     "Miami, FL 33131"
+    ],
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client requests a COI for Central Comfort with Four Seasons Residences as certificate holder and seven additional entity names to include on the same COI.",
+    "reply_text": null
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": false,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": null
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 292,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 816
+    }
+   }
+  },
+  {
+   "case_id": "bench-26",
+   "thread": "urgent rush rush - tech on the way",
+   "subject": "URGENT RUSH RUSH - TECH ON THE WAY",
+   "from": "Administration",
+   "date": "2026-01-26 13:17:29",
+   "attachments_sent": [
+    "24-25 COI - Paraiso Bay Condominium Association Inc..pdf"
+   ],
+   "content_images_lost": [],
+   "request_excerpt": "Good Morning Alejando,\nI wanted to see if you can please send over a certificate unfortunately, it is more than the said characters.\nCynthia Garrido\nCentral Comfort Air Conditioning\np:\n305-598-7575\na:\nSW 129 th Ct., Miami, FL 33 186\nw: e :\ncentralcomfortairconditioning.com\nadministration @centralcomfortac.com",
+   "expected": {
+    "classification": "coi_request_incomplete",
+    "acceptable": [
+     "coi_complex_review_required",
+     "coi_request_incomplete"
+    ],
+    "client_id": "central_comfort_ac",
+    "holder": {
+     "name": "Paraiso Bay Condominium Association Inc. Paraiso Bay Master Association",
+     "addr_lines": [
+      "650 NE 32nd Street",
+      "Miami FL 33137"
+     ],
+     "zip": "33137",
+     "street_no": "650"
+    },
+    "gt_note": "from Central Comfort AC_Paraiso Bay Condominium Association Inc..pdf (verdict=questionable, overlap=0.15)",
+    "gt_confidence": "normal",
+    "graded_coi_count": 3
+   },
+   "api_ok": true,
+   "api_error": null,
+   "got": {
+    "classification": "coi_complex_review_required",
+    "client_id": "central_comfort_ac",
+    "client_canonical_name": "Central Comfort Air Conditioning",
+    "certificate_holder": {
+     "name": "Paraiso Bay Condominium Association Inc.",
+     "address_line_1": "650 NE 32nd Street",
+     "address_line_2": null,
+     "city": "Miami",
+     "state": "FL",
+     "zip": "33137"
+    },
+    "certificate_holder_lines": [
+     "Paraiso Bay Condominium Association Inc.",
+     "Paraiso Bay Master Association",
+     "650 NE 32nd Street",
+     "Miami, FL 33137"
+    ],
+    "batch_cois": null,
+    "status": "ready",
+    "confidence": "high",
+    "is_permit": false,
+    "flags": [],
+    "summary": "Client forwarded an old COI from a different insurer as a sample showing Paraiso Bay Condominium Association Inc. and Paraiso Bay Master Association as certificate holders with specific AI and waiver language.",
+    "reply_text": "Cynthia,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,"
+   },
+   "scores": {
+    "classification_strict": false,
+    "classification_ok": true,
+    "client_ok": true,
+    "holder_name_ok": true,
+    "holder_name_overlap": 1.0,
+    "holder_addr_ok": true
+   },
+   "diag": {
+    "http_status": 200,
+    "attempts": 1,
+    "stop_reason": "end_turn",
+    "cache_usage": {
+     "input_tokens": 3049,
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 30274,
+     "output_tokens": 973
+    }
+   }
+  }
+ ],
+ "skips": [
+  {
+   "thread": "[no action required] congrats! your business is covered with general liability for another year",
+   "from": "Rolando Mojarrieta",
+   "date": "2026-02-09 20:22:45",
+   "reason": "no_request_language: body carries no COI-request signal",
+   "excerpt": "MANAGEMENT ROLANDO'S H.V.A.C LLC. Air Conditioning Contractor License #: CAC1820272 5117 W Rio Vista Tampa FL 33634 O : (813) 373-6804 C: (813) 465-2221 Email: "
+  },
+  {
+   "thread": "brickell west condominium association",
+   "from": "Gina Ramos",
+   "date": "2026-01-16 15:54:31",
+   "reason": "no_request_language: body carries no COI-request signal",
+   "excerpt": "Gina Ramos\nCentral Comfort Air Conditioning\np:\n305-598-7575\na:\nSW 129 th Ct., Miami, FL 33 186\nw: e :\ncentralcomfortairconditioning.com\nadministration @centralc"
+  },
+  {
+   "thread": "coi request pls",
+   "from": "Customer Service",
+   "date": "2026-02-25 20:40:57",
+   "reason": "holder_info_not_in_replayable_input: request points at content (inline image / HTML table) the archive export did not keep",
+   "excerpt": "Hello, Please see below for requested COI"
+  },
+  {
+   "thread": "policies cancellation request effective: 01/07/2026 - insured: ajf roofing inc",
+   "from": "rkoo@ajfroofingfl.com",
+   "date": "2026-02-09 17:17:09",
+   "reason": "non_coi_request: policy cancellation ask",
+   "excerpt": "Good afternoon, We need your help cancelling all our state farm auto policies effective 01/07/2026 as we have moved coverage to a new carrier along the rest of "
+  },
+  {
+   "thread": "rolando's hvac coi - marion county",
+   "from": "Laritza Leyva",
+   "date": "2026-02-12 20:40:14",
+   "reason": "acknowledgment_only: first client message is a thank-you, not a request",
+   "excerpt": "PERFECTO, Thank you..."
+  },
+  {
+   "thread": "sdtoc | ajf coi",
+   "from": "Janette Diaz",
+   "date": "2026-01-30 20:15:36",
+   "reason": "forwarded_thread_only: request text lives only in a quoted/forwarded block",
+   "excerpt": "From: Sandra Lorie <slorie@nv2agroup.com>\nSent: Friday, January 30, 2026 11:45 AM\nTo: Marlene Torres <mtorres@ajfroofingfl.com>; Janette Diaz <jdiaz@ajfroofingf"
+  },
+  {
+   "thread": "three lakes and florida city - expired cois",
+   "from": "Guillermo Vidaurreta",
+   "date": "2026-01-15 18:08:18",
+   "reason": "holder_info_not_in_replayable_input: request points at content (inline image / HTML table) the archive export did not keep",
+   "excerpt": "Alejandro, Can you please provide COI as requested below. Thank you.\nGuillermo Vidaurreta Commercial Project Manager & Estimator | AJF Roofing D : (786) 420-201"
+  }
+ ]
+}
