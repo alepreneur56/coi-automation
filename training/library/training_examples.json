@@ -1,0 +1,437 @@
+{
+ "generated": "2026-07-02T17:44:44",
+ "source_decisions": "synthetic_decisions.json",
+ "synthetic": true,
+ "decision_stats": {
+  "total": 34,
+  "approve": 27,
+  "disagree": 3,
+  "skip": 4,
+  "unknown_hashes": 0,
+  "effective_correct": 18,
+  "effective_incorrect": 7,
+  "effective_questionable": 4,
+  "needs_discussion": 1
+ },
+ "coverage": {
+  "requirements_pdf_attached": {
+   "available": 0,
+   "selected": 0
+  },
+  "reference_coi_attached": {
+   "available": 2,
+   "selected": 2
+  },
+  "complex_endorsements": {
+   "available": 0,
+   "selected": 0
+  },
+  "specific_language": {
+   "available": 0,
+   "selected": 0
+  },
+  "spanish": {
+   "available": 0,
+   "selected": 0
+  },
+  "vague_or_missing_info": {
+   "available": 1,
+   "selected": 1
+  },
+  "body_only_request": {
+   "available": 2,
+   "selected": 2
+  }
+ },
+ "buckets": {
+  "requirements_pdf_attached": [],
+  "reference_coi_attached": [
+   {
+    "hash": "75827b73d2c9eb0e51ae1a4fc38a7ae747501e25",
+    "client": "apogee_hvac",
+    "thread": "3 island condominium coi - apogee hvac solutions llc",
+    "message_date": "2026-01-09 18:15:19",
+    "bucket": "reference_coi_attached",
+    "delivered_by_team": false,
+    "alex_note": "this one is actually fine, the 3 island cert matched what they sent",
+    "request_context": {
+     "subject": "3 Island Condominium COI - Apogee HVAC Solutions LLC",
+     "from_name": "Janice Lacayo",
+     "body": "Good afternoon Alejandro,\nI need an updated COI for 3 Island condominium as per the attached past form, adding a waiver of subrogation.\nThank you in advance.\nBest Regards,\nJanice Lacayo\nOffice\n640 S. Miami Avenue, Suite 201\nMiami, FL 33130\nMailing Address\nPO BOX 310305\nMiami, FL\n33231\nOffice (786) 294-0596\nDirect (786) 740-6750\nwww.apogeehvac.com",
+     "attachments_summary": [
+      "3 Island Condominium Association, Inc.pdf (ACORD COI, insured: INSU)",
+      "image001.png (image, likely signature graphic)"
+     ]
+    },
+    "expected_output": {
+     "classification": "coi_complex_review_required",
+     "reply_text": "Janice,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,",
+     "original_request_summary": "Client requests a COI for APOGEE HVAC SOLUTIONS LLC with 3 Island Condominium Association, Inc as certificate holder.",
+     "status": "ready",
+     "client_id": "apogee_hvac",
+     "client_canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+     "template_id": "apogee_hvac_full",
+     "template_filename": "Apogee_HVAC_Solutions_COI_Template.pdf",
+     "confidence": "high",
+     "confidence_notes": "Sender and body context match APOGEE HVAC SOLUTIONS LLC in the registry.",
+     "certificate_holder": {
+      "name": "3 Island Condominium Association, Inc",
+      "address_line_1": "3 Island Ave.",
+      "address_line_2": null,
+      "city": "Miami",
+      "state": "FL",
+      "zip": "33139"
+     },
+     "date_to_insert": "01/09/2026",
+     "project_name": null,
+     "project_address": null,
+     "project_unit": null,
+     "is_permit": false,
+     "send_completed_coi_to": null,
+     "flags": [],
+     "edits_to_make": [
+      {
+       "field": "certificate_holder",
+       "action": "replace",
+       "old_value": "NAME\nADDRESS\nSTATE, CITY ZIP CODE",
+       "new_value": "3 Island Condominium Association, Inc\n3 Island Ave.\nMiami, FL 33139"
+      },
+      {
+       "field": "date",
+       "action": "replace",
+       "old_value": "MM/DD/YYYY",
+       "new_value": "01/09/2026"
+      },
+      {
+       "field": "description_of_operations",
+       "action": "replace",
+       "old_value": "Project name & Address ( If Applicable)",
+       "new_value": ""
+      }
+     ],
+     "review_summary": "Client attached a prior COI as reference. A reference COI is insurance content, so the ABSOLUTE RULE applies even though the holder is fully extractable from it.",
+     "coverage_analysis": {
+      "required_coverages": [],
+      "required_endorsements": [],
+      "special_language": null,
+      "notes": "Draft prepared from extracted holder info; Alejandro to verify against the attachment/body."
+     }
+    },
+    "teaching_point": "A prior/reference COI attached to the request IS insurance content. Extract the holder from it, but the classification stays coi_complex_review_required. (Top benchmark failure: these were marked ready and would have shipped unreviewed.)"
+   },
+   {
+    "hash": "deeaccf0b79f65bcec315df6c777cc01cf169e77",
+    "client": "apogee_hvac",
+    "thread": "lagreca construction updated coi - apogee hvac solutions llc",
+    "message_date": "2026-01-09 18:09:05",
+    "bucket": "reference_coi_attached",
+    "delivered_by_team": false,
+    "alex_note": null,
+    "request_context": {
+     "subject": "LaGreca Construction Updated COI - Apogee HVAC Solutions LLC",
+     "from_name": "Janice Lacayo",
+     "body": "Good afternoon Alejandro,\nHope you are doing well.\nPlease send me an updated COI for:\nLaGreca Construction, LLC\n12565 Orange Dr ' Suite 401C\nDavie, FL 33330\nAnd add Presidential Place Condominium Association, Inc. and LaGreca Construction, LLC are included as additional insured.\nThank you in advance.\nBest Regards,\nJanice Lacayo\nOffice\n640 S. Miami Avenue, Suite 201\nMiami, FL 33130\nMailing Address\nPO BOX 310305\nMiami, FL\n33231\nOffice (786) 294-0596\nDirect (786) 740-6750\nwww.apogeehvac.com",
+     "attachments_summary": [
+      "PP_APOGEE_GL COI.pdf (ACORD COI, insured: INSU)",
+      "image001.png (image, likely signature graphic)"
+     ]
+    },
+    "expected_output": {
+     "classification": "coi_complex_review_required",
+     "reply_text": "Janice,\n\nThanks for the request. Alejandro is reviewing the requirements and will get back to you shortly.\n\nRegards,",
+     "original_request_summary": "Client requests a COI for APOGEE HVAC SOLUTIONS LLC with LaGreca Construction, LLC as certificate holder.",
+     "status": "ready",
+     "client_id": "apogee_hvac",
+     "client_canonical_name": "APOGEE HVAC SOLUTIONS LLC",
+     "template_id": "apogee_hvac_full",
+     "template_filename": "Apogee_HVAC_Solutions_COI_Template.pdf",
+     "confidence": "high",
+     "confidence_notes": "Sender and body context match APOGEE HVAC SOLUTIONS LLC in the registry.",
+     "certificate_holder": {
+      "name": "LaGreca Construction, LLC",
+      "address_line_1": "12565 Orange Dr – Suite 401C",
+      "address_line_2": null,
+      "city": "Davie",
+      "state": "FL",
+      "zip": "33330"
+     },
+     "date_to_insert": "01/09/2026",
+     "project_name": null,
+     "project_address": null,
+     "project_unit": null,
+     "is_permit": false,
+     "send_completed_coi_to": null,
+     "flags": [],
+     "edits_to_make": [
+      {
+       "field": "certificate_holder",
+       "action": "replace",
+       "old_value": "NAME\nADDRESS\nSTATE, CITY ZIP CODE",
+       "new_value": "LaGreca Construction, LLC\n12565 Orange Dr – Suite 401C\nDavie, FL 33330"
+      },
+      {
+       "field": "date",
+       "action": "replace",
+       "old_value": "MM/DD/YYYY",
+       "new_value": "01/09/2026"
+      },
+      {
+       "field": "description_of_operations",
+       "action": "replace",
+       "old_value": "Project name & Address ( If Applicable)",
+       "new_value": ""
+      }
+     ],
+     "review_summary": "Client attached a prior COI as reference. A reference COI is insurance content, so the ABSOLUTE RULE applies even though the holder is fully extractable from it.",
+     "coverage_analysis": {
+      "required_coverages": [],
+      "required_endorsements": [],
+      "special_language": null,
+      "notes": "Draft prepared from extracted holder info; Alejandro to verify against the attachment/body."
+     }
+    },
+    "teaching_point": "A prior/reference COI attached to the request IS insurance content. Extract the holder from it, but the classification stays coi_complex_review_required. (Top benchmark failure: these were marked ready and would have shipped unreviewed.)"
+   }
+  ],
+  "complex_endorsements": [],
+  "specific_language": [],
+  "spanish": [],
+  "vague_or_missing_info": [
+   {
+    "hash": "08a7ada42a2dd2e9c4947d28fc1c52c0b2f50dad",
+    "client": "ajf_roofing",
+    "thread": "three lakes and florida city - expired cois",
+    "message_date": "2026-01-15 18:08:18",
+    "bucket": "vague_or_missing_info",
+    "delivered_by_team": true,
+    "alex_note": null,
+    "request_context": {
+     "subject": "FW: Three Lakes and Florida City - Expired COIs",
+     "from_name": "Guillermo Vidaurreta",
+     "body": "Alejandro, Can you please provide COI as requested below. Thank you.\nGuillermo Vidaurreta Commercial Project Manager & Estimator | AJF Roofing D : (786) 420-2012 O : (305) 456-8006 C: (305) 793-5153 7495 NW 7 th Street Suite #8, Miami, FL 33126 E: gvidaurreta@ajfroofingfl.com | Web: www.ajfroofingfl.com",
+     "attachments_summary": [
+      "image001.png (image, likely signature graphic)",
+      "image002.png (image, likely signature graphic)",
+      "image003.png (image, likely signature graphic)",
+      "image004.png (image, likely signature graphic)",
+      "image005.png (image, likely signature graphic)",
+      "image006.png (image, likely signature graphic)",
+      "image007.png (image, likely signature graphic)",
+      "image009.png (image, likely signature graphic)",
+      "image010.png (image, likely signature graphic)",
+      "image011.png (image, likely signature graphic)",
+      "image013.png (image, likely signature graphic)"
+     ]
+    },
+    "expected_output": {
+     "classification": "coi_request_incomplete",
+     "reply_text": "Guillermo,\n\nHappy to put this together for you. Please send the entity name and address of who is requesting the COI.\n\nRegards,",
+     "original_request_summary": "Client asks AJF Roofing, Inc. for a COI but the request does not identify the certificate holder."
+    },
+    "teaching_point": "Holder information is missing from the request: look it up, and if the lookup cannot confirm a single match, ask. NEVER invent an address (the benchmark's most dangerous failure was a hallucinated address shipped at high confidence). (This request was historically resolved to the holder shown in historical_resolution.)",
+    "historical_resolution": "GAF / 1 Campus Drive / Tribridge Residential Construction, LLC"
+   }
+  ],
+  "body_only_request": [
+   {
+    "hash": "2d4cb8e56d89ab2b5ce25113ad616c11fabe69c9",
+    "client": "rolandos_hvac",
+    "thread": "coi to charlotte county",
+    "message_date": "2026-02-04 14:14:59",
+    "bucket": "body_only_request",
+    "delivered_by_team": false,
+    "alex_note": "county asked for this directly, came out right",
+    "request_context": {
+     "subject": "RE: COI TO Charlotte County",
+     "from_name": "Contractor Licensing",
+     "body": "Coi needs to be made out to Charlotte County Community Development 18400 Murdock Cir Port Charlotte FL 33948.\nRespectfully,\nAzeudee 'Dee' Carr\nContractor Licensing ,Sr Permit Technician2\nCharlotte County CommunityDevelopment\n941.743.1201\nCharlotteCountyFL.gov\nDelivering Exceptional Service\nHelp us get back to you faster ' please direct your emails to the appropriate inbox:\nGeneral Inquiries: BuildingConstruction@CharlotteCountyFL.gov\nContractor Licensing (COIs): ContractorLicensing@CharlotteCountyFL.gov\nElevation Certificates, Drainage As-Built Surveys: FloodInfo@CharlotteCountyFL.gov\nPermitting (NOCs,SubcontractorChanges): OnlinePermitting@CharlotteCountyFL.gov\nResubmittals / Plan Changes: PermitResubmittal@CharlotteCountyFL.gov\nPrivate Provider: PrivateProvider@CharlotteCountyFL.gov\nTermite Certificates/Blower Door Reports: Inspections@CharlotteCountyfl.gov\nHow was your service? CLICK\nHERE to let us know",
+     "attachments_summary": [
+      "image002.png (image, likely signature graphic)",
+      "image003.png (image, likely signature graphic)",
+      "image004.jpg (image, likely signature graphic)"
+     ]
+    },
+    "expected_output": {
+     "classification": "coi_request_complete",
+     "reply_text": null,
+     "original_request_summary": "Client requests a COI for Rolando's HVAC LLC with Charlotte County Community Development as certificate holder.",
+     "status": "ready",
+     "client_id": "rolandos_hvac",
+     "client_canonical_name": "Rolando's HVAC LLC",
+     "template_id": "rolandos_hvac_gl_auto",
+     "template_filename": "Rolando_s_HVAC_COI_Template.pdf",
+     "confidence": "high",
+     "confidence_notes": "Client is Rolando's HVAC LLC from the thread context; the sender is a third party requesting on our insured's behalf.",
+     "certificate_holder": {
+      "name": "Charlotte County Community Development",
+      "address_line_1": "18400 Murdock Cir",
+      "address_line_2": null,
+      "city": "Port Charlotte",
+      "state": "FL",
+      "zip": "33948"
+     },
+     "date_to_insert": "02/04/2026",
+     "project_name": null,
+     "project_address": null,
+     "project_unit": null,
+     "is_permit": false,
+     "send_completed_coi_to": null,
+     "flags": [],
+     "edits_to_make": [
+      {
+       "field": "certificate_holder",
+       "action": "replace",
+       "old_value": "NAME\nADDRESS\nSTATE, CITY ZIP CODE",
+       "new_value": "Charlotte County Community Development\n18400 Murdock Cir\nPort Charlotte, FL 33948"
+      },
+      {
+       "field": "date",
+       "action": "replace",
+       "old_value": "MM/DD/YYYY",
+       "new_value": "02/04/2026"
+      },
+      {
+       "field": "description_of_operations",
+       "action": "replace",
+       "old_value": "Project name & Address ( If Applicable)",
+       "new_value": ""
+      }
+     ]
+    },
+    "teaching_point": "A plain cert-holder request with a complete address in the body is coi_request_complete. Use the client's address verbatim, never verify or second-guess it."
+   },
+   {
+    "hash": "b0558f373bd17c63a0bcce2644f45d50533d669f",
+    "client": "central_comfort_ac",
+    "thread": "sample coi needed",
+    "message_date": "2026-02-10 21:29:25",
+    "bucket": "body_only_request",
+    "delivered_by_team": true,
+    "alex_note": null,
+    "request_context": {
+     "subject": "FW: Sample COI Needed",
+     "from_name": "Administration",
+     "body": "Good Afternoon Alejandro,\nCan you please send me a certificate with the following:\nThe certificate holder on the Certificate of Liability Insurance should read:\nThe Riviera at Coral Lakes Condominium Association, Inc.\nc/o Unlimited Property Management\n13250 SW 135th Avenue\nMiami, FL 33186\nCynthia Garrido\nCentral Comfort Air Conditioning\np:\n305-598-7575\na:\n12320\nSW 129 th Ct., Miami, FL 33 186\nw: e :\ncentralcomfortairconditioning.com\nadministration @centralcomfortac.com",
+     "attachments_summary": [
+      "Outlook-fmvs53fi.png (image, likely signature graphic)",
+      "image001.jpg (image, likely signature graphic)",
+      "image002.jpg (image, likely signature graphic)",
+      "image003.jpg (image, likely signature graphic)",
+      "image004.jpg (image, likely signature graphic)",
+      "image005.jpg (image, likely signature graphic)"
+     ]
+    },
+    "expected_output": {
+     "classification": "coi_request_complete",
+     "reply_text": null,
+     "original_request_summary": "Client requests a COI for Central Comfort Air Conditioning with The Riviera at Coral Lakes Condominium Association, Inc. as certificate holder.",
+     "status": "ready",
+     "client_id": "central_comfort_ac",
+     "client_canonical_name": "Central Comfort Air Conditioning",
+     "template_id": "central_comfort_gl_wc",
+     "template_filename": "Central_Comfort_Air_Conditioning_Inc_COI.pdf",
+     "confidence": "high",
+     "confidence_notes": "Sender and body context match Central Comfort Air Conditioning in the registry.",
+     "certificate_holder": {
+      "name": "The Riviera at Coral Lakes Condominium Association, Inc.",
+      "address_line_1": "13250 SW 135th Avenue",
+      "address_line_2": null,
+      "city": "Miami",
+      "state": "FL",
+      "zip": "33186"
+     },
+     "date_to_insert": "02/10/2026",
+     "project_name": null,
+     "project_address": null,
+     "project_unit": null,
+     "is_permit": false,
+     "send_completed_coi_to": null,
+     "flags": [],
+     "edits_to_make": [
+      {
+       "field": "certificate_holder",
+       "action": "replace",
+       "old_value": "NAME\nADDRESS LINE 1\nCITY, STATE ZIP CODE",
+       "new_value": "The Riviera at Coral Lakes Condominium Association, Inc.\nc/o Unlimited Property Management\n13250 SW 135th Avenue\nMiami, FL 33186"
+      },
+      {
+       "field": "date",
+       "action": "replace",
+       "old_value": "MM/DD/YYYY",
+       "new_value": "02/10/2026"
+      },
+      {
+       "field": "description_of_operations",
+       "action": "replace",
+       "old_value": "Project name & Address ( If Applicable)",
+       "new_value": ""
+      }
+     ],
+     "certificate_holder_lines": [
+      "The Riviera at Coral Lakes Condominium Association, Inc.",
+      "c/o Unlimited Property Management",
+      "13250 SW 135th Avenue",
+      "Miami, FL 33186"
+     ]
+    },
+    "teaching_point": "A plain cert-holder request with a complete address in the body is coi_request_complete. Use the client's address verbatim, never verify or second-guess it."
+   }
+  ]
+ },
+ "negative_examples": [
+  {
+   "hash": "6d144fffe28c1a5dd1de013b87fd8f511ed5c170",
+   "client": "central_comfort_ac",
+   "filename": "CentralComfort Waverly KW 04212026.pdf",
+   "request": "(no request text preserved in the archive)",
+   "what_went_wrong": "Alex: \"the placeholder project line went out on the final cert, bad\"; P1: placeholder 'Project name & Address (If Applicable)' left on the COI",
+   "correct_behavior": "Delete the 'Project name & Address (If Applicable)' placeholder line whenever no project is provided; it must never appear on a finished COI.",
+   "has_note": true
+  },
+  {
+   "hash": "8c818892d95884b4b0060a1f1d3bc5af3e057a27",
+   "client": "ajf_roofing",
+   "filename": "ACORD Form 20250113-103038.pdf",
+   "request": "Alejandro, Can you please provide COI as requested below. Thank you.\nGuillermo Vidaurreta Commercial Project Manager & Estimator | AJF Roofing D : (786) 420-2012 O : (305) 456-8006 C: (305) 793-5153 7495 NW 7 th Street Suite #8, Miami, FL 33126 E: gvidaurreta@ajfroofingfl.com | Web: www.ajfroofingfl.com",
+   "what_went_wrong": "Alex: \"wrong holder, the request below was for the Florida City project not Tribridge\"",
+   "correct_behavior": "Follow Alex's correction above; do not repeat this outcome.",
+   "has_note": true
+  },
+  {
+   "hash": "927ae296bc679c998ce72f46ca3a26d473c81507",
+   "client": "absolute_air_solutions",
+   "filename": "COI GL WC for 9299 college.pdf",
+   "request": "Good Afternoon,\nPlease send COI for the new management company for 9299 College Pkwy. I have attached the GL COI for your reference, for the address etc.\nPlease call, text, or email with any questions.\nKindest Regards,\nMJ\nThank you,\nTina \"MJ\" Judkins\nAbsolute Air Solutions LLC\nabsoluteairsolutions@live.com\nmj.absoairs@outlook.com\nOffice: 941-423-9908\nCell: 941-266-9061",
+   "what_went_wrong": "Alex: \"yep, the date box was left blank on this one\"; P4: no issue date in the date box",
+   "correct_behavior": "Always insert today's date in the date box. A COI must never go out without an issue date.",
+   "has_note": true
+  },
+  {
+   "hash": "e9dd589b42ff791405168d91979f4d3e70ad3149",
+   "client": "ajf_roofing",
+   "filename": "AJF Roofing - Workers Comp. Exp. 01-01-26 - Notowitz.pdf",
+   "request": "Good morning, Alejandro Here another request certificate: Thank you.\nRomy Koo Accounts Payable & Human Resources | AJF Roofing D: (786) 409-6988 C: (305) 456-8006 EXT 6988 7495 NW 7 th Street Suite #10, Miami, FL 33126 E: rkoo@ajfroofingfl.com | Web: www.ajfroofingfl.",
+   "what_went_wrong": "Alex: \"no date on it, this went to the GC like that\"; P4: no issue date in the date box",
+   "correct_behavior": "Always insert today's date in the date box. A COI must never go out without an issue date.",
+   "has_note": true
+  },
+  {
+   "hash": "def0bbd795b81497f354b6ee16e66462b0bdaadd",
+   "client": "central_comfort_ac",
+   "filename": "24-25 COI - Paraiso Bay Condominium Association Inc..pdf",
+   "request": "Good Morning Alejando,\nI wanted to see if you can please send over a certificate unfortunately, it is more than the said characters.\nCynthia Garrido\nCentral Comfort Air Conditioning\np:\n305-598-7575\na:\n12320\nSW 129 th Ct., Miami, FL 33 186\nw: e :\ncentralcomfortairconditioning.com\nadministration @centralcomfortac.com",
+   "what_went_wrong": "P4: no issue date in the date box",
+   "correct_behavior": "Always insert today's date in the date box. A COI must never go out without an issue date.",
+   "has_note": false
+  }
+ ],
+ "needs_discussion": [
+  {
+   "hash": "e20d0499ffdf4ee2475b4cc63c8068f4f3ea2471",
+   "client": "rolandos_hvac",
+   "filename": "Rolando's HVAC COI_Atrium Development Group.pdf",
+   "our_verdict": "questionable",
+   "note": "template changed around this time, need to ask Rolando about this address"
+  }
+ ]
+}

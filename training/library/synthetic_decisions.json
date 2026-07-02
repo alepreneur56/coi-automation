@@ -1,0 +1,115 @@
+{
+ "_meta": {
+  "synthetic": true,
+  "note": "SYNTHETIC decisions simulating Alex's review export, for testing build_training_library.py. Replace with the real coi_review_decisions.json exported from coi_review.html."
+ },
+ "deeaccf0b79f65bcec315df6c777cc01cf169e77": {
+  "decision": "approve"
+ },
+ "0d2d18ea04cb89dd5dff489bc8fe22d118fa2a4d": {
+  "decision": "approve"
+ },
+ "5ceca3b253b248f2f8babe7da5a7dabff06801ad": {
+  "decision": "approve"
+ },
+ "2d4cb8e56d89ab2b5ce25113ad616c11fabe69c9": {
+  "decision": "approve",
+  "note": "county asked for this directly, came out right"
+ },
+ "b0558f373bd17c63a0bcce2644f45d50533d669f": {
+  "decision": "approve"
+ },
+ "b319d3c3a362bcf7a19f7ef20325cc38cd8c67e6": {
+  "decision": "approve"
+ },
+ "3442bac32318f5e094894a7ac88d5ea9d7cdda06": {
+  "decision": "approve"
+ },
+ "6dfb9151b8889a30e627539871f212bdbaf20d59": {
+  "decision": "approve"
+ },
+ "08a7ada42a2dd2e9c4947d28fc1c52c0b2f50dad": {
+  "decision": "approve"
+ },
+ "6b8e1d9083c2f4e255998b52416221347eec25f6": {
+  "decision": "approve"
+ },
+ "09660cff352bcce1b8e821f9233a0d072c6302fd": {
+  "decision": "approve"
+ },
+ "5314cf3c0f0e79b16e21121146c9083ef03e5f9b": {
+  "decision": "approve"
+ },
+ "093b31d41705e7c1d49761eb7c47a203dad801b7": {
+  "decision": "approve"
+ },
+ "b93578b8d8afeb3f0cd4e4bb9996e53a450fed39": {
+  "decision": "approve"
+ },
+ "07dfc07db3d8a552187966727a18c6c2b6563e5b": {
+  "decision": "approve"
+ },
+ "575cc1e474be5e49bb368c3e1d103c9bfad22f8e": {
+  "decision": "approve"
+ },
+ "8c818892d95884b4b0060a1f1d3bc5af3e057a27": {
+  "decision": "disagree",
+  "note": "wrong holder, the request below was for the Florida City project not Tribridge"
+ },
+ "0a5ef21c4edb01f907155bc32f6075d9f6bca3b0": {
+  "decision": "approve"
+ },
+ "927ae296bc679c998ce72f46ca3a26d473c81507": {
+  "decision": "approve",
+  "note": "yep, the date box was left blank on this one"
+ },
+ "6d144fffe28c1a5dd1de013b87fd8f511ed5c170": {
+  "decision": "approve",
+  "note": "the placeholder project line went out on the final cert, bad"
+ },
+ "e9dd589b42ff791405168d91979f4d3e70ad3149": {
+  "decision": "approve",
+  "note": "no date on it, this went to the GC like that"
+ },
+ "82f41dd8c71999705370a85268aeaa08bfa6ac6f": {
+  "decision": "approve"
+ },
+ "def0bbd795b81497f354b6ee16e66462b0bdaadd": {
+  "decision": "approve"
+ },
+ "c4314db21c7e73262d9060e1a813f36b5ee171ed": {
+  "decision": "approve"
+ },
+ "75827b73d2c9eb0e51ae1a4fc38a7ae747501e25": {
+  "decision": "disagree",
+  "note": "this one is actually fine, the 3 island cert matched what they sent"
+ },
+ "475aaac23bc6bf8206661e0f61bc177cce03e78c": {
+  "decision": "approve"
+ },
+ "69653becd240850485cae51e6ca6fa180ac1038f": {
+  "decision": "approve"
+ },
+ "ef9c62fc18ff68164a8d66ac5634c066187274d3": {
+  "decision": "approve"
+ },
+ "aeb418615496c70bada564e6081a4af674e774b0": {
+  "decision": "approve"
+ },
+ "e20d0499ffdf4ee2475b4cc63c8068f4f3ea2471": {
+  "decision": "disagree",
+  "note": "template changed around this time, need to ask Rolando about this address"
+ },
+ "7330722f3cea2d28fad1e1780a7aeac4d74ff23f": {
+  "decision": "skip"
+ },
+ "a80aeca048806678b42b92ba7440f352c9b955c4": {
+  "decision": "skip"
+ },
+ "6fe46263ce48f9ad631e62ef77856293c618cb99": {
+  "decision": "skip"
+ },
+ "c62d239c8a1273ba341dce5e69f9b05b86855502": {
+  "decision": "skip"
+ }
+}
