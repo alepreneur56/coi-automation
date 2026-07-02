@@ -1,0 +1,358 @@
+{
+  "generated": "2026-07-02",
+  "purpose": "PROPOSAL ONLY - policies arrays for the 5 clients missing them in coi_client_registry.json. Do NOT merge without Alex's verification. See REGISTRY_PROPOSAL.md for the human-readable version.",
+  "archive_root": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE",
+  "archive_coverage_note": "Email archive ends 2026-04-27. Today is 2026-07-02. Nothing here reflects May-June 2026 activity (renewals, cancellations, reinstatements in that window are invisible to this analysis).",
+  "confidence_scale": {
+    "high": "Confirmed by a carrier-issued policy document / dec page, or by 3+ independent sources that agree",
+    "medium": "Single non-carrier source (COI only, or USI internal report), or sources conflict with a clear best candidate",
+    "low": "Inference only - verify before use"
+  },
+  "clients": {
+    "emp3_solutions": {
+      "status": "complete",
+      "staleness": "All three policies show term 11/06/2025-11/06/2026: current as of 2026-07-02. IPFS premium-finance intent-to-cancel (notice 01/12/26, pay-by 01/30/26) for the Trisura GL was presumably resolved - COIs kept being issued through Feb 26 and no termination emails exist - but payment is not confirmed anywhere in the archive.",
+      "template_issues": [
+        "Template GL policy number 'SUB1579257' vs 'SUB1579257-02' on every delivered COI Jan-Feb 2026 (7 docs). No Trisura dec page in archive to break the tie.",
+        "Template damage_to_rented_premises = 100,000 vs 1,000,000 on every delivered COI Jan-Feb 2026. One of the two is wrong; carrier dec needed."
+      ],
+      "proposed_policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "SUB1579257",
+          "eff_date": "11/06/2025",
+          "exp_date": "11/06/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "5,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "B",
+          "policy_number": "50019417101",
+          "eff_date": "11/06/2025",
+          "exp_date": "11/06/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Scheduled, Hired & Non-Owned Autos",
+          "limits": {
+            "combined_single_limit": "1,000,000"
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "C",
+          "policy_number": "WC307-0131466-2025A",
+          "eff_date": "11/06/2025",
+          "exp_date": "11/06/2026",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          }
+        }
+      ],
+      "field_provenance": {
+        "gl.policy_number": {"value": "SUB1579257", "confidence": "medium", "sources": ["templates/EMP_3_Solutions_Template.pdf p1 (current template)", "CONFLICT: 'SUB1579257-02' on Inbox/01001, 00982, 00759, 00504, 00103, 00077 + Sent 2026-02-04 COIs"], "verify": "Trisura dec page or Novatae portal - does the in-force number carry the -02 suffix?"},
+        "gl.dates": {"value": "11/06/2025-11/06/2026", "confidence": "high", "sources": ["template p1", "all 7 delivered COIs", "IPFS NOTICE OF INTENT TO CANCEL_301788 p2: Trisura GL eff 11/06/25, 12-month term"]},
+        "gl.limits.damage_to_rented_premises": {"value": "100,000", "confidence": "medium", "sources": ["template p1 shows 100,000", "CONFLICT: all 7 delivered COIs Jan-Feb 2026 show 1,000,000"], "verify": "Trisura dec page"},
+        "gl.limits.other": {"confidence": "high", "sources": ["template p1: 1M occ / 5K med / 1M P&A / 2M gen agg / 2M prod agg", "delivered COI Inbox/01001 agrees except rented-premises"]},
+        "auto.policy_number": {"value": "50019417101", "confidence": "high", "sources": ["template p1", "all 7 delivered COIs", "USI Paid Basis Report (Inbox/00585) p2: EMP3 50019417101 Infinity CAU eff 11/06/25"]},
+        "wc.policy_number": {"value": "WC307-0131466-2025A", "confidence": "high", "sources": ["template p1", "all 7 delivered COIs", "USI Paid Basis Report p2: WC30701314662 LUBA WCO eff 11/06/25"]}
+      }
+    },
+    "gd_mechanical": {
+      "status": "complete (auto STALE)",
+      "staleness": "GL / Umbrella / WC term 11/02/2025-11/02/2026: current as of 2026-07-02. COMMERCIAL AUTO 50010517801 EXPIRED 05/03/2026. April threads ('Commercial Auto Renewal' 04/07, 'Commercial Auto Marketing' 04/13 w/ Marketing Summary.xlsx, 'PRIORITY!!!' 04/21) show the renewal was still being marketed when the archive ends 04/27. Whatever is on the auto line today is NOT in this archive.",
+      "template_issues": [],
+      "proposed_policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "10104588635",
+          "eff_date": "11/02/2025",
+          "exp_date": "11/02/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "POLICY",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "10,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "B",
+          "policy_number": "50010517801",
+          "eff_date": "05/03/2025",
+          "exp_date": "05/03/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Scheduled, Hired & Non-Owned Autos",
+          "_STALE": "EXPIRED 05/03/2026 - renewal outcome unknown, do not issue COIs off this entry without confirming the renewal",
+          "limits": {
+            "combined_single_limit": "1,000,000"
+          }
+        },
+        {
+          "line": "Umbrella Liability",
+          "insurer_letter": "A",
+          "policy_number": "10165492143",
+          "eff_date": "11/02/2025",
+          "exp_date": "11/02/2026",
+          "occur": true,
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "aggregate": "1,000,000"
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "C",
+          "policy_number": "WC307-0131450-2025A",
+          "eff_date": "11/02/2025",
+          "exp_date": "11/02/2026",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          }
+        }
+      ],
+      "additional_policies_not_on_coi": [
+        {"line": "Cyber", "insurer": "United Fire (UNF)", "policy_number": "10187095536", "eff_date": "11/02/2025", "source": "USI Paid Basis Report (Inbox/00585) p2, UNF CYB eff 11/02/25"}
+      ],
+      "field_provenance": {
+        "gl": {"confidence": "high", "sources": ["templates/G___D_Mechanical_Services_COI_Template.pdf p1", "delivered COIs Inbox/00076, Sent 2026-01-29 Seminole County, Sent 2026-02-04, Sent 2026-04-11", "USI Paid Basis Report p2: 10104588635 UNF PKG eff 11/02/25"]},
+        "auto": {"confidence": "high (as of 04/2026) but STALE", "sources": ["template p1: 50010517801 05/03/2025-05/03/2026", "Ascendant endorsement threads Inbox/00156 (01/16), 00183 (01/20), 00672 (02/09), 00846 (02/18) all reference Policy# 50010517801", "renewal threads: Sent 2026-04-07 'Commercial Auto Renewal', Inbox NEW_2026-04-13 'Commercial Auto Marketing' (Marketing Summary.xlsx), Inbox NEW_2026-04-21 PRIORITY!!!"], "verify": "What was bound effective 05/03/2026? Carrier, number, dates, CSL."},
+        "umbrella": {"confidence": "high", "sources": ["template p1", "USI Paid Basis Report p2: 10165492143 UNF UMC eff 11/02/25"]},
+        "wc": {"confidence": "high", "sources": ["template p1", "USI Paid Basis Report p2: WC30701314502 LUBA WCO eff 11/02/25"]}
+      }
+    },
+    "absolute_air_solutions": {
+      "status": "complete (+1 off-template policy found)",
+      "staleness": "Kemper/Infinity auto 50026705601 term 08/27/2025-08/27/2026: current as of 2026-07-02 but renews in under 8 weeks. Progressive 872005650 term 03/31/2026-03/31/2027: current. Endorsement churn through March-April 2026 (vehicle added 02/24, vehicle removed ~04/09, driver removal 03/24) - the covered vehicle/driver schedule moved around but the policy itself was stable.",
+      "template_issues": [
+        "Both templates print insurer letter 'B' on the auto coverage row, but Infinity Assurance is listed as INSURER A (and is the only insurer on the cert). Row letter should be A.",
+        "Second auto policy (Progressive 872005650, one 2024 Chevy Express w/ GAP) exists but has no template; Progressive issues its own COIs for it (see Sent 2026-04-09)."
+      ],
+      "proposed_policies": [
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "A",
+          "policy_number": "50026705601",
+          "eff_date": "08/27/2025",
+          "exp_date": "08/27/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Symbol 1 (Any Auto) on Symbol-1 template; Symbols 7/8/9 (Scheduled + Hired + Non-Owned) on Symbol-789 template",
+          "limits": {
+            "combined_single_limit": "1,000,000"
+          }
+        }
+      ],
+      "additional_policies_not_on_templates": [
+        {
+          "line": "Commercial Auto (single vehicle, w/ GAP)",
+          "insurer": "Progressive (issued via Progressive commercial)",
+          "policy_number": "872005650",
+          "eff_date": "03/31/2026",
+          "exp_date": "03/31/2027",
+          "addl_insured": false,
+          "subr_wvd": false,
+          "limits": {"combined_single_limit": "1,000,000"},
+          "note": "Bound 03/31/2026 after GAP-coverage quote threads (Sent 2026-03-18 through 2026-03-31). Progressive generates its own COIs; ADDL/SUBR shown as N/N on the Progressive COI.",
+          "source": "Sent 2026-04-09 'REF: Remove Vehicle - Policy# 50026705601' attachment 'Progressive COI - Absolute Air Solutions.pdf' p1"
+        }
+      ],
+      "field_provenance": {
+        "auto.policy_number": {"value": "50026705601", "confidence": "high", "sources": ["both templates (Symbol_789 / Symbol_1) p1", "delivered COIs Inbox/00039, 00081, 00920", "USI Paid Basis Report p2: 50026705601 Kemper (K7A) CAU eff 08/27/25", "thread subjects: 'Ref: Policy# 50026705601 - Absolute Air Solutions' (Sent 2026-02-17), 'REF: Remove Vehicle - Policy# 50026705601' (Sent 2026-04-09)"]},
+        "auto.dates": {"value": "08/27/2025-08/27/2026", "confidence": "high", "sources": ["both templates", "Paid Basis Report eff 08/27/25"]},
+        "progressive_auto": {"confidence": "medium-high", "sources": ["Progressive-issued COI 2026-04-09 (only source: 872005650, 03/31/2026-03/31/2027, CSL 1M, ADDL N, SUBR N)", "GAP bind threads Sent 2026-03-24/03-31"], "verify": "Progressive portal - confirm policy number and that the vehicle removed from 50026705601 is the one on 872005650"}
+      }
+    },
+    "ajf_roofing": {
+      "status": "complete (verified against carrier policy documents)",
+      "staleness": "All four CNA policies term 01/07/2026-01/07/2027: current as of 2026-07-02. Prior State Farm policies were cancelled effective 01/07/2026 (Inbox/00662-00665, Sent 2026-02-09) - the February 'Policies Cancellation Request' traffic is about the OLD carrier, not the CNA program.",
+      "template_issues": [
+        "TEMPLATE TYPO: auto row prints '9035162049'. Carrier-issued policy is 'BUA 8035162049' (leading 8). 342 archive docs show 8035162049 vs 18 docs (the NV2A COI lineage + current template) with 9035162049.",
+        "GEN'L AGGREGATE APPLIES PER: no checkbox marked on template. The CNA umbrella's Schedule of Underlying states the GL aggregate applies Per Project: yes. Consider marking PRO-JECT.",
+        "Umbrella row carries no ADDL INSD / SUBR WVD marks on the template (matches how the prior COIs were issued)."
+      ],
+      "proposed_policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "8035162052",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "deductible": "5,000 BI/PD per occurrence",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "15,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "A",
+          "policy_number": "8035162049",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Any Auto (symbol 1) + Hired + Non-Owned",
+          "limits": {
+            "combined_single_limit": "1,000,000"
+          }
+        },
+        {
+          "line": "Umbrella Liability",
+          "insurer_letter": "B",
+          "policy_number": "8035162066",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "occur": true,
+          "limits": {
+            "each_occurrence": "3,000,000",
+            "aggregate": "3,000,000"
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "C",
+          "policy_number": "8035490054",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          }
+        }
+      ],
+      "field_provenance": {
+        "gl": {"confidence": "high", "sources": ["CARRIER DOC: Inbox/00553 '2026-2027 GLI Policy.PDF' p26 GL Coverage Part Declarations (2M gen agg / 2M prod / 1M P&A / 1M occ / 100K rented / 15K med exp, deductible endorsement CNA75119), p100 underwriting co 'National Fire Insurance of Hartford'", "umbrella Schedule of Underlying (2026-2027 UMB Policy.PDF p23): GL 8035162052 National Fire, Per Project yes", "template p1"]},
+        "auto": {"confidence": "high", "sources": ["CARRIER DOC: Inbox/00553 '2026-2027 CAU Policy.PDF' p1 (BUA 8035162049, 01/07/2026-01/07/2027), p17 dec (Covered Autos Liability symbol 1, $1,000,000, underwriting co National Fire Insurance Company of Hartford)", "NOTE: template prints 9035162049 - typo"]},
+        "umbrella": {"confidence": "high", "sources": ["CARRIER DOC: Inbox/00553 '2026-2027 UMB Policy.PDF' p22 dec: The Continental Insurance Company, CUE 8035162066, Each Incident 3,000,000 / Aggregate 3,000,000 / Products-CompOps Agg 3,000,000, SIR 10,000", "template p1"]},
+        "wc": {"confidence": "high", "sources": ["CARRIER DOC: Inbox/00553 '2026-2027 WCO Policy.PDF' p18 Information Page: Valley Forge Insurance Company (NCCI 15032), WC 8 35490054, 01/07/2026-01/07/2027, EL 1M/1M/1M", "template p1"]}
+      }
+    },
+    "apogee_hvac": {
+      "status": "complete on paper - IN-FORCE STATUS UNVERIFIED (see staleness)",
+      "staleness": "DO NOT TREAT AS CURRENT WITHOUT VERIFICATION. (1) LUBA WC was TERMINATED ~04/14/2026 for past-due payroll reports / non-payment ('APOGEE HVAC SOLUTIONS LLC - TERMINATED POLICY' threads 04/14-04/27; FHM/LUBA pre-termination 04/01). Signed no-loss letters (04/22 and 04/27, both referencing WC307-0131633) show reinstatement was IN PROGRESS when the archive ends 04/27 - outcome unknown. (2) IPFS NOTICE OF INTENT TO CANCEL FLS-305556 (04/13/26): the MS Transverse GL and BOTH excess policies (Lexington + Scottsdale) cancel 05/01/2026 unless $4,006.56 paid - outcome unknown, archive ends before the deadline. (3) The auto policy was cancelled eff 02/01/2026 for non-payment (Inbox/00434) and came back with a new term 02/09/2026-02/09/2027; this pattern of non-payment repeated across the whole account.",
+      "template_issues": [
+        "WRONG WC POLICY NUMBER ON TEMPLATE: template (and the 04/22 delivered COI, graded incorrect) shows WC307-0131699-2025A. The LUBA-issued policy document is WC307-0131633-2025A (also on ALL of Alex's own Jan-Apr delivered COIs, both no-loss letters, and FHM termination/reinstatement notices). -0131699 appears ONLY on the prior agent's 01/21 COI and things copied from it.",
+        "INSURER LETTERS SWAPPED ON TEMPLATE: auto row prints 'D' (D = LUBA) and WC row prints 'E' (E = Infinity). Correct mapping: Auto = E (Infinity 50000190801), WC = D (LUBA WC307-0131633). The prior agent's 01/21 COI has them right.",
+        "UMBRELLA/EXCESS LIMITS OVERSTATED/COMPRESSED: template shows 5,000,000 each occ + 5,000,000 agg across the Lexington/Scottsdale rows. Carrier dec: Lexington 071733143-00 is a FOLLOW-FORM EXCESS with 1,000,000 each occ / 1,000,000 agg / 1,000,000 prod agg. Scottsdale CXS4071612 is the layer above at 4,000,000 (per the 01/21 prior-agent COI). Tower total 5M, but neither single policy is 5M. A COI presenting Lexington at 5M misstates the policy.",
+        "MED EXP CONFLICT: template shows 5,000; the MS Transverse GL dec says Medical Expense Limit EXCLUDED (prior-agent COI shows $0).",
+        "Auto row on template marks OWNED AUTOS ONLY; the prior-agent 01/21 COI marked ANY AUTO + Hired + Non-Owned."
+      ],
+      "proposed_policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "TSLBGL-0002210-00",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "deductible": "5,000 BI/PD per occurrence",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "Excluded",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          }
+        },
+        {
+          "line": "Excess Liability (1st layer, follow-form)",
+          "insurer_letter": "B",
+          "policy_number": "07173314300",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "occur": true,
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "aggregate": "1,000,000",
+            "products_comp_op_agg": "1,000,000"
+          }
+        },
+        {
+          "line": "Excess Liability (2nd layer)",
+          "insurer_letter": "C",
+          "policy_number": "CXS4071612",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "occur": true,
+          "limits": {
+            "each_occurrence": "4,000,000",
+            "aggregate": "4,000,000"
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "E",
+          "policy_number": "50000190801",
+          "eff_date": "02/09/2026",
+          "exp_date": "02/09/2027",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Owned Autos Only (per template; prior-agent COI showed Any Auto + Hired + Non-Owned)",
+          "limits": {
+            "combined_single_limit": "1,000,000"
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "D",
+          "policy_number": "WC307-0131633-2025A",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          }
+        }
+      ],
+      "field_provenance": {
+        "gl": {"confidence": "high", "sources": ["CARRIER DOC: Sent 2026-01-30 'GL Policy - Apogee HVAC Solutions LLC, TSLBGL-0002210-00.pdf' p1-2 (MS Transverse, 12/08/2025-12/08/2026, 1M/100K/EXCLUDED med exp/1M/2M/2M, $5,000 BI/PD per-occ deductible)", "IPFS notice FLS-305556 p2 (GL eff 12/08/25, $25,000 premium)", "USI Paid Basis Report p2", "template p1 (agrees except med_exp 5,000)"], "note": "med_exp: carrier dec says Excluded; template says 5,000 - carrier dec wins here, verify before A7b uses it"},
+        "excess_lexington": {"confidence": "high", "sources": ["CARRIER DOC: Inbox/00186 attachment 4069692.pdf p6 dec (Lexington 071733143-00, 12/08/2025-12/08/2026, 1M/1M/1M) + p16 Schedule of Underlying (MS Transverse GL + LUBA WC307-0131633-2025A listed as underlying)", "IPFS notice p2", "Paid Basis Report p2 (XLC eff 12/08/25 $6,500)"], "note": "COI prints number without hyphens: 07173314300"},
+        "excess_scottsdale": {"confidence": "medium", "sources": ["prior-agent COI Inbox/00225 '52491592_1 Homes South Beach...' 01/21/2026: CXS4071612, 12/08/2025-12/08/2026, AGGREGATE 4,000,000, retention 0", "IPFS notice p2 (Scottsdale EXCESS eff 12/08/25, $8,048 premium)", "Paid Basis Report p2 (XLC eff 12/08/25)"], "verify": "No Scottsdale dec page in archive. Confirm 4M x 1M attachment and each-occurrence limit."},
+        "auto": {"confidence": "medium", "sources": ["number: template + 04/22 delivered COI + prior-agent 01/21 COI + Kemper suspense thread Inbox/00675 - consistent 50000190801", "dates: template & 04/22 COI say 02/09/2026-02/09/2027; prior-agent COI said 12/08/2025-12/08/2026; cancellation eff 02/01/26 for non-payment (Inbox/00434, notice 01/30)"], "verify": "Confirm the post-cancellation term really is 02/09/2026-02/09/2027 (rewrite vs reinstatement) and the covered-auto symbol."},
+        "wc": {"confidence": "high (number/dates/limits) - IN-FORCE STATUS UNKNOWN", "sources": ["CARRIER DOC: Sent 2026-04-23 '25-26 WC - LUBA Apogee HVAC Solutions.pdf' p14 Information Page (LUBA, WC307-0131633-2025A, 12/8/2025-12/8/2026, EL 1M/1M/1M, blanket waiver endorsement on extension schedule p15)", "FHM termination (Inbox/00281, eff 02/06/2026, later REINSTATED Inbox/00483)", "TERMINATED POLICY threads 04/14-04/27 + no-loss letters (Sent 2026-04-22, 2026-04-27)"]}
+      }
+    }
+  }
+}
