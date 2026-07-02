@@ -28,7 +28,7 @@ import fitz
 
 fitz.TOOLS.mupdf_display_errors(False)
 
-from training.grade_cois import _spans, find_label  # noqa: E402
+from training.grade_cois import _spans, find_label, find_desc_label  # noqa: E402
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GRADED_PATH = os.path.join(BASE, "training", "graded_cois.json")
@@ -47,7 +47,7 @@ def full_regions(page):
 
     ch = find_label(spans, lambda t: t.upper().startswith("CERTIFICATE HOLDER") and t.upper() == t)
     canc = find_label(spans, lambda t: t.upper().startswith("CANCELLATION") and t.upper() == t)
-    desc = find_label(spans, lambda t: t.upper().startswith("DESCRIPTION OF OPERATIONS"))
+    desc = find_desc_label(spans)
     date_lbl = find_label(spans, lambda t: "DATE (MM/DD/YYYY)" in t.upper())
 
     # FULL holder box: from the CERTIFICATE HOLDER label down to page bottom
@@ -94,14 +94,38 @@ def full_regions(page):
     return date, holder, doo
 
 
+def producer_region(page, spans):
+    """The PRODUCER band at the top of the ACORD (producer + contact block):
+    from the PRODUCER label down to the INSURED label."""
+    prod = find_label(spans, lambda t: t.upper().startswith("PRODUCER"))
+    insured = find_label(spans, lambda t: t.upper() == "INSURED")
+    W = page.rect.width
+    if prod is not None:
+        bottom = insured.y0 - 2 if (insured is not None and insured.y0 > prod.y1) else prod.y1 + 55
+        return fitz.Rect(max(prod.x0 - 6, 8), prod.y0 - 2, W - 10, bottom)
+    return fitz.Rect(12, 78, W - 10, 135)
+
+
 def render_coi_crops(path):
+    """Returns (crops dict, prepared_by string)."""
     try:
         doc = fitz.open(path)
         page = doc[0]
+        spans = _spans(page)
         date, holder, doo = full_regions(page)
+        prod = producer_region(page, spans)
+        prod_text = page.get_text(clip=prod).lower()
+        if "usi insurance" in prod_text or "alejandro bello" in prod_text:
+            prepared_by = "usi"
+        elif prod_text.strip():
+            prepared_by = "external"
+        else:
+            prepared_by = "unknown"
         zoom = DPI / 72.0
         crops = {}
-        for name, clip in (("issue date", date), ("certificate holder box (full)", holder),
+        for name, clip in (("issue date", date),
+                           ("producer / prepared by", prod),
+                           ("certificate holder box (full)", holder),
                            ("description of operations (full)", doo)):
             clip = fitz.Rect(clip) & page.rect
             if clip.is_empty:
@@ -109,9 +133,9 @@ def render_coi_crops(path):
             pix = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), clip=clip, alpha=False)
             crops[name] = base64.b64encode(pix.tobytes("jpg", jpg_quality=64)).decode()
         doc.close()
-        return crops
+        return crops, prepared_by
     except Exception:
-        return {}
+        return {}, "unknown"
 
 
 def is_team_message(msg):
@@ -239,7 +263,11 @@ def main():
             role_html = f'<span class="badge" style="background:{color}">{role_label}</span>'
         if is_final:
             role_html += ' <span class="badge" style="background:#5b21b6">FINAL DELIVERED VERSION</span>'
-        crops = render_coi_crops(rec["path"])
+        crops, prepared_by = render_coi_crops(rec["path"])
+        if prepared_by == "usi":
+            role_html += ' <span class="badge" style="background:#0a6e5c">MADE BY US (USI)</span>'
+        elif prepared_by == "external":
+            role_html += ' <span class="badge" style="background:#a3541c">EXTERNAL PRODUCER</span>'
         imgs = "".join(
             f'<div class="zone"><div class="zlabel">{z}</div>'
             f'<img src="data:image/jpeg;base64,{b64}"></div>'

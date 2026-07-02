@@ -63,6 +63,28 @@ def find_label(spans, predicate):
     return None
 
 
+def find_desc_label(spans):
+    """The REAL DoO section label. Some layouts also contain 'DESCRIPTION OF
+    OPERATIONS below' inside the Workers-Comp box higher up the page — the
+    real section label is the one mentioning LOCATIONS / VEHICLES (and it is
+    the lowest such span on page 1)."""
+    best = None
+    for sp in spans:
+        t = sp["text"].strip().upper()
+        if t.startswith("DESCRIPTION OF OPERATIONS") and "LOCATION" in t:
+            r = fitz.Rect(sp["bbox"])
+            if best is None or r.y0 > best.y0:
+                best = r
+    if best is not None:
+        return best
+    # fallback: startswith match but never the '...below' reference text
+    for sp in spans:
+        t = sp["text"].strip().upper()
+        if t.startswith("DESCRIPTION OF OPERATIONS") and "BELOW" not in t:
+            return fitz.Rect(sp["bbox"])
+    return None
+
+
 def detect_regions(page):
     """Anchor the three regions off the ACORD labels so COIs printed with a
     different layout (Epic, carrier portals) are read correctly."""
@@ -73,7 +95,7 @@ def detect_regions(page):
                     and t.upper() == t)
     canc = find_label(spans, lambda t: t.upper().startswith("CANCELLATION")
                       and t.upper() == t)
-    desc = find_label(spans, lambda t: t.upper().startswith("DESCRIPTION OF OPERATIONS"))
+    desc = find_desc_label(spans)
     auth = find_label(spans, lambda t: t.upper().startswith("AUTHORIZED REPRESENTATIVE"))
     date_lbl = find_label(spans, lambda t: "DATE (MM/DD/YYYY)" in t.upper())
 
