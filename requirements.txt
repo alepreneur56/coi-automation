@@ -1,7 +1,8 @@
-flask==3.0.3
-anthropic==0.40.0
-pymupdf==1.25.5
-sendgrid==6.11.0
-twilio==9.3.7
+# COI automation — local runtime (Microsoft Graph + Claude + PyMuPDF)
 requests==2.32.3
-gunicorn==22.0.0
+pymupdf==1.25.5
+openpyxl==3.1.5
+pillow-heif==0.16.0
+Pillow==10.4.0
+python-docx==1.1.2
+urllib3==1.26.20

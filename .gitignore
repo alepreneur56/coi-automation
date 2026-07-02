@@ -6,3 +6,7 @@ output/
 .DS_Store
 venv/
 .venv/
+state/
+logs/
+tests/review_output/
+tests/pipeline_output/

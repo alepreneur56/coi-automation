@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  launchd job — keeps the COI automation running 24/7 while the Mac is on,
+  restarts it if it crashes, starts it at login.
+
+  Install:
+    cp launchd/com.alepreneur.coi-automation.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.alepreneur.coi-automation.plist
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.alepreneur.coi-automation.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.alepreneur.coi-automation</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/.venv/bin/python</string>
+        <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/main.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/logs/launchd.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/alepreneur/Desktop/claude code stuff/Automating COI Emails/coi-automation/logs/launchd-err.log</string>
+</dict>
+</plist>

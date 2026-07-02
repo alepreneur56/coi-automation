@@ -49,9 +49,64 @@ FONT_SIZES = [9, 8, 7.5, 7, 6.5, 6, 5.5, 5]
 # TEXT UTILITIES
 # ---------------------------------------------------------------------------
 
+# Unicode punctuation -> Latin-1-safe equivalents. Helvetica-Bold (base14)
+# only covers Latin-1; smart quotes / em dashes from email clients (or the
+# AI parser) would otherwise render as garbage glyphs on the COI.
+_UNICODE_REPLACEMENTS = {
+    "‘": "'", "’": "'", "‚": "'", "‛": "'",
+    "“": '"', "”": '"', "„": '"',
+    "–": "-", "—": "-", "―": "-", "−": "-",
+    "…": "...",
+    " ": " ", " ": " ", " ": " ",
+    "•": "-",
+}
+
+
+def sanitize_text(text):
+    """Make text safe for base-14 Helvetica insertion: normalize smart
+    punctuation, keep Latin-1 (accented) letters, strip anything else."""
+    if not text:
+        return text
+    for bad, good in _UNICODE_REPLACEMENTS.items():
+        text = text.replace(bad, good)
+    # Transliterate remaining non-Latin-1 chars where possible, drop the rest
+    out = []
+    for chr_ in text:
+        if ord(chr_) <= 0xFF:
+            out.append(chr_)
+        else:
+            import unicodedata
+            decomposed = unicodedata.normalize("NFKD", chr_)
+            kept = "".join(c for c in decomposed if ord(c) <= 0xFF)
+            out.append(kept)
+    return "".join(out)
+
+
+def _hard_split_word(word, fontsize, max_width, fontname=FONT_NAME):
+    """Split a single overlong word into chunks that each fit max_width."""
+    chunks = []
+    current = ""
+    for chr_ in word:
+        if fitz.get_text_length(current + chr_, fontname=fontname, fontsize=fontsize) <= max_width:
+            current += chr_
+        else:
+            if current:
+                chunks.append(current)
+            current = chr_
+    if current:
+        chunks.append(current)
+    return chunks or [word]
+
+
 def wrap_text(text, fontsize, max_width, fontname=FONT_NAME):
-    """Word-wrap text to fit within max_width at given font size."""
-    words = text.split(' ')
+    """Word-wrap text to fit within max_width at given font size. Words too
+    long for a whole line are hard-split so nothing can cross a box border."""
+    words = []
+    for word in text.split(' '):
+        if word and fitz.get_text_length(word, fontname=fontname, fontsize=fontsize) > max_width:
+            words.extend(_hard_split_word(word, fontsize, max_width, fontname))
+        else:
+            words.append(word)
     lines = []
     current = ""
     for word in words:
@@ -70,24 +125,26 @@ def wrap_text(text, fontsize, max_width, fontname=FONT_NAME):
 def find_optimal_font(entity_lines, address_lines, max_width=HOLDER_MAX_WIDTH, box_h=HOLDER_BOX_H):
     """
     Find the largest font size where all entity lines (wrapped) + address lines
-    fit within the certificate holder box height.
+    (also wrapped) fit within the certificate holder box height.
     Returns (font_size, line_height, all_display_lines).
     """
-    for fs in FONT_SIZES:
-        lh = fs * 1.35
+    def _wrapped_all(fs):
         wrapped = []
         for e in entity_lines:
             wrapped.extend(wrap_text(e, fs, max_width))
-        all_lines = wrapped + address_lines
+        for a in address_lines:
+            wrapped.extend(wrap_text(a, fs, max_width))
+        return wrapped
+
+    for fs in FONT_SIZES:
+        lh = fs * 1.35
+        all_lines = _wrapped_all(fs)
         if len(all_lines) * lh <= box_h:
             return fs, lh, all_lines
     # Fallback — minimum font, may be tight
     fs = FONT_SIZES[-1]
     lh = fs * 1.35
-    wrapped = []
-    for e in entity_lines:
-        wrapped.extend(wrap_text(e, fs, max_width))
-    return fs, lh, wrapped + address_lines
+    return fs, lh, _wrapped_all(fs)
 
 
 def split_into_cois(entity_lines, address_lines, max_width=HOLDER_MAX_WIDTH, box_h=HOLDER_BOX_H):
@@ -101,30 +158,33 @@ def split_into_cois(entity_lines, address_lines, max_width=HOLDER_MAX_WIDTH, box
         wrapped = []
         for e in entity_lines:
             wrapped.extend(wrap_text(e, fs, max_width))
-        max_entity_lines = int(box_h / lh) - len(address_lines)
+        wrapped_addr = []
+        for a in address_lines:
+            wrapped_addr.extend(wrap_text(a, fs, max_width))
+        max_entity_lines = int(box_h / lh) - len(wrapped_addr)
         if max_entity_lines < 1:
             continue
         num_cois = -(-len(wrapped) // max_entity_lines)  # ceiling division
-        best = (fs, lh, wrapped, max_entity_lines, num_cois)
+        best = (fs, lh, wrapped, wrapped_addr, max_entity_lines, num_cois)
         if num_cois <= 2:
             break
 
     if best is None:
         raise ValueError("Cannot fit entities even at minimum font size.")
 
-    fs, lh, all_wrapped, max_entity_lines, num_cois = best
+    fs, lh, all_wrapped, wrapped_addr, max_entity_lines, num_cois = best
     chunks = []
     for i in range(0, len(all_wrapped), max_entity_lines):
-        chunk_lines = all_wrapped[i:i + max_entity_lines] + address_lines
+        chunk_lines = all_wrapped[i:i + max_entity_lines] + wrapped_addr
         chunks.append((fs, lh, chunk_lines))
     return chunks
 
 
 def clean_filename(text):
-    """Convert text to a safe filename component."""
-    text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    """Convert text to a safe filename component (capped length)."""
+    text = re.sub(r'[^a-zA-Z0-9\s]', '', text or "")
     words = text.strip().split()[:3]
-    return ''.join(w.capitalize() for w in words)
+    return ''.join(w.capitalize() for w in words)[:40] or "Client"
 
 
 # ---------------------------------------------------------------------------
@@ -142,28 +202,72 @@ def find_project_span(page):
     return None
 
 
-def find_cert_holder_spans_in_boilerplate(page):
-    """Find all spans in description of operations that contain 'Certificate Holder'."""
-    matches = []
-    for b in page.get_text("dict")["blocks"]:
-        if b["type"] == 0:
-            for line in b["lines"]:
-                for span in line["spans"]:
-                    if "Certificate Holder" in span["text"] and 595 < span["bbox"][1] < 645:
-                        matches.append(span)
-    return matches
+def find_boilerplate_lines(page, proj_span):
+    """Find the boilerplate LINES below the project placeholder (and above
+    the bottom of the description box). Returns (lines, dropped_lines) where
+    each entry is a dict carrying its spans in reading order.
 
+    Line-level (not span-level) handling matters: several templates store
+    'Certificate Holder' as its own span (left cyan by the template builder),
+    with the rest of the sentence in sibling spans on the same line. Any
+    redact-and-reinsert that operates on single spans loses the siblings.
 
-def find_boilerplate_spans(page, below_y):
-    """Find all boilerplate spans below a given y coordinate."""
-    spans = []
+    Two template quirks this handles:
+      - Span bboxes carry big ascender/descender padding, so adjacent lines
+        overlap vertically. Inclusion is decided by BASELINE (y0 + size),
+        never raw bbox y0 (305 Power's first boilerplate line overlaps the
+        project placeholder's bbox).
+      - Some templates contain hidden orphan spans painted over with white
+        during template building (invisible in render, present in the text
+        layer). Visible paragraph lines sit on a regular line-spacing grid;
+        off-grid lines are dropped so hidden junk is never re-inserted.
+    """
+    proj_baseline = proj_span["bbox"][1] + proj_span["size"]
+    lines = []
     for b in page.get_text("dict")["blocks"]:
-        if b["type"] == 0:
-            for line in b["lines"]:
-                for span in line["spans"]:
-                    if span["bbox"][1] > below_y + 0.5 and span["bbox"][1] < 652:
-                        spans.append(span)
-    return spans
+        if b["type"] != 0:
+            continue
+        for line in b["lines"]:
+            spans = [s for s in line["spans"] if s["text"].strip()]
+            if not spans:
+                continue
+            y0 = min(s["bbox"][1] for s in spans)
+            size = max(s["size"] for s in spans)
+            baseline = y0 + size
+            if not (baseline > proj_baseline + 1.0 and y0 < 652):
+                continue
+            spans.sort(key=lambda s: s["bbox"][0])
+            lines.append({
+                "spans": spans,
+                "x0": min(s["bbox"][0] for s in spans),
+                "y0": y0,
+                "y1": max(s["bbox"][3] for s in spans),
+                "size": size,
+                "text": "".join(s["text"] for s in spans),
+            })
+    lines.sort(key=lambda l: l["y0"])
+
+    # Grid filter: drop off-grid (hidden orphan) lines. Anchor on the LAST
+    # line — the bottom of the paragraph never overlaps anything.
+    dropped = []
+    if len(lines) >= 3:
+        deltas = [
+            b["y0"] - a["y0"] for a, b in zip(lines, lines[1:])
+            if b["y0"] - a["y0"] > 3.0
+        ]
+        if deltas:
+            deltas.sort()
+            spacing = deltas[len(deltas) // 2]
+            anchor = lines[-1]["y0"]
+            kept = []
+            for l in lines:
+                k = round((anchor - l["y0"]) / spacing)
+                if abs((anchor - l["y0"]) - k * spacing) <= 1.5:
+                    kept.append(l)
+                else:
+                    dropped.append(l)
+            lines = kept
+    return lines, dropped
 
 
 # ---------------------------------------------------------------------------
@@ -214,19 +318,51 @@ def build_single_coi(
     # Build project lines (wrapped if needed)
     project_lines = []
     push_down = 0
-    boilerplate_spans = []
 
     if project_text:
         project_lines = wrap_text(project_text, desc_font_size, DESC_MAX_WIDTH)
         extra_lines = max(0, len(project_lines) - 1)
         push_down = extra_lines * desc_lh
-        if push_down > 0:
-            boilerplate_spans = find_boilerplate_spans(page, py1)
 
-    # Cert holder boilerplate spans (for plural edit)
-    ch_boilerplate_spans = []
-    if multiple_holders:
-        ch_boilerplate_spans = find_cert_holder_spans_in_boilerplate(page)
+    # The boilerplate below the project line gets rebuilt (redact + re-insert)
+    # in ONE unified pass when any of these apply:
+    #   - project text wraps -> everything below shifts down (push_down)
+    #   - multiple holders  -> 'Certificate Holder' becomes plural
+    #   - template has non-black boilerplate text (cyan spans left over from
+    #     template building) -> normalize to black
+    # One pass avoids the old double redact/re-insert collision when a
+    # multi-holder request also had wrapping project text.
+    boilerplate_lines, dropped_lines = find_boilerplate_lines(page, proj_span)
+    if dropped_lines:
+        print(f"  [engine] dropped {len(dropped_lines)} hidden off-grid line(s): "
+              f"{[l['text'][:40] for l in dropped_lines]}")
+    has_nonblack = any(
+        s.get("color", 0) != 0 for l in boilerplate_lines for s in l["spans"]
+    )
+    rebuild_boilerplate = bool(boilerplate_lines) and (
+        push_down > 0 or multiple_holders or has_nonblack
+    )
+
+    # Overflow guard: pushing the boilerplate down must never spill past the
+    # bottom of the description box (the CERTIFICATE HOLDER / CANCELLATION
+    # headers start at y≈653.8). If the shifted block would overflow, regrid
+    # the project + boilerplate lines with tighter spacing so the last
+    # baseline stays inside the box.
+    # Last allowed baseline: the DoO bottom border band starts at y≈651.4;
+    # 9pt descenders reach ~2pt below baseline, so 649.0 keeps clear of it.
+    DESC_LAST_BASELINE = 649.0
+    regrid_lh = None  # None = keep template spacing
+    if rebuild_boilerplate and push_down > 0 and boilerplate_lines:
+        first_baseline = py0 + desc_font_size
+        n_total = len(project_lines) + len(boilerplate_lines)
+        last_baseline = (
+            boilerplate_lines[-1]["y0"] + boilerplate_lines[-1]["size"] + push_down
+        )
+        if last_baseline > DESC_LAST_BASELINE and n_total > 1:
+            regrid_lh = (DESC_LAST_BASELINE - first_baseline) / (n_total - 1)
+            regrid_lh = max(regrid_lh, desc_font_size * 1.03)
+            print(f"  [engine] compressed DoO line spacing to {regrid_lh:.2f}pt "
+                  f"to keep {n_total} lines inside the box")
 
     # --- REDACTIONS ---
     # 1. Certificate holder box
@@ -279,19 +415,12 @@ def build_single_coi(
         fitz.Rect(px0 - 0.5, redact_top, DESC_SAFE_RIGHT, redact_bottom),
         fill=(1, 1, 1)
     )
-    # 4. Boilerplate area (only if project text overflows)
-    if push_down > 0:
-        bp_y0 = min(s["bbox"][1] for s in boilerplate_spans) - 0.3
-        bp_y1 = max(s["bbox"][3] for s in boilerplate_spans) + 0.3
+    # 4. Boilerplate area (unified rebuild: push-down / plural / color fix)
+    if rebuild_boilerplate:
+        bp_y0 = min(l["y0"] for l in boilerplate_lines) - 0.3
+        bp_y1 = max(l["y1"] for l in boilerplate_lines) + 0.3
         page.add_redact_annot(
             fitz.Rect(DESC_TEXT_X - 0.5, bp_y0, DESC_SAFE_RIGHT, bp_y1),
-            fill=(1, 1, 1)
-        )
-    # 5. Certificate Holder → Certificate Holders boilerplate spans
-    for span in ch_boilerplate_spans:
-        cx0, cy0, cx1, cy1 = span["bbox"]
-        page.add_redact_annot(
-            fitz.Rect(cx0 - 0.5, cy0 - 0.3, DESC_SAFE_RIGHT, cy1 + 0.3),
             fill=(1, 1, 1)
         )
 
@@ -312,8 +441,9 @@ def build_single_coi(
         )
 
     # Project lines
+    proj_lh = regrid_lh if regrid_lh else desc_lh
     for i, line in enumerate(project_lines):
-        y = py0 + desc_font_size + (i * desc_lh)
+        y = py0 + desc_font_size + (i * proj_lh)
         page.insert_text(
             (DESC_TEXT_X, y),
             line,
@@ -322,29 +452,48 @@ def build_single_coi(
             color=(0, 0, 0)
         )
 
-    # Re-insert boilerplate pushed down by overflow
-    if push_down > 0:
-        for span in boilerplate_spans:
-            sy = span["bbox"][1] + push_down + desc_font_size
-            page.insert_text(
-                (span["bbox"][0], sy),
-                span["text"],
-                fontsize=span["size"],
-                fontname=FONT_NAME,
-                color=(0, 0, 0)
-            )
+    # Re-insert the rebuilt boilerplate: shifted down if the project text
+    # wrapped, pluralized on the 'Certificate Holder' line for multi-holder
+    # COIs, and always in black (normalizes stray cyan template spans).
+    if rebuild_boilerplate:
+        for j, bline in enumerate(boilerplate_lines):
+            if regrid_lh:
+                # Compressed grid: baseline follows the project lines
+                baseline = (
+                    py0 + desc_font_size
+                    + (len(project_lines) + j) * regrid_lh
+                )
+            else:
+                baseline = bline["y0"] + bline["size"] + push_down
 
-    # Re-insert Certificate Holders (plural) boilerplate
-    for span in ch_boilerplate_spans:
-        cx0, cy0 = span["bbox"][0], span["bbox"][1]
-        new_text = span["text"].replace("Certificate Holder", "Certificate Holders")
-        page.insert_text(
-            (cx0, cy0 + span["size"]),
-            new_text,
-            fontsize=span["size"],
-            fontname=FONT_NAME,
-            color=(0, 0, 0)
-        )
+            pluralize = (
+                multiple_holders
+                and "Certificate Holder" in bline["text"]
+                and "Certificate Holders" not in bline["text"]
+            )
+            if pluralize:
+                # Whole-line re-insert: the plural adds width, so sibling
+                # spans can't stay at their original x positions.
+                new_text = bline["text"].replace(
+                    "Certificate Holder", "Certificate Holders"
+                )
+                page.insert_text(
+                    (bline["x0"], baseline),
+                    new_text,
+                    fontsize=bline["size"],
+                    fontname=FONT_NAME,
+                    color=(0, 0, 0)
+                )
+            else:
+                # Span-by-span at original x positions — best fidelity.
+                for span in bline["spans"]:
+                    page.insert_text(
+                        (span["bbox"][0], baseline),
+                        span["text"],
+                        fontsize=span["size"],
+                        fontname=FONT_NAME,
+                        color=(0, 0, 0)
+                    )
 
     # Date
     page.insert_text(
@@ -372,10 +521,14 @@ def build_project_text(project_name=None, project_address=None, project_unit=Non
     (cert holder office unit numbers go in cert_holder.address_line_2,
     not here).
     """
-    # Normalize empty strings to None
-    project_name = project_name.strip() if isinstance(project_name, str) and project_name.strip() else None
-    project_address = project_address.strip() if isinstance(project_address, str) and project_address.strip() else None
-    project_unit = project_unit.strip() if isinstance(project_unit, str) and project_unit.strip() else None
+    # Normalize empty strings to None; sanitize for base-14 font safety
+    def _norm(v):
+        if isinstance(v, str) and v.strip():
+            return sanitize_text(v.strip())
+        return None
+    project_name = _norm(project_name)
+    project_address = _norm(project_address)
+    project_unit = _norm(project_unit)
 
     if is_permit and project_address:
         return f"Permit - {project_address}"
@@ -438,10 +591,11 @@ def process_request(request_json, templates_dir, output_dir):
         batch_items = req.get("batch_cois", [])
         for item in batch_items:
             ch = item["certificate_holder"]
-            holder_name = ch["name"]
-            addr1 = ch.get("address_line_1", "")
-            addr2 = ch.get("address_line_2")
+            holder_name = sanitize_text(ch["name"])
+            addr1 = sanitize_text(ch.get("address_line_1", ""))
+            addr2 = sanitize_text(ch.get("address_line_2"))
             city_state_zip = ", ".join(filter(None, [ch.get("city"), ch.get("state"), ch.get("zip")]))
+            city_state_zip = sanitize_text(city_state_zip)
 
             address_lines = [l for l in [addr1, addr2, city_state_zip] if l]
             entity_lines = [holder_name]
@@ -476,15 +630,17 @@ def process_request(request_json, templates_dir, output_dir):
 
     # --- SINGLE OR MULTI-ENTITY REQUEST ---
     ch = req.get("certificate_holder", {})
-    holder_name = ch.get("name", "")
-    addr1 = ch.get("address_line_1", "")
-    addr2 = ch.get("address_line_2")
+    holder_name = sanitize_text(ch.get("name", ""))
+    addr1 = sanitize_text(ch.get("address_line_1", ""))
+    addr2 = sanitize_text(ch.get("address_line_2"))
     city_state_zip = ", ".join(filter(None, [ch.get("city"), ch.get("state"), ch.get("zip")]))
+    city_state_zip = sanitize_text(city_state_zip)
     address_lines = [l for l in [addr1, addr2, city_state_zip] if l]
 
     # Use certificate_holder_lines if present (multi-entity), else just the name
     all_entities = req.get("certificate_holder_lines")
     if all_entities:
+        all_entities = [sanitize_text(l) for l in all_entities if l]
         # Strip address lines from entity list (they're added back per-COI)
         entity_lines = [l for l in all_entities if l not in address_lines]
     else:
