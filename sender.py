@@ -22,6 +22,63 @@ import config
 
 ADMIN_INBOX_EMAIL = config.COI_MAILBOX
 
+# Signature appended to every CLIENT-FACING email (text replies, COI
+# deliveries, complex-review acks). The internal review email to Alejandro
+# does not get it. Claude's reply_text ends at "Regards,"/"Saludos," by rule;
+# this is the only place the signature is added.
+SIGNATURE_PATH = os.path.join(config.BASE_DIR, "signature.html")
+_signature_cache = None
+
+
+def _load_signature():
+    global _signature_cache
+    if _signature_cache is None:
+        try:
+            with open(SIGNATURE_PATH, "r") as f:
+                _signature_cache = f.read().strip()
+        except FileNotFoundError:
+            _signature_cache = ""
+    return _signature_cache
+
+
+def with_signature(html_body):
+    sig = _load_signature()
+    if not sig:
+        return html_body
+    return f"{html_body}\n{sig}"
+
+
+# The signature references an inline LinkedIn icon via cid:. Graph needs the
+# PNG attached with isInline + a matching contentId or clients show a broken
+# image box.
+SIGNATURE_IMAGE_PATH = os.path.join(config.BASE_DIR, "signature_image001.png")
+SIGNATURE_IMAGE_CID = "image001.png@01DD0A19.E6D9DA80"
+_signature_image_cache = None
+
+
+def signature_attachments():
+    """Inline attachment list for the signature image. Empty if the
+    signature (or its image) isn't configured."""
+    global _signature_image_cache
+    if not _load_signature():
+        return []
+    if _signature_image_cache is None:
+        try:
+            with open(SIGNATURE_IMAGE_PATH, "rb") as f:
+                _signature_image_cache = base64.b64encode(f.read()).decode("utf-8")
+        except FileNotFoundError:
+            _signature_image_cache = ""
+    if not _signature_image_cache:
+        return []
+    return [{
+        "@odata.type": "#microsoft.graph.fileAttachment",
+        "name": "image001.png",
+        "contentType": "image/png",
+        "contentBytes": _signature_image_cache,
+        "isInline": True,
+        "contentId": SIGNATURE_IMAGE_CID,
+    }]
+
 
 def apply_test_mode(to_list, cc_list):
     """In test mode, force To = test redirect and CC = empty.
@@ -200,7 +257,7 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
     # ------------------------------------------------------------------
     if action == "send_reply":
         reply_text = decision.get("reply_text", "")
-        html_body = reply_text.replace("\n", "<br>")
+        html_body = with_signature(reply_text.replace("\n", "<br>"))
 
         to_lower = (original_client_sender or "").lower()
         intended_to = [original_client_sender] if original_client_sender else []
@@ -212,6 +269,9 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             "toRecipients": [{"emailAddress": {"address": e}} for e in to_list],
             "ccRecipients": [{"emailAddress": {"address": e}} for e in cc_list],
         }
+        sig_atts = signature_attachments()
+        if sig_atts:
+            message_obj["attachments"] = sig_atts
 
         if dry_run:
             return {"sent": False, "dry_run": True, "type": "reply",
@@ -262,7 +322,7 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
         if holder_line:
             intro_line += f"<br>Cert holder: {holder_line}."
 
-        body_html = (
+        body_html = with_signature(
             f"<p>{recipient_first},</p>"
             f"<p>{intro_line}</p>"
             "<p>Let us know if you need anything else.</p>"
@@ -273,7 +333,7 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             "body": {"contentType": "HTML", "content": body_html},
             "toRecipients": [{"emailAddress": {"address": e}} for e in to_list],
             "ccRecipients": [{"emailAddress": {"address": e}} for e in cc_list],
-            "attachments": [_file_attachment(p) for p in pdf_paths],
+            "attachments": [_file_attachment(p) for p in pdf_paths] + signature_attachments(),
         }
 
         if dry_run:
@@ -317,7 +377,7 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
 
         # ---- (a) CLIENT ACK REPLY (in-thread, no attachment) ----
         if client_reply_text:
-            ack_html = client_reply_text.replace("\n", "<br>")
+            ack_html = with_signature(client_reply_text.replace("\n", "<br>"))
             ack_to_lower = (original_client_sender or "").lower()
             ack_intended_to = [original_client_sender] if original_client_sender else []
             ack_intended_cc = [v for k, v in participants.items() if k != ack_to_lower]
@@ -329,6 +389,9 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
                 "toRecipients": [{"emailAddress": {"address": e}} for e in ack_to],
                 "ccRecipients": [{"emailAddress": {"address": e}} for e in ack_cc],
             }
+            ack_sig_atts = signature_attachments()
+            if ack_sig_atts:
+                ack_obj["attachments"] = ack_sig_atts
             if dry_run:
                 results["client_ack_dry_run"] = {"would_send_to": ack_to}
             else:
