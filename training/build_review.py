@@ -124,25 +124,68 @@ def is_team_message(msg):
     return "attached please find" in body_head
 
 
-def clean_body(body):
-    """Trim quoted history and export junk, then normalize whitespace so the
-    message reads like an email instead of a text dump."""
-    if not body:
-        return ""
-    body = re.sub(r"P \{margin-top:0;margin-bottom:0;?\}", "", body)
-    body = body.replace(" ", " ").replace("�", "'")
-    # cut at the first quoted-reply marker to keep each message's OWN text
-    cut = re.search(r"\n\s*(From|Sent|De):\s.{0,80}(<|@)", body)
-    if cut and cut.start() > 40:
-        body = body[:cut.start()] + "\n\n[... quoted history trimmed ...]"
-    # normalize: strip per-line noise, collapse space runs and blank-line runs
-    lines = []
-    for line in body.splitlines():
-        line = re.sub(r"[ \t]{2,}", " ", line).strip()
-        lines.append(line)
+DISCLAIMER_PATTERNS = [
+    r"This e-?mail and any files transmitted[^.]*\.(\s*It is solely[^.]*\.)?",
+    r"If you receive(d)? this e-?mail in error[^.]*\.",
+    r"do not disclose, copy, distribute[^.]*\.",
+    r"(and )?delete it from your system\.?",
+    r"Any other use of this e-?mail is prohibited\.?",
+    r"Thank you for your compliance\.?",
+    r"Confidentiality Notice:.{0,600}?original message\.\s*(Thank [Yy]ou\.?)?",
+    r"Please note that you may not rely on email communication[^.]*\.",
+    r"[A-Za-z ]+would love your feedback\. Post a Review to our profile\.\s*\S*",
+    r"even if addressed incorrectly\.?",
+    r"please notify the sender;?",
+    r"or take any action in reliance on the contents of this information;?",
+]
+
+QUOTE_HEAD = re.compile(r"(From|De)\s*:\s*[^:]{0,80}?(<[^>]+@[^>]+>|@)", re.I)
+
+
+def _strip_noise(text):
+    # Outlook/Word CSS + VML fragments (e.g. "v\:* {behavior:url(#default#VML);}")
+    text = re.sub(r"[\w.\\:*#\- ]{0,24}\{[^{}]{0,220}\}", " ", text)
+    text = text.replace("\u00a0", " ").replace("\ufffd", "'")
+    for pat in DISCLAIMER_PATTERNS:
+        text = re.sub(pat, " ", text, flags=re.I)
+    return text
+
+
+def _rebreak_headers(text):
+    """The export flattens quoted messages onto single lines. Re-insert line
+    breaks so From/Sent/To/Cc/Subject read like an email header block."""
+    text = QUOTE_HEAD.sub(lambda m: "\n\n" + m.group(0), text)
+    for h in ("Sent", "To", "Cc", "Subject", "Importance", "Enviado", "Para", "Asunto"):
+        text = re.sub(rf"(?<!\n)\s(?={h}\s*:\s)", "\n", text)
+    # a quoted body often runs straight on after the Subject line — break at
+    # the first greeting-like word so the message text starts on its own line
+    text = re.sub(
+        r"((?:Subject|Asunto)\s*:[^\n]{0,140}?)\s"
+        r"(?=(Hello|Hi |Hey |Good (morning|afternoon|evening)|Dear |Thank you|"
+        r"Thanks|Attached|Please|Following|Buenas|Buenos|Hola)\b)",
+        r"\1\n\n", text)
+    return text
+
+
+def _paragraphs(text):
+    lines = [re.sub(r"[ \t]{2,}", " ", l).strip() for l in text.splitlines()]
     text = "\n".join(lines)
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
-    return text[:3500]
+    return text
+
+
+def clean_body(body):
+    """Returns (own_text, quoted_text): the message's own words, and the
+    quoted/forwarded history it carried (both cleaned and re-broken)."""
+    if not body:
+        return "", ""
+    body = _rebreak_headers(_strip_noise(body))
+    m = QUOTE_HEAD.search(body)
+    if m and m.start() > 30:
+        own, quoted = body[:m.start()], body[m.start():]
+    else:
+        own, quoted = body, ""
+    return _paragraphs(own)[:3000], _paragraphs(quoted)[:6000]
 
 
 VERDICT_COLORS = {"correct": "#1a7f37", "questionable": "#b58105", "incorrect": "#c62828"}
@@ -247,8 +290,22 @@ def main():
         for m in msgs:
             team = is_team_message(m)
             who = "YOUR TEAM" if team else "CLIENT / REQUESTER"
-            body = clean_body(m.get("body"))
-            body_html = html.escape(body) if body else "<i>(no body — sent-items export has attachments only)</i>"
+            own, quoted = clean_body(m.get("body"))
+            if own:
+                paras = "".join(
+                    f"<p>{html.escape(p)}</p>"
+                    for p in re.split(r"\n{2,}", own) if p.strip()
+                )
+                body_html = paras.replace("\n", "<br>")
+            else:
+                body_html = "<i>(no body — sent-items export has attachments only)</i>"
+            if quoted:
+                q_paras = "".join(
+                    f"<p>{html.escape(p)}</p>"
+                    for p in re.split(r"\n{2,}", quoted) if p.strip()
+                ).replace("\n", "<br>")
+                body_html += (f"<details class='quoted'><summary>quoted history in this email</summary>"
+                              f"<div class='qbody'>{q_paras}</div></details>")
             att_links = []
             for a in m.get("attachments", []):
                 label = "sent in response" if team else "came with request"
@@ -330,7 +387,12 @@ def main():
  .msghead {{ font-size: 11.5px; color: #555; display: flex; gap: 10px; flex-wrap: wrap; }}
  .who {{ font-weight: 700; }}
  .msg.client .who {{ color: #2e7dd1; }} .msg.team .who {{ color: #1a7f37; }}
- .mbody {{ font-size: 12.5px; white-space: pre-wrap; margin: 6px 0; max-height: 260px; overflow-y: auto; }}
+ .mbody {{ font-size: 12.5px; margin: 6px 0; max-height: 300px; overflow-y: auto; }}
+ .mbody p {{ margin: 0 0 8px 0; line-height: 1.45; }}
+ .quoted summary {{ font-size: 11.5px; color: #8e8e93; cursor: pointer; margin-top: 4px; }}
+ .qbody {{ border-left: 3px solid #d0d0d5; padding-left: 10px; margin-top: 6px; color: #555;
+           font-size: 12px; max-height: 320px; overflow-y: auto; }}
+ .qbody p {{ margin: 0 0 8px 0; line-height: 1.4; }}
  .atts {{ display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }}
  .att {{ font-size: 12px; text-decoration: none; background: #fff; border: 1px solid #c9c9ce;
          border-radius: 5px; padding: 3px 8px; color: #1c1c1e; }}
