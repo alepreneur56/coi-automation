@@ -1,0 +1,2195 @@
+{
+  "summary": {
+    "generated": "2026-07-02T17:43:13.617811",
+    "archive": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE",
+    "total_pdf_attachments_swept": 1058,
+    "unique_docs_cataloged": 44,
+    "excluded": {
+      "scanned_no_hint": 130,
+      "plain_acord_cert": 154,
+      "carrier_policy_doc": 95,
+      "no_requirement_language": 590,
+      "carrier_application": 19,
+      "legal_filing": 4,
+      "issued_cert_sent_only": 14
+    },
+    "by_doc_type": {
+      "requirements_exhibit": 4,
+      "full_contract": 2,
+      "sample_coi_with_requirements": 23,
+      "vendor_packet": 1,
+      "unknown": 14
+    },
+    "by_client": {
+      "unmatched": 16,
+      "ajf_roofing": 6,
+      "apogee_hvac": 7,
+      "central_comfort_ac": 3,
+      "rolandos_hvac": 12
+    },
+    "ocr_needed_count": 13
+  },
+  "documents": [
+    {
+      "sha1": "fd027d95a1d8986103120f5eeabb1abe57738ee4",
+      "filename": "1. Moriarty Insurance Requirements.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00865_Re_ Business Insurance Meeting Recap & Next Steps/attachments/1. Moriarty Insurance Requirements.pdf",
+      "page_count": 4,
+      "doc_type": "requirements_exhibit",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "coi_must",
+        "insurance_requirements_heading",
+        "minimum_limits",
+        "primary_noncontributory_required",
+        "shall_maintain",
+        "umbrella_excess_required"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Re: Business Insurance Meeting Recap & Next Steps",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Failure of any party to provide such certificates of insurance will not be relief from the responsibility to carry and maintain such insurance."
+        },
+        {
+          "families": [
+            "insurance_requirements_heading",
+            "shall_maintain"
+          ],
+          "text": "Subcontractor shall obtain insurance coverage from each of its sub-subcontractors that is equal to or greater than that coverage required of Subcontractor as set forth in this Article 8 prior to their mobilization at the jobsite, as per Article 8 of this Subcontract, and Subcontractor shall insure that the insurance requirements set forth herein become and are part of any purchase order or sub- su"
+        },
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "Should the sub-tier subcontractor not meet the insurance requirements as outlined in Article 8 whether allowed to perform any work or not, any gaps in any insurance coverages shall become the sole responsibility of this Subcontractor."
+        },
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "NO ELIGIBLE SUBCONTRACTOR SHALL COMMENCE WORK AT THE JOBSITE UNTIL THEY HAVE BEEN PROPERLY ENROLLED IN THE OCIP/CCIP AND HAVE RECEIVED A CERTIFICATE OF INSURANCE EVIDENCING THEIR ENROLLMENT Subcontractor is required to purchase and maintain the below insurance coverage."
+        },
+        {
+          "families": [
+            "additional_insured_required"
+          ],
+          "text": "and John Moriarty & Associates, Inc., Owner and all other parties required of the General Contractor, shall be included an additional insured on the CGL, using ISO additional insured endorsement"
+        },
+        {
+          "families": [
+            "additional_insured_required"
+          ],
+          "text": "This insurance for the additional insureds shall be as broad as the coverage provided for the named insured subcontractor."
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "It shall apply as Primary and Non-contributory Insurance before any other insurance or self-insurance, including any deductible, maintained by, or provided to, the additional insureds."
+        },
+        {
+          "families": [
+            "additional_insured_required",
+            "umbrella_excess_required"
+          ],
+          "text": "c) Umbrella or Excess coverage must include as insureds all entities that are additional insureds on the CGL."
+        },
+        {
+          "families": [
+            "additional_insured_required"
+          ],
+          "text": "The insurance for the additional insureds shall be as broad as the coverage provided under the CGL."
+        },
+        {
+          "families": [
+            "additional_insured_required",
+            "primary_noncontributory_required",
+            "umbrella_excess_required"
+          ],
+          "text": "d) Umbrella or Excess coverage for such additional insureds shall apply as Primary Non-contributory before any other insurance or self-insurance, including any deductible, maintained by, or provided to, the additional insureds."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00865_Re_ Business Insurance Meeting Recap & Next Steps/attachments/1. Moriarty Insurance Requirements.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Re: Business Insurance Meeting Recap & Next Steps",
+          "message_from": "Herminia Avelino",
+          "message_date": "2026-02-19 15:20:26"
+        }
+      ]
+    },
+    {
+      "sha1": "fa433fb00b975002f44a1922d81fea4b1d3f6b55",
+      "filename": "Sal's Roofing & AJF Roofing Subcontractor Agreement Updated to Include Umbrella Coverage..pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-13_171839_Ref_ Subcontractor Agreement Update for CNA Insura_9996548/attachments/Sal's Roofing & AJF Roofing Subcontractor Agreement Updated to Include Umbrella Coverage..pdf",
+      "page_count": 17,
+      "doc_type": "full_contract",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "coi_must",
+        "hold_harmless",
+        "indemnification",
+        "minimum_limits",
+        "notice_of_cancellation",
+        "primary_noncontributory_required",
+        "shall_maintain"
+      ],
+      "filename_hint": true,
+      "client": "ajf_roofing",
+      "thread_subject": "Ref_ Subcontractor Agreement Update for CNA Insura",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [
+        {
+          "families": [
+            "shall_maintain"
+          ],
+          "text": "The Subcontractor shall maintain policies of insurance covering workmen's compensation, commercial general liability, umbrella, business automobile liability, and such other forms of insurance required by the Contract Documents."
+        },
+        {
+          "families": [
+            "shall_maintain",
+            "coi_must"
+          ],
+          "text": "Subcontractor shall provide certificates of insurance for all such policies prior to commencing work."
+        },
+        {
+          "families": [
+            "additional_insured_required",
+            "primary_noncontributory_required"
+          ],
+          "text": "Subcontractor and its subcontractors shall include Contractor as an Additional Insured for Subcontractor work during construction and as Additional Insured for Products and Completed Operations under the Commercial General Liability Coverage and Umbrella Coverage on a Primary and Noncontributing basis insurance by including the following language on the certificate of insurance;"
+        },
+        {
+          "families": [
+            "indemnification"
+          ],
+          "text": "Subcontractor will hold Contractor harmless from claims arising from insufficient insurance coverage as required herein and will indemnify Contractor from any negligent act of subcontractor."
+        },
+        {
+          "families": [
+            "notice_of_cancellation"
+          ],
+          "text": "All policies shall provide that thirty (30) days written notice of cancellation or change in coverage will be given to Contractor prior to effective date of change in cancellation."
+        },
+        {
+          "families": [
+            "indemnification"
+          ],
+          "text": "INDEMNIFICATION 31."
+        },
+        {
+          "families": [
+            "hold_harmless",
+            "indemnification"
+          ],
+          "text": "Subcontractor, his employees, agents, and lower tier subcontractors shall, as allowed by law, indemnify, defend, and hold harmless the Contractor, it's agents, employees, servants and the Owner from all claims, damages, loss and expense, including attorneys' fees, resulting in property damage, bodily injury, disease or death, arising or alleged to arise out of or resulting from or in connection wi"
+        },
+        {
+          "families": [
+            "minimum_limits"
+          ],
+          "text": "All work shall be performed in a professional (non-sloppy) manner with a minimum amount of damage to surfaces and/or other trades."
+        },
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Contractor must have a current certificate of insurance, with acceptable limits to the Contractor, prior to subcontractor performing work and subcontractor must maintain coverage for the duration of subcontractor's work on the project."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-13_171839_Ref_ Subcontractor Agreement Update for CNA Insura_9996548/attachments/Sal's Roofing & AJF Roofing Subcontractor Agreement Updated to Include Umbrella Coverage..pdf",
+          "folder": "Sent Items",
+          "thread_subject": "Ref_ Subcontractor Agreement Update for CNA Insura",
+          "message_from": "",
+          "message_date": "2026-02-13"
+        },
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-17_172622_RE_ Quote Subjectivity FollowUp - AJF ROOFING BIND_10014052/attachments/Sal's Roofing & AJF Roofing Subcontractor Agreement Updated to Include Umbrella Coverage..pdf",
+          "folder": "Sent Items",
+          "thread_subject": "RE_ Quote Subjectivity FollowUp - AJF ROOFING BIND",
+          "message_from": "",
+          "message_date": "2026-02-17"
+        }
+      ]
+    },
+    {
+      "sha1": "5a4449aa915c0b2f3ed44bac75b73964c1a809e1",
+      "filename": "FL - Client Setup Core Packet.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00357_Fw_ Final Steps - Business Insurance Solutions/attachments/FL - Client Setup Core Packet.pdf",
+      "page_count": 20,
+      "doc_type": "full_contract",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "hold_harmless",
+        "indemnification",
+        "minimum_limits",
+        "notice_of_cancellation",
+        "shall_maintain"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Fw: Final Steps - Business Insurance Solutions",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "shall_maintain"
+          ],
+          "text": "In such states, Client shall provide SPLI with its state identification number used for reporting state unemployment insurance and shall forward all state unemployment information and notices to SPLI within five (5) business days of receipt."
+        },
+        {
+          "families": [
+            "indemnification"
+          ],
+          "text": "Without regard to the fault or negligence of any party, Client indemnifies, holds harmless, protects and defends all SPLI Indemnified Parties (as hereafter defined) from any claims and liabilities that may arise as a result of the improper reporting of such information by Client to SPLI."
+        },
+        {
+          "families": [
+            "shall_maintain"
+          ],
+          "text": "Client shall obtain a certificate evidencing workers' compensation insurance coverage with respect to any independent contractor, subcontractor, and the employees of any such independent contractor or subcontractor engaged or hired by Client."
+        },
+        {
+          "families": [
+            "shall_maintain"
+          ],
+          "text": "Client shall maintain workers\u2019 compensation insurance coverage for all employees of Client working for Client that are not covered by this Agreement."
+        },
+        {
+          "families": [
+            "shall_maintain"
+          ],
+          "text": "Furthermore, in states requiring same, Client agrees to maintain separate workers\u2019 compensation insurance covering Leased Employees."
+        },
+        {
+          "families": [
+            "notice_of_cancellation"
+          ],
+          "text": "Not later than five business days after its execution and delivery of this Agreement, Client shall cause its insurance carrier to issue a certificate of insurance to SPLI verifying such coverage and providing for not less than 30 days\u2019 prior written notice to SPLI of cancellation of or any changes to such coverage and identify SPLI as an additional insured."
+        },
+        {
+          "families": [
+            "shall_maintain",
+            "minimum_limits"
+          ],
+          "text": "Client agrees to keep in full force and effect at all times during the Term of this Agreement a comprehensive general liability insurance policy in the minimum limit of One Million Dollars ($1,000,000) insuring Client against bodily injury and property damage caused by Client's premises-operations or completed operations."
+        },
+        {
+          "families": [
+            "notice_of_cancellation"
+          ],
+          "text": "Not later than five business days after the execution and delivery of this Agreement, Client shall cause its insurance carrier to issue a certificate of insurance to SPLI verifying such coverage and providing for not less than 30 days\u2019 prior written notice to SPLI of cancellation of or any changes to such coverage and identify SPLI as an additional insured."
+        },
+        {
+          "families": [
+            "shall_maintain",
+            "minimum_limits"
+          ],
+          "text": "If any Leased Employee performs any duties which requires the maintenance of a professional license and corresponding professional liability insurance, Client agrees to keep in full force and effect during the Term professional liability insurance which shall cover any acts, errors or omissions, including but not limited to the negligent acts of the professional Leased Employee with a minimum limi"
+        },
+        {
+          "families": [
+            "shall_maintain",
+            "indemnification"
+          ],
+          "text": "Client agrees to provide continuation of health insurance coverage required by COBRA to any and all eligible participants in Client\u2019s current plan or upon termination or expiration of this Agreement, and indemnifies, holds harmless, protects and defends all SPLI Indemnified Parties from any claims and liabilities therefor."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00357_Fw_ Final Steps - Business Insurance Solutions/attachments/FL - Client Setup Core Packet.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Fw: Final Steps - Business Insurance Solutions",
+          "message_from": "Jason Fondeur",
+          "message_date": "2026-01-28 21:33:50"
+        }
+      ]
+    },
+    {
+      "sha1": "b5214dc0efe50b67426f2c6154da8e4f848b75eb",
+      "filename": "2026 NV2A AJF COI - Legit Template.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-11_012737_Chiller Medic_11132964/attachments/2026 NV2A AJF COI - Legit Template.pdf",
+      "page_count": 12,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "indemnification",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": true,
+      "client": "ajf_roofing",
+      "thread_subject": "Chiller Medic",
+      "what_happened_in_thread": "coi_delivered \u2014 we sent an ACORD cert in this thread (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": true,
+        "clients_on_certs": [
+          "ajf_roofing",
+          "absolute_air_solutions",
+          "rolandos_hvac",
+          "central_comfort_ac",
+          "emp3_solutions",
+          "gd_mechanical"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "above, the coverage provided by this policy shall be on a primary non-contributory basis."
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Primary and Noncontributory Insurance With respect to other insurance available to the additional insured under which the additional insured is a named insured, this insurance is primary to and will not seek contribution from such other insurance, provided that a written contract requires the insurance provided by this policy to be:"
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Primary and non-contributing with other insurance available to the additional insured;"
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "However, if the written contract requires this insurance to be primary and non-contributory, this paragraph 3."
+        },
+        {
+          "families": [
+            "indemnification"
+          ],
+          "text": "The Insurer has no duty to defend or indemnify an additional insured under this endorsement until the Insurer receives written notice of a claim from the additional insured."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-11_012737_Chiller Medic_11132964/attachments/2026 NV2A AJF COI - Legit Template.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "Chiller Medic",
+          "message_from": "",
+          "message_date": "2026-04-11"
+        },
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-11_165508_RE_ Chiller Medic_11138340/attachments/2 - AJF Roofing Template.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "RE_ Chiller Medic",
+          "message_from": "",
+          "message_date": "2026-04-11"
+        }
+      ],
+      "direction": "sent_only"
+    },
+    {
+      "sha1": "c4314db21c7e73262d9060e1a813f36b5ee171ed",
+      "filename": "2026 NV2A AJF COI.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00457_RE_ SDTOC _ AJF COI/attachments/2026 NV2A AJF COI.pdf",
+      "page_count": 12,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "indemnification",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": false,
+      "client": "ajf_roofing",
+      "thread_subject": "RE: SDTOC | AJF COI",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "ajf_roofing"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "above, the coverage provided by this policy shall be on a primary non-contributory basis."
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Primary and Noncontributory Insurance With respect to other insurance available to the additional insured under which the additional insured is a named insured, this insurance is primary to and will not seek contribution from such other insurance, provided that a written contract requires the insurance provided by this policy to be:"
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Primary and non-contributing with other insurance available to the additional insured;"
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "However, if the written contract requires this insurance to be primary and non-contributory, this paragraph 3."
+        },
+        {
+          "families": [
+            "indemnification"
+          ],
+          "text": "The Insurer has no duty to defend or indemnify an additional insured under this endorsement until the Insurer receives written notice of a claim from the additional insured."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00457_RE_ SDTOC _ AJF COI/attachments/2026 NV2A AJF COI.pdf",
+          "folder": "Inbox",
+          "thread_subject": "RE: SDTOC | AJF COI",
+          "message_from": "Andrea Vargas",
+          "message_date": "2026-01-30 21:38:56"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "1cfcc4b5ae58b77e589bf8c2228f2423ec037a9d",
+      "filename": "52491592_1 Homes South Beach 1 Hotel South Beach_01212026.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00225_FW_ Apogee HVAC Solutions COI/attachments/52491592_1 Homes South Beach 1 Hotel South Beach_01212026.pdf",
+      "page_count": 2,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required",
+        "umbrella_excess_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": false,
+      "client": "apogee_hvac",
+      "thread_subject": "FW: Apogee HVAC Solutions COI",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "apogee_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "additional_insured_required",
+            "primary_noncontributory_required"
+          ],
+          "text": "SAGITTA 25.3 (2016/03) DESCRIPTIONS (Continued from Page 1) Certificate Holder is named as additional insured, on a primary and non-contributory basis, with regard to General Liability, including Ongoing Operations, as well as products and completed operations when requested by Executed Written Contract."
+        },
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "Waiver of Subrogation applies in favor of the additional insured regarding the General Liability when requested by Executed Written Contract."
+        },
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "Excess Liability is Follow Form over the Underlying General Liability Waiver of Subrogation applies in favor of the holder regarding the Workers Compensation when requested by Executed Written Contract."
+        },
+        {
+          "families": [
+            "umbrella_excess_required"
+          ],
+          "text": "0 Excess Liability Each Occ Limit:"
+        },
+        {
+          "families": [
+            "umbrella_excess_required"
+          ],
+          "text": "$4,000,000 Excess Liability Aggregate Limit:"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00225_FW_ Apogee HVAC Solutions COI/attachments/52491592_1 Homes South Beach 1 Hotel South Beach_01212026.pdf",
+          "folder": "Inbox",
+          "thread_subject": "FW: Apogee HVAC Solutions COI",
+          "message_from": "Janice Lacayo",
+          "message_date": "2026-01-21 15:54:48"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "3cfa88b15b77513896d6548a1b1c33938353020d",
+      "filename": "AJF Roofing Inc_Camcon Group LLC.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00241_AJF ROOFING/attachments/AJF Roofing Inc_Camcon Group LLC.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "notice_of_cancellation",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": false,
+      "client": "ajf_roofing",
+      "thread_subject": "AJF ROOFING",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "ajf_roofing"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "additional_insured_required",
+            "primary_noncontributory_required"
+          ],
+          "text": "7495 NW 7th Street, Suite 10 Miami, FL 33126 N 3,000,000 Roofing Contractor AJF Roofing Inc., License #CCC-1331111, GC LIC# CGC1530450, Solar LIC# CVC5714 Camcon Group LLC, its respective officers, employees and agents are named as additional insured, on a primary and non-contributory basis, with regard to Business Auto and to General Liability, including products and completed operations."
+        },
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "Waiver of Subrogation applies in favor of the additional insureds with regard to General Liability, Business Auto, and Workers Compensation."
+        },
+        {
+          "families": [
+            "notice_of_cancellation"
+          ],
+          "text": "30 days notice of cancellation applies to all policies, with 10 days notice for non-payment."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00241_AJF ROOFING/attachments/AJF Roofing Inc_Camcon Group LLC.pdf",
+          "folder": "Inbox",
+          "thread_subject": "AJF ROOFING",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-01-21 20:41:56"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "8d87c7538637fccbfdbed6faff1c14e21488bc5b",
+      "filename": "MDSO Project RPQ PDC-W25014 Property and Evidence Warehouse Roof Replacement. Addendum No. 1 (2).pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00559_Request for Certificate of Insurance/attachments/MDSO Project RPQ PDC-W25014 Property and Evidence Warehouse Roof Replacement. Addendum No. 1 (2).pdf",
+      "page_count": 3,
+      "doc_type": "requirements_exhibit",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "hold_harmless",
+        "indemnification",
+        "insurance_requirements_heading",
+        "minimum_limits"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Request for Certificate of Insurance",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 1
+      },
+      "excerpts": [
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "Project Insurance requirements are part of Addendum No.1 herein:"
+        },
+        {
+          "families": [
+            "hold_harmless",
+            "indemnification"
+          ],
+          "text": "INDEMNIFICATION AND INSURANCE Contractor shall indemnify and hold harmless the County and its officers, employees, agents and instrumentalities from any and all liability, losses or damages, including attorneys\u2019 fees and costs of defense, which the County or its officers, employees, agents or instrumentalities may incur as a result of claims, demands, suits, causes of actions or proceedings of any"
+        },
+        {
+          "families": [
+            "indemnification"
+          ],
+          "text": "Contractor expressly understands and agrees that any insurance protection required by this Agreement or otherwise provided by Contractor shall in no way limit the responsibility to indemnify, keep and save harmless and defend the County or its officers, employees, agents and instrumentalities as herein provided."
+        },
+        {
+          "families": [
+            "minimum_limits"
+          ],
+          "text": "Commercial General Liability Insurance in an amount not less than $1,000,000 per occurrence, and $2,000,000 in the aggregate, not to exclude Products and Completed Operations."
+        },
+        {
+          "families": [
+            "minimum_limits"
+          ],
+          "text": "Automobile Liability Insurance covering all owned, non-owned and hired vehicles used in connection with the work, in an amount not less than $1,000,000 combined single limit per occurrence for bodily injury and property damage."
+        },
+        {
+          "families": [
+            "minimum_limits"
+          ],
+          "text": "Riggers Liability Insurance in an amount not less than $1,000,000 per occurrence, and $2,000,000 in the aggregate, in the name of the contractor or subcontractor performing any work involving rigging, lifting, lowering, or moving of property or equipment."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00559_Request for Certificate of Insurance/attachments/MDSO Project RPQ PDC-W25014 Property and Evidence Warehouse Roof Replacement. Addendum No. 1 (2).pdf",
+          "folder": "Inbox",
+          "thread_subject": "Request for Certificate of Insurance",
+          "message_from": "AJF Roofing Assistant",
+          "message_date": "2026-02-04 14:00:24"
+        },
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-04_153040_RE_ Request for Certificate of Insurance_9689732/attachments/MDSO Project RPQ PDC-W25014 Property and Evidence Warehouse Roof Replacement. Addendum No. 1 (2).pdf",
+          "folder": "Sent Items",
+          "thread_subject": "RE_ Request for Certificate of Insurance",
+          "message_from": "",
+          "message_date": "2026-02-04"
+        }
+      ]
+    },
+    {
+      "sha1": "563b21e04b9024b6b292f707846ea191ef3fbcc3",
+      "filename": "Sample Subcontractor Certificate.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00240_FW_ URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO/attachments/Sample Subcontractor Certificate.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "notice_of_cancellation",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "FW: URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "additional_insured_required",
+            "primary_noncontributory_required"
+          ],
+          "text": "Camcon Group LLC, its respective officers, employees and agents are named as additional insured, on a primary and non-contributory basis, with regard to Business Auto and to General Liability, including products and completed operations."
+        },
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "Waiver of Subrogation applies in favor of the additional insureds with regard to General Liability, Business Auto, and Workers Compensation."
+        },
+        {
+          "families": [
+            "notice_of_cancellation"
+          ],
+          "text": "30 days notice of cancellation applies to all policies, with 10 days notice for non-payment."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00240_FW_ URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO/attachments/Sample Subcontractor Certificate.pdf",
+          "folder": "Inbox",
+          "thread_subject": "FW: URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO",
+          "message_from": "Janette Diaz",
+          "message_date": "2026-01-21 20:16:29"
+        },
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00668_Request certificate/attachments/Sample Subcontractor Certificate.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Request certificate",
+          "message_from": "AJF Roofing Assistant",
+          "message_date": "2026-02-09 17:55:52"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "def0bbd795b81497f354b6ee16e66462b0bdaadd",
+      "filename": "24-25 COI - Paraiso Bay Condominium Association Inc..pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00283_URGENT RUSH RUSH - TECH ON THE WAY/attachments/24-25 COI - Paraiso Bay Condominium Association Inc..pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": false,
+      "client": "central_comfort_ac",
+      "thread_subject": "URGENT RUSH RUSH - TECH ON THE WAY",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (4 msgs in thread)",
+      "thread_info": {
+        "message_count": 4,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "central_comfort_ac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "Waiver of Subrogation applies where required by signed, written contract."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00283_URGENT RUSH RUSH - TECH ON THE WAY/attachments/24-25 COI - Paraiso Bay Condominium Association Inc..pdf",
+          "folder": "Inbox",
+          "thread_subject": "URGENT RUSH RUSH - TECH ON THE WAY",
+          "message_from": "Administration",
+          "message_date": "2026-01-26 13:17:29"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "1bf1c28f67a61b0496252d91428e8f3ae9896eff",
+      "filename": "25-26 COI - Icon Bay Condominium Association, Kw Property Management & Consulting.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-17_141516_FW_ URGENT RUSH RUSH_11329700/attachments/25-26 COI - Icon Bay Condominium Association, Kw Property Management & Consulting.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": false,
+      "client": "central_comfort_ac",
+      "thread_subject": "FW_ URGENT RUSH RUSH",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "Waiver of Subrogation applies where required by signed, written contract."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-17_141516_FW_ URGENT RUSH RUSH_11329700/attachments/25-26 COI - Icon Bay Condominium Association, Kw Property Management & Consulting.pdf",
+          "folder": "Inbox",
+          "thread_subject": "FW_ URGENT RUSH RUSH",
+          "message_from": "",
+          "message_date": "2026-04-17"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "5ea440de1bc87fcbdb5c94fca3aa2c87ef8c9947",
+      "filename": "AP_New Vendor-Sub Setup_22_REQS-COI.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-14_180415_Bengoa Const. - W_C COI_11224388/attachments/AP_New Vendor-Sub Setup_22_REQS-COI.pdf",
+      "page_count": 2,
+      "doc_type": "vendor_packet",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Bengoa Const. - W_C COI",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "Waiver of subrogation in favor of additional insured for General Liability, Auto Liability, Workers Compensation."
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "General Liability is primary and non-contributory NOTE #2:"
+        },
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "On Workers Compensation - Waiver of subrogation in favor of Certificate Holder."
+        },
+        {
+          "families": [
+            "additional_insured_required",
+            "waiver_subrogation_required"
+          ],
+          "text": "Additional Insured and Waiver of subrogation boxes must be checked on all required coverages - Only if a job requires a COI, it will be requested separately, and that particular project will be the Certificate Holder and Additional Insured."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-14_180415_Bengoa Const. - W_C COI_11224388/attachments/AP_New Vendor-Sub Setup_22_REQS-COI.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Bengoa Const. - W_C COI",
+          "message_from": "",
+          "message_date": "2026-04-14"
+        }
+      ]
+    },
+    {
+      "sha1": "f79aee3aa0779f803bb6ee24496914cd906ac7b5",
+      "filename": "Apogee HVAC Solutions Template COI.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-04_031240_COIs_9687396/attachments/Apogee HVAC Solutions Template COI.pdf",
+      "page_count": 6,
+      "doc_type": "unknown",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": true,
+      "client": "apogee_hvac",
+      "thread_subject": "COIs",
+      "what_happened_in_thread": "coi_delivered \u2014 we sent an ACORD cert in this thread (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": true,
+        "clients_on_certs": [
+          "absolute_air_solutions",
+          "central_comfort_ac",
+          "emp3_solutions",
+          "gd_mechanical"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "A Waiver of Subrogation in favor of the Additional Insured applies to general liability policy, umbrella policy, and workers comp policy."
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Primary and Non-Contributory endorsement has been added with respects to the general liability and umbrella policies."
+        },
+        {
+          "families": [
+            "additional_insured_required"
+          ],
+          "text": "If coverage provided to the additional insured is required by a contract or agreement, the most we will pay on behalf of the additional insured is the amount of insurance:"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-04_031240_COIs_9687396/attachments/Apogee HVAC Solutions Template COI.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "COIs",
+          "message_from": "",
+          "message_date": "2026-02-04"
+        }
+      ]
+    },
+    {
+      "sha1": "f5fc0ab8f34aa94af14acb53c5409f80edef13aa",
+      "filename": "Insurance Requirements for Contractors 2.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00687_Brickell House Condominium COI - Apogee HVAC Solutions/attachments/Insurance Requirements for Contractors 2.pdf",
+      "page_count": 2,
+      "doc_type": "requirements_exhibit",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "coi_must",
+        "insurance_requirements_heading",
+        "minimum_limits"
+      ],
+      "filename_hint": true,
+      "client": "apogee_hvac",
+      "thread_subject": "Brickell House Condominium COI - Apogee HVAC Solutions",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 1
+      },
+      "excerpts": [
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "BRICKELLHOUSE CONDOMINIUM INSURANCE REQUIREMENTS CONTRACTORS THAT DO NOT HAVE UPDATED CERTIFICATES OF INSURANCE ON FILE WITH RECEIVING WILL NOT BE GRANTED ACCESS TO WORK UNTIL PROVIDED."
+        },
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Current Certificates of Insurance with the following requirements must be submitted to the Management Office prior to the contractor commencing work:"
+        },
+        {
+          "families": [
+            "minimum_limits"
+          ],
+          "text": "\u2713General Liability of at least $1,000,000, with both, Additional Insured and Waiver of Subrogation coverage for the Certificate Holder."
+        },
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "CERTIFICATE OF INSURANCE REQUIREMENTS GENERAL LIABILITY COVERAGE \u2013 We require a $1,000,000 minimum for each occurrence."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00687_Brickell House Condominium COI - Apogee HVAC Solutions/attachments/Insurance Requirements for Contractors 2.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Brickell House Condominium COI - Apogee HVAC Solutions",
+          "message_from": "Janice Lacayo",
+          "message_date": "2026-02-10 14:58:40"
+        }
+      ]
+    },
+    {
+      "sha1": "6671223f1dbc1e2eb5ac269005e144d46cc9b1e3",
+      "filename": "ROLANDO'S_H.V.A.C.LLC_COI_-_393537714_-_Progress_Residential__.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00677_Fwd_ [No action required] Congrats! Your business is covered/attachments/ROLANDO'S_H.V.A.C.LLC_COI_-_393537714_-_Progress_Residential__.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Fwd: [No action required] Congrats! Your business is covered with General Liability for another year",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "A Waiver of Subrogation applies in favor of this Certificate Holder on the following policies:"
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "This Certificate Holder is an Additional Insured on the General Liability policy on a primary and non-contributory basis."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00677_Fwd_ [No action required] Congrats! Your business is covered/attachments/ROLANDO'S_H.V.A.C.LLC_COI_-_393537714_-_Progress_Residential__.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Fwd: [No action required] Congrats! Your business is covered with General Liability for another year",
+          "message_from": "Rolando Mojarrieta",
+          "message_date": "2026-02-09 20:22:45"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "a68c8e53a26951f31336be6da31121fe581e5dc8",
+      "filename": "1 - Rolando's HVAC Template.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-11_165508_RE_ Chiller Medic_11138340/attachments/1 - Rolando's HVAC Template.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": true,
+      "client": "rolandos_hvac",
+      "thread_subject": "RE_ Chiller Medic",
+      "what_happened_in_thread": "coi_delivered \u2014 we sent an ACORD cert in this thread (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": true,
+        "clients_on_certs": [
+          "rolandos_hvac",
+          "ajf_roofing"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Policies are Primary and Non-Contributory."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-11_165508_RE_ Chiller Medic_11138340/attachments/1 - Rolando's HVAC Template.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "RE_ Chiller Medic",
+          "message_from": "",
+          "message_date": "2026-04-11"
+        }
+      ],
+      "direction": "sent_only"
+    },
+    {
+      "sha1": "75827b73d2c9eb0e51ae1a4fc38a7ae747501e25",
+      "filename": "3 Island Condominium Association, Inc.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00013_3 Island Condominium COI - Apogee HVAC Solutions LLC/attachments/3 Island Condominium Association, Inc.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "waiver_subrogation_required"
+      ],
+      "filename_hint": false,
+      "client": "apogee_hvac",
+      "thread_subject": "3 Island Condominium COI - Apogee HVAC Solutions LLC",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "apogee_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "additional_insured_required"
+          ],
+          "text": "640 South Miami Ave # 201 Miami, FL 33130 Evanston Insurance Co United States Liability Insurance Company A X X 3AA5119197 10/08/2023 10/08/2024 1,000,000 100,000 5,000 1,000,000 2,000,000 1,000,000 B XSL021C5177 10/08/2023 10/08/2024 5,000,000 5,000,000 DESCRIPTION OF OPERATIONS / LOCATIONS / VEHICLES (ACORD 101, Additional Remarks Schedule, may be attached if more space is required) CERTIFICATE "
+        },
+        {
+          "families": [
+            "waiver_subrogation_required"
+          ],
+          "text": "WAIVER OF SUBROGATION IN FAVOR OF THE ADDITIONAL INSURED."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00013_3 Island Condominium COI - Apogee HVAC Solutions LLC/attachments/3 Island Condominium Association, Inc.pdf",
+          "folder": "Inbox",
+          "thread_subject": "3 Island Condominium COI - Apogee HVAC Solutions LLC",
+          "message_from": "Janice Lacayo",
+          "message_date": "2026-01-09 18:15:19"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "b133d8ce79af05cecbd96d6f8928399e75b9a1dd",
+      "filename": "Checklist Subcontractor US prime revenue (Fire and Security).pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-20_180839_COI for Johnson Controls_11374084/attachments/Checklist Subcontractor US prime revenue (Fire and Security).pdf",
+      "page_count": 1,
+      "doc_type": "requirements_exhibit",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "coi_must",
+        "insurance_requirements_heading"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "COI for Johnson Controls",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Please provide a copy of the Certificate of Insurance (CoI) that meets the following criteria:"
+        },
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "\u2022 Umbrella Liability insurance may be used to supplement existing coverage, ensuring compliance with JCI\u2019s minimum insurance requirements."
+        },
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "This ensures compliance with JCI\u2019s insurance requirements and protects our business from liability in case of an accident, even if the vehicle isn\u2019t company-owned."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-20_180839_COI for Johnson Controls_11374084/attachments/Checklist Subcontractor US prime revenue (Fire and Security).pdf",
+          "folder": "Inbox",
+          "thread_subject": "COI for Johnson Controls",
+          "message_from": "",
+          "message_date": "2026-04-20"
+        }
+      ]
+    },
+    {
+      "sha1": "58ee000efb631b6dfd5f71436cf7a849bd02b973",
+      "filename": "COI Ritz Example.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00350_Ritz Carlton Key Biscayne COI - Apogee HVAC Solutions LLC/attachments/COI Ritz Example.pdf",
+      "page_count": 2,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": true,
+      "client": "apogee_hvac",
+      "thread_subject": "Ritz Carlton Key Biscayne COI - Apogee HVAC Solutions LLC",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "notice_of_cancellation"
+          ],
+          "text": "Per Florida Statute 45 day Notice of Cancellation except in the event of nonpayment of premium, then 10 day notice."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00350_Ritz Carlton Key Biscayne COI - Apogee HVAC Solutions LLC/attachments/COI Ritz Example.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Ritz Carlton Key Biscayne COI - Apogee HVAC Solutions LLC",
+          "message_from": "Janice Lacayo",
+          "message_date": "2026-01-28 19:39:10"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "cb95b6a28ae054ef8205e39202734c49bd8027d3",
+      "filename": "COI Template GL & CA.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-11_012737_Chiller Medic_11132964/attachments/COI Template GL & CA.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": true,
+      "client": "rolandos_hvac",
+      "thread_subject": "Chiller Medic",
+      "what_happened_in_thread": "coi_delivered \u2014 we sent an ACORD cert in this thread (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": true,
+        "clients_on_certs": [
+          "ajf_roofing",
+          "absolute_air_solutions",
+          "rolandos_hvac",
+          "central_comfort_ac",
+          "emp3_solutions",
+          "gd_mechanical"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 12/30/2025 Main Street Renewal and Amherst Group Properties, LLC are Additional Insured on primary and noncontributory basis under the General Liability c"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-11_012737_Chiller Medic_11132964/attachments/COI Template GL & CA.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "Chiller Medic",
+          "message_from": "",
+          "message_date": "2026-04-11"
+        }
+      ],
+      "direction": "sent_only"
+    },
+    {
+      "sha1": "5ba7e65a2f995c4db7f8c05bd1306a153023c24c",
+      "filename": "Rolando's HVAC COI_APC-ASBF, LP.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00354_Re_ COI/attachments/Rolando's HVAC COI_APC-ASBF, LP.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Re: COI",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (5 msgs in thread)",
+      "thread_info": {
+        "message_count": 5,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 01/29/2026 APC-ASBF, LP is Additional Insured on primary and noncontributory basis under the General Liability coverage for work performed by the Named In"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00354_Re_ COI/attachments/Rolando's HVAC COI_APC-ASBF, LP.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Re: COI",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-01-28 20:17:17"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "e20d0499ffdf4ee2475b4cc63c8068f4f3ea2471",
+      "filename": "Rolando's HVAC COI_Atrium Development Group.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00931_Re_ HVAC/attachments/Rolando's HVAC COI_Atrium Development Group.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Re: HVAC",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Ocala Industrial 3950 NW 11th St, Ocala, FL 34482, USA Atrium Development Group Atrium Management Company are Additional Insured on primary and noncontributory basis under the General Liability coverage for work performed by the Named Insured."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00931_Re_ HVAC/attachments/Rolando's HVAC COI_Atrium Development Group.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Re: HVAC",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-02-23 21:35:32"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "2a3496ee0894a9d40dc7dc28c2d616722c9fdcbd",
+      "filename": "Rolando's HVAC COI_Charlotte County Community Development.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00554_Re_ COI TO Charlotte County/attachments/Rolando's HVAC COI_Charlotte County Community Development.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Re: COI TO Charlotte County",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (7 msgs in thread)",
+      "thread_info": {
+        "message_count": 7,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 02/04/2026 Charlotte County Community Development are Additional Insured on primary and noncontributory basis under the General Liability coverage for wor"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00554_Re_ COI TO Charlotte County/attachments/Rolando's HVAC COI_Charlotte County Community Development.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Re: COI TO Charlotte County",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-02-04 14:52:57"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "ec2148617e8e061571b999fe9d90adecee429fb5",
+      "filename": "Rolando's HVAC COI_Charlotte County.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00493_Re_ COI TO Charlotte County/attachments/Rolando's HVAC COI_Charlotte County.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Re: COI TO Charlotte County",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (7 msgs in thread)",
+      "thread_info": {
+        "message_count": 7,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 02/02/2026 Main Street Renewal and Amherst Group Properties, LLC are Additional Insured on primary and noncontributory basis under the General Liability c"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00493_Re_ COI TO Charlotte County/attachments/Rolando's HVAC COI_Charlotte County.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Re: COI TO Charlotte County",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-02-02 17:35:18"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "83d16111ad8adfc605fbfdffc88052eeac96182c",
+      "filename": "Rolando's HVAC COI_Charlotte County.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00494_Re_ COI TO Charlotte County/attachments/Rolando's HVAC COI_Charlotte County.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Re: COI TO Charlotte County",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (7 msgs in thread)",
+      "thread_info": {
+        "message_count": 7,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 02/02/2026 Charlotte County are Additional Insured on primary and noncontributory basis under the General Liability coverage for work performed by the Nam"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00494_Re_ COI TO Charlotte County/attachments/Rolando's HVAC COI_Charlotte County.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Re: COI TO Charlotte County",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-02-02 17:41:32"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "f64b2f7ed4e20edfe1e461f92751f2aba5867452",
+      "filename": "Rolando's HVAC COI_Playland LLC.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00315_Rolando's HVAC COI_Playland LLC/attachments/Rolando's HVAC COI_Playland LLC.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Rolando's HVAC COI_Playland LLC",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 01/27/2026 Playland LLC and Slg family Investment LLC are Additional Insured on primary and noncontributory basis under the General Liability coverage for"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00315_Rolando's HVAC COI_Playland LLC/attachments/Rolando's HVAC COI_Playland LLC.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Rolando's HVAC COI_Playland LLC",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-01-27 16:00:15"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "ef9c62fc18ff68164a8d66ac5634c066187274d3",
+      "filename": "Rolando's HVAC_Test Entity.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00072_Re_ Rolando's HVAC COI - Test Entity Inc/attachments/Rolando's HVAC_Test Entity.pdf",
+      "page_count": 10,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Re: Rolando's HVAC COI - Test Entity Inc",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 12/30/2025 Main Street Renewal and Amherst Group Properties, LLC are Additional Insured on primary and noncontributory basis under the General Liability c"
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "01/13/2026 Test Entity Inc 12354 SW 57th Ave Miami, FL 33135 Test Entity, Inc is Additional Insured on primary and noncontributory basis under the General Liability coverage for work performed by the Named Insured."
+        },
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "Primary and Non-Contributory is part of CA-74829-0 Modify Liability Limit The above amendments result in a change in the premium as follows:"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00072_Re_ Rolando's HVAC COI - Test Entity Inc/attachments/Rolando's HVAC_Test Entity.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Re: Rolando's HVAC COI - Test Entity Inc",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-01-14 02:49:29"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "69653becd240850485cae51e6ca6fa180ac1038f",
+      "filename": "Rolando's HVAC_Test Entity.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00074_Rolando's HVAC COI - Test Entity Inc/attachments/Rolando's HVAC_Test Entity.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Rolando's HVAC COI - Test Entity Inc",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "primary_noncontributory_required"
+          ],
+          "text": "13683 786-355-0449 B CA-74829-0 12/15/2025 12/15/2026 A NRG-DBG-GL 15062 07/15/2025 07/15/2026 Trisura Specialty Insurance Company 16188 Main Street Renewal and Amherst Group Properties, LLC c/o VendorShield PO Box 1576 Hicksville, NY 11802-1576 12/30/2025 Main Street Renewal and Amherst Group Properties, LLC are Additional Insured on primary and noncontributory basis under the General Liability c"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00074_Rolando's HVAC COI - Test Entity Inc/attachments/Rolando's HVAC_Test Entity.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Rolando's HVAC COI - Test Entity Inc",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-01-14 02:32:14"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "3b99d6e7e7f0012d6331fe41658c18b6d848b87a",
+      "filename": "Stratus Sample Certificate of Insurance.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-20_174529_Fwd_ Stratus \u2013 Request for Updated Insurance - 305_11370468/attachments/Stratus Sample Certificate of Insurance.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required",
+        "primary_noncontributory_required"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Fwd_ Stratus \u2013 Request for Updated Insurance - 305",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [
+        {
+          "families": [
+            "additional_insured_required",
+            "primary_noncontributory_required"
+          ],
+          "text": "The additional insured coverage shall be primary and non-contributory to any other coverage afforded to the additional insureds."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-20_174529_Fwd_ Stratus \u2013 Request for Updated Insurance - 305_11370468/attachments/Stratus Sample Certificate of Insurance.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Fwd_ Stratus \u2013 Request for Updated Insurance - 305",
+          "message_from": "",
+          "message_date": "2026-04-20"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "dbedf760ef574712e40d0b6baa68383be8717ed5",
+      "filename": "Vendor Set Up Package (1).pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-21_144624_COI (Belle Tower)_11390532/attachments/Vendor Set Up Package (1).pdf",
+      "page_count": 13,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "coi_must",
+        "insurance_requirements_heading"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "COI (Belle Tower)",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Certificate of Insurance \u2022 Copy of DBPR License (If required by the State of Florida) \u2022 Security Companies Only \u2013 See below* * Security Companies only \u2013 The Certificate of Insurance must include Professional Liability OR Errors & Omissions ($1,000,000 minimum) Vendor agrees to the following:"
+        },
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "INSURANCE REQUIREMENTS (if applicable):"
+        },
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "\u2022 Certificates of Insurance must be on form # ACORD 25 (2016/03) or (2014/01)."
+        },
+        {
+          "families": [
+            "insurance_requirements_heading"
+          ],
+          "text": "\u2022 In the event that Vendor and Association have a written agreement that contains no insurance requirements, conflicts with the foregoing insurance language, or no written agreement exists between the Association and Vendor, the following insurance language shall control \u201cVendor shall cause Association and its property manager, KWPMC, to be included as additional insureds on a primary and non- con"
+        },
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Certificate of Insurance Copy of DBPR License (If required by the State of Florida) Security Companies only - Professional Liability Or Errors & Omissions COI PROFESSIONAL (i.e."
+        },
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Corporation Partnership Individual/Sole Proprietor 10 Days 15 Days 25 Days 30 Days Next Day PLEASE NOTE THE FOLLOWING REQUIREMENTS FOR CERTIFICATES OF INSURANCE LICENSE AND INSURANCE INFORMATION \u2022 Certificate Holder must list the names of the Property and KW Property Management & Consulting, LLC."
+        },
+        {
+          "families": [
+            "coi_must"
+          ],
+          "text": "Regardless of the \u201cEvidence\u201d reference in the title, these forms are certificates of insurance, and as stated in the forms, and as required by regulation, are issued as a matter of information only."
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-21_144624_COI (Belle Tower)_11390532/attachments/Vendor Set Up Package (1).pdf",
+          "folder": "Inbox",
+          "thread_subject": "COI (Belle Tower)",
+          "message_from": "",
+          "message_date": "2026-04-21"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "58898501de6d5ba1e422e604fc11ff22097d4751",
+      "filename": "2026 Sample COI for Tenants.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00779_Sample of COI/attachments/2026 Sample COI for Tenants.pdf",
+      "page_count": 1,
+      "doc_type": "sample_coi_with_requirements",
+      "ocr_needed": false,
+      "read_error": null,
+      "matched_families": [
+        "additional_insured_required"
+      ],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Sample of COI",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [
+        {
+          "families": [
+            "additional_insured_required"
+          ],
+          "text": "_________________________________________ Certificate Holder is named as additional insured Calhoun Warehouse Partnership Dennis Lee Calhoun Revocable Living Trust Kathryn Calhoun Revocable Living Trust Nancy D Calhoun Revocable Living Trust L Melvin Calhoun Revocable Living Trust 14175 SW 139th Court Miami, FL 33186 1,000,000 X"
+        }
+      ],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00779_Sample of COI/attachments/2026 Sample COI for Tenants.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Sample of COI",
+          "message_from": "Administration",
+          "message_date": "2026-02-12 21:23:45"
+        },
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-12_212751_Fw_ Sample of COI_9974244/attachments/2026 Sample COI for Tenants.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "Fw_ Sample of COI",
+          "message_from": "",
+          "message_date": "2026-02-12"
+        }
+      ],
+      "direction": "received"
+    },
+    {
+      "sha1": "5634a23f1785d5bd07f26081a0bc0fd931fe77c0",
+      "filename": "Apogee HVAC Solutions_THE PALACE CONDOMINIUM ASSOCIATION, INC.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00248_The Palace Condo Update COI - Apogee HVAC Solutions LLC/attachments/Apogee HVAC Solutions_THE PALACE CONDOMINIUM ASSOCIATION, INC.pdf",
+      "page_count": 1,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": "apogee_hvac",
+      "thread_subject": "The Palace Condo Update COI - Apogee HVAC Solutions LLC",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00248_The Palace Condo Update COI - Apogee HVAC Solutions LLC/attachments/Apogee HVAC Solutions_THE PALACE CONDOMINIUM ASSOCIATION, INC.pdf",
+          "folder": "Inbox",
+          "thread_subject": "The Palace Condo Update COI - Apogee HVAC Solutions LLC",
+          "message_from": "Janice Lacayo",
+          "message_date": "2026-01-22 17:52:56"
+        }
+      ]
+    },
+    {
+      "sha1": "bba595b37ff55058ca2aa3aacbeab82b9554182d",
+      "filename": "COI 2.16.26.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-15_133749_urgent rush rush_11248132/attachments/COI 2.16.26.pdf",
+      "page_count": 1,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": "central_comfort_ac",
+      "thread_subject": "urgent rush rush",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "central_comfort_ac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-15_133749_urgent rush rush_11248132/attachments/COI 2.16.26.pdf",
+          "folder": "Inbox",
+          "thread_subject": "urgent rush rush",
+          "message_from": "",
+          "message_date": "2026-04-15"
+        }
+      ]
+    },
+    {
+      "sha1": "33f6218558b40f4d2c1cb81abb8c6df908204538",
+      "filename": "COI 2026.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00452_FW_ SDTOC _ AJF COI/attachments/COI 2026.pdf",
+      "page_count": 1,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": "ajf_roofing",
+      "thread_subject": "FW: SDTOC | AJF COI",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "ajf_roofing"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00452_FW_ SDTOC _ AJF COI/attachments/COI 2026.pdf",
+          "folder": "Inbox",
+          "thread_subject": "FW: SDTOC | AJF COI",
+          "message_from": "Janette Diaz",
+          "message_date": "2026-01-30 20:15:36"
+        },
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-01-30_204423_FW_ SDTOC _ AJF COI_9572772/attachments/COI 2026.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "FW_ SDTOC _ AJF COI",
+          "message_from": "",
+          "message_date": "2026-01-30"
+        }
+      ]
+    },
+    {
+      "sha1": "2bf448982eac45cfeef974b59419314b87193bfe",
+      "filename": "COI Sample.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00172_DUA COI - Apogee HVAC Solutions LLC/attachments/COI Sample.pdf",
+      "page_count": 1,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": true,
+      "client": "apogee_hvac",
+      "thread_subject": "DUA COI - Apogee HVAC Solutions LLC",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00172_DUA COI - Apogee HVAC Solutions LLC/attachments/COI Sample.pdf",
+          "folder": "Inbox",
+          "thread_subject": "DUA COI - Apogee HVAC Solutions LLC",
+          "message_from": "Janice Lacayo",
+          "message_date": "2026-01-16 18:38:05"
+        }
+      ]
+    },
+    {
+      "sha1": "99da105fc2c40e27ffc5ebee00379b30d6cf4247",
+      "filename": "GAF - AJF Roofing COI 2021-22.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00240_FW_ URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO/attachments/GAF - AJF Roofing COI 2021-22.pdf",
+      "page_count": 1,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": "ajf_roofing",
+      "thread_subject": "FW: URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00240_FW_ URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO/attachments/GAF - AJF Roofing COI 2021-22.pdf",
+          "folder": "Inbox",
+          "thread_subject": "FW: URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO",
+          "message_from": "Janette Diaz",
+          "message_date": "2026-01-21 20:16:29"
+        }
+      ]
+    },
+    {
+      "sha1": "6fa9fb3390b4ea9135ad2411b117102de1eb2ba3",
+      "filename": "general liability policy .pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00357_Fw_ Final Steps - Business Insurance Solutions/attachments/general liability policy .pdf",
+      "page_count": 20,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": null,
+      "thread_subject": "Fw: Final Steps - Business Insurance Solutions",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00357_Fw_ Final Steps - Business Insurance Solutions/attachments/general liability policy .pdf",
+          "folder": "Inbox",
+          "thread_subject": "Fw: Final Steps - Business Insurance Solutions",
+          "message_from": "Jason Fondeur",
+          "message_date": "2026-01-28 21:33:50"
+        }
+      ]
+    },
+    {
+      "sha1": "335fe6ac9e42325bf208b564f241d047023904f8",
+      "filename": "Lakeside 2021-2022 insurance COI.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/01024_Loss runs/attachments/Lakeside 2021-2022 insurance COI.pdf",
+      "page_count": 1,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": null,
+      "thread_subject": "Loss runs",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/01024_Loss runs/attachments/Lakeside 2021-2022 insurance COI.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Loss runs",
+          "message_from": "Orlando Sierra",
+          "message_date": "2026-03-02 16:31:25"
+        }
+      ]
+    },
+    {
+      "sha1": "eb4ba9434131618e603712d63de712027abc0103",
+      "filename": "Lakeside 2025-2026 insurance COI.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/01024_Loss runs/attachments/Lakeside 2025-2026 insurance COI.pdf",
+      "page_count": 5,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": null,
+      "thread_subject": "Loss runs",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/01024_Loss runs/attachments/Lakeside 2025-2026 insurance COI.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Loss runs",
+          "message_from": "Orlando Sierra",
+          "message_date": "2026-03-02 16:31:25"
+        }
+      ]
+    },
+    {
+      "sha1": "81c08b3a5063df983b76b2eedec698bd46e84c0f",
+      "filename": "Lakeside COIs 2022-2023 & 2023-2024.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/01024_Loss runs/attachments/Lakeside COIs 2022-2023 & 2023-2024.pdf",
+      "page_count": 7,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": null,
+      "thread_subject": "Loss runs",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/01024_Loss runs/attachments/Lakeside COIs 2022-2023 & 2023-2024.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Loss runs",
+          "message_from": "Orlando Sierra",
+          "message_date": "2026-03-02 16:31:25"
+        }
+      ]
+    },
+    {
+      "sha1": "852bd5bbbb6832d5df680cf2db42a645c7743389",
+      "filename": "RFP.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-03-09_183137_Parker Services - Information Organized_10335780/attachments/RFP.pdf",
+      "page_count": 3,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Parker Services - Information Organized",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-03-09_183137_Parker Services - Information Organized_10335780/attachments/RFP.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "Parker Services - Information Organized",
+          "message_from": "",
+          "message_date": "2026-03-09"
+        }
+      ]
+    },
+    {
+      "sha1": "14148b239e97181f3b960ee1d9c7d4b88d669f76",
+      "filename": "Rolando's HVAC GL Blanket AI, PNCB, WOS End.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00074_Rolando's HVAC COI - Test Entity Inc/attachments/Rolando's HVAC GL Blanket AI, PNCB, WOS End.pdf",
+      "page_count": 4,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": "rolandos_hvac",
+      "thread_subject": "Rolando's HVAC COI - Test Entity Inc",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (2 msgs in thread)",
+      "thread_info": {
+        "message_count": 2,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [
+          "rolandos_hvac"
+        ],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00074_Rolando's HVAC COI - Test Entity Inc/attachments/Rolando's HVAC GL Blanket AI, PNCB, WOS End.pdf",
+          "folder": "Inbox",
+          "thread_subject": "Rolando's HVAC COI - Test Entity Inc",
+          "message_from": "Alejandro Bello",
+          "message_date": "2026-01-14 02:32:14"
+        }
+      ]
+    },
+    {
+      "sha1": "c8260c33cacd8fc01dd33e55a107e4a7481c05f1",
+      "filename": "Sample COI KW.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-08_150633_Fw_ URGENT RUSH RUSH_11049092/attachments/Sample COI KW.pdf",
+      "page_count": 1,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": true,
+      "client": null,
+      "thread_subject": "Fw_ URGENT RUSH RUSH",
+      "what_happened_in_thread": "thread_not_in_coi_corpus \u2014 the A3 miner did not classify this thread as COI traffic",
+      "thread_info": null,
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-04-08_150633_Fw_ URGENT RUSH RUSH_11049092/attachments/Sample COI KW.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "Fw_ URGENT RUSH RUSH",
+          "message_from": "",
+          "message_date": "2026-04-08"
+        }
+      ]
+    },
+    {
+      "sha1": "69f895422fc23fae9ffad1c6d88c40251c58ded8",
+      "filename": "STATE FARM - CANCELLATION REQUEST.pdf",
+      "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00955_FW_ Email Template To Request Cancellation of State Farm Pol/attachments/STATE FARM - CANCELLATION REQUEST.pdf",
+      "page_count": 4,
+      "doc_type": "unknown",
+      "ocr_needed": true,
+      "read_error": null,
+      "matched_families": [],
+      "filename_hint": false,
+      "client": null,
+      "thread_subject": "FW: Email Template To Request Cancellation of State Farm Policies",
+      "what_happened_in_thread": "no_coi_sent_found \u2014 thread is in the COI corpus but no sent cert was fingerprinted (1 msgs in thread)",
+      "thread_info": {
+        "message_count": 1,
+        "coi_sent_from_us": false,
+        "clients_on_certs": [],
+        "miner_flagged_requirements_docs": 0
+      },
+      "excerpts": [],
+      "occurrences": [
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00955_FW_ Email Template To Request Cancellation of State Farm Pol/attachments/STATE FARM - CANCELLATION REQUEST.pdf",
+          "folder": "Inbox",
+          "thread_subject": "FW: Email Template To Request Cancellation of State Farm Policies",
+          "message_from": "rkoo@ajfroofingfl.com",
+          "message_date": "2026-02-23 15:24:20"
+        },
+        {
+          "path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/NEW_2026-02-23_184004_Fw_ Email Template To Request Cancellation of Stat_10061636/attachments/STATE FARM - CANCELLATION REQUEST.pdf",
+          "folder": "Sent Items",
+          "thread_subject": "Fw_ Email Template To Request Cancellation of Stat",
+          "message_from": "",
+          "message_date": "2026-02-23"
+        }
+      ]
+    }
+  ]
+}

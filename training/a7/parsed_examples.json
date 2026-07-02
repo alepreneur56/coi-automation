@@ -1,0 +1,489 @@
+{
+  "description": "A7 ground truth: hand-parsed requirement details from the 12 richest requirements documents in the archive (see requirements_catalog.json for the full sweep). Each record is what a correct A7 extraction pass SHOULD produce for that document. Parsed manually from extracted PDF text on 2026-07-02 — no LLM involved. Dollar amounts are as written in the source document.",
+  "schema_note": "required_coverages[].limits keys mirror ACORD 25 limit boxes where possible so they can be compared 1:1 against registry template policies[].limits. 'conditional' marks coverages only required in certain situations (contract size, work type).",
+  "examples": [
+    {
+      "example_id": "moriarty_subcontract_article8",
+      "source_filename": "1. Moriarty Insurance Requirements.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00865_Re_ Business Insurance Meeting Recap & Next Steps/attachments/1. Moriarty Insurance Requirements.pdf",
+      "doc_type": "requirements_exhibit",
+      "requester": "John Moriarty & Associates of Florida, Inc. (general contractor)",
+      "client": null,
+      "thread_subject": "Re: Business Insurance Meeting Recap & Next Steps",
+      "what_happened_in_thread": "Not in COI corpus — arrived via an insurance-meeting recap thread (2026-02-19), pre-automation reference material.",
+      "certificate_holder": {
+        "name": null,
+        "address": null,
+        "instructions": "Certificates go to the GC's compliance platform: email to jmasubcerts@alliant.com (CertSoft, managed by Alliant Insurance Services). Copy of the CGL Additional Insured Endorsement must be ATTACHED to each certificate."
+      },
+      "required_coverages": [
+        {
+          "line": "Commercial General Liability",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "notes": "ISO Occurrence form CG 00 01 04 13 or equivalent. General Aggregate applies PER PROJECT. Completed Operations maintained through statute of repose. Residential exclusions not permitted."
+        },
+        {
+          "line": "Commercial Auto",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "notes": "All owned, leased, hired and non-owned vehicles; MCS-90 where applicable. GC + Owner included as insureds on the auto policy."
+        },
+        {
+          "line": "Umbrella/Excess Liability",
+          "limits": {
+            "each_occurrence": "5,000,000 (contracts over $500k) / 2,000,000 (contracts under $500k)",
+            "aggregate": "5,000,000 / 2,000,000"
+          },
+          "notes": "Tiered by contract value. Must include all CGL additional insureds; primary & non-contributory for AIs; aggregate per project."
+        },
+        {
+          "line": "Workers Compensation",
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "notes": "Statutory limits; NO exemptions accepted. Alternate Employer endorsement if employees are leased. USL&H and Maritime endorsements where applicable."
+        },
+        {
+          "line": "Equipment Floater",
+          "limits": {},
+          "notes": "Covers all tools/equipment/scaffolding/temporary structures. No dollar amount stated."
+        },
+        {
+          "line": "Pollution Liability",
+          "conditional": true,
+          "limits": {"each_occurrence": "1,000,000", "aggregate": "1,000,000"},
+          "notes": "'May be required upon award.' Contractor and Owner must be Additional Insureds."
+        },
+        {
+          "line": "Professional Liability",
+          "conditional": true,
+          "limits": {"per_claim": "2,000,000", "aggregate": "2,000,000"},
+          "notes": "Only if design services performed. Claims-made: retro date on/before first services; maintain through statute of repose (FS 95.11(3)(c))."
+        }
+      ],
+      "required_endorsements": [
+        "Additional insured on CGL via CG 20 10 (10/01 or 07/04) AND CG 20 37 (10/01 or 07/04) or equivalent — JMA of Florida, JMA Inc., Owner, and all parties required of the GC",
+        "Primary and non-contributory for additional insureds (CGL and Umbrella)",
+        "Waiver of subrogation in favor of Contractor, Owner, Architect (GL, Umbrella, Auto, WC/EL)",
+        "30 day cancellation / non-renewal provision on certificates and policies",
+        "Per-project general aggregate"
+      ],
+      "special_language": "OCIP/CCIP participation mandatory where the project has one (GL only); subs must not commence work until enrolled and holding a certificate evidencing enrollment.",
+      "why_instructive": "The richest single requirements doc in the archive: tiered umbrella limits by contract value, named ISO endorsement forms, conditional coverage lines the clients do not carry (pollution, professional), compliance-platform delivery instead of a mailing-address certificate holder."
+    },
+    {
+      "example_id": "mdso_rpq_addendum1",
+      "source_filename": "MDSO Project RPQ PDC-W25014 Property and Evidence Warehouse Roof Replacement. Addendum No. 1 (2).pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00559_Request for Certificate of Insurance/attachments/MDSO Project RPQ PDC-W25014 Property and Evidence Warehouse Roof Replacement. Addendum No. 1 (2).pdf",
+      "doc_type": "requirements_exhibit",
+      "requester": "Miami-Dade County / Miami-Dade Sheriff's Office (public bid RPQ)",
+      "client": "ajf_roofing",
+      "thread_subject": "Request for Certificate of Insurance (from 'AJF Roofing Assistant', 2026-02-04)",
+      "what_happened_in_thread": "In COI corpus; no sent cert fingerprinted in thread — one of the A3 miner's original requirements_doc hits; also appears in 're: request for certificate of insurance'.",
+      "certificate_holder": {
+        "name": "MIAMI-DADE COUNTY",
+        "address": "111 NW 1st Street, Suite 2340, Miami, FL 33128",
+        "instructions": "Cert holder block is prescribed verbatim ('CERTIFICATE HOLDER MUST READ'), but the certificate itself is FURNISHED to a different address: MDSO Facilities Management Office, 9105 NW 25th Street, Doral, FL 33172. Holder and delivery address differ."
+      },
+      "required_coverages": [
+        {
+          "line": "Workers Compensation",
+          "limits": {},
+          "notes": "As required by Florida Statute 440 (statutory) for all employees."
+        },
+        {
+          "line": "Commercial General Liability",
+          "limits": {"each_occurrence": "1,000,000", "general_aggregate": "2,000,000"},
+          "notes": "Must NOT exclude Products and Completed Operations. Miami-Dade County shown as additional insured."
+        },
+        {
+          "line": "Commercial Auto",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "notes": "All owned, non-owned and hired vehicles used in connection with the work."
+        },
+        {
+          "line": "Riggers Liability",
+          "conditional": true,
+          "limits": {"each_occurrence": "1,000,000", "aggregate": "2,000,000"},
+          "notes": "Required for any work involving rigging, lifting, lowering or moving of property/equipment — a specialty line none of the 8 clients carry on their templates."
+        }
+      ],
+      "required_endorsements": [
+        "Miami-Dade County as additional insured on CGL"
+      ],
+      "special_language": "Carrier quality gate: insurer rated at least A- (management) and Class VII (financial) in A.M. Best, OR holding a valid Florida Certificate of Authority — subject to County Risk Management approval.",
+      "why_instructive": "Public-entity pattern: statutory WC reference, exact prescribed cert-holder block, carrier-rating requirement, and a specialty coverage (Riggers) that must be flagged as a gap. Insurance section is buried in a 3-page bid addendum full of roofing RFI noise."
+    },
+    {
+      "example_id": "brickellhouse_requirements",
+      "source_filename": "Insurance Requirements for Contractors 2.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00687_Brickell House Condominium COI - Apogee HVAC Solutions/attachments/Insurance Requirements for Contractors 2.pdf",
+      "doc_type": "requirements_exhibit",
+      "requester": "BrickellHouse Condominium Association (property management)",
+      "client": "apogee_hvac",
+      "thread_subject": "Brickell House Condominium COI - Apogee HVAC Solutions (Janice Lacayo, 2026-02-10)",
+      "what_happened_in_thread": "In COI corpus (2 msgs); no sent cert fingerprinted — handled manually pre-automation. One of the A3 miner's original requirements_doc hits.",
+      "certificate_holder": {
+        "name": "BRICKELLHOUSE CONDOMINIUM ASSOCIATION, INC.",
+        "address": "1300 Brickell Bay Drive, Miami, FL 33131",
+        "instructions": "Certificates submitted to the Management Office before work; updates to Receiving 24 hrs in advance or no building access."
+      },
+      "required_coverages": [
+        {
+          "line": "Commercial General Liability",
+          "limits": {"each_occurrence": "1,000,000"},
+          "notes": "'At least $1,000,000' each occurrence. Both the Additional Insured AND Subrogation Waived columns must be marked with an X for the cert holder."
+        },
+        {
+          "line": "Workers Compensation",
+          "limits": {},
+          "notes": "Required EVEN IF the company is exempt by the State. Subrogation Waived column must be marked."
+        }
+      ],
+      "required_endorsements": [
+        "Additional insured (GL) for the certificate holder — ACORD ADDL INSD box checked",
+        "Waiver of subrogation (GL and WC) for the certificate holder — ACORD SUBR WVD box checked"
+      ],
+      "special_language": null,
+      "why_instructive": "The canonical condo/property-management pattern (the most common requester type for the HVAC clients): short checklist, ACORD checkbox instructions rather than endorsement form numbers, exact cert-holder block, WC-required-even-if-exempt trap."
+    },
+    {
+      "example_id": "jci_subcontractor_checklist",
+      "source_filename": "Checklist Subcontractor US prime revenue (Fire and Security).pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-20_180839_COI for Johnson Controls_11374084/attachments/Checklist Subcontractor US prime revenue (Fire and Security).pdf",
+      "doc_type": "requirements_exhibit",
+      "requester": "Johnson Controls, Inc. (national GC/integrator vendor onboarding)",
+      "client": null,
+      "thread_subject": "COI for Johnson Controls (live-test capture NEW_2026-04-20)",
+      "what_happened_in_thread": "Pipedream-era live test folder (no message.txt); routed to complex review in testing.",
+      "certificate_holder": {
+        "name": "Johnson Controls, Inc.",
+        "address": "5757 N Green Bay Ave, Milwaukee, WI 53209",
+        "instructions": "JCI as certificate holder AND additional insured for General and Automobile Liability at the stated address."
+      },
+      "required_coverages": [
+        {
+          "line": "Commercial General Liability",
+          "limits": {
+            "each_occurrence": "2,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000",
+            "personal_adv_injury": "2,000,000"
+          },
+          "notes": "Above every client's $1M/$2M GL — umbrella may be used to reach compliance ('Umbrella Liability insurance may be used to supplement existing coverage')."
+        },
+        {
+          "line": "Commercial Auto",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "notes": "Non-Owned Auto coverage additionally required when personal vehicles are used for work."
+        },
+        {
+          "line": "Workers Compensation",
+          "limits": {"el_each_accident": "500,000"},
+          "notes": "'$500,000 is generally accepted.'"
+        }
+      ],
+      "required_endorsements": [
+        "JCI additional insured on GL and Auto"
+      ],
+      "special_language": "Part of a vendor onboarding packet (application form, EHS questionnaire, supplier financing registration); certs tracked by a third-party platform (gep.com) with 30-day expiry reminders.",
+      "why_instructive": "The limits-gap case A7b exists for: required GL $2M/occ vs clients' $1M/occ — the correct output is a GAP flag plus the observation that umbrella/excess can stack to satisfy it. Whether stacking counts is a judgment call for Alex, not the system."
+    },
+    {
+      "example_id": "bengoa_vendor_setup",
+      "source_filename": "AP_New Vendor-Sub Setup_22_REQS-COI.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-14_180415_Bengoa Const. - W_C COI_11224388/attachments/AP_New Vendor-Sub Setup_22_REQS-COI.pdf",
+      "doc_type": "vendor_packet",
+      "requester": "Bengoa Construction, Inc., 2200 N. Dixie Hwy., Hollywood, FL 33020 (GC vendor setup)",
+      "client": "305_power_corp",
+      "thread_subject": "Bengoa Const. - W_C COI (live-test capture NEW_2026-04-14; Bengoa is 305 Power's regular GC — it is the placeholder holder in 305 Power's template)",
+      "what_happened_in_thread": "Pipedream-era live test folder; routed to complex review in testing.",
+      "certificate_holder": {
+        "name": "Bengoa Construction, Inc.",
+        "address": "2200 N. Dixie Hwy., Hollywood, FL 33020",
+        "instructions": "Bengoa as Certificate Holder AND Additional Insured on the account-level cert. Per-JOB COIs requested separately with the project as holder/AI and Bengoa ALSO added as additional insured."
+      },
+      "required_coverages": [
+        {"line": "Commercial General Liability", "limits": {"each_occurrence": "1,000,000"}, "notes": "'$1M on GL'"},
+        {"line": "Commercial Auto", "limits": {"combined_single_limit": "1,000,000"}, "notes": "'$1M on Auto'"},
+        {"line": "Workers Compensation", "limits": {"el_each_accident": "500,000"}, "notes": "'$500,000 on WC'; WOS in favor of certificate holder"}
+      ],
+      "required_endorsements": [
+        "Additional insured (GL + Auto) 'as required by contract'",
+        "Waiver of subrogation in favor of additional insured (GL, Auto, WC)",
+        "GL primary and non-contributory",
+        "AI and WOS boxes checked on ALL required coverages"
+      ],
+      "special_language": "Prescribes the exact description-of-operations wording (NOTE #1/#2) and includes an annotated **SAMPLE COI** page. Also requires W-9 and trade licenses — items outside A7 scope.",
+      "why_instructive": "GC vendor-setup pattern with prescribed description text; two-tier holder logic (account-level cert now, per-project certs later with dual AI). Maps almost 1:1 onto 305 Power's existing template language — a case A7a should PASS as compliant."
+    },
+    {
+      "example_id": "kw_belle_tower_vendor_packet",
+      "source_filename": "Vendor Set Up Package (1).pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-21_143444_COI (Belle Tower)_11385838/attachments/Vendor Set Up Package (1).pdf",
+      "doc_type": "vendor_packet",
+      "requester": "KW Property Management & Consulting (KWPMC) for Belle Tower Condominium",
+      "client": null,
+      "thread_subject": "COI (Belle Tower) (live-test capture NEW_2026-04-21)",
+      "what_happened_in_thread": "Pipedream-era live test folder; routed to complex review in testing.",
+      "certificate_holder": {
+        "name": "BOTH the Association (Belle Tower Condominium) and KW Property Management & Consulting, LLC",
+        "address": "Association's Management Office mailing address",
+        "instructions": "Both names in the holder box on one certificate; address must be the Association's management office. Insured name must exactly match the W-9 and invoices."
+      },
+      "required_coverages": [
+        {"line": "Commercial General Liability", "limits": {"each_occurrence": "1,000,000"}, "notes": "Minimum per occurrence."},
+        {"line": "Workers Compensation", "limits": {"el_each_accident": "500,000"}, "notes": "Minimum $500,000; required even if state-exempt."},
+        {"line": "Professional Liability / E&O", "conditional": true, "limits": {"each_occurrence": "1,000,000"}, "notes": "Security companies only."}
+      ],
+      "required_endorsements": [
+        "Association + KWPMC additional insured on ALL liability policies (primary and excess/umbrella), primary & non-contributory",
+        "Waiver of subrogation in favor of Association + KWPMC on all liability and WC policies",
+        "Certificate must be on ACORD 25 (2016/03) or (2014/01) — other versions rejected"
+      ],
+      "special_language": "Packet supplies controlling insurance language for when no written agreement exists: 'Vendor shall cause Association and its property manager, KWPMC, to be included as additional insureds on a primary and non-contributory basis on all of its commercial general liability insurance policies (both primary and excess/umbrella)...'",
+      "why_instructive": "Property-management vendor packet with a form-version requirement (ACORD edition), dual cert holders, and AI required on umbrella too. 13 pages of onboarding noise around ~2 pages of insurance signal — a realistic extraction haystack."
+    },
+    {
+      "example_id": "camcon_sample_subcontractor_certificate",
+      "source_filename": "Sample Subcontractor Certificate.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00240_FW_ URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO/attachments/Sample Subcontractor Certificate.pdf",
+      "doc_type": "sample_coi_with_requirements",
+      "requester": "Camcon Group LLC, 5000 SW 75th Ave, Suite 300B, Miami, FL 33155 (GC)",
+      "client": "ajf_roofing",
+      "thread_subject": "FW: URGENT CERTIFICATE OF INSURANCE - GL WORKERS COMP AUTO (Janette Diaz, 2026-01-21)",
+      "what_happened_in_thread": "In COI corpus; no sent cert fingerprinted in that thread key (thread also carried a scanned 'GAF - AJF Roofing COI 2021-22.pdf' as reference).",
+      "certificate_holder": {
+        "name": "Camcon Group LLC",
+        "address": "5000 SW 75th Ave, Suite 300B, Miami, FL 33155",
+        "instructions": "Requirements delivered AS an annotated blank ACORD 25 with required values pre-filled and margin notes ('Include NAIC for each carrier', 'must be rated A- VII by A.M. Best', 'SAMPLE')."
+      },
+      "required_coverages": [
+        {
+          "line": "Commercial General Liability",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "5,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "notes": "PRO-JECT aggregate box checked (per-project aggregate). 'Contractual Liability' marked under OTHER."
+        },
+        {"line": "Commercial Auto", "limits": {"combined_single_limit": "1,000,000"}, "notes": "ANY AUTO box checked."},
+        {"line": "Umbrella/Excess Liability", "limits": {"each_occurrence": "2,000,000", "aggregate": "2,000,000"}, "notes": "Occurrence form."},
+        {
+          "line": "Workers Compensation",
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "notes": null
+        }
+      ],
+      "required_endorsements": [
+        "CG 20 10 (11/85) OR CG 20 10 (10/01) AND CG 20 37 (10/01) or equivalent — stated as 'the required GL forms'",
+        "Camcon Group LLC, its officers, employees and agents named as additional insured, primary & non-contributory, on Business Auto and GL including products and completed operations",
+        "Waiver of subrogation in favor of additional insureds: GL, Business Auto, WC",
+        "30 days notice of cancellation on all policies, 10 days for non-payment",
+        "Three (3) year extended reporting period (tail) for any claims-made coverage",
+        "Carriers rated A- VII by A.M. Best; NAIC number shown per carrier"
+      ],
+      "special_language": "Prescribed description-of-operations paragraph quoted verbatim in the sample.",
+      "why_instructive": "The purest 'sample COI + requirements' combo: every requirement is expressed as filled ACORD boxes and description text on a sample cert rather than prose. An A7 extractor must read this the way it reads a real cert."
+    },
+    {
+      "example_id": "stratus_sample_cert_305power",
+      "source_filename": "Stratus Sample Certificate of Insurance.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/NEW_2026-04-20_174529_Fwd_ Stratus – Request for Updated Insurance - 305_11370468/attachments/Stratus Sample Certificate of Insurance.pdf",
+      "doc_type": "sample_coi_with_requirements",
+      "requester": "Stratus Unlimited, LLC (DBA Stratus), 8959 Tyler Boulevard, Mentor, OH 44060",
+      "client": "305_power_corp",
+      "thread_subject": "Fwd: Stratus – Request for Updated Insurance - 305 (live-test capture NEW_2026-04-20)",
+      "what_happened_in_thread": "Pipedream-era live test folder; routed to complex review in testing.",
+      "certificate_holder": {
+        "name": "Stratus Unlimited, LLC DBA: Stratus",
+        "address": "8959 Tyler Boulevard, Mentor, OH 44060",
+        "instructions": null
+      },
+      "required_coverages": [
+        {
+          "line": "Commercial General Liability",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "200,000",
+            "med_exp": "10,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "notes": "Damage-to-rented at $200k exceeds several clients' $100k box — a subtle sub-limit gap."
+        },
+        {"line": "Commercial Auto", "limits": {"combined_single_limit": "1,000,000"}, "notes": null},
+        {"line": "Umbrella/Excess Liability", "limits": {"each_occurrence": "1,000,000", "aggregate": "1,000,000"}, "notes": "Values starred (*) on the sample."},
+        {
+          "line": "Workers Compensation",
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "notes": null
+        }
+      ],
+      "required_endorsements": [
+        "Stratus Unlimited, LLC, their parents, subsidiaries, affiliated and related entities 'or any other party requested' as additional insureds",
+        "Additional insured coverage primary and non-contributory to any other coverage afforded the AIs"
+      ],
+      "special_language": "Open-ended AI clause ('or any other party requested') — cannot be satisfied by a fixed blanket endorsement wording without judgment.",
+      "why_instructive": "Sample-cert requirements from a national facilities company aimed at 305 Power; sub-limit deltas (rented premises 200k, med exp 10k) exercise limit comparison beyond headline limits."
+    },
+    {
+      "example_id": "hotel_south_beach_prior_cert",
+      "source_filename": "52491592_1 Homes South Beach 1 Hotel South Beach_01212026.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00104_FW_ Apogee HVAC Solutions COI/attachments/52491592_1 Homes South Beach 1 Hotel South Beach_01212026.pdf",
+      "doc_type": "sample_coi_with_requirements",
+      "requester": "1 Homes South Beach / 1 Hotel South Beach, 102 24th Street, Miami Beach, FL 33139",
+      "client": "apogee_hvac",
+      "thread_subject": "FW: Apogee HVAC Solutions COI (Janice Lacayo forwarding, 2026-01-21)",
+      "what_happened_in_thread": "In COI corpus; the client forwarded a prior USI-issued cert (Sagitta #52491592) as 'match this' reference.",
+      "certificate_holder": {
+        "name": "1 Homes South Beach 1 Hotel South Beach",
+        "address": "102 24th Street, Miami Beach, FL 33139",
+        "instructions": "Implicit: reproduce the prior cert with current policy data."
+      },
+      "required_coverages": [
+        {"line": "Commercial General Liability", "limits": {"each_occurrence": "1,000,000", "damage_to_rented_premises": "100,000", "general_aggregate": "2,000,000", "products_comp_op_agg": "2,000,000"}, "notes": "BI/PD deductible 5,000 disclosed on the cert."},
+        {"line": "Commercial Auto", "limits": {"combined_single_limit": "1,000,000"}, "notes": null},
+        {"line": "Excess Liability", "limits": {"each_occurrence": "4,000,000", "aggregate": "4,000,000"}, "notes": "Follow-form over underlying GL; retention 0."},
+        {"line": "Workers Compensation", "limits": {"el_each_accident": "1,000,000", "el_disease_ea_employee": "1,000,000", "el_disease_policy_limit": "1,000,000"}, "notes": null}
+      ],
+      "required_endorsements": [
+        "Cert holder AI, primary & non-contributory, GL incl. ongoing + products/completed ops when requested by executed written contract",
+        "Waiver of subrogation (GL and WC) in favor of holder when requested by executed written contract"
+      ],
+      "special_language": "Prior cert carries a narrow vicarious-liability AI grant: AI status 'only for the vicarious liability imposed on the Additional Insured provided that such liability is caused by the sole negligent conduct of the Named Insured' — wording an extractor should surface verbatim, not summarize away.",
+      "why_instructive": "The 'old cert as requirements' pattern: no prose requirements at all; the target state IS the document. Excess at $4M/$4M documents that Apogee's program exceeds its template-era $2M excess — registry data for Apogee is incomplete."
+    },
+    {
+      "example_id": "sals_ajf_master_subcontract",
+      "source_filename": "Sal's Roofing & AJF Roofing Subcontractor Agreement Updated to Include Umbrella Coverage..pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Sent Items/00330_Ref_ Subcontractor Agreement Update for CNA Insurance Compliance/attachments/Sal's Roofing & AJF Roofing Subcontractor Agreement Updated to Include Umbrella Coverage..pdf",
+      "doc_type": "full_contract",
+      "requester": "AJF Roofing, Inc. — our OWN client acting as the GC imposing requirements on ITS subcontractor (Sal's Roofing)",
+      "client": "ajf_roofing",
+      "thread_subject": "Ref: Subcontractor Agreement Update for CNA Insurance Compliance (Sent Items)",
+      "what_happened_in_thread": "Reverse-direction: Alex helped AJF update its own master subcontract's Article XI to satisfy CNA (AJF's carrier). No COI issuance involved.",
+      "certificate_holder": {
+        "name": "AJF Roofing, Inc. (as contractor receiving certs)",
+        "address": null,
+        "instructions": "Certificate must carry prescribed AI language quoted in clause 29."
+      },
+      "required_coverages": [
+        {
+          "line": "Commercial General Liability",
+          "limits": {
+            "each_occurrence": "300,000",
+            "general_aggregate": "1,000,000",
+            "products_comp_op_agg": "2,000,000 per occurrence",
+            "personal_adv_injury": "1,000,000",
+            "damage_to_rented_premises": "50,000 (Fire Legal)",
+            "med_exp": "5,000 per person"
+          },
+          "notes": "Per Project endorsement required. Unusual low $300k/occ with $1M aggregate — as written in the agreement."
+        },
+        {"line": "Umbrella", "limits": {"each_occurrence": "1,000,000", "aggregate": "1,000,000"}, "notes": null},
+        {"line": "Commercial Auto", "limits": {"combined_single_limit": "1,000,000", "uninsured_motorist": "1,000,000"}, "notes": "All vehicles owned or used incl. non-owned auto liability."},
+        {"line": "Workers Compensation", "limits": {}, "notes": "Listed among required policy types in clause 29; limits table continues beyond extraction cap."}
+      ],
+      "required_endorsements": [
+        "Prescribed cert language: \"'AJF Roofing s Inc.' is an additional insured including Products and Completed Operations on the Commercial General Liability and Umbrella\" — AI during construction and for completed ops, primary and non-contributing",
+        "30 days written notice of cancellation or change to Contractor",
+        "Subs must flow requirements down to sub-subcontractors at equal-or-greater coverage"
+      ],
+      "special_language": "Higher project-specific limits override these minimums when a project requires them.",
+      "why_instructive": "Requirements buried in a 17-page master subcontract (Article XI of 40+ clauses) — the long-document extraction case. ALSO flags a direction trap for A7: here our client is the REQUESTER; the correct system behavior is not to issue anything."
+    },
+    {
+      "example_id": "rolandos_test_entity_packet",
+      "source_filename": "Rolando's HVAC_Test Entity.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00074_Rolando's HVAC COI - Test Entity Inc/attachments/Rolando's HVAC_Test Entity.pdf",
+      "doc_type": "sample_coi_with_requirements",
+      "requester": "Test Entity Inc, 12354 SW 57th Ave, Miami, FL 33135 (Alex's own controlled test, 2026-01-14)",
+      "client": "rolandos_hvac",
+      "thread_subject": "Rolando's HVAC COI - Test Entity Inc (sent by Alejandro Bello as test)",
+      "what_happened_in_thread": "Controlled test thread; 10-page deliverable = cert + endorsement copies (GL Blanket AI / PNCB / WOS endorsement pages attached).",
+      "certificate_holder": {
+        "name": "Test Entity Inc",
+        "address": "12354 SW 57th Ave, Miami, FL 33135",
+        "instructions": null
+      },
+      "required_coverages": [
+        {"line": "Commercial General Liability", "limits": {"each_occurrence": "1,000,000", "general_aggregate": "2,000,000", "products_comp_op_agg": "2,000,000", "personal_adv_injury": "1,000,000", "med_exp": "5,000"}, "notes": "Matches Rolando's registry policies."},
+        {"line": "Commercial Auto", "limits": {"combined_single_limit": "1,000,000"}, "notes": null}
+      ],
+      "required_endorsements": [
+        "Custom named-entity AI wording: 'Main Street Renewal and Amherst Group Properties, LLC are Additional Insured on primary and noncontributory basis under the General Liability coverage for work performed by the Named Insured' — AI entities DIFFERENT from the certificate holder",
+        "Endorsement copies (Blanket AI, Primary & Non-Contributory, Waiver of Subrogation) attached behind the cert"
+      ],
+      "special_language": null,
+      "why_instructive": "Ground truth with a known-correct answer: cert holder is one entity, additional insureds are two OTHER named entities, and endorsement copies had to ride along — three distinct A7 outputs from one request."
+    },
+    {
+      "example_id": "nv2a_sdtoc_endorsement_packet",
+      "source_filename": "2026 NV2A AJF COI.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00457_RE_ SDTOC _ AJF COI/attachments/2026 NV2A AJF COI.pdf",
+      "doc_type": "sample_coi_with_requirements",
+      "requester": "NV2A Dragados JV (GC) for Miami-Dade DTPW project 23-2023-00 South Dade Transit Operations Center (SDTOC)",
+      "client": "ajf_roofing",
+      "thread_subject": "RE: SDTOC | AJF COI (Andrea Vargas, 2026-01-30)",
+      "what_happened_in_thread": "In COI corpus; iterated versions in the archive ('Legit Template', 'with All Endorsements') show multiple revision rounds before acceptance.",
+      "certificate_holder": {
+        "name": "NV2A Dragados JV and Miami Dade (project-specific holder block)",
+        "address": "Division Location: 12805 Biscayne (SDTOC project)",
+        "instructions": "Description must name the project: 'Division Name: 23-2023-00 South Dade Transit Operations Center (SDTOC)'."
+      },
+      "required_coverages": [
+        {"line": "Commercial General Liability", "limits": {}, "notes": "Per AJF program; the packet's point is endorsements + entities, not limits."},
+        {"line": "Commercial Auto", "limits": {}, "notes": "AI status extended to 'NV2A Dragados JV, Miami Dade County, FL., DTPW, Architects and Sub-consultants' via automatic AI endorsement."},
+        {"line": "Workers Compensation / Employers Liability", "limits": {}, "notes": "Blanket waiver of subrogation."}
+      ],
+      "required_endorsements": [
+        "Multi-entity AI: GC joint venture + County + DTPW + Architects + Sub-consultants",
+        "Copies of the actual policy endorsement forms (e.g. CNA form CNA86105XX Named Insured endorsement, Waiver of Our Right to Recover From Others) attached to the certificate — 12-page deliverable"
+      ],
+      "special_language": "Public-infrastructure JV pattern: the requester audits endorsement forms, not just the ACORD summary.",
+      "why_instructive": "Endorsement-copies-required is a recurring big-GC demand the automation cannot fulfill from a flat template (endorsement pages live outside the template PDF) — A7 must detect and flag it rather than attempt it."
+    },
+    {
+      "example_id": "calhoun_tenant_sample",
+      "source_filename": "2026 Sample COI for Tenants.pdf",
+      "source_path": "/Users/alepreneur/Documents/Migrated_From_TestAccount_2026-05-03/Microsoft Outlook Copy/Extracted/IPM_SUBTREE/Inbox/00779_Sample of COI/attachments/2026 Sample COI for Tenants.pdf",
+      "doc_type": "sample_coi_with_requirements",
+      "requester": "Calhoun Warehouse Partnership (landlord) — five related Calhoun entities",
+      "client": null,
+      "thread_subject": "Sample of COI (from 'Administration', 2026-02-12)",
+      "what_happened_in_thread": "In COI corpus (2 msgs); no sent cert fingerprinted.",
+      "certificate_holder": {
+        "name": "Calhoun Warehouse Partnership; Dennis Lee Calhoun Revocable Living Trust; Kathryn Calhoun Revocable Living Trust; Nancy D Calhoun Revocable Living Trust; L Melvin Calhoun Revocable Living Trust",
+        "address": "14175 SW 139th Court, Miami, FL 33186",
+        "instructions": "Five entities stacked in one holder block; blank 'Location Address: ____' line to be filled with the leased premises."
+      },
+      "required_coverages": [
+        {"line": "Commercial General Liability", "limits": {"each_occurrence": "1,000,000", "general_aggregate": "2,000,000", "damage_to_rented_premises": "100,000"}, "notes": "Tenant/landlord pattern — damage-to-rented-premises is the limit the landlord actually cares about."}
+      ],
+      "required_endorsements": [
+        "'Certificate Holder is named as additional insured' (all five entities)"
+      ],
+      "special_language": null,
+      "why_instructive": "Landlord/tenant sample with a five-entity holder block and a fill-in location line — tests holder-block parsing beyond the usual name + 3-line address."
+    }
+  ]
+}
