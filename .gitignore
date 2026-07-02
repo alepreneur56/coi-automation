@@ -10,3 +10,4 @@ state/
 logs/
 tests/review_output/
 tests/pipeline_output/
+tests/ops_output/

@@ -49,6 +49,12 @@ def _bool(name, default):
     return raw.strip().lower() in ("1", "true", "yes", "on")
 
 
+def _float_opt(name):
+    """Optional float setting — None when unset/blank."""
+    raw = os.environ.get(name, "").strip()
+    return float(raw) if raw else None
+
+
 # ---------------------------------------------------------------------------
 # Microsoft Graph (Azure app registration — client credentials flow)
 # ---------------------------------------------------------------------------
@@ -78,6 +84,29 @@ TEST_REDIRECT_TO = os.environ.get("TEST_REDIRECT_TO", "alepreneur56@gmail.com")
 PRODUCER_CC_EMAIL = os.environ.get("PRODUCER_CC_EMAIL", "alepreneur56@gmail.com")
 # Where complex-review draft COIs go for manual review (never test-redirected)
 REVIEW_RECIPIENT_EMAIL = os.environ.get("REVIEW_RECIPIENT_EMAIL", "alepreneur56@gmail.com")
+
+# ---------------------------------------------------------------------------
+# Ops: daily digest, error alerts, retention (see ops.py)
+# ---------------------------------------------------------------------------
+# Daily digest of yesterday's activity, sent once per day after DIGEST_HOUR
+# (local time, 24h clock).
+DIGEST_ENABLED = _bool("DIGEST_ENABLED", True)
+DIGEST_HOUR = int(os.environ.get("DIGEST_HOUR", "8"))
+DIGEST_TO = os.environ.get("DIGEST_TO", "alepreneur56@gmail.com")
+
+# Immediate error alerts (rate-limited to 1 email / 30 min in ops.py)
+ALERT_TO = os.environ.get("ALERT_TO", "alepreneur56@gmail.com")
+
+# Retention — files older than this are deleted by the daily rotation
+LOG_RETENTION_DAYS = int(os.environ.get("LOG_RETENTION_DAYS", "60"))
+PDF_RETENTION_DAYS = int(os.environ.get("PDF_RETENTION_DAYS", "180"))
+
+# Optional $-per-million-token rates for the digest cost estimate. ALL THREE
+# must be set for the cost line to appear; leave blank to omit it. No pricing
+# is hardcoded anywhere — check the current Anthropic pricing page.
+COST_INPUT_PER_MTOK = _float_opt("COST_INPUT_PER_MTOK")
+COST_CACHED_INPUT_PER_MTOK = _float_opt("COST_CACHED_INPUT_PER_MTOK")
+COST_OUTPUT_PER_MTOK = _float_opt("COST_OUTPUT_PER_MTOK")
 
 # ---------------------------------------------------------------------------
 # Runtime
