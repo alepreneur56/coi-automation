@@ -22,6 +22,7 @@ import traceback
 
 import config
 import db
+import ops
 import state
 from attachments import fetch_attachments
 from classifier import classify, load_system_prompt
@@ -137,6 +138,7 @@ def process_message(graph, msg, dry_run=False):
         client=parsed.get("client_canonical_name"),
         api_error=ai_result.get("api_error"),
         parse_error=ai_result.get("parse_error"),
+        usage=ai_result.get("cache_usage"),
     )
 
     decision = decide_action(ai_result)
@@ -202,6 +204,15 @@ def poll_once(graph, run_state, dry_run=False):
                 error=str(e),
                 traceback=traceback.format_exc()[-1500:],
             )
+            # Owner alert (rate-limited; catches internally, never raises)
+            if not dry_run:
+                ops.send_error_alert(graph, run_state, {
+                    "event": "processing_error",
+                    "msg_id": msg_id,
+                    "sender": msg.get("from", {}).get("emailAddress", {}).get("address", ""),
+                    "subject": msg.get("subject", ""),
+                    "error": str(e),
+                })
         # Advance the watermark even on failure — one poison message must
         # never wedge the loop. Failures are in the log for manual follow-up.
         processed_ids.add(msg_id)
@@ -295,11 +306,24 @@ def main():
                 state.log_event("poll_cycle", handled=handled)
         except GraphError as e:
             state.log_event("poll_error", error=str(e))
+            if not args.dry_run:
+                ops.send_error_alert(
+                    graph, run_state, {"event": "poll_error", "error": str(e)}
+                )
         except Exception as e:
             state.log_event(
                 "poll_error", error=str(e),
                 traceback=traceback.format_exc()[-1500:],
             )
+            if not args.dry_run:
+                ops.send_error_alert(
+                    graph, run_state, {"event": "poll_error", "error": str(e)}
+                )
+        # Ops housekeeping — cheap no-ops when not due; every ops function
+        # catches internally so a failure here can never break the mail loop.
+        if not args.dry_run:
+            ops.send_digest_if_due(graph, run_state)
+        ops.rotate_logs(run_state)
         if args.once:
             break
         time.sleep(config.POLL_INTERVAL_SECONDS)
