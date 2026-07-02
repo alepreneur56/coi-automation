@@ -170,6 +170,21 @@ def _file_attachment(path):
     }
 
 
+def _cov_field(cov, keys, default="not stated"):
+    """Return the first non-empty value among the given keys.
+
+    coverage_analysis entries arrive in two schemas: the system prompt's
+    OUTPUT FORMAT (required_each_occurrence / client_each_occurrence) and
+    the legacy renderer schema (required_limit / insured_limit). Accept both
+    so limits never render blank; fall back to 'not stated' when absent.
+    """
+    for key in keys:
+        val = cov.get(key)
+        if val is not None and str(val).strip():
+            return str(val).strip()
+    return default
+
+
 def build_complex_review_body(client_name, request_summary, review_summary,
                               coverage_analysis, send_completed_coi_to,
                               original_client_sender, original_client_name):
@@ -199,9 +214,14 @@ def build_complex_review_body(client_name, request_summary, review_summary,
             parts.append("<p><b>Required coverages:</b></p><ul>")
             for cov in required:
                 flag = " — [GAP]" if cov.get("gap") else " — [OK]"
+                line = _cov_field(cov, ("line", "coverage_line", "coverage"), default="")
+                required_limit = _cov_field(
+                    cov, ("required_limit", "required_each_occurrence"))
+                insured_limit = _cov_field(
+                    cov, ("insured_limit", "client_each_occurrence", "client_limit"))
                 parts.append(
-                    f"<li><b>{cov.get('line', '')}</b> — required: {cov.get('required_limit', '')} | "
-                    f"insured carries: {cov.get('insured_limit', '')}{flag}</li>"
+                    f"<li><b>{line}</b> — required: {required_limit} | "
+                    f"insured carries: {insured_limit}{flag}</li>"
                 )
             parts.append("</ul>")
         endorsements = coverage_analysis.get("required_endorsements") or []
