@@ -283,6 +283,7 @@ def build_single_coi(
     project_text=None,       # None = delete placeholder, str = insert this text
     multiple_holders=False,  # True = edit boilerplate to say "Certificate Holders"
     today_str=None,
+    ai_wording_override=None,  # str = swap 'the Certificate Holder(s)' phrase in the AI sentence
 ):
     """
     Build one COI PDF from a template.
@@ -296,6 +297,15 @@ def build_single_coi(
         project_text:      Text for desc of operations project line (None to delete)
         multiple_holders:  If True, change "Certificate Holder" to "Certificate Holders"
         today_str:         Date string MM/DD/YYYY (defaults to today)
+        ai_wording_override: If set, replaces the phrase 'the Certificate Holder'
+                            (or 'the Certificate Holders') in the Additional Insured
+                            boilerplate sentence with this exact text. Requester-
+                            demanded specific wording (e.g. "Board of Directors, its
+                            officers, agents and architects are additional insureds").
+                            Sanitized via sanitize_text. The line it lives on is
+                            re-wrapped if the substitution changes its length; extra
+                            wrapped lines push everything below down using the same
+                            push-down machinery as project-text overflow.
     """
     if today_str is None:
         today_str = date.today().strftime("%m/%d/%Y")
@@ -339,8 +349,36 @@ def build_single_coi(
     has_nonblack = any(
         s.get("color", 0) != 0 for l in boilerplate_lines for s in l["spans"]
     )
+
+    # AI-wording override: swap 'the Certificate Holder(s)' in the Additional
+    # Insured sentence for requester-demanded exact language. Applied to the
+    # boilerplate LINE (as originally wrapped by the template) that carries
+    # the phrase; if the substitution changes that line's length, it is
+    # re-wrapped in place using the same wrap_text() used everywhere else,
+    # producing one or more "override lines" that take the place of the
+    # original line. Every boilerplate line after it is pushed down by
+    # whatever extra lines the reflow added — reusing the exact push_down /
+    # regrid_lh overflow machinery used for wrapping project text, just
+    # computed per-line instead of as a single block offset.
+    _CERT_HOLDER_RE = re.compile(r"the\s+Certificate Holders?\b")
+    ai_override_line_idx = None
+    ai_override_wrapped = None
+    ai_extra_lines = 0
+    if ai_wording_override and boilerplate_lines:
+        override_text = sanitize_text(ai_wording_override)
+        for idx, bl in enumerate(boilerplate_lines):
+            if _CERT_HOLDER_RE.search(bl["text"]):
+                ai_override_line_idx = idx
+                new_line_text = _CERT_HOLDER_RE.sub(override_text, bl["text"], count=1)
+                ai_override_wrapped = wrap_text(new_line_text, bl["size"], DESC_MAX_WIDTH)
+                ai_extra_lines = max(0, len(ai_override_wrapped) - 1)
+                break
+        if ai_override_line_idx is None:
+            print("  [engine] ai_wording_override set but no 'the Certificate "
+                  "Holder(s)' phrase found in boilerplate — override skipped")
+
     rebuild_boilerplate = bool(boilerplate_lines) and (
-        push_down > 0 or multiple_holders or has_nonblack
+        push_down > 0 or multiple_holders or has_nonblack or ai_override_line_idx is not None
     )
 
     # Overflow guard: pushing the boilerplate down must never spill past the
@@ -352,11 +390,12 @@ def build_single_coi(
     # 9pt descenders reach ~2pt below baseline, so 649.0 keeps clear of it.
     DESC_LAST_BASELINE = 649.0
     regrid_lh = None  # None = keep template spacing
-    if rebuild_boilerplate and push_down > 0 and boilerplate_lines:
+    total_push = push_down + ai_extra_lines * desc_lh
+    if rebuild_boilerplate and total_push > 0 and boilerplate_lines:
         first_baseline = py0 + desc_font_size
-        n_total = len(project_lines) + len(boilerplate_lines)
+        n_total = len(project_lines) + len(boilerplate_lines) + ai_extra_lines
         last_baseline = (
-            boilerplate_lines[-1]["y0"] + boilerplate_lines[-1]["size"] + push_down
+            boilerplate_lines[-1]["y0"] + boilerplate_lines[-1]["size"] + total_push
         )
         if last_baseline > DESC_LAST_BASELINE and n_total > 1:
             regrid_lh = (DESC_LAST_BASELINE - first_baseline) / (n_total - 1)
@@ -419,6 +458,11 @@ def build_single_coi(
     if rebuild_boilerplate:
         bp_y0 = min(l["y0"] for l in boilerplate_lines) - 0.3
         bp_y1 = max(l["y1"] for l in boilerplate_lines) + 0.3
+        # The AI-wording override can add extra physical lines below the
+        # original last boilerplate line (when not absorbed by regrid_lh
+        # compression) — extend the redaction so old glyphs there are wiped.
+        if ai_extra_lines and not regrid_lh:
+            bp_y1 += ai_extra_lines * desc_lh
         page.add_redact_annot(
             fitz.Rect(DESC_TEXT_X - 0.5, bp_y0, DESC_SAFE_RIGHT, bp_y1),
             fill=(1, 1, 1)
@@ -454,46 +498,77 @@ def build_single_coi(
 
     # Re-insert the rebuilt boilerplate: shifted down if the project text
     # wrapped, pluralized on the 'Certificate Holder' line for multi-holder
-    # COIs, and always in black (normalizes stray cyan template spans).
+    # COIs, overridden with requester-specific AI wording on its line, and
+    # always in black (normalizes stray cyan template spans).
+    #
+    # `slot` is the running count of PHYSICAL output lines emitted so far —
+    # normally equal to the boilerplate-line index j, except the override
+    # line can expand into more than one physical line, after which every
+    # later boilerplate line's slot (and therefore baseline) is pushed down
+    # by the extra lines it added. This is the same push-down math used for
+    # project-text overflow, just walked line-by-line instead of as one
+    # block offset.
     if rebuild_boilerplate:
+        slot = 0
         for j, bline in enumerate(boilerplate_lines):
-            if regrid_lh:
-                # Compressed grid: baseline follows the project lines
-                baseline = (
-                    py0 + desc_font_size
-                    + (len(project_lines) + j) * regrid_lh
-                )
-            else:
-                baseline = bline["y0"] + bline["size"] + push_down
+            is_override_line = (j == ai_override_line_idx)
+            out_texts = ai_override_wrapped if is_override_line else [bline["text"]]
 
-            pluralize = (
-                multiple_holders
+            # Pluralize each physical line of text we're about to emit.
+            # (Handles both the plain line and — for scenario coverage —
+            # an overridden line whose wrapped output still contains the
+            # literal 'Certificate Holder' phrase, e.g. if the override
+            # text itself references it.)
+            if multiple_holders:
+                out_texts = [
+                    t.replace("Certificate Holder", "Certificate Holders")
+                    if "Certificate Holder" in t and "Certificate Holders" not in t
+                    else t
+                    for t in out_texts
+                ]
+
+            pluralize_only = (
+                not is_override_line
+                and multiple_holders
                 and "Certificate Holder" in bline["text"]
                 and "Certificate Holders" not in bline["text"]
             )
-            if pluralize:
-                # Whole-line re-insert: the plural adds width, so sibling
-                # spans can't stay at their original x positions.
-                new_text = bline["text"].replace(
-                    "Certificate Holder", "Certificate Holders"
-                )
-                page.insert_text(
-                    (bline["x0"], baseline),
-                    new_text,
-                    fontsize=bline["size"],
-                    fontname=FONT_NAME,
-                    color=(0, 0, 0)
-                )
-            else:
-                # Span-by-span at original x positions — best fidelity.
-                for span in bline["spans"]:
+            whole_line_reinsert = is_override_line or pluralize_only
+
+            for k, out_text in enumerate(out_texts):
+                if regrid_lh:
+                    baseline = (
+                        py0 + desc_font_size
+                        + (len(project_lines) + slot) * regrid_lh
+                    )
+                else:
+                    baseline = bline["y0"] + bline["size"] + push_down
+                    if is_override_line:
+                        baseline += k * desc_lh
+                    elif ai_override_line_idx is not None and j > ai_override_line_idx:
+                        baseline += ai_extra_lines * desc_lh
+
+                if whole_line_reinsert:
+                    # Whole-line re-insert: text/width changed, so sibling
+                    # spans can't stay at their original x positions.
                     page.insert_text(
-                        (span["bbox"][0], baseline),
-                        span["text"],
-                        fontsize=span["size"],
+                        (bline["x0"], baseline),
+                        out_text,
+                        fontsize=bline["size"],
                         fontname=FONT_NAME,
                         color=(0, 0, 0)
                     )
+                else:
+                    # Span-by-span at original x positions — best fidelity.
+                    for span in bline["spans"]:
+                        page.insert_text(
+                            (span["bbox"][0], baseline),
+                            span["text"],
+                            fontsize=span["size"],
+                            fontname=FONT_NAME,
+                            color=(0, 0, 0)
+                        )
+                slot += 1
 
     # Date
     page.insert_text(
@@ -587,6 +662,8 @@ def process_request(request_json, templates_dir, output_dir):
     output_files = []
 
     # --- BATCH REQUEST (multiple individual COIs) ---
+    ai_wording_override = req.get("ai_wording_override") or None
+
     if req.get("request_type") == "batch":
         batch_items = req.get("batch_cois", [])
         for item in batch_items:
@@ -622,6 +699,7 @@ def process_request(request_json, templates_dir, output_dir):
                 project_text=project_text,
                 multiple_holders=False,  # individual COIs = singular
                 today_str=today_str,
+                ai_wording_override=item.get("ai_wording_override") or ai_wording_override,
             )
             output_files.append(out_path)
             print(f"  [batch] Produced: {filename}")
@@ -682,6 +760,7 @@ def process_request(request_json, templates_dir, output_dir):
             project_text=project_text,
             multiple_holders=multiple_holders,
             today_str=today_str,
+            ai_wording_override=ai_wording_override,
         )
         output_files.append(out_path)
         print(f"  [single] Produced: {filename}  ({len(single_coi_lines)} lines @ {fs}pt)")
@@ -703,6 +782,7 @@ def process_request(request_json, templates_dir, output_dir):
                 project_text=project_text,
                 multiple_holders=multiple_holders,
                 today_str=today_str,
+                ai_wording_override=ai_wording_override,
             )
             output_files.append(out_path)
             print(f"  [split {split_num}/{total_splits}] Produced: {filename}  ({len(chunk_lines)} lines @ {chunk_fs}pt)")

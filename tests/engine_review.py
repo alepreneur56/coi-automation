@@ -197,6 +197,27 @@ def build_scenarios():
         ],
     }
     scen.append(("batch_3", batch))
+
+    # 7. AI-wording override — requester-demanded exact Additional Insured
+    #    language, swapped in for "the Certificate Holder" in the boilerplate.
+    scen.append(("ai_override_short", simple_req(
+        *r, ai_wording_override="Board of Directors, its officers and agents")))
+    scen.append(("ai_override_long_wraps", simple_req(
+        *r, ai_wording_override=(
+            "the Board of Directors of the Dadeland Master Property Owners "
+            "Association, its officers, agents, employees, architects, and "
+            "engineers, and all of their respective successors and assigns"))))
+    multi_override = simple_req(*r,
+        ai_wording_override="the Board of Directors, its officers, agents and architects")
+    multi_override["certificate_holder_lines"] = [
+        "Brickell Tower Condominium Association",
+        "Coconut Grove Residences HOA",
+        "Coral Gables Villas LLC",
+        HOLDER["address_line_1"],
+        "Miami, FL, 33156",
+    ]
+    scen.append(("ai_override_plus_multi_holder", multi_override))
+
     return scen
 
 
@@ -324,14 +345,30 @@ def check_output(template_path, output_path, req, holder_lines_expected=None):
         if r.y0 > 560 and r.y0 < 653 and s["text"].strip() and r.y1 > 652.5:
             problems.append(("FAIL", f"DoO text spills past box bottom (y1={r.y1:.1f}): {s['text'][:60]!r}"))
 
-    # 4. Plural boilerplate
+    # 4. Plural boilerplate. Skipped when an ai_wording_override is active:
+    #    the override replaces the literal "the Certificate Holder(s)" phrase
+    #    entirely, so there is nothing left to pluralize in that sentence.
     multi = bool(req.get("certificate_holder_lines")) and len(
         [l for l in req.get("certificate_holder_lines", []) if l]
     ) > 3
-    if multi and "Certificate Holders" not in text:
+    if multi and not req.get("ai_wording_override") and "Certificate Holders" not in text:
         problems.append(("FAIL", "expected plural 'Certificate Holders' in boilerplate"))
     if not multi and "Certificate Holderss" in text:
         problems.append(("FAIL", "double-plural 'Certificate Holderss' found"))
+
+    # 4b. AI-wording override applied: override text present, phrase gone,
+    #     and normal word-wrap width rule still holds (checked in section 3
+    #     above via new_spans, since the override goes through insert_text
+    #     like everything else).
+    override = req.get("ai_wording_override")
+    if override:
+        collapsed = " ".join(text.split())
+        override_collapsed = " ".join(override.split())
+        if override_collapsed not in collapsed:
+            problems.append(("FAIL", f"ai_wording_override text not found verbatim in output: {override!r}"))
+        import re as _re
+        if _re.search(r"the\s+Certificate Holders?\b", text):
+            problems.append(("FAIL", "ai_wording_override set but literal 'the Certificate Holder(s)' phrase still present"))
 
     # 5. Boilerplate integrity — key phrases from the template's DoO must
     #    survive every edit path (this catches sibling-span text loss)
