@@ -154,6 +154,24 @@ def build_scenarios():
     monster["name"] = "SUPERCALIFRAGILISTICEXPIALIDOCIOUSHOLDINGSANDDEVELOPMENTCORPORATIONOFAMERICALLC"
     scen.append(("holder_unbroken_80char", simple_req(*r, certificate_holder=monster)))
 
+    # 4d. Multi-entity where the lines' address formatting differs from the
+    #     certificate_holder reconstruction ("FL 33154" vs "FL, 33154") —
+    #     the city line must NOT leak into the entity list (2026-07-02 bug)
+    fmt = simple_req("Central Comfort Air Conditioning",
+                     "Central_Comfort_Air_Conditioning_Inc_COI.pdf")
+    fmt["certificate_holder"] = {
+        "name": "Belle Harbour Condominium Association, Inc.",
+        "address_line_1": "9200 Collins Avenue", "address_line_2": None,
+        "city": "Miami Beach", "state": "FL", "zip": "33154",
+    }
+    fmt["certificate_holder_lines"] = [
+        "Belle Harbour Condominium Association, Inc.",
+        "Keystone Property Management & Consulting, LLC",
+        "9200 Collins Avenue",
+        "Miami Beach, FL 33154",
+    ]
+    scen.append(("multi_entity_addr_format_mismatch", fmt))
+
     # 5. Multi-entity overflow -> split into multiple COIs
     big = simple_req(*r)
     big["certificate_holder_lines"] = [

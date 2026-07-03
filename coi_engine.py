@@ -641,8 +641,15 @@ def process_request(request_json, templates_dir, output_dir):
     all_entities = req.get("certificate_holder_lines")
     if all_entities:
         all_entities = [sanitize_text(l) for l in all_entities if l]
-        # Strip address lines from entity list (they're added back per-COI)
-        entity_lines = [l for l in all_entities if l not in address_lines]
+        # Strip address lines from entity list (they're added back per-COI).
+        # Match on a normalized form: the classifier's lines and our
+        # reconstructed address often differ in commas/spacing ("FL 33154"
+        # vs "FL, 33154"), and an exact-string match lets the city line leak
+        # into the entity list and print twice in the holder box.
+        def _addr_norm(s):
+            return re.sub(r"[^a-z0-9]", "", (s or "").lower())
+        addr_norms = {_addr_norm(l) for l in address_lines}
+        entity_lines = [l for l in all_entities if _addr_norm(l) not in addr_norms]
     else:
         entity_lines = [holder_name] if holder_name else []
 

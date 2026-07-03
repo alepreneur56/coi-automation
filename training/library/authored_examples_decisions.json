@@ -1,0 +1,16 @@
+{
+ "authored_requirements_pdf_attached_1": {"decision": "approve", "note": "I agree with this. For the future we want to work on navigating COI requirements and doing full loop and delivering finished coi to client but for now this is ok."},
+ "authored_requirements_pdf_attached_2": {"decision": "approve", "note": "I agree with this. For the future we want to work on navigating COI requirements and doing full loop and delivering finished coi to client but for now this is ok."},
+ "authored_requirements_pdf_attached_3": {"decision": "change", "note": "I approve. there is something here worth flagging: if the requirements cover lines we dont control (like Rolando's comp), do not shy away from sending. issue cert as always WITHOUT including the line we dont control."},
+ "authored_requirements_pdf_attached_4": {"decision": "change", "note": "Want to SEE the actual COI. cert holder box must include Belle Harbour AND Keystone AND the 9200 address. ACORD-edition requirements are ALWAYS bypassed (we always send our same template regardless of demanded ACORD year). Still send to me due to coverage gap."},
+ "authored_complex_endorsements_1": {"decision": "change", "note": "Agree with routing to me. FUTURE: build per-client endorsement registry (blanket vs must-request: WOS, AI, P&NC, 30/10 NOC, per-location aggregate) with endorsement PDFs on file."},
+ "authored_complex_endorsements_2": {"decision": "change", "note": "System should learn this: build endorsement-attached templates per client so endorsement requests are ready-to-go like regular templates."},
+ "authored_complex_endorsements_3": {"decision": "change", "note": "FUTURE RULE: when demanded endorsements are all blanket per the client file, ISSUE the cert directly, dont flag to me. Practice before going live."},
+ "authored_specific_language_1": {"decision": "change", "note": "This IS a case where wording on the COI changes: swap 'the Certificate Holder is an additional insured' for the requested officers/agents/architects phrasing. Almost exclusively the AI sentence. For now send to me; build the capability."},
+ "authored_specific_language_2": {"decision": "change", "note": "Send to me for now. Rule: if the main entity before 'and its affiliates/subsidiaries' matches the cert holder entity, good to go. ACTION: mine done COIs for prop-mgmt/condo discrepancies."},
+ "authored_specific_language_3": {"decision": "change", "note": "Send to me for now. If our wording is the same and includes more, good to send. Variation of the other two."},
+ "authored_spanish_1": {"decision": "change", "note": "ERROR in example: a complete Spanish request must get a SPANISH reply with the COI attached, not silence."},
+ "authored_spanish_2": {"decision": "change", "note": "Agree UNLESS we already issued for that holder and have the address on file - then reply with COI instead of asking (A10a)."},
+ "authored_spanish_3": {"decision": "change", "note": "Depends: if attached COI wording matches/is covered by ours, copy holder info, issue and send. Need to run examples of this scenario before enabling."},
+ "authored_spanish_4": {"decision": "change", "note": "Need ZIP lookup capability: if ZIP missing, system should be able to get it."}
+}

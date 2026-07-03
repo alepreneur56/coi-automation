@@ -1,0 +1,933 @@
+{
+  "generated": "2026-07-02",
+  "purpose": "DEFINITIVE registry reconciliation for all 8 clients from 4 sources. PROPOSAL ONLY - nothing written to coi_client_registry.json or templates/.",
+  "sources": {
+    "DRIVE": "training/registry_gap/drive_extraction.json (2026-07-02 extraction of carrier policy docs in Google Drive; freshest, docs through June 2026)",
+    "ARCHIVE": "training/registry_gap/registry_gap_data.json + REGISTRY_PROPOSAL.md (email archive; ends 2026-04-27)",
+    "REGISTRY": "coi_client_registry.json (what the automation currently believes)",
+    "TEMPLATE": "templates/*.pdf, text+coordinates extracted with fitz on 2026-07-02 (what every issued cert actually prints)"
+  },
+  "precedence": "carrier-issued document (Drive) > carrier document (email archive) > broker-issued COI > template > registry. Conflicts are shown, never silently resolved.",
+  "confidence_scale": {
+    "high": "read directly from a carrier-issued policy dec/information page, or 3+ agreeing independent sources",
+    "medium": "COI/quote/renewal-notice only, or dec unreadable but multiple corroborating docs",
+    "low": "sources conflict or single weak source - DO NOT act without Alex's confirmation"
+  },
+  "clients": {
+
+    "305_power_corp": {
+      "policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "BGFL9010651400",
+          "eff_date": "07/15/2025",
+          "exp_date": "07/15/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "300,000",
+            "med_exp": "10,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: GL Policy.pdf (Clear Blue Common Policy Declarations + CGL Declarations FCG 1029, drive_id 1YOVkg6dqgHLuRllujGTVQ9WPoJNDuR50); AI/WOS via endorsement FCG 1001 (automatic AI, CG 20 10/20 37 equivalent) + CG 24 04 waiver + $109 premium line. TEMPLATE and REGISTRY agree on every field."},
+            "expiry_warning": "Expires 07/15/2026 - 13 days from generation date. Only unbound Obsidian quotes exist for 26-27 (DRIVE: RT-Obsidian GL Revised.PDF 05/14/2026; cost-comparison xlsx 06/05/2026 still lists Clear Blue as Current)."
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "B",
+          "policy_number": "862396417",
+          "eff_date": "08/29/2025",
+          "exp_date": "08/29/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Any Auto",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: Progressive Policy.pdf declarations dated 03/04/2026 (policy 862396417, Aug 29 2025 - Aug 29 2026, CSL $1,000,000, 'Blanket Additional Insured applies' + 'Blanket Waiver of Subrogation applies', $75+$75 fees). TEMPLATE + REGISTRY agree. Residual risk: CA Policy.pdf (modified 05/22/2026) unread - later endorsements possible."}
+          }
+        },
+        {
+          "line": "Excess Liability",
+          "insurer_letter": "A",
+          "policy_number": "BXFL9000890400",
+          "eff_date": "07/15/2025",
+          "exp_date": "07/15/2026",
+          "occur": true,
+          "limits": {"each_occurrence": "2,000,000", "aggregate": "2,000,000"},
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: Excess Policy.pdf read in full (Clear Blue CX DS 01 dec: 2M/2M). TEMPLATE + REGISTRY agree."},
+            "notes": "AI flows follow-form (CX 00 01 Sec I.1.d) - registry/template correctly leave ADDL/SUBR unmarked on this row. Policy schedules GL ONLY as underlying; Auto Liability and Employer's Liability are EXCLUDED by FCX 1004/1005 - internal proposals saying 'umbrella over GL, WC' are wrong; policy language governs. No waiver-of-subrogation endorsement in excess forms schedule, yet the template description says blanket waiver applies to 'Umbrella' - see template_errors. Expires 07/15/2026 - renewal not bound."
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "C",
+          "policy_number": "WC307-0132038-2026A",
+          "eff_date": "04/11/2026",
+          "exp_date": "04/25/2027",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "medium", "source": "DRIVE: USI-issued ACORD 25 '305 Power WC COI - City of Miami.pdf' (04/14/2026) + LUBA quote 183678 (blanket waiver endorsement, $0 premium line) agree with TEMPLATE + REGISTRY. The bound policy itself (New WC Policy.pdf) is an image-only scan - EL disease limits not confirmed from a carrier dec."}
+          }
+        }
+      ],
+      "template_errors": [
+        {
+          "field": "INSURER A carrier name/NAIC",
+          "template_prints": "TWO overlapping text objects at y=168.8: 'Clear Blue Insurance Company / 28860' AND 'LUBA Casualty Ins Co / 12472' printed on top of each other (fitz words at identical coordinates x=349.1/y=168.8 and x=543.5)",
+          "carrier_doc_says": "INSURER A should read only 'Clear Blue Insurance Company / 28860' (LUBA is INSURER C, which prints correctly at y=191.3)",
+          "evidence": "TEMPLATE fitz extraction 2026-07-02; DRIVE GL Policy.pdf confirms Clear Blue is the GL/Excess carrier",
+          "severity": "WARNING - every issued 305 cert renders a garbled carrier name in the INSURER A slot; leftover LUBA text object was never deleted"
+        },
+        {
+          "field": "WC row insurer letter + dates (duplicate print)",
+          "template_prints": "BOTH 'C' and 'A' at x=22.9/y=484.5 in the INSR LTR column, and eff/exp dates 04/11/2026 04/25/2027 printed TWICE (y=483.7 and y=485.2)",
+          "carrier_doc_says": "Single letter 'C' (LUBA), dates printed once",
+          "evidence": "TEMPLATE fitz extraction 2026-07-02 (overlapping word objects)",
+          "severity": "WARNING - cosmetic overlap on every issued cert; stale 'A' text object under the corrected 'C'"
+        },
+        {
+          "field": "Description of operations - umbrella waiver claim",
+          "template_prints": "'A Blanket Waiver of Subrogation applies for General Liability, Umbrella, and Employer's Liability policies.'",
+          "carrier_doc_says": "Excess policy BXFL9000890400 forms schedule shows NO waiver-of-subrogation endorsement (DRIVE: Excess Policy.pdf read in full)",
+          "evidence": "DRIVE Excess Policy.pdf vs TEMPLATE description block",
+          "severity": "WARNING - cert asserts an excess/umbrella waiver the policy does not visibly contain; confirm whether waiver is expected to flow from underlying GL only"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "GL BGFL9010651400 AND Excess BXFL9000890400 both EXPIRE 07/15/2026 (13 days from 2026-07-02). 26-27 replacements are QUOTED, NOT BOUND (Obsidian Specialty GL + XS quotes dated 05/14/2026; cost comparison xlsx updated 06/05/2026 still shows Clear Blue as 'Current'). Note: Obsidian GL quote carries a $5,000 per-occurrence deductible vs current $0.",
+          "severity": "CRITICAL",
+          "evidence": "DRIVE 305 Power staleness_flags + found_docs (RT-Obsidian - GL Revised.PDF, RT-Obsidian - XS Revised.PDF, 305 power Solutions 25-26 Cost Comparison xlsx)",
+          "what_alex_must_do": "Confirm binding of the Obsidian GL + Excess renewals BEFORE 07/15/2026. Any COI dated on/after 07/15/2026 must not be issued off the current template until new policy numbers/dates are loaded."
+        },
+        {
+          "issue": "Commercial Auto renews 08/29/2026 with a Kemper replacement quote in play (carrier change likely at renewal).",
+          "severity": "WARNING",
+          "evidence": "DRIVE: 305 Power Corp - Auto - Kemper.PDF quote (05/14/2026)",
+          "what_alex_must_do": "Diary the 08/29/2026 auto renewal; template will need a carrier row change if Kemper binds."
+        }
+      ],
+      "registry_corrections": [],
+      "verified_ok": [
+        "GL: carrier, number, dates, all six limits (incl. 300K rented / 10K med exp), AI + waiver endorsements - registry and template match the Clear Blue dec exactly (DRIVE, high).",
+        "Auto: Progressive 862396417, 08/29/25-08/29/26, $1M CSL, blanket AI + WOS - registry and template match the dec (DRIVE, high).",
+        "Excess: BXFL9000890400, 2M/2M - registry and template match the policy (DRIVE, high).",
+        "WC: WC307-0132038-2026A, 04/11/26-04/25/27, EL 1M/1M/1M, blanket waiver - registry and template match COI + quote (DRIVE, medium - bound policy is an unreadable scan)."
+      ]
+    },
+
+    "rolandos_hvac": {
+      "policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "NRG-DBG-GL15062",
+          "eff_date": "07/15/2025",
+          "exp_date": "07/15/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "5,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: NRG-DBG-GL15062 -Tresura Policy. GL.pdf (Trisura Common Policy Declarations + GL Declarations INSURANCE LIMITS table; blanket written-contract AI endorsement + Primary & Noncontributory + CG 24 04 blanket waiver). Cross-confirmed by 01/05/2026 City of Maitland COI. TEMPLATE + REGISTRY agree on values."},
+            "policy_number_note": "Carrier prints 'NRG-DBG-GL15062' (no space). Registry stores 'NRG-DBG-GL 15062' and template prints 'NRG-DBG-GL 15062' (space) - cosmetic normalization.",
+            "aggregate_basis_note": {"confidence": "medium", "source": "TEMPLATE marks PRO-JECT (X at x=83/y=363); per-project aggregate not independently seen in the Trisura dec extraction - verify before relying on it."},
+            "expiry_warning": "Expires 07/15/2026 - 13 days out; renewal quoted, not bound (see coverage_alerts)."
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "B",
+          "policy_number": "CA-74829-0",
+          "eff_date": "12/15/2025",
+          "exp_date": "12/15/2026",
+          "addl_insured": false,
+          "subr_wvd": false,
+          "auto_type": "Symbols 7,8,9 (Scheduled + Hired + Non-Owned)",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "provenance": {
+            "carrier_number_dates_csl": {"confidence": "high", "source": "DRIVE: Rolando's HVAC Ascendant Commercial Auto Policy 25-26.pdf, Business Auto Declarations Item One/Two/Three (Ascendant Commercial Insurance, CA-74829-0, 12/15/2025 to 12/15/2026, $1,000,000 CSL, symbols 7,8,9, 5 scheduled vehicles). Cross-confirmed by 01/05/2026 Maitland COI."},
+            "addl_insured_subr_wvd_false": {"confidence": "medium", "source": "DRIVE: ML-002 form schedule lists NO additional-insured (no CA 20 48) and NO waiver-of-subrogation (no CA 04 44) endorsement; the 01/05/2026 Maitland COI shows no AI/waiver marks on the auto line. File read was truncated at ~162K chars, so a later-added endorsement cannot be 100% excluded. CONFLICTS with TEMPLATE (marks both X) and REGISTRY (both true) - carrier doc wins under precedence, but confirm with Alex."}
+          }
+        }
+      ],
+      "template_errors": [
+        {
+          "field": "Auto POLICY EXP date",
+          "template_prints": "12/25/2026 (fitz: x=380.1/y=387.7)",
+          "carrier_doc_says": "12/15/2026 (Ascendant Business Auto Declarations Item One: 'From 12/15/2025 to 12/15/2026'; 01/05/2026 Maitland COI agrees)",
+          "evidence": "DRIVE Ascendant policy dec + Maitland COI vs TEMPLATE",
+          "severity": "CRITICAL - every issued cert overstates the auto term by 10 days; certs issued 12/15-12/25/2026 would certify coverage past expiration"
+        },
+        {
+          "field": "Auto row ADDL INSD + SUBR WVD marks",
+          "template_prints": "X in ADDL INSD (x=183.5) and X in SUBR WVD (x=201.5) on the auto row; description block also claims auto AI + auto blanket waiver",
+          "carrier_doc_says": "Ascendant policy CA-74829-0 form schedule (ML-002) contains NO additional-insured and NO waiver-of-subrogation endorsement; the broker's own 01/05/2026 Maitland COI left both unmarked on the auto line",
+          "evidence": "DRIVE Ascendant policy form schedule + Maitland COI vs TEMPLATE fitz extraction",
+          "severity": "CRITICAL - cert asserts AI status and subrogation waiver the auto policy does not provide (classic E&O exposure)"
+        },
+        {
+          "field": "Auto row INSR LTR",
+          "template_prints": "A (x=22.9/y=386.4) - A is Trisura Specialty on this template's carrier list",
+          "carrier_doc_says": "Auto is written by Ascendant Commercial Insurance, Inc = INSURER B on the template",
+          "evidence": "DRIVE Ascendant dec; TEMPLATE carrier block (A=Trisura 16188, B=Ascendant 13683)",
+          "severity": "CRITICAL - cert attributes the auto policy to the wrong carrier. REGISTRY has the same error (insurer_letter 'A')"
+        },
+        {
+          "field": "Auto policy number",
+          "template_prints": "CA-74829",
+          "carrier_doc_says": "CA-74829-0 (dec page includes the -0 suffix)",
+          "evidence": "DRIVE Ascendant dec vs TEMPLATE",
+          "severity": "WARNING - suffix omission; confirm how Ascendant wants it shown on certs"
+        },
+        {
+          "field": "Description of operations typo",
+          "template_prints": "'...applies for General Liabilityand Commercial Auto policies' (missing space) - and the auto waiver claim itself is unsupported (see above)",
+          "carrier_doc_says": "n/a (cosmetic) + auto waiver unsupported",
+          "evidence": "TEMPLATE fitz extraction y=621",
+          "severity": "WARNING"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "WORKERS COMP EXPIRED 03/23/2026 WITH NO REPLACEMENT FOUND. AmTrust/Technology Insurance TWC4577701 (03/23/2025-03/23/2026, EL 1M/1M/1M, renewal of TWC4396314) expired 101 days before 2026-07-02; no successor WC policy exists anywhere in the client Drive folder. WC is not in the registry and not on the template, so the automation cannot accidentally certify it - but the client may be legally uninsured for WC.",
+          "severity": "CRITICAL",
+          "evidence": "DRIVE: WC POLICY.pdf Information Page (WC 99 00 01 B) + staleness_flags ('no replacement/renewal WC document found anywhere in the client folder tree')",
+          "what_alex_must_do": "Confirm whether Rolando's has current WC coverage (AmTrust renewal or replacement carrier). If a WC cert is ever requested, decline until proof of coverage exists."
+        },
+        {
+          "issue": "GL NRG-DBG-GL15062 EXPIRES 07/15/2026 (13 days out); renewal is QUOTED, NOT BOUND. Trisura renewal quote SUB1737578-01 exists in two versions with materially different premiums: 06/10/2026 ($50,027.25) and 06/30/2026 V2 ($69,874.33, revised exposures). No binder or bound policy in Drive.",
+          "severity": "CRITICAL",
+          "evidence": "DRIVE: Trisura Renewal Quote.pdf + Renewal Quote V2.pdf (both term 07/15/2026-07/15/2027; forms incl. CG 20 10_B AI, CG 20 01 P&NC, CG 24 04_B blanket waiver)",
+          "what_alex_must_do": "Confirm which quote version binds and get the binder before 07/15/2026. No GL COI may be issued effective on/after 07/15/2026 until then."
+        }
+      ],
+      "registry_corrections": [
+        "Auto exp_date: 12/25/2026 -> 12/15/2026 (CONTRADICTED by carrier dec + 01/05/2026 COI, both 12/15/2026).",
+        "Auto insurer_letter: 'A' -> 'B' (auto is Ascendant = B; A is Trisura, the GL carrier).",
+        "Auto policy_number: 'CA-74829' -> 'CA-74829-0' (dec includes suffix; confirm cert display preference).",
+        "Auto addl_insured: true -> false and subr_wvd: true -> false (no AI/waiver endorsement on the Ascendant form schedule; pending Alex's confirmation).",
+        "GL policy_number: normalize 'NRG-DBG-GL 15062' -> 'NRG-DBG-GL15062' (carrier prints no space) - cosmetic.",
+        "description_of_operations current_value claims auto AI + auto blanket waiver - must be reworded if the Ascendant policy truly has neither."
+      ],
+      "verified_ok": [
+        "GL: Trisura NRG-DBG-GL15062, 07/15/25-07/15/26, all six limits (1M/100K/5K/1M/2M/2M), blanket written-contract AI + P&NC + CG 24 04 waiver - template and registry match the carrier dec (DRIVE, high).",
+        "Auto carrier/number/eff date/CSL: Ascendant CA-74829-0, eff 12/15/2025, $1M CSL - match (DRIVE, high)."
+      ]
+    },
+
+    "emp3_solutions": {
+      "policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "NRG-DBG-GL17416",
+          "eff_date": "11/06/2025",
+          "exp_date": "11/06/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "5,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "provenance": {
+            "policy_number": {"confidence": "high for what the carrier issued; LOW for what certs should print until Alex rules", "source": "DRIVE: GL Novatae Policy.pdf Common Policy Declarations 'Policy #: NRG-DBG-GL17416' (Trisura, 11/06/2025-11/06/2026). CONFLICT: TEMPLATE prints SUB1579257; ARCHIVE shows SUB1579257-02 on all 7 delivered COIs Jan-Feb 2026. SUB1579257 appears ONLY in broker-generated files - it is the Trisura/Novatae submission number, never seen in any carrier document. Carrier doc wins under precedence."},
+            "limits": {"confidence": "high", "source": "DRIVE: GL Declarations INSURANCE LIMITS table (all six). Resolves the ARCHIVE conflict: damage_to_rented_premises is 100,000 per the carrier dec - the template's 100,000 is RIGHT, the 1,000,000 printed on all 7 delivered Jan-Feb COIs was WRONG."},
+            "ai_wos": {"confidence": "high", "source": "DRIVE: CG 20 10 04 13 blanket-wording AI + CG 20 01 04 13 P&NC + CG 24 04 05 09 blanket waiver, read from the policy's endorsement forms."},
+            "aggregate_basis": {"confidence": "medium", "source": "TEMPLATE marks PRO-JECT (X at x=84); not independently confirmed in the dec extraction."}
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "B",
+          "policy_number": "50019417101",
+          "eff_date": "11/06/2025",
+          "exp_date": "11/06/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Scheduled, Hired & Non-Owned Autos",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "provenance": {
+            "carrier_number_dates_ai_wos": {"confidence": "high", "source": "DRIVE: Kemper Full Policy cover page (Infinity, 50019417101, 11/6/2025-11/6/2026, $25 waiver fee + $25 AI fee) + policy-change notice 'Blanket Additional Insureds ... No to Yes' / 'Blanket Waiver of Subrogations ... No to Yes' eff 11/06/2025. TEMPLATE + ARCHIVE (all 7 COIs + USI Paid Basis Report) agree."},
+            "csl": {"confidence": "medium-high", "source": "Dec text font-garbled; $1,000,000 CSL corroborated by issued COIs + 24-25 signed application."}
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "C",
+          "policy_number": "WC307-0131466-2025A",
+          "eff_date": "11/06/2025",
+          "exp_date": "11/06/2026",
+          "subr_wvd": false,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "provenance": {
+            "carrier_number_dates_limits": {"confidence": "high", "source": "DRIVE: WC LUBA POLICY.PDF Information Page WC 00 00 01 B (LUBA, WC307-0131466-2025A, 11/6/25-11/6/26, EL 1M/1M/1M). TEMPLATE + ARCHIVE agree."},
+            "subr_wvd_false": {"confidence": "high that the schedule shows none; LOW that this is the final answer", "source": "DRIVE: the policy's full Schedule of Endorsements contains NO waiver form (no WC 00 03 13). CONFLICTS with TEMPLATE (X in SUBR WVD, x=201.5/y=483.7) and with the description block. Policy PDF last modified 2026-01-07 - a waiver could have been added after issuance. Alex must confirm before honoring waiver requests on WC."}
+          }
+        }
+      ],
+      "template_errors": [
+        {
+          "field": "GL policy number",
+          "template_prints": "SUB1579257",
+          "carrier_doc_says": "NRG-DBG-GL17416 (Trisura Common Policy Declarations). SUB1579257(-02) appears only in broker-generated files - it is the Novatae submission number.",
+          "evidence": "DRIVE: GL Novatae Policy.pdf Common Policy Declarations; ARCHIVE: all 7 delivered COIs print SUB1579257-02 (e.g. Inbox/01001 EMP 3 Solutions COI_Trent F Condominium.pdf p1)",
+          "severity": "CRITICAL - every cert issued to date shows a number that matches no issued policy; three variants in circulation (template SUB1579257, COIs SUB1579257-02, policy NRG-DBG-GL17416)"
+        },
+        {
+          "field": "WC row SUBR WVD mark",
+          "template_prints": "X (SUBR WVD marked Y on the LUBA WC line, fitz x=201.5/y=483.7)",
+          "carrier_doc_says": "LUBA WC307-0131466-2025A Schedule of Endorsements lists NO waiver-of-subrogation endorsement (no WC 00 03 13)",
+          "evidence": "DRIVE: WC LUBA POLICY.PDF full endorsement schedule",
+          "severity": "CRITICAL - cert asserts a WC waiver the policy does not visibly contain"
+        },
+        {
+          "field": "Description of operations - waiver scope",
+          "template_prints": "'A Blanket Waiver of Subrogation applies for General Liability, Umbrella, and Employer's Liability policies.'",
+          "carrier_doc_says": "EMP3 has NO umbrella policy at all (none found in Drive; template umbrella section blank), and the EL waiver is unsupported (see above). GL waiver is real (CG 24 04).",
+          "evidence": "DRIVE: staleness_flags 'No umbrella/excess policy found anywhere in the client folder' + WC endorsement schedule",
+          "severity": "WARNING - boilerplate references coverage that does not exist"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "All three policies (GL/Auto/WC) are current, term 11/06/2025-11/06/2026; renewal cycle starts ~fall 2026. The Jan-2026 IPFS intent-to-cancel on the Trisura GL was presumably resolved (COIs kept issuing through Feb) but payment is not confirmed in any source.",
+          "severity": "WARNING",
+          "evidence": "DRIVE confidence_summary; ARCHIVE staleness note (IPFS notice 01/12/26, pay-by 01/30/26)",
+          "what_alex_must_do": "Diary the 11/06/2026 renewal. No immediate action."
+        }
+      ],
+      "registry_corrections": [
+        "Registry has NO policies array for emp3_solutions - add the proposed array above (after Alex rules on the GL number question).",
+        "Registry GL number decision needed: store carrier number NRG-DBG-GL17416, or keep printing SUB1579257-02 as certs have done? (Carrier doc says NRG-DBG-GL17416.)"
+      ],
+      "verified_ok": [
+        "GL limits: template's 100,000 damage-to-rented and 5,000 med exp MATCH the carrier dec - the 1,000,000 rented-premises printed on all 7 delivered Jan-Feb COIs was the wrong value (archive conflict resolved by the Drive dec).",
+        "GL dates 11/06/25-11/06/26 + blanket AI/P&NC/waiver endorsements confirmed from the issued policy (DRIVE, high).",
+        "Auto: Infinity 50019417101, dates, $1M CSL, blanket AI + WOS (added 11/06/2025) - template matches carrier evidence (DRIVE, high).",
+        "WC: number/dates/EL limits 1M/1M/1M match the LUBA Information Page (DRIVE, high). Only the waiver mark is in dispute."
+      ]
+    },
+
+    "central_comfort_ac": {
+      "policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "10176227110",
+          "eff_date": "12/26/2025",
+          "exp_date": "12/26/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "POLICY",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "10,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high (3 agreeing readable docs) but carrier dec itself unreadable", "source": "DRIVE: 06/30/2026 issued COI + UFG binding proposal (BOP-Pro quote 0165967850, P&NC form BP 71 74 08 15) + ACORD 35 rewrite record all agree; TEMPLATE + REGISTRY match. The UFG policy PDF is a 47.8MB scan with no text layer - AI/waiver form numbers rest on the COI. NOTE: this is a UFG BOP-Pro Businessowners policy, not monoline CGL."},
+            "aggregate_basis": {"confidence": "medium", "source": "TEMPLATE marks POLICY (X at x=40/y=363); registry has no aggregate_basis key for this client."}
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "B",
+          "policy_number": "WC307-0131650-2025A",
+          "eff_date": "12/26/2025",
+          "exp_date": "12/26/2026",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: WC LUBA Policy.pdf Information Page WC 00 00 01 B read directly (policy no., 12/26/2025-12/26/2026, EL 1M/1M/1M) + Schedule of Endorsements 'WC 00 03 13 Waiver of Our Rights to Recover From Others - Blanket' with 1.4%/$342 premium line. Template's SUBR X is SUPPORTED for this client. Registry stores the same number unhyphenated (WC30701316502025A)."}
+          }
+        },
+        {
+          "line": "Property",
+          "insurer_letter": "A",
+          "policy_number": "10176227110",
+          "eff_date": "12/26/2025",
+          "exp_date": "12/26/2026",
+          "limits": {"property": "5,000"},
+          "provenance": {
+            "all_fields": {"confidence": "medium", "source": "DRIVE: COI 06-30-26 Property row + proposal 'Property Deductibles $5,000'. The 5,000 is a DEDUCTIBLE, not a coverage limit; building/BPP limits were not extractable from the scanned dec. Do not quote property limits on COIs without OCR of the UFG policy. TEMPLATE + REGISTRY match (both show $5,000)."}
+          }
+        }
+      ],
+      "template_errors": [
+        {
+          "field": "Insured address block",
+          "template_prints": "'12320 SW 129th Ct, Miami,' + 'Miami, FL 33186' (city duplicated across two lines); REGISTRY has the same duplication ('12320 SW 129th Ct, Miami, Miami, FL 33186')",
+          "carrier_doc_says": "Policy docs: 'CENTRAL COMFORT AIR CONDITIONING, 12320 SW 129th Ct, Miami FL 33186'; ACORD 35 shows 12310 (not 12320) SW 129 CT",
+          "evidence": "TEMPLATE fitz extraction y=201/y=213; DRIVE open_questions (address discrepancy 12310 vs 12320)",
+          "severity": "WARNING - cosmetic duplication on every cert; minor street-number discrepancy vs ACORD 35 unresolved"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "No Commercial Auto and no Umbrella/Excess policy found anywhere in the client folder - COIs to date show only GL/WC/Property. Both policies expire 12/26/2026 (~6 months out).",
+          "severity": "WARNING",
+          "evidence": "DRIVE open_questions + staleness_flags",
+          "what_alex_must_do": "Confirm the client genuinely carries no auto/umbrella (one-line yes/no); diary 12/26/2026 renewal."
+        }
+      ],
+      "registry_corrections": [
+        "WC entry lacks subr_wvd - add subr_wvd: true (carrier schedule confirms WC 00 03 13 Blanket; template already marks it).",
+        "WC policy_number style: registry 'WC30701316502025A' vs carrier 'WC307-0131650-2025A' - same number; consider storing the hyphenated carrier style.",
+        "insured_address: fix duplicated city '...Miami, Miami, FL 33186'.",
+        "Property row: registry 'limits': {'property': '5,000'} - that figure is the deductible per the proposal; consider renaming or annotating so the engine never presents it as a coverage limit."
+      ],
+      "verified_ok": [
+        "GL: UFG 10176227110, 12/26/25-12/26/26, all six limits - template, registry, COI, proposal, and ACORD 35 rewrite record all agree (DRIVE, high; dec unreadable).",
+        "WC: LUBA WC307-0131650-2025A, dates, EL 1M/1M/1M, blanket waiver - read directly from the carrier Information Page (DRIVE, high).",
+        "This is the cleanest client in the book - no substantive discrepancies."
+      ]
+    },
+
+    "gd_mechanical": {
+      "policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "10104588635",
+          "eff_date": "11/02/2025",
+          "exp_date": "11/02/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "POLICY",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "10,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "provenance": {
+            "carrier_number_dates_core_limits": {"confidence": "high", "source": "DRIVE: UFG BOP.PDF dec pages read visually (pp.11-14): policy 10104588635, United Fire & Casualty, 11/02/2025-11/02/2026, 1M occ / 2M agg / 2M products, med exp $10,000/person, Damage To Premises Rented $100,000. GL is provided via a BOP-Pro Businessowners policy. TEMPLATE (10,000 med / 100,000 rented) MATCHES the dec."},
+            "issued_coi_conflict": "The 06/30/2026 City of Winter Park COI (from Drive's 'New Template with the New Auto policy' folder) prints $5,000 med exp and $1,000,000 rented premises - CONFLICTS with both the dec and this repo's template. The Drive-side template lineage is wrong; the repo template is right.",
+            "ai_wos": {"confidence": "medium", "source": "COI description-of-operations wording only; endorsement forms inside the 150-page BOP not individually verified."}
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "B",
+          "policy_number": "50010517801",
+          "eff_date": "05/03/2026",
+          "exp_date": "05/03/2027",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Scheduled, Hired & Non-Owned Autos",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "provenance": {
+            "dates": {"confidence": "medium", "source": "DRIVE: 06/30/2026 City of Winter Park COI row B (50010517801, 05/03/2026-05/03/2027). NO renewal dec exists in Drive - the only auto dec on file is the EXPIRED prior term 05/03/2025-05/03/2026 (Kemper auto comercial 02_03_2026.pdf). ARCHIVE ends 04/27 with the renewal still being marketed. TEMPLATE still prints the expired term."},
+            "limits": {"confidence": "medium", "source": "CSL $1M + UM $1M CSL + hired/non-owned from the PRIOR-term dec, assumed carried over; verify against the renewal dec."},
+            "ai_wos": {"confidence": "medium", "source": "COI description block only."}
+          }
+        },
+        {
+          "line": "Umbrella Liability",
+          "insurer_letter": "A",
+          "policy_number": "10165492143",
+          "eff_date": "11/02/2025",
+          "exp_date": "11/02/2026",
+          "occur": true,
+          "limits": {"each_occurrence": "1,000,000", "aggregate": "1,000,000"},
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: UFG Umbrella.PDF dec pages (pp.13-14): policy 10165492143, 1M/1M, SIR $10,000, underlying = the UFG BOP. TEMPLATE + ARCHIVE (Paid Basis Report) agree."}
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "C",
+          "policy_number": "WC307-0131450-2025A",
+          "eff_date": "11/02/2025",
+          "exp_date": "11/02/2026",
+          "subr_wvd": false,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "provenance": {
+            "carrier_number_dates_limits": {"confidence": "high", "source": "DRIVE: WC LUBA Policy 25-26.PDF Information Page (WC307-0131450-2025A, 11/2/2025-11/2/2026, EL 1M/1M/1M, insured G&D MECHANICAL SERVICES CO DBA AIRSYSTEMS). TEMPLATE + ARCHIVE agree."},
+            "subr_wvd_false": {"confidence": "high that the schedule shows none; LOW as final answer", "source": "DRIVE: endorsement schedule read in full - NO waiver endorsement (no WC 00 03 13). CONFLICTS with TEMPLATE (X in SUBR WVD, x=201.5/y=483.5) and the description block's EL-waiver claim. Same pattern as EMP3's LUBA WC. Alex must confirm."}
+          }
+        }
+      ],
+      "template_errors": [
+        {
+          "field": "Auto policy dates",
+          "template_prints": "05/03/2025 - 05/03/2026 (EXPIRED two months before 2026-07-02)",
+          "carrier_doc_says": "Policy 50010517801 renewed: 05/03/2026 - 05/03/2027 per the 06/30/2026 City of Winter Park COI (no renewal dec in Drive yet)",
+          "evidence": "TEMPLATE fitz (x=332.5-380.1/y≈387.7 prints 05/03/2025 05/03/2026) vs DRIVE COI 15tdWizpjTW_Jd3k0u6S8LoT7Pjs_Hgdk",
+          "severity": "CRITICAL - any cert issued from this repo template today shows expired auto coverage"
+        },
+        {
+          "field": "WC row SUBR WVD mark",
+          "template_prints": "X (SUBR WVD marked on the LUBA WC line, fitz x=201.5/y=483.5)",
+          "carrier_doc_says": "LUBA WC307-0131450-2025A endorsement schedule contains NO waiver-of-subrogation endorsement (no WC 00 03 13)",
+          "evidence": "DRIVE: WC LUBA Policy 25-26.PDF endorsement schedule read in full",
+          "severity": "CRITICAL - cert asserts a WC waiver the policy does not visibly contain"
+        },
+        {
+          "field": "Description of operations - waiver scope",
+          "template_prints": "'A Blanket Waiver of Subrogation applies for General Liability, Umbrella, Employer's , and Commercial Auto policies.' (also contains stray space in \"Employer's ,\")",
+          "carrier_doc_says": "The Employer's Liability part is unsupported (no WC waiver endorsement on schedule); GL/Umbrella/Auto waiver claims rest on COI wording only, not sighted endorsements",
+          "evidence": "DRIVE WC endorsement schedule + open_questions",
+          "severity": "WARNING"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "Auto renewal dec MISSING. Current 05/03/2026-05/03/2027 term is evidenced ONLY by the 06/30/2026 broker COI; no carrier renewal declaration anywhere in Drive. Limits are assumed carried over from the expired prior-term dec.",
+          "severity": "WARNING",
+          "evidence": "DRIVE: staleness_flags + open_questions ('Which auto dec backs the 26-27 term?')",
+          "what_alex_must_do": "Pull the 26-27 Kemper/Infinity renewal dec (portal or carrier) before treating auto limits as confirmed; then update the template dates."
+        },
+        {
+          "issue": "TWO template lineages disagree on GL limits: this repo's template prints the dec-correct 10,000 med exp / 100,000 rented premises, but the Drive 'New Template with the New Auto policy' lineage (which produced the 06/30/2026 Winter Park COI) prints 5,000 / 1,000,000. Certs issued from the Drive side overstate rented-premises coverage 10x.",
+          "severity": "CRITICAL",
+          "evidence": "TEMPLATE fitz (med 10,000 at y=327, rented 100,000 at y=315) vs DRIVE COI City of Winter Park + UFG BOP dec pp.13-14",
+          "what_alex_must_do": "Decide which template file is live for the automation, and fix/retire the Drive-side copy that prints 5,000/1,000,000. Confirm the values against the BOP dec (10,000 med / 100,000 rented)."
+        },
+        {
+          "issue": "GL/BOP, Umbrella, and WC all expire 11/02/2026 (~4 months out). United Fire Cyber policy 10187095536 (eff 11/02/25, per USI Paid Basis Report) exists but is not in the registry or on the template.",
+          "severity": "WARNING",
+          "evidence": "DRIVE staleness_flags; ARCHIVE additional_policies_not_on_coi",
+          "what_alex_must_do": "Diary the 11/02/2026 renewals; decide if the registry should carry a cyber line."
+        }
+      ],
+      "registry_corrections": [
+        "Registry has NO policies array for gd_mechanical - add the proposed array above once the auto renewal dec is obtained.",
+        "license_number: registry lists CAC1815707 for G&D - IDENTICAL to Rolando's HVAC's license number, and the template prints it too. Two different companies with the same CAC license is suspicious; confirm G&D's real license (same qualifier, or copy-paste error).",
+        "Canonical insured name varies across carrier docs (G&D Mechanical Services Company / G&D MECHANICAL SERVICES CO DBA AIRSYSTEMS / G & D Mechanical Services LLC) - confirm which one certs must show."
+      ],
+      "verified_ok": [
+        "GL: UFG 10104588635, 11/02/25-11/02/26, 1M/2M/2M and template's 10K med / 100K rented MATCH the BOP dec (DRIVE, high).",
+        "Umbrella: UFG 10165492143, 1M/1M - template matches the dec (DRIVE, high).",
+        "WC: LUBA WC307-0131450-2025A, dates, EL 1M/1M/1M - template matches the Information Page (DRIVE, high). Only the waiver mark is in dispute.",
+        "Auto policy number 50010517801 and carrier (Infinity/Kemper) verified; only the template's dates are stale."
+      ]
+    },
+
+    "absolute_air_solutions": {
+      "policies": [
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "A",
+          "policy_number": "50026705601",
+          "eff_date": "08/27/2025",
+          "exp_date": "08/27/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Symbol 1 (Any Auto) on Symbol-1 template; Symbols 7/8/9 (Scheduled + Hired + Non-Owned) on Symbol-789 template",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: clean cover page of 'Original full kemper policy bef any endorsements 25-26.pdf' (Infinity, 50026705601, 8/27/2025-8/27/2026, premium $22,758) + 'Latest Policy dec with endorsements.pdf' policy change eff 11/03/2025 adding Blanket AI + Blanket WOS. ARCHIVE (both templates, delivered COIs, Paid Basis Report, thread subjects) agrees. This is the ONLY line verifiably in force on 2026-07-02."},
+            "insurer_letter_note": "Proposed letter A (Infinity is the only insurer on the cert, listed as INSURER A). BOTH templates print 'B' on the auto row - see template_errors."
+          }
+        }
+      ],
+      "additional_policy_not_on_templates": {
+        "line": "Commercial Auto (single vehicle w/ GAP)",
+        "carrier": "Progressive",
+        "policy_number": "872005650",
+        "eff_date": "03/31/2026",
+        "exp_date": "03/31/2027",
+        "addl_insured": false,
+        "subr_wvd": false,
+        "limits": {"combined_single_limit": "1,000,000"},
+        "provenance": {
+          "conflict": "ARCHIVE says BOUND: a Progressive-issued COI for 872005650 (03/31/2026-03/31/2027, 2024 Chevy Express, ADDL N / SUBR N) was attached to Sent 2026-04-09. DRIVE instead found only 'Progressive Policy.pdf' which is a QUOTE dated 03/24/2026 for a 03/24/2026-03/24/2027 term with no policy number. The archive's carrier-issued COI is the stronger and later evidence, so the policy was most likely bound eff 03/31/2026 - but the Drive quote's existence (file modified 05/30/2026) muddies it. MEDIUM confidence; confirm in the Progressive portal.",
+          "confidence": "medium"
+        }
+      },
+      "template_errors": [
+        {
+          "field": "Auto row INSR LTR (both templates)",
+          "template_prints": "B - but INSURER B is blank; Infinity Assurance (NAIC 39497) is listed as INSURER A and is the only carrier on the cert",
+          "carrier_doc_says": "Infinity is the auto carrier; the row letter must point at the listed insurer (A)",
+          "evidence": "TEMPLATE fitz: both Symbol_1 and Symbol_789 print 'B' at x=23/y≈387 while the carrier block shows only 'INSURER A: Infinity Assurance Insurance Company 39497'",
+          "severity": "WARNING - cert references an undefined insurer letter; fix to A on both templates"
+        },
+        {
+          "field": "GL section stray checkbox (both templates)",
+          "template_prints": "A stray X on the GEN'L AGGREGATE LIMIT APPLIES PER 'POLICY' checkbox (x=43/y=363) while the entire GL section is otherwise blank",
+          "carrier_doc_says": "No GL policy exists for this client - the GL band should be completely empty",
+          "evidence": "TEMPLATE fitz extraction (both files)",
+          "severity": "WARNING - cosmetic leftover; could confuse a cert reader into thinking a GL line was intended"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "WORKERS COMP EXPIRED 06/13/2026 WITH NO RENEWAL FOUND. RetailFirst 520-51006 (06/13/2025-06/13/2026, EL 1M/1M/1M, FEIN 20-3094555) lapsed 19 days before 2026-07-02; no renewal document anywhere in the client tree. (File is titled '06-05-25-26' but the dec itself reads 06/13.)",
+          "severity": "CRITICAL",
+          "evidence": "DRIVE: WC - Retail First- 06-05-25-26.pdf Information Page + staleness_flags",
+          "what_alex_must_do": "Confirm whether WC was renewed/replaced. Decline any WC cert request until proof exists."
+        },
+        {
+          "issue": "GL (Nationwide) EXPIRED ~06/05/2026 WITH NO RENEWAL FOUND - and the expired policy's dec values never extracted (policy number and limits unknown; dates from file title only, LOW confidence). Umbrella (Nationwide) expired ~06/05/2026 the same way. As of 2026-07-02 the ONLY verifiably in-force coverage is the Infinity auto (through 08/27/2026).",
+          "severity": "CRITICAL",
+          "evidence": "DRIVE: GL - NW - 06-05-25-26.pdf and UMB - NW - 06-05-25-26.pdf (OLD/Policies/, extraction returned only ISO boilerplate) + staleness_flags ('NO 26-27 GL renewal exists anywhere in the client tree')",
+          "what_alex_must_do": "Ask the client/carrier whether GL, Umbrella, Property, and Inland Marine renewed for 26-27 or the client now carries auto only. The registry currently describes this client as auto-only (matching the templates), so the automation is not exposed - but Alex should know the client may be bare on GL/WC."
+        },
+        {
+          "issue": "Infinity auto 50026705601 renews 08/27/2026 (~8 weeks out).",
+          "severity": "WARNING",
+          "evidence": "DRIVE policy cover page; ARCHIVE staleness note",
+          "what_alex_must_do": "Diary the renewal; both templates will need new dates."
+        },
+        {
+          "issue": "Progressive second auto policy: ARCHIVE shows carrier-issued COI for 872005650 (03/31/2026-03/31/2027, bound); DRIVE shows only an unbound QUOTE dated 03/24/2026. Sources disagree on binding status.",
+          "severity": "WARNING",
+          "evidence": "ARCHIVE Sent 2026-04-09 'Progressive COI - Absolute Air Solutions.pdf' vs DRIVE 'Progressive Policy.pdf' (quote content)",
+          "what_alex_must_do": "One-line check in the Progressive portal: is 872005650 in force, and does the removed vehicle from 50026705601 live on it?"
+        }
+      ],
+      "registry_corrections": [
+        "Registry has NO policies array for either absolute_air template - add the proposed Infinity array to both (or default only, Alex's call).",
+        "Registry carrier letter: both registry template entries list Infinity under letter 'B' - should be 'A' to match the cert's carrier block (same fix as the template)."
+      ],
+      "verified_ok": [
+        "Infinity auto 50026705601: number, 08/27/25-08/27/26 dates, $1M CSL, blanket AI + WOS (endorsement change 11/03/2025) - confirmed across policy cover page, dec-with-endorsements, both templates, and delivered COIs (DRIVE + ARCHIVE, high)."
+      ]
+    },
+
+    "ajf_roofing": {
+      "policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "8035162052",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "deductible": "5,000 BI/PD per occurrence",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "15,000",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: AJF ROOFING, INC GL 8035162052 Term 26-27.pdf dec + CNA74705XX extension endorsement (item 1 blanket AI, item 25 blanket waiver, item 11 per-project aggregate); National Fire Insurance of Hartford. ARCHIVE carrier docs (Inbox/00553 2026-2027 GLI Policy.PDF p26) agree on every value incl. 15K med exp. TEMPLATE matches all limits."}
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "A",
+          "policy_number": "8035162049",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "auto_type": "Any Auto (symbol 1) + Hired + Non-Owned",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: AJF ROOFING, INC BUA 8035162049 Term 26-27.pdf dec (symbol 1, $1,000,000) + CNA63359XX endorsement (blanket AI P&NC + blanket waiver). ARCHIVE carrier doc agrees; 342 archive docs print 8035162049 vs 18 with the 9-prefix typo. Policy prints as 'BUA 8035162049'; delivered COIs drop the BUA prefix."}
+          }
+        },
+        {
+          "line": "Umbrella Liability",
+          "insurer_letter": "B",
+          "policy_number": "8035162066",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "occur": true,
+          "limits": {"each_occurrence": "3,000,000", "aggregate": "3,000,000"},
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: AJF ROOFING, INC CUE 8035162066 Term 26-27.pdf declarations (Continental Insurance Company, 3M each incident / 3M agg / 3M products agg, SIR 10,000, underlying schedule = GL/Auto/EL). Waiver via condition W (blanket by written contract); AI via follow-form (medium confidence on AI mechanics - no standalone umbrella AI endorsement sighted). TEMPLATE matches 3M/3M."}
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "C",
+          "policy_number": "8035490054",
+          "eff_date": "01/07/2026",
+          "exp_date": "01/07/2027",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: AJF ROOFING, INC WC 8035490054 Term 26-27.pdf Information Page (Valley Forge, EL 1M/1M/1M) + WC 00 03 13 blanket waiver endorsement sighted. ARCHIVE carrier doc agrees. Template's SUBR X is SUPPORTED. Policy shows number as 'WC 8 35490054' styling."}
+          }
+        }
+      ],
+      "template_errors": [
+        {
+          "field": "Auto policy number",
+          "template_prints": "9035162049",
+          "carrier_doc_says": "BUA 8035162049 (leading 8) - on the issued policy dec AND the umbrella's Schedule of Underlying; 342 archive docs print 8035162049 vs 18 with the 9 (the NV2A COI lineage the template inherited)",
+          "evidence": "DRIVE AJF BUA policy dec + CUE underlying schedule; ARCHIVE Inbox/00553 2026-2027 CAU Policy.PDF p1; TEMPLATE fitz x=215.9/y=387.7",
+          "severity": "CRITICAL - every cert prints a policy number that does not exist at CNA"
+        },
+        {
+          "field": "GEN'L AGGREGATE LIMIT APPLIES PER checkbox",
+          "template_prints": "No box marked (fitz: no X in the POLICY/PRO-JECT/LOC checkbox band y=360-367)",
+          "carrier_doc_says": "GL aggregate applies PER PROJECT (CNA74705XX item 11; umbrella Schedule of Underlying 'Per Project: yes')",
+          "evidence": "DRIVE GL endorsement + CUE underlying schedule vs TEMPLATE fitz",
+          "severity": "WARNING - cert understates (per-project aggregate is a selling point cert holders often require); mark PRO-JECT"
+        },
+        {
+          "field": "Umbrella row ADDL INSD / SUBR WVD marks",
+          "template_prints": "Neither marked (no X at x=183.5/201.5 on the umbrella row), while the description block claims umbrella AI + waiver",
+          "carrier_doc_says": "CUE 8035162066 carries blanket waiver (condition W) and follow-form AI - both marks are supportable",
+          "evidence": "DRIVE CUE policy conditions vs TEMPLATE fitz",
+          "severity": "WARNING - understatement/inconsistency between the grid and the description text; matches how prior COIs were issued, so fix is optional but should be deliberate"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "None. All four CNA policies are current (01/07/2026-01/07/2027) and were verified from the issued carrier documents in BOTH the Drive and the email archive - the two independent carrier-doc sources agree on every number.",
+          "severity": "WARNING",
+          "evidence": "DRIVE AJF extraction (all four policy PDFs read) + ARCHIVE Inbox/00553 carrier policy set",
+          "what_alex_must_do": "Nothing urgent. Optionally confirm with CNA that certs may print 8035162049 without the 'BUA' prefix."
+        }
+      ],
+      "registry_corrections": [
+        "Registry has NO policies array for ajf_roofing - add the proposed array above (strongest-sourced client; ready to merge once the template typo is fixed)."
+      ],
+      "verified_ok": [
+        "GL: 8035162052, dates, 1M/100K/15K/1M/2M/2M, BI/PD ded 5,000, blanket AI + waiver, per-project aggregate - template limits match carrier docs from two independent sources (high).",
+        "Umbrella: CUE 8035162066, 3M/3M - matches both carrier-doc sources (high).",
+        "WC: 8035490054, dates, EL 1M/1M/1M, WC 00 03 13 blanket waiver - template SUBR X supported (high).",
+        "Auto: everything except the printed policy number matches (dates, CSL 1M, symbol 1 + hired/non-owned, blanket AI + waiver via CNA63359XX)."
+      ]
+    },
+
+    "apogee_hvac": {
+      "policies": [
+        {
+          "line": "Commercial General Liability",
+          "insurer_letter": "A",
+          "policy_number": "TSLBGL-0002210-00",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "addl_insured": true,
+          "subr_wvd": true,
+          "occur": true,
+          "aggregate_basis": "PRO-JECT",
+          "deductible": "5,000 BI/PD per occurrence",
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "damage_to_rented_premises": "100,000",
+            "med_exp": "Excluded",
+            "personal_adv_injury": "1,000,000",
+            "general_aggregate": "2,000,000",
+            "products_comp_op_agg": "2,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high on paper - IN-FORCE STATUS UNVERIFIED", "source": "DRIVE: GL Policy - Apogee HVAC Solutions LLC, TSLBGL-0002210-00.pdf (MS Transverse Common Policy Declarations + CG DS 01 dec: all limits incl. MED EXP EXCLUDED via CG 21 35; forms schedule CG 20 10/20 37 AI + CG 20 01 P&NC + CG 24 53 automatic waiver). ARCHIVE carrier doc agrees. IPFS intent-to-cancel deadline was 05/01/2026 - payment outcome unknown (see coverage_alerts)."}
+          }
+        },
+        {
+          "line": "Excess Liability (1st layer, follow-form)",
+          "insurer_letter": "B",
+          "policy_number": "07173314300",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "occur": true,
+          "limits": {
+            "each_occurrence": "1,000,000",
+            "aggregate": "1,000,000",
+            "products_comp_op_agg": "1,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high", "source": "DRIVE: 25-26 Excess 1st Layer Policy.pdf declarations GLX 0003 (Lexington 071733143-00, 1M/1M/1M, follow-form over MS Transverse GL + LUBA EL). ARCHIVE Inbox/00186 4069692.pdf p6 agrees. COI prints the number unhyphenated (07173314300). AI/waiver: follow-form only - no standalone endorsement verified; template's ADDL/SUBR X marks on this row are UNVERIFIED."}
+          }
+        },
+        {
+          "line": "Excess Liability (2nd layer)",
+          "insurer_letter": "C",
+          "policy_number": "CXS4071612",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "occur": true,
+          "limits": {"each_occurrence": "4,000,000", "aggregate": "4,000,000"},
+          "provenance": {
+            "all_fields": {"confidence": "high (upgraded from archive's medium)", "source": "DRIVE: 25-26 Excess 2nd Layer Policy.pdf read directly (Scottsdale Florida Face Page + XLS-D-1 Item 4: 4M each occurrence / 4M aggregate, sits over Lexington 071733143-00). The archive only had the prior agent's COI for this; the Drive read is the carrier doc. Tower = 1M + 4M = 5M total above GL; NO single 5M policy exists."}
+          }
+        },
+        {
+          "line": "Commercial Auto",
+          "insurer_letter": "E",
+          "policy_number": "50000190801",
+          "eff_date": "02/09/2026",
+          "exp_date": "02/09/2027",
+          "addl_insured": false,
+          "subr_wvd": false,
+          "auto_type": "UNRESOLVED - template marks Owned Autos Only; prior-agent 01/21 COI marked Any Auto + Hired + Non-Owned",
+          "limits": {"combined_single_limit": "1,000,000"},
+          "provenance": {
+            "dates": {"confidence": "LOW - UNRESOLVED CONFLICT", "source": "TEMPLATE + 04/22 delivered COI print 02/09/2026-02/09/2027 (post-cancellation rewrite after the 02/01/2026 non-payment cancellation, ARCHIVE Inbox/00434). BUT DRIVE's Kemper Renewal.pdf (10/21/2025 renewal notice) and the 03/23/2026 Miami Dade COI both show 12/08/2025-12/08/2026 for the same number. Proposed dates use the later-event evidence (02/09 rewrite) but this MUST be confirmed - the two broker COIs issued 03/23 and 04/22 printed different terms for the same policy."},
+            "number_carrier": {"confidence": "high", "source": "Consistent across DRIVE renewal notice, ARCHIVE template/COIs/Kemper suspense thread: Infinity Assurance (Kemper), 50000190801."},
+            "csl": {"confidence": "medium", "source": "DRIVE renewal notice per-vehicle schedule 'BI/PD Liablity 1,000,000' - CSL vs split-limit form unconfirmed (dec is an unreadable scan)."},
+            "addl_insured_subr_wvd_false": {"confidence": "LOW", "source": "Set false because NO readable carrier document confirms auto AI/waiver (DRIVE: 'AI/waiver availability not visible in any readable doc'; the Miami Dade COI grants AI on GL/umbrella and waiver on WC - auto silent). TEMPLATE marks both X - unsupported. EMP3's sibling Kemper policy did buy blanket AI/WOS endorsements, so Apogee's may too - confirm with the actual dec before marking."}
+          }
+        },
+        {
+          "line": "Workers Compensation",
+          "insurer_letter": "D",
+          "policy_number": "WC307-0131633-2025A",
+          "eff_date": "12/08/2025",
+          "exp_date": "12/08/2026",
+          "subr_wvd": true,
+          "limits": {
+            "el_each_accident": "1,000,000",
+            "el_disease_ea_employee": "1,000,000",
+            "el_disease_policy_limit": "1,000,000"
+          },
+          "provenance": {
+            "all_fields": {"confidence": "high on paper - IN-FORCE STATUS UNKNOWN (terminated ~04/14/2026, reinstatement outcome unverified)", "source": "DRIVE: 25-26 WC - LUBA Apogee HVAC Solutions.pdf Information Page (WC307-0131633-2025A, 12/8/2025-12/8/2026, EL 1M/1M/1M) + Schedule of Endorsements WC 00 03 13 blanket waiver - template's SUBR X is supported IF the policy is in force. ARCHIVE: same carrier doc + FHM termination threads + two signed no-loss letters (04/22, 04/27) with reinstatement in progress at archive end."}
+          }
+        }
+      ],
+      "template_errors": [
+        {
+          "field": "WC policy number",
+          "template_prints": "WC307-0131699-2025A",
+          "carrier_doc_says": "WC307-0131633-2025A (LUBA Information Page; also on ALL of Alex's own Jan-Apr delivered COIs, both no-loss letters, FHM termination/reinstatement notices, and Lexington's Schedule of Underlying). -0131699 traces only to the prior agent's 01/21 COI lineage.",
+          "evidence": "DRIVE 25-26 WC LUBA policy p14 (Information Page); ARCHIVE Sent 2026-04-23 attachment; TEMPLATE fitz x=215.9/y=484.9",
+          "severity": "CRITICAL - wrong WC policy number on every cert; this exact error was graded 'incorrect' on the 04/22 delivered COI"
+        },
+        {
+          "field": "Insurer letters on Auto and WC rows (swapped)",
+          "template_prints": "Auto row = D, WC row = E (fitz: 'D' at x=22.9/y=387.2, 'E' at x=22.9/y=484.4)",
+          "carrier_doc_says": "On this template's own carrier list D = LUBA and E = Infinity. The auto policy (50000190801) is Infinity -> E; the WC (WC307-0131633) is LUBA -> D. Letters are swapped.",
+          "evidence": "TEMPLATE carrier block (fitz y=207/y=219) vs DRIVE/ARCHIVE carrier docs; the prior agent's 01/21 COI had them right",
+          "severity": "CRITICAL - cert attributes both policies to the wrong carriers"
+        },
+        {
+          "field": "Umbrella/Excess limits (tower compressed and overstated)",
+          "template_prints": "Row B (Lexington 07173314300): EACH OCCURRENCE 5,000,000; Row C (Scottsdale CXS4071612): AGGREGATE 5,000,000 - presenting a single 5M/5M tower",
+          "carrier_doc_says": "Lexington 071733143-00 is 1,000,000 each occ / 1,000,000 agg / 1,000,000 products agg (follow-form); Scottsdale CXS4071612 is 4,000,000/4,000,000 excess OF the Lexington. Tower totals 5M but NEITHER policy is 5M.",
+          "evidence": "DRIVE: 25-26 Excess 1st Layer Policy.pdf GLX 0003 dec + 25-26 Excess 2nd Layer Policy.pdf XLS-D-1 Item 4; TEMPLATE fitz y=447.7/459.7",
+          "severity": "CRITICAL - cert asserts Lexington provides 5M each-occurrence when its policy is 1M (5x overstatement of a named carrier's limit)"
+        },
+        {
+          "field": "GL MED EXP",
+          "template_prints": "5,000 (fitz x=524.1/y=327)",
+          "carrier_doc_says": "'MEDICAL EXPENSE LIMIT $ Excluded' - CG 21 35 exclusion on the MS Transverse dec; prior-agent COI printed $0",
+          "evidence": "DRIVE GL policy CG DS 01 dec; ARCHIVE Sent 2026-01-30 GL Policy pdf p2",
+          "severity": "CRITICAL - cert asserts $5,000 med-exp coverage the policy excludes"
+        },
+        {
+          "field": "Umbrella row ADDL INSD / SUBR WVD marks",
+          "template_prints": "Both X (fitz x=183.5 and x=202.0 at y=448.0)",
+          "carrier_doc_says": "Lexington is follow-form (AI/waiver plausibly flows from GL but no standalone endorsement verified); Scottsdale's CX 00 01 AI/waiver wording never verified",
+          "evidence": "DRIVE Excess extractions ('AI/waiver: ... flags left unset', 'AI/waiver wording on this layer not verified')",
+          "severity": "WARNING - marks are unverified, not proven wrong; confirm before continuing to print them"
+        },
+        {
+          "field": "Auto row ADDL INSD / SUBR WVD marks",
+          "template_prints": "Both X (fitz x=183.5 and x=201.5 at y=386.2)",
+          "carrier_doc_says": "No readable carrier document shows auto AI/waiver endorsements; the Miami Dade COI is silent on auto AI/waiver",
+          "evidence": "DRIVE Apogee auto extraction ('AI/waiver availability not visible in any readable doc - unknown, not asserted')",
+          "severity": "WARNING - unverified; get the actual Infinity dec (scanned PDF needs OCR) before continuing to print them"
+        },
+        {
+          "field": "Auto covered-autos checkbox",
+          "template_prints": "OWNED AUTOS ONLY (X at x=43.1/y=410.4)",
+          "carrier_doc_says": "Unverified - prior-agent 01/21 COI marked ANY AUTO + Hired + Non-Owned; the current dec is an unreadable scan",
+          "evidence": "TEMPLATE fitz vs ARCHIVE prior-agent COI Inbox/00225",
+          "severity": "WARNING - symbol unknown; affects whether hired/non-owned claims are certifiable"
+        }
+      ],
+      "coverage_alerts": [
+        {
+          "issue": "IN-FORCE STATUS OF GL + BOTH EXCESS LAYERS UNKNOWN. IPFS NOTICE OF INTENT TO CANCEL FLS-305556 (04/13/2026): MS Transverse GL and both excess policies cancel 05/01/2026 unless $4,006.56 was paid. The archive ends 04/27 (before the deadline); the Drive extraction (07/02) found the policy documents but NO evidence of payment, cancellation, or reinstatement either way.",
+          "severity": "CRITICAL",
+          "evidence": "ARCHIVE: Sent 2026-04-15 NOTICE OF INTENT TO CANCEL_305556_APOGEE HVAC SOLU.PDF p1-2; DRIVE found no post-05/01 cancellation letters for the current program (Cancellation Letters folder holds only prior Thimble/Ascendant letters)",
+          "what_alex_must_do": "Confirm IPFS payment (or check with the carrier/IPFS portal) before issuing ANY Apogee GL/excess cert. If unpaid, GL + 5M tower died 05/01/2026."
+        },
+        {
+          "issue": "WC REINSTATEMENT OUTCOME UNKNOWN. LUBA WC307-0131633-2025A was TERMINATED ~04/14/2026 (past-due payroll reports/non-payment). Two signed no-loss letters (04/22, 04/27) show reinstatement in progress when the archive ends. No reinstatement confirmation found in Drive.",
+          "severity": "CRITICAL",
+          "evidence": "ARCHIVE: 'APOGEE HVAC SOLUTIONS LLC - TERMINATED POLICY' threads 04/14-04/27 + no-loss letters; DRIVE WC policy doc present but silent on the termination",
+          "what_alex_must_do": "Check FHMConnect / Maria Simpson (msimpson@fhmic.com): was the WC reinstated? Until confirmed, no Apogee WC cert should be issued."
+        },
+        {
+          "issue": "Auto term conflict: 02/09/2026-02/09/2027 (template + 04/22 COI, post-cancellation) vs 12/08/2025-12/08/2026 (Drive renewal notice + 03/23/2026 Miami Dade COI). Two broker COIs a month apart printed different terms for the same policy number. Non-payment cancellations are a pattern on this account (auto cancelled 02/01/2026; WC terminated 02/06/2026 then reinstated; then terminated again 04/14).",
+          "severity": "WARNING",
+          "evidence": "TEMPLATE fitz; ARCHIVE Inbox/00434 (cancellation eff 02/01/26); DRIVE Kemper Renewal.pdf + Miami Dade COI",
+          "what_alex_must_do": "Pull the current Infinity dec (needs OCR or portal) to fix the term, the covered-auto symbol, and the AI/waiver question in one shot."
+        }
+      ],
+      "registry_corrections": [
+        "Registry has NO policies array for apogee_hvac - add the proposed array above ONLY AFTER the two CRITICAL in-force questions are answered.",
+        "Highest-risk client in the book: do not enable automated COI issuance for Apogee until IPFS payment + WC reinstatement are confirmed and the template's four CRITICAL errors are fixed."
+      ],
+      "verified_ok": [
+        "GL: TSLBGL-0002210-00, dates, 1M/100K/1M/2M/2M limits, per-project aggregate, $5K deductible, blanket AI (CG 20 10/20 37) + P&NC + CG 24 53 waiver - template matches carrier doc EXCEPT med exp (high, subject to in-force check).",
+        "Excess tower policy numbers and dates on the template are right (07173314300 / CXS4071612, 12/08/25-12/08/26) - only the limits presentation is wrong.",
+        "WC: dates + EL 1M/1M/1M + blanket waiver (WC 00 03 13) match the carrier doc - only the policy NUMBER on the template is wrong (and in-force status unknown).",
+        "Auto: carrier (Infinity=E per corrected letters), number 50000190801, $1M CSL corroborated."
+      ]
+    }
+  },
+
+  "summary": {
+    "coverage_alerts_critical": [
+      "Rolando's HVAC: WC (AmTrust TWC4577701) EXPIRED 03/23/2026 - no replacement found anywhere",
+      "Absolute Air: GL + Umbrella (Nationwide) expired ~06/05/2026 and WC (RetailFirst 520-51006) expired 06/13/2026 - no renewals found; only the Infinity auto is verifiably in force",
+      "305 Power: GL + Excess (Clear Blue) expire 07/15/2026 - 13 days; Obsidian renewals QUOTED NOT BOUND",
+      "Rolando's HVAC: GL (Trisura NRG-DBG-GL15062) expires 07/15/2026 - 13 days; renewal QUOTED NOT BOUND (two quote versions, premiums $50,027 vs $69,874)",
+      "Apogee: GL + both excess layers may have cancelled 05/01/2026 (IPFS non-payment) - outcome unknown",
+      "Apogee: WC terminated ~04/14/2026, reinstatement outcome unknown",
+      "G&D: Drive-side template lineage prints GL limits (5K med / 1M rented) that contradict the carrier dec (10K / 100K); repo template is correct"
+    ],
+    "template_errors_critical_count": 12,
+    "template_errors_total_count": 24,
+    "open_questions_count": 16
+  }
+}
