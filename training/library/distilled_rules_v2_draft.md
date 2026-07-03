@@ -292,29 +292,23 @@ the thought in the final pass.
 
 ---
 
-## 6. Contradictions / tensions with existing PROJECT rules (flag, don't resolve)
+## 6. Contradictions / tensions with existing PROJECT rules — RESOLVED BY ALEX 2026-07-03 (items 1-3)
 
-1. **R1/R2 vs the ABSOLUTE RULE.** The live prompt (post safety-patch) and
-   `build_training_library.py`'s teaching text both say: *any* attached COI =
-   insurance content = `coi_complex_review_required`, never ship — explicitly
-   calling reference-COIs-marked-ready the top benchmark failure. Alex's notes
-   push the other way: prior-broker/sample COI → extract holder → **issue** on
-   our template when the DoO demand is equivalent-or-less. If taken literally,
-   Prompt v2 would *relax* the ABSOLUTE RULE for a subclass of attachments.
-   That is a safety-posture decision only Alex can make (auto-issue vs
-   draft-to-Alejandro for the "clean sample" case). Do not encode until he
-   rules on it — ideally during walkthrough 3.1.
-2. **"Requirements docs are used ONLY to extract cert holder name and
-   address" (PROJECT_BRIEF, non-negotiable)** vs `eb87397a`'s instruction to
-   also carry **project name/address values** from a sample COI. Probably an
-   intended extension (project fields are additive, not coverage
-   modifications), but it literally exceeds the established rule — get it
-   re-stated to include project data.
-3. **Reply template drift.** "Endorsements are on the way" (R2) and "Alejandro
-   will get back to you" (R4) are new client-facing lines not among the locked
-   6-scenario templates / EMAIL REPLY TEMPLATES. The locked style rules
-   (name+comma, no dashes, Regards,/Saludos,) still apply; the new bodies need
-   Alex's sign-off.
+1. **R1/R2 vs the ABSOLUTE RULE — DECIDED: build-then-approve.** Clean
+   prior-broker/sample-COI cases: the system BUILDS the COI automatically but
+   routes it to Alejandro for APPROVAL instead of sending (same flow as
+   @usi.com team requests). One-reply approval. Auto-send for proven-clean
+   cases comes later, only when Alex explicitly flips it. Prompt v2 encodes
+   this as a new outcome (auto-built draft -> approval), NOT as a relaxation
+   to auto-issue. (Original tension preserved in git history.)
+2. **Requirements docs / project fields — DECIDED: extended.** Requirements
+   docs and sample COIs also supply PROJECT NAME + PROJECT ADDRESS when
+   applicable. PROJECT_BRIEF rule amended 2026-07-03. Coverage requirements
+   still NEVER modify the COI.
+3. **Reply template drift — DECIDED: back burner.** "Endorsements are on the
+   way" and "Alejandro will get back to you" are NOT approved wording; do not
+   use in client-facing replies until Alex blesses exact text. Cases that
+   would need them route to Alejandro without the new lines for now.
 4. **Team identity gap (not a contradiction, a hole).** PROJECT_BRIEF/prompt
    have no concept of @usi.com teammates; `TEAM_HINTS` in
    `training/build_review.py` lists only "alejandro bello", "jade harris",
