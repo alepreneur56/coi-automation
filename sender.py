@@ -19,6 +19,7 @@ import base64
 import os
 
 import config
+from language import detect_spanish
 
 ADMIN_INBOX_EMAIL = config.COI_MAILBOX
 
@@ -339,17 +340,31 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
 
         recipient_first = first_name_from(original_client_name, original_client_sender)
         holder_line = build_holder_line(parsed)
-        descriptor = "the revised Certificate of Insurance" if is_revision else "the Certificate of Insurance"
-        intro_line = f"Attached please find {descriptor} for {client_name}."
-        if holder_line:
-            intro_line += f"<br>Cert holder: {holder_line}."
+        is_spanish = detect_spanish(new_email.get("subject"),
+                                     (new_email.get("body") or {}).get("content"))
 
-        body_html = with_signature(
-            f"<p>{recipient_first},</p>"
-            f"<p>{intro_line}</p>"
-            "<p>Let us know if you need anything else.</p>"
-            "<p>Regards,</p>"
-        )
+        if is_spanish:
+            descriptor = "el Certificado de Seguro revisado" if is_revision else "el Certificado de Seguro"
+            intro_line = f"Adjunto encontrará {descriptor} para {client_name}."
+            if holder_line:
+                intro_line += f"<br>Cert holder: {holder_line}."
+            body_html = with_signature(
+                f"<p>{recipient_first},</p>"
+                f"<p>{intro_line}</p>"
+                "<p>Cualquier revisión, con gusto la hacemos.</p>"
+                "<p>Saludos,</p>"
+            )
+        else:
+            descriptor = "the revised Certificate of Insurance" if is_revision else "the Certificate of Insurance"
+            intro_line = f"Attached please find {descriptor} for {client_name}."
+            if holder_line:
+                intro_line += f"<br>Cert holder: {holder_line}."
+            body_html = with_signature(
+                f"<p>{recipient_first},</p>"
+                f"<p>{intro_line}</p>"
+                "<p>Let us know if you need anything else.</p>"
+                "<p>Regards,</p>"
+            )
 
         message_obj = {
             "body": {"contentType": "HTML", "content": body_html},
