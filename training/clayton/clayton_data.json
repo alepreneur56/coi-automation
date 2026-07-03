@@ -1,0 +1,129 @@
+{
+  "prepared_date": "2026-07-03",
+  "client_status": "proposal_only_not_in_registry",
+  "entity": {
+    "trading_name": "Clayton Mechanical",
+    "legal_name": "Clayton Air and Heating, Inc",
+    "dba_confirmed": "CLAYTON AIR & HEATING INC DBA CLAYTON MECHANICAL",
+    "insured_address": "2431 Aloma Ave, Suite 124, Winter Park, FL 32792",
+    "website": "https://www.claytonmechanical.com/",
+    "trade": "HVAC Contractor",
+    "hvac_license_number": "CAC1817147",
+    "founded": "2005 (predecessor started in Puerto Rico ~20 years earlier)",
+    "founders": ["David Clayton (COO)", "Jose Mercado (CEO/founder)"],
+    "annual_revenue_approx": "$5,000,000",
+    "field_payroll_approx": "$229,168",
+    "employees_approx": 10,
+    "work_mix": "90% commercial, 10% residential",
+    "primary_territory": "Orlando, FL (statewide FL as needed)",
+    "gl_loss_history": "No GL claims reported (per internal account narrative, unverified against loss runs)"
+  },
+  "producer": {
+    "agency": "USI Insurance Services, LLC/CL",
+    "address": "201 Alhambra Circle, Suite 900, Coral Gables, FL 33134-5108",
+    "phone": "305 669-6000",
+    "producer_name": "Alejandro Bello",
+    "producer_phone": "786-355-0449",
+    "producer_email": "Alejandro.bello@usi.com"
+  },
+  "source_of_truth": "Two independently issued ACORD 25 COIs (Drive files 'COI 070126.pdf' issued 07/01/2026 and 'Delta Hotels COI.pdf' issued 06/30/2026) in Clayton_COIs_FULL_BATCH folder. Both agree exactly on policy numbers, carriers, and dates for all 4 lines. Treated as current/bound, superseding the June proposal packet which contained an unbound Westfield GL quote and inconsistent effective dates across lines.",
+  "staleness_check_vs_2026_07_03": {
+    "all_policies_current": true,
+    "policy_term": "06/01/2026 - 06/01/2027",
+    "days_into_term": 32,
+    "note": "All 4 lines share the same clean 06/01/2026-06/01/2027 term as confirmed on both recent COIs. This differs from the earlier 'Clayton Mechanical Proposal Signed.pdf' (dated 06/09-06/12/2026) which showed a Westfield GL quote valid only 03/06/26-06/15/26 marked NO COVERAGE BOUND, an Infinity/Kemper auto quote effective 3/5/2026-3/5/2027, an AIG excess quote effective 3/16/2026-3/16/2027 with $3M limits, and an AmTrust WC quote effective 6/15/2026-6/15/2027. The bound COIs show all lines normalized to 06/01/2026-06/01/2027 and Excess Liability bound at $2,000,000 (not the $3,000,000 quoted by AIG in the March draft) — carrier on the bound COI for that line is listed as 'National Union Fire Insurance Company of Pittsburgh, PA' (AIG's underwriting company), consistent with the AIG quote, but at a lower limit than originally quoted. This discrepancy is unexplained by anything in the reviewed docs."
+  },
+  "policies": [
+    {
+      "line": "Commercial General Liability",
+      "carrier": "Westfield Insurance Company",
+      "naic": null,
+      "policy_number": "CWP 530335F",
+      "eff_date": "06/01/2026",
+      "exp_date": "06/01/2027",
+      "addl_insured": true,
+      "subr_wvd": true,
+      "primary_non_contributory": true,
+      "aggregate_basis": "PRO-JECT/POLICY (box checked ambiguous on COI text extraction; proposal dec page shows per-policy aggregate, no per-project endorsement identified)",
+      "limits": {
+        "each_occurrence": "1,000,000",
+        "damage_to_rented_premises": "500,000",
+        "med_exp": "5,000",
+        "personal_adv_injury": "1,000,000",
+        "general_aggregate": "2,000,000",
+        "products_comp_op_agg": "2,000,000"
+      },
+      "source": "COI 070126.pdf, Delta Hotels COI.pdf; corroborated by Westfield common policy declarations in Clayton Mechanical Proposal Signed.pdf (quote number CWP 5 303 35F / premium $8,239.00, though that dec page was marked NO COVERAGE BOUND as of 5/20/2026 print date)"
+    },
+    {
+      "line": "Commercial Auto",
+      "carrier": "Infinity Assurance Insurance Company",
+      "naic": null,
+      "policy_number": "CA945173MGA",
+      "eff_date": "06/01/2026",
+      "exp_date": "06/01/2027",
+      "addl_insured": true,
+      "subr_wvd": true,
+      "auto_type": "Any Auto",
+      "limits": {
+        "combined_single_limit": "1,000,000"
+      },
+      "source": "COI 070126.pdf, Delta Hotels COI.pdf. Note: this policy number matches the Kemper/Infinity (Ascendant Insurance Solutions / The Infinity Group) quote in the proposal packet dated 05/20/2026, which originally quoted eff 3/5/2026-3/5/2027 and premium $16,802.00 for 4 units + 2 trailers. The bound COI shows a later eff date of 06/01/2026 for the same policy number, meaning it either was rewritten or the COI-stated eff date reflects a mid-term reissue/renewal not fully documented in the reviewed files."
+    },
+    {
+      "line": "Excess Liability",
+      "carrier": "National Union Fire Insurance Company of Pittsburgh, PA (AIG)",
+      "naic": "19445",
+      "policy_number": "47329390",
+      "eff_date": "06/01/2026",
+      "exp_date": "06/01/2027",
+      "occur": true,
+      "limits": {
+        "each_occurrence": "2,000,000",
+        "aggregate": "2,000,000"
+      },
+      "underlying_policies": ["Commercial General Liability (Westfield)", "Commercial Auto (Infinity)"],
+      "follows_form": true,
+      "source": "COI 070126.pdf, Delta Hotels COI.pdf. CONFLICTS with AIG binder quote in proposal packet (submission #47329390, same submission number) which specified $3,000,000 each occurrence / $3,000,000 aggregate, effective 3/16/2026-3/16/2027, premium $9,836.00. Bound COI shows $2,000,000/$2,000,000 limits and a later 06/01/2026 eff date. Reason for the limit reduction and date shift is not documented in reviewed files -- needs Alex confirmation."
+    },
+    {
+      "line": "Workers Compensation and Employers Liability",
+      "carrier": "Technology Insurance Company (AmTrust)",
+      "naic": null,
+      "policy_number": "13705262",
+      "eff_date": "06/01/2026",
+      "exp_date": "06/01/2027",
+      "limits": {
+        "each_accident": "1,000,000",
+        "disease_each_employee": "not visible on extracted COI text",
+        "disease_policy_limit": "not visible on extracted COI text"
+      },
+      "officer_exclusion": "Y (per COI checkbox) -- confirm which officers are excluded",
+      "source": "COI 070126.pdf, Delta Hotels COI.pdf. Proposal packet AmTrust quote (quote #13705262, same number) showed term 6/15/2026-6/15/2027 with monthly installment billing starting 6/15/2026 and premium $4,678.00. Bound COI shows eff date 06/01/2026, two weeks earlier than the quoted term start -- unexplained discrepancy."
+    }
+  ],
+  "boilerplate_description_of_operations_seen_on_bound_cois": "General Liability & Commercial Auto policies includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. General Liability policy applies on a primary & non-contributory basis. A blanket Waiver of Subrogation applies for General Liability, Commercial Auto, and Employer's Liability policies. Umbrella Liability policy follows form. HVAC Contractor License Number: CAC1817147",
+  "book_of_business_signal": {
+    "note": "Clayton Mechanical is NOT a small/simple account. A master COI tracking sheet ('COI LIST CMHQ 2026-2027 v.1 rev.2026.xlsx') lists dozens of distinct certificate holders (hotels, HOAs, property managers, municipalities) each with custom additional-insured/waiver-of-subrogation language, and a 'Clayton_COIs_FULL_BATCH 26-27.zip' + 'Archive.zip' containing a large batch of already-issued individual COIs for the 2026-2027 term.",
+    "implication": "This is a high-volume COI account, a strong automation candidate, but the certificate holder language varies significantly by holder (see sample holders below) -- template will need either a flexible free-text AI/WOS clause field or several template variants."
+  },
+  "sample_certificate_holders_with_custom_language": [
+    {
+      "holder": "Benderson Development Company LLC",
+      "language": "Benderson Development Company, LLC and all of its related, affiliated or associated corporations, subsidiaries, entities, companies, trusts and/or partnerships, and their agents, employees, property managers, ground lessors, investment lessors, and tenants are listed as Additional Insureds on a primary and non contributory basis with regards to General Liability and Automobile Liability when required by written contract. A Waiver of Subrogation with respect to General Liability and Automobile Liability ... when required by written contract."
+    },
+    {
+      "holder": "City of Orlando",
+      "language": "The certificate holder is an additional insured with regards to the General liability and Auto policies when required by written contract. A waiver of subrogation in favor to the certificate holder is also required to respect to General liability when required by written contract."
+    },
+    {
+      "holder": "Courtyard @ Lake Buena Vista (Marriott)",
+      "language": "Marriott International, Inc., Courtyard Management Corporation, NF III-CI Orlando C Op Co. has been included as an additional insured including primary and noncontributory language on the general liability and automobile liability policies when required by written contract. A waiver of subrogation is also included on the general liability when required by written contract."
+    }
+  ],
+  "data_quality_flags": [
+    "Clayton Mechanical - Account Narrative.docx (Drive id 1jMHuhCAAfCd12-2ayLJiOLpAxHoTdM9G) contains a copy-paste leftover: the 'Risk Management & Safety' section opens with \"Rolando's HVAC maintains an excellent loss history...\" -- this looks like it was cloned from the existing rolandos_hvac client narrative and the name was never swapped to Clayton Mechanical. Content after that sentence is otherwise Clayton-specific.",
+    "Multiple versions of 'Estimation Comparison - Clayton Mechanical' exist (V3 x2 in different folders, V4, and an undated 'Copy') with materially different renewal carrier assumptions (Westfield/AIG/Infinity in V4 vs TBD/A-rated placeholders in older versions) -- V4 (modified 2026-06-01) is the most recent and roughly matches the bound COI carriers, used as the basis for this document.",
+    "The 'Clayton Mechanical Proposal Signed.pdf' / 'Unsigned.pdf' / earlier 'Clayton Mechanical Proposal.pdf' in Drive all show inconsistent effective dates and one unbound quote (Westfield GL marked NO COVERAGE BOUND) -- do not treat that packet as the final bound terms. The two independently issued 2026-07 ACORD COIs are the more reliable current source and were used as the primary source of truth in this document."
+  ]
+}
