@@ -9,6 +9,10 @@ COIs that were actually delivered (graded_cois.json). This produces the
 BASELINE score before few-shot training examples are added to the prompt —
 rerun the same command after any prompt change to re-score.
 
+If training/benchmark_extra_cases.json exists, its "cases" (manually curated,
+same shape as the auto-derived ones — see load_extra_cases()) are appended to
+the eval set. Missing file = no behavior change.
+
 Eval-set construction (one case per thread):
   - request message = first non-team message with a real request body
     (team = Alejandro/Jade/Sent Items/"Attached please find" bodies)
@@ -64,6 +68,7 @@ IDX_PATH = os.path.join(BASE, "training", "corpus_index.json")
 GRADED_PATH = os.path.join(BASE, "training", "graded_cois.json")
 REGISTRY_PATH = os.path.join(BASE, "coi_client_registry.json")
 OUT_PATH = os.path.join(BASE, "training", "benchmark_results.json")
+EXTRA_CASES_PATH = os.path.join(BASE, "training", "benchmark_extra_cases.json")
 
 MAX_CASES = 80
 MAX_PDF_BYTES = 5 * 1024 * 1024
@@ -421,7 +426,19 @@ def build_eval_set():
         })
         if len(cases) >= MAX_CASES:
             break
+    cases.extend(load_extra_cases())
     return cases, skips
+
+
+def load_extra_cases():
+    """Manually-curated cases (mined from corpus threads the automated
+    derivation above skipped or under-used — see benchmark_extra_cases.json).
+    Missing file = no change in behavior."""
+    if not os.path.exists(EXTRA_CASES_PATH):
+        return []
+    with open(EXTRA_CASES_PATH) as f:
+        extra = json.load(f)
+    return extra.get("cases", [])
 
 
 # ---------------------------------------------------------------------------
