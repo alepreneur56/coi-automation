@@ -1,0 +1,474 @@
+{
+  "_meta": {
+    "generated": "2026-07-03",
+    "purpose": "A9 scaffold - PROPOSAL ONLY. Per-client, per-coverage-line inventory of endorsement evidence (blanket AI, blanket WOS, primary & non-contributory, notice of cancellation) found in the email archive and in training/registry_gap/FINAL_RECONCILIATION.json. Nothing written to coi_client_registry.json, templates/, or the system prompt.",
+    "sources": {
+      "ARCHIVE": "email archive at Documents/Migrated_From_TestAccount_2026-05-03/.../IPM_SUBTREE - endorsement-form PDFs found by filename search (endorsement, blanket, additional insured, waiver, subrog, CG 20, CG 24, primary, non-contributory, cancellation), text-extracted with fitz. Files actually read are cited per evidence entry.",
+      "RECONCILIATION": "training/registry_gap/FINAL_RECONCILIATION.json (2026-07-02) - per-client carrier-doc-verified policy extractions, includes endorsement form numbers read directly from Drive-sourced carrier declarations/endorsement schedules. This is the strongest available source; used as primary evidence where the archive did not independently surface a standalone endorsement PDF."
+    },
+    "morata_note": "The task brief referenced a 'Morata Blanket AI/WOS/P&NC COI Template folder' as a source. No such client or folder exists - 'Morata Plumbing' appears in the archive only as a labeled TEST ENTITY (Inbox/00075 'Morata Plumbing COI - Test Entity Inc', Inbox/00209 'SCL Stage Notification'). It is not one of the 8 real clients and was not used as a source. See ENDORSEMENT_INVENTORY.md open questions.",
+    "kind_definitions": {
+      "blanket_ai": "Additional insured status granted automatically to any party for whom the insured has a written contract requiring it - no separate endorsement/schedule needed per certificate holder.",
+      "scheduled_ai": "Additional insured status granted only to specifically named/scheduled parties.",
+      "waiver_subrog": "Waiver of subrogation (blanket = automatic by written contract, not scheduled).",
+      "primary_noncontrib": "Primary and non-contributory wording - insured's policy pays first, does not seek contribution from certificate holder's own insurance.",
+      "notice_of_cancellation": "Cancellation notice provision/endorsement (ACORD 25 standard language vs. a carrier-specific notice-of-cancellation endorsement).",
+      "other": "Any other endorsement type found (e.g. designated-insured, named-insured, contractors extension) that doesn't fit the above."
+    },
+    "confidence_scale": {
+      "high": "Endorsement form read directly (carrier dec/endorsement schedule/standalone endorsement PDF) - form number and wording confirmed.",
+      "medium": "COI/template description-of-operations wording only, or reconciliation notes it as 'medium' (e.g. dec unreadable, single corroborating doc).",
+      "low": "Conflicting sources, unread/scanned carrier doc, or in-force status uncertain - do not rely on without Alex's confirmation."
+    }
+  },
+  "clients": {
+    "305_power_corp": {
+      "Commercial General Liability": [
+        {
+          "form_number": "FCG 1029 (Clear Blue) - automatic AI, functionally equivalent to CG 20 10/20 37",
+          "form_title": "Additional Insured - By Written Contract (automatic)",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json 305_power_corp.policies[0].provenance - 'AI/WOS via endorsement FCG 1029 (automatic AI, CG 20 10/20 37 equivalent)'; carrier dec read directly (Drive, confidence high). Template description_of_operations corroborates: 'General Liability & Commercial Auto policies includes an automatic Additional Insured endorsement... as required by written contract.'",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CG 24 04 (Clear Blue)",
+          "form_title": "Waiver of Transfer of Rights of Recovery Against Others to Us (Blanket)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json 305_power_corp.policies[0].provenance - 'CG 24 04 waiver + $109 premium line' read from carrier dec (Drive, high).",
+          "confidence": "high"
+        },
+        {
+          "form_number": "unspecified - template boilerplate only",
+          "form_title": "Primary & Non-Contributory",
+          "kind": "primary_noncontrib",
+          "blanket": true,
+          "evidence": "Template description_of_operations: 'General Liability policy applies on a primary & non-contributory basis.' No standalone P&NC endorsement form number was cited in FINAL_RECONCILIATION.json for GL (only FCG 1029 AI + CG 24 04 waiver are form-cited).",
+          "confidence": "medium"
+        }
+      ],
+      "Commercial Auto": [
+        {
+          "form_number": "unspecified (Progressive Express)",
+          "form_title": "Blanket Additional Insured",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json 305_power_corp.policies[1].provenance - Progressive Policy.pdf declarations dated 03/04/2026 state \"'Blanket Additional Insured applies' + 'Blanket Waiver of Subrogation applies'\" (Drive, high).",
+          "confidence": "high"
+        },
+        {
+          "form_number": "unspecified (Progressive Express)",
+          "form_title": "Blanket Waiver of Subrogation",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Same Progressive Policy.pdf dec line (Drive, high). $75+$75 fee lines confirm both endorsements were purchased, not just boilerplate.",
+          "confidence": "high"
+        }
+      ],
+      "Excess Liability": [
+        {
+          "form_number": "n/a - follow-form (CX 00 01 Sec I.1.d)",
+          "form_title": "AI follows underlying GL form",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json 305_power_corp.policies[2].provenance.notes - 'AI flows follow-form (CX 00 01 Sec I.1.d)'. No waiver-of-subrogation endorsement found in the excess forms schedule despite template boilerplate claiming one for 'Umbrella' - flagged as a template_error in the reconciliation.",
+          "confidence": "medium"
+        }
+      ],
+      "Workers Compensation": [
+        {
+          "form_number": "unspecified (LUBA)",
+          "form_title": "Blanket Waiver of Subrogation",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json 305_power_corp.policies[3].provenance - 'LUBA quote 183678 (blanket waiver endorsement, $0 premium line)' (Drive, medium - bound policy itself is an unreadable scan).",
+          "confidence": "medium"
+        }
+      ],
+      "gaps": [
+        "Excess Liability: NO waiver-of-subrogation endorsement found in the policy's forms schedule, even though the template's description-of-operations text claims 'A Blanket Waiver of Subrogation applies for ... Umbrella'. This is an active template error (see FINAL_RECONCILIATION.json template_errors), not just missing evidence.",
+        "Commercial Auto (Progressive) AI/WOS confirmed only from a policy declarations page - no standalone endorsement PDF was located in the archive search for this client."
+      ]
+    },
+    "rolandos_hvac": {
+      "Commercial General Liability": [
+        {
+          "form_number": "CG 20 10_B (Trisura, per 26-27 renewal quote forms list)",
+          "form_title": "Additional Insured - Owners, Lessees or Contractors (blanket written-contract)",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json rolandos_hvac.policies[0].provenance - 'blanket written-contract AI endorsement + Primary & Noncontributory + CG 24 04 blanket waiver' read from NRG-DBG-GL15062-Tresura Policy.GL.pdf; forms confirmed again in the 07/15/2026 renewal quote package ('forms incl. CG 20 10_B AI, CG 20 01 P&NC, CG 24 04_B blanket waiver'). Cross-confirmed by 01/05/2026 City of Maitland COI. Also matches archive filename evidence: Inbox/00074 'Rolando's HVAC GL Blanket AI, PNCB, WOS End.pdf' (4-page PDF attached directly to a Rolando's COI request - fitz extraction returned no text, likely an image/scan, but the filename itself corroborates GL Blanket AI + PNCB + WOS as a single bundled endorsement set for this client).",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CG 20 01_B (Trisura)",
+          "form_title": "Primary and Noncontributory - Other Insurance Condition",
+          "kind": "primary_noncontrib",
+          "blanket": true,
+          "evidence": "Same source as above - FINAL_RECONCILIATION.json rolandos_hvac renewal quote forms list.",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CG 24 04_B (Trisura)",
+          "form_title": "Waiver of Transfer of Rights of Recovery (Blanket)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Same source - FINAL_RECONCILIATION.json rolandos_hvac.policies[0].provenance and renewal quote forms list.",
+          "confidence": "high"
+        }
+      ],
+      "Commercial Auto": [
+        {
+          "form_number": "n/a",
+          "form_title": "NO additional-insured endorsement found (no CA 20 48 on this policy's schedule)",
+          "kind": "other",
+          "blanket": false,
+          "evidence": "FINAL_RECONCILIATION.json rolandos_hvac.policies[1].provenance.addl_insured_subr_wvd_false - 'DRIVE: ML-002 form schedule lists NO additional-insured (no CA 20 48) and NO waiver-of-subrogation (no CA 04 44) endorsement; the 01/05/2026 Maitland COI shows no AI/waiver marks on the auto line' (medium confidence; file read truncated). CONFLICTS with the template, which marks both X, and with the registry (both true). Carrier doc wins under precedence. IMPORTANT CONTRADICTION: the archive independently contains a CA 20 48 02 99 'Designated Insured' endorsement (Additional Insured End.pdf, effective 12/15/2025, scheduling 'Cottages at Brandon LP') AND a Change Endorsement No. 5 'Primary and Non-Contributory is part of CA-74829-0' (PNC Endrosement.pdf, eff 01/07/2026) AND Change Endorsement No. 4 'waiver of subrogation is part of CA-74829-0' (WOS Endorsement.pdf, eff 01/07/2026) - all on policy CA-74829-0, i.e. the SAME Ascendant auto policy the reconciliation says has no AI/waiver. These are SCHEDULED endorsements (naming one certificate holder at a time, e.g. Cottages at Brandon LP, then Test Entity Inc per a second copy at Inbox/00074), not blanket - each new certificate holder appears to require its own designated-insured/PNC/WOS change endorsement. This resolves the reconciliation's LOW-confidence conflict: Rolando's auto AI/WOS/PNC exists but is SCHEDULED (per-holder), not blanket.",
+          "confidence": "high"
+        }
+      ],
+      "Workers Compensation": [],
+      "gaps": [
+        "Workers Compensation: CRITICAL - policy (AmTrust TWC4577701) expired 03/23/2026 with no replacement found anywhere in Drive (FINAL_RECONCILIATION.json coverage_alerts). No endorsement evidence applicable because there is no current WC policy to certify.",
+        "Commercial Auto: blanket-vs-scheduled AI/WOS/PNC status was in dispute in the reconciliation; archive endorsement PDFs (Additional Insured End.pdf, PNC Endrosement.pdf, WOS Endorsement.pdf) resolve it as SCHEDULED (named certificate holder per endorsement), not blanket - template currently marks both X as if blanket, which is likely wrong for any NEW certificate holder not already scheduled."
+      ]
+    },
+    "emp3_solutions": {
+      "Commercial General Liability": [
+        {
+          "form_number": "CG 20 10 04 13",
+          "form_title": "Additional Insured - Owners, Lessees or Contractors - Scheduled Person Or Organization (blanket wording)",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json emp3_solutions.policies[0].provenance.ai_wos - 'CG 20 10 04 13 blanket-wording AI + CG 20 01 04 13 P&NC + CG 24 04 05 09 blanket waiver, read from the policy's endorsement forms' (Drive, high). This is the exact citation named in the task brief.",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CG 20 01 04 13",
+          "form_title": "Primary and Noncontributory - Other Insurance Condition",
+          "kind": "primary_noncontrib",
+          "blanket": true,
+          "evidence": "Same source as above.",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CG 24 04 05 09",
+          "form_title": "Waiver of Transfer of Rights of Recovery Against Others to Us (Blanket)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Same source as above.",
+          "confidence": "high"
+        }
+      ],
+      "Commercial Auto": [
+        {
+          "form_number": "unspecified (Infinity/Kemper)",
+          "form_title": "Blanket Additional Insureds",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json emp3_solutions.policies[1].provenance - 'Kemper Full Policy cover page (Infinity, 50019417101, 11/6/2025-11/6/2026, $25 waiver fee + $25 AI fee) + policy-change notice \"Blanket Additional Insureds ... No to Yes\"' eff 11/06/2025 (Drive, high; template + all 7 delivered COIs agree).",
+          "confidence": "high"
+        },
+        {
+          "form_number": "unspecified (Infinity/Kemper)",
+          "form_title": "Blanket Waiver of Subrogations",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Same policy-change notice: '\"Blanket Waiver of Subrogations ... No to Yes\" eff 11/06/2025' (Drive, high).",
+          "confidence": "high"
+        }
+      ],
+      "Workers Compensation": [
+        {
+          "form_number": "n/a - NO WC 00 03 13 found",
+          "form_title": "No waiver-of-subrogation endorsement on schedule",
+          "kind": "other",
+          "blanket": false,
+          "evidence": "FINAL_RECONCILIATION.json emp3_solutions.policies[2].provenance.subr_wvd_false - 'the policy's full Schedule of Endorsements contains NO waiver form (no WC 00 03 13). CONFLICTS with TEMPLATE (X in SUBR WVD) and with the description block. Policy PDF last modified 2026-01-07 - a waiver could have been added after issuance.' Flagged CRITICAL template_error.",
+          "confidence": "medium"
+        }
+      ],
+      "gaps": [
+        "Workers Compensation: template currently marks SUBR WVD but carrier's endorsement schedule shows no WC 00 03 13 - do not treat WC waiver as blanket-confirmed for this client until Alex verifies.",
+        "No umbrella/excess policy exists for this client at all (confirmed absence, not a gap in evidence) - template boilerplate referencing 'Umbrella' waiver is stale text and should not be relied on."
+      ]
+    },
+    "central_comfort_ac": {
+      "Commercial General Liability": [
+        {
+          "form_number": "BP 71 74 08 15 (UFG BOP-Pro)",
+          "form_title": "Primary and Non-Contributory - Businessowners Liability Coverage",
+          "kind": "primary_noncontrib",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json central_comfort_ac.policies[0].provenance - 'UFG binding proposal (BOP-Pro quote 0165967850, P&NC form BP 71 74 08 15)' (Drive, high confidence on the 3-agreeing-docs basis; underlying carrier dec itself is a 47.8MB scan with no text layer so AI/waiver form numbers rest on the issued COI, not a directly-read endorsement).",
+          "confidence": "medium"
+        },
+        {
+          "form_number": "unspecified - COI-sourced only",
+          "form_title": "Automatic Additional Insured (by written contract)",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "Template description_of_operations: 'General Liability policy includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract.' Corroborated by 06/30/2026 issued COI + ACORD 35 rewrite record (FINAL_RECONCILIATION.json, medium - underlying policy PDF unreadable).",
+          "confidence": "medium"
+        },
+        {
+          "form_number": "unspecified - COI-sourced only",
+          "form_title": "Blanket Waiver of Subrogation",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Template description_of_operations claims blanket waiver 'for General Liability and Employer's Liability policies'; not independently form-verified for the GL line in FINAL_RECONCILIATION.json (WC line IS form-verified, see below).",
+          "confidence": "medium"
+        }
+      ],
+      "Workers Compensation": [
+        {
+          "form_number": "WC 00 03 13",
+          "form_title": "Waiver of Our Right to Recover From Others (Blanket)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json central_comfort_ac.policies[1].provenance - 'Schedule of Endorsements \"WC 00 03 13 Waiver of Our Rights to Recover From Others - Blanket\" with 1.4%/$342 premium line. Template's SUBR X is SUPPORTED for this client' (Drive, high - read directly from carrier Information Page).",
+          "confidence": "high"
+        }
+      ],
+      "gaps": [
+        "GL Additional Insured and GL Waiver of Subrogation: no standalone endorsement form number was directly read for this client (underlying UFG BOP PDF is an unreadable 47.8MB scan) - current evidence is COI/template wording only, corroborated by 3 agreeing docs but not a sighted endorsement form. Reconciliation notes this is 'the cleanest client in the book' overall, but the AI/WOS form numbers specifically remain unverified at the endorsement-form level.",
+        "No Commercial Auto or Umbrella/Excess policy exists for this client (confirmed absence per reconciliation coverage_alerts) - not an endorsement gap, a coverage-line gap."
+      ]
+    },
+    "gd_mechanical": {
+      "Commercial General Liability": [
+        {
+          "form_number": "unspecified - COI description-of-operations wording only",
+          "form_title": "Automatic Additional Insured / Primary & Non-Contributory / Blanket Waiver",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json gd_mechanical.policies[0].provenance.ai_wos - 'COI description-of-operations wording only; endorsement forms inside the 150-page BOP not individually verified.' Template boilerplate: 'General Liability, Umbrella, & Commercial Auto policies includes an automatic Additional Insured endorsement...'",
+          "confidence": "medium"
+        }
+      ],
+      "Commercial Auto": [
+        {
+          "form_number": "unspecified - COI description block only",
+          "form_title": "Additional Insured / Waiver of Subrogation (asserted, unverified)",
+          "kind": "blanket_ai",
+          "blanket": "unknown",
+          "evidence": "FINAL_RECONCILIATION.json gd_mechanical.policies[1].provenance.ai_wos - 'COI description block only.' No renewal declarations page exists in Drive for the current 05/03/2026-05/03/2027 term; template still prints the expired prior term. AI/waiver status for the CURRENT policy term is unverified.",
+          "confidence": "low"
+        }
+      ],
+      "Umbrella Liability": [
+        {
+          "form_number": "n/a - follow-form over UFG BOP",
+          "form_title": "Follow-form (no standalone AI/WOS endorsement cited)",
+          "kind": "other",
+          "blanket": "unknown",
+          "evidence": "FINAL_RECONCILIATION.json gd_mechanical.policies[2] - dec pages confirm limits (1M/1M, SIR $10,000, underlying = UFG BOP) but no AI/WOS endorsement form is cited for the umbrella layer specifically.",
+          "confidence": "medium"
+        }
+      ],
+      "Workers Compensation": [
+        {
+          "form_number": "n/a - NO WC 00 03 13 found",
+          "form_title": "No waiver-of-subrogation endorsement on schedule",
+          "kind": "other",
+          "blanket": false,
+          "evidence": "FINAL_RECONCILIATION.json gd_mechanical.policies[3].provenance.subr_wvd_false - 'endorsement schedule read in full - NO waiver endorsement (no WC 00 03 13). CONFLICTS with TEMPLATE (X in SUBR WVD) and the description block's EL-waiver claim. Same pattern as EMP3's LUBA WC.' Flagged CRITICAL template_error.",
+          "confidence": "high"
+        }
+      ],
+      "gaps": [
+        "Commercial Auto: NO renewal declarations page exists for the current 05/03/2026-05/03/2027 term - AI/WOS status is unverified for the in-force policy (template itself is stale, showing the expired prior term).",
+        "Workers Compensation: template marks SUBR WVD but the carrier's endorsement schedule shows no WC 00 03 13 - same unresolved conflict pattern as EMP3.",
+        "GL and Umbrella AI/WOS: not individually verified at the endorsement-form level inside the 150-page BOP; resting on COI/template wording only.",
+        "Two conflicting template lineages exist for this client (repo template vs. a Drive-side 'New Template with the New Auto policy' copy) with different GL limits - does not directly affect endorsement kind/blanket status but affects trust in the description-of-operations boilerplate for this client."
+      ]
+    },
+    "absolute_air_solutions": {
+      "Commercial Auto": [
+        {
+          "form_number": "unspecified (Infinity) - policy change eff 11/03/2025",
+          "form_title": "Blanket AI",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json absolute_air_solutions.policies[0].provenance - \"'Latest Policy dec with endorsements.pdf' policy change eff 11/03/2025 adding Blanket AI + Blanket WOS\" (Drive, high; both templates + delivered COIs + Paid Basis Report agree).",
+          "confidence": "high"
+        },
+        {
+          "form_number": "unspecified (Infinity) - policy change eff 11/03/2025",
+          "form_title": "Blanket WOS",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Same policy-change document as above.",
+          "confidence": "high"
+        }
+      ],
+      "Commercial Auto (secondary Progressive policy 872005650)": [
+        {
+          "form_number": "n/a",
+          "form_title": "No AI / no waiver (ADDL N / SUBR N on issued COI)",
+          "kind": "other",
+          "blanket": false,
+          "evidence": "FINAL_RECONCILIATION.json absolute_air_solutions.additional_policy_not_on_templates - Progressive-issued COI for 872005650 shows 'ADDL N / SUBR N'. Binding status itself is in dispute (medium confidence) between a bound carrier COI and an unbound Drive quote.",
+          "confidence": "medium"
+        }
+      ],
+      "gaps": [
+        "GL: no GL policy exists for this client as of 2026-07-02 - Nationwide GL + Umbrella both expired ~06/05/2026 with no renewal found anywhere in the client tree (CRITICAL coverage_alert). No endorsement evidence applicable.",
+        "Workers Compensation: RetailFirst 520-51006 expired 06/13/2026 with no renewal found (CRITICAL coverage_alert). No endorsement evidence applicable.",
+        "As of this scaffold, the ONLY verifiably in-force, endorsement-confirmed coverage for this client is the Infinity auto policy (blanket AI + WOS)."
+      ]
+    },
+    "ajf_roofing": {
+      "Commercial General Liability": [
+        {
+          "form_number": "CNA75079XX (3-22)",
+          "form_title": "Blanket Additional Insured - Owners, Lessees or Contractors - with Products-Completed Operations Coverage Endorsement",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "Archive: Sent Items/.../'AJF COI NV2A with All Endorsements.pdf' pp.9-12 (full endorsement text read directly, fitz) - 'WHO IS AN INSURED is amended to include as an Insured any person or organization whom you are required by written contract to add as an additional insured.' Section VI of the same form is the P&NC clause (see below). Cross-confirmed by FINAL_RECONCILIATION.json ajf_roofing.policies[0].provenance ('CNA74705XX extension endorsement item 1 blanket AI').",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CNA75079XX (3-22) Section VI",
+          "form_title": "Primary and Noncontributory Insurance (Other Insurance condition amendment)",
+          "kind": "primary_noncontrib",
+          "blanket": true,
+          "evidence": "Same PDF, same endorsement, Section VI: 'this insurance is primary to and will not seek contribution from such other insurance, provided that a written contract requires...' Read directly (Archive, high).",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CNA74705XX (1-15), Item 25",
+          "form_title": "Waiver of Subrogation - Blanket",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Archive: same PDF, 'Contractors' General Liability Extension Endorsement' item 25: 'The Insurer waives any right of recovery... only when the Named Insured has agreed in writing to waive such rights of recovery in a written contract.' Cross-confirmed by FINAL_RECONCILIATION.json ('item 25 blanket waiver').",
+          "confidence": "high"
+        }
+      ],
+      "Commercial Auto": [
+        {
+          "form_number": "CNA63359XX (04-2012)",
+          "form_title": "Contractors Extended Coverage Endorsement - Business Auto Plus (blanket written-contract AI clause within)",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "Archive: same PDF - 'Any person or organization that you are required by a written contract to name as an additional insured is an insured... If required by written contract, this insurance will be primary and non-contributory.' Read directly (Archive, high). Cross-confirmed by FINAL_RECONCILIATION.json ('CNA63359XX endorsement blanket AI P&NC + blanket waiver').",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CNA63359XX (04-2012)",
+          "form_title": "Primary and non-contributory (Other Insurance amendment)",
+          "kind": "primary_noncontrib",
+          "blanket": true,
+          "evidence": "Same form/PDF - 'the coverage provided by this policy shall be on a primary non-contributory basis. This provision is applicable only when required by a written contract.'",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CNA63359XX (04-2012)",
+          "form_title": "Transfer Of Rights Of Recovery Against Others To Us (blanket waiver amendment)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Same form/PDF - 'We waive any right of recovery we may have... against any person or organization for whom or which you are required by written contract or agreement to obtain this waiver.'",
+          "confidence": "high"
+        }
+      ],
+      "Umbrella Liability": [
+        {
+          "form_number": "n/a - condition W (follow-form)",
+          "form_title": "Blanket waiver by written contract; AI via follow-form (no standalone umbrella AI endorsement sighted)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json ajf_roofing.policies[2].provenance - 'Waiver via condition W (blanket by written contract); AI via follow-form (medium confidence on AI mechanics - no standalone umbrella AI endorsement sighted).' Template currently leaves both marks unset on the umbrella row (a documented template_error / understatement).",
+          "confidence": "medium"
+        }
+      ],
+      "Workers Compensation": [
+        {
+          "form_number": "WC 00 03 13 (04-1984)",
+          "form_title": "Waiver of Our Right to Recover From Others Endorsement",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Archive: same 'AJF COI NV2A with All Endorsements.pdf' - full text read directly: 'We have the right to recover our payments from anyone liable... We will not enforce our right against the person or organization named in the Schedule. This agreement applies only to the extent that you perform work under a written contract that requires you to obtain this agreement from us.' Also corroborated by Inbox/00927 'Endorsement - Cancellation Confirmation Eff. 1 07.PDF' which shows a 'Blanket Subrogation Waiver-2%' premium line on the same WC policy (Bridgefield/Valley Forge, policy 196-54081 / WC 8035490054).",
+          "confidence": "high"
+        }
+      ],
+      "gaps": [
+        "Umbrella Liability AI: no standalone endorsement was sighted confirming additional-insured status at the umbrella layer - resting on follow-form inference from the underlying GL/Auto blanket AI endorsements plus the reconciliation's medium-confidence note."
+      ]
+    },
+    "apogee_hvac": {
+      "Commercial General Liability": [
+        {
+          "form_number": "CG 20 10 / CG 20 37 (MS Transverse)",
+          "form_title": "Additional Insured - Owners, Lessees or Contractors",
+          "kind": "blanket_ai",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json apogee_hvac.policies[0].provenance - 'forms schedule CG 20 10/20 37 AI + CG 20 01 P&NC + CG 24 53 automatic waiver' read from GL Policy - Apogee HVAC Solutions LLC, TSLBGL-0002210-00.pdf (Drive, high on paper). CAVEAT: in-force status of this GL policy is UNVERIFIED - an IPFS notice of intent to cancel (04/13/2026) threatened cancellation 05/01/2026 for non-payment ($4,006.56 due) and no payment/reinstatement confirmation exists anywhere in the sources checked.",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CG 20 01 (MS Transverse)",
+          "form_title": "Primary and Noncontributory - Other Insurance Condition",
+          "kind": "primary_noncontrib",
+          "blanket": true,
+          "evidence": "Same source as above.",
+          "confidence": "high"
+        },
+        {
+          "form_number": "CG 24 53 (MS Transverse)",
+          "form_title": "Waiver of Transfer of Rights of Recovery Against Others to Us (automatic)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "Same source as above.",
+          "confidence": "high"
+        }
+      ],
+      "Excess Liability (1st layer, Lexington)": [
+        {
+          "form_number": "n/a - follow-form only",
+          "form_title": "No standalone AI/waiver endorsement verified",
+          "kind": "other",
+          "blanket": "unknown",
+          "evidence": "FINAL_RECONCILIATION.json apogee_hvac.policies[1].provenance - 'AI/waiver: follow-form only - no standalone endorsement verified; template's ADDL/SUBR X marks on this row are UNVERIFIED.'",
+          "confidence": "low"
+        }
+      ],
+      "Excess Liability (2nd layer, Scottsdale)": [
+        {
+          "form_number": "n/a",
+          "form_title": "AI/waiver wording on this layer not verified",
+          "kind": "other",
+          "blanket": "unknown",
+          "evidence": "FINAL_RECONCILIATION.json apogee_hvac.policies[2] and template_errors - 'Scottsdale's CX 00 01 AI/waiver wording never verified.'",
+          "confidence": "low"
+        }
+      ],
+      "Commercial Auto": [
+        {
+          "form_number": "n/a - not visible in any readable doc",
+          "form_title": "AI/waiver status unknown (Infinity dec is an unreadable scan)",
+          "kind": "other",
+          "blanket": "unknown",
+          "evidence": "FINAL_RECONCILIATION.json apogee_hvac.policies[3].provenance.addl_insured_subr_wvd_false - 'AI/waiver availability not visible in any readable doc - unknown, not asserted... EMP3's sibling Kemper policy did buy blanket AI/WOS endorsements, so Apogee's may too - confirm with the actual dec before marking.' Template currently marks both X unsupported.",
+          "confidence": "low"
+        }
+      ],
+      "Workers Compensation": [
+        {
+          "form_number": "WC 00 03 13",
+          "form_title": "Waiver of Our Right to Recover From Others (Blanket)",
+          "kind": "waiver_subrog",
+          "blanket": true,
+          "evidence": "FINAL_RECONCILIATION.json apogee_hvac.policies[4].provenance - 'Schedule of Endorsements WC 00 03 13 blanket waiver - template's SUBR X is supported IF the policy is in force.' CAVEAT: policy was TERMINATED ~04/14/2026 for non-payment; two signed no-loss letters (04/22, 04/27) show reinstatement in progress but no confirmation of reinstatement exists in any source checked.",
+          "confidence": "high"
+        }
+      ],
+      "gaps": [
+        "HIGHEST-RISK CLIENT IN THE BOOK (reconciliation's own words). GL + both excess layers may have lapsed 05/01/2026 (IPFS non-payment, outcome unknown). WC was terminated ~04/14/2026 with reinstatement outcome unknown. Endorsement forms are well-documented ON PAPER for GL and WC, but IN-FORCE STATUS is unverified for GL, both excess layers, and WC - do not treat any Apogee blanket=true entry above as safe to auto-issue on without confirming the policy is currently active.",
+        "Excess Liability (both layers): AI/waiver never verified at the endorsement-form level - follow-form assumed, not confirmed.",
+        "Commercial Auto: AI/waiver status completely unknown - underlying Infinity declarations page is an unreadable scan; template marks both X with no supporting evidence."
+      ]
+    }
+  }
+}
