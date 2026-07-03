@@ -105,3 +105,17 @@ different source list without checking for new multi-word cities.
 3. Only then: load approved rows into `data/coi_history.db` via `db.py` /
    `record_coi()` (source="alex_list" or similar), which is what makes them
    show up in A10a address-autofill.
+
+## Highlight detection — COMPLETED 2026-07-03 (follow-up pass)
+
+The raw xlsx was materialized programmatically (byte-exact, 21,198 bytes) and yellow fills read via openpyxl. **7 holders are highlighted as IMPORTANT by Alex:**
+
+1. Advenir MOB @ Fort Myers LLC c/o Outlook Management Group
+2. All Seasons Naples / Oakland Management Corp.
+3. Castle Management c/o VendorSmart
+4. Jones Lang LaSalle Americas, Inc.
+5. Jones Lang LaSalle Americas, Inc. + Gartner, Inc. (joint entry)
+6. PR Mercato, LLC
+7. ServiceChannel.com, Inc.
+
+holder_staging.json updated: these 7 carry highlighted:true. NOTE for A3/A9: several of these rows carry rich SPECIFIC WORDING requirements in their 'Information' column (JLL/Gartner affiliates wording, ServiceChannel indemnitees clause, CG7288/CG7156/CG7160 form references, 30-day NOC) — prime real-world material for the specific-language and endorsement features.
