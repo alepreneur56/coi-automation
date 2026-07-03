@@ -49,8 +49,15 @@
     "detail": "5 lead/export files -> Lead Lists; 7 pptm pitch decks -> Pitch Decks; Loss Runs Req Ltr (2 files) + List of Cert Holders -> 05 Templates; Reyes Construction Insurance Summary.xlsx (no client folder exists) + hello.docx + color scheme.docx + Business Card Form -> 07 To Review; Markeitng & Carrier Notes, Document.docx, SWP Experience Mod Paul.pptx, Call Logs.xlsx, Random calls 0430.docx, Cold Calling Notes.docx, Team Huddle.docx, Pitch Spanish.docx -> 04 Sales & Marketing root",
     "skipped": "10 .url stubs + 2 zero-byte docx (Pitch English.docx, 0429 meeting.docx)"
   },
-  "scope_3_other_desktop_files": {"status": "in_progress"},
-  "scope_4_work_folder_extras": {"status": "not started"},
+  "scope_3_other_desktop_files": {
+    "status": "complete",
+    "total_top_level_items": 77,
+    "detail": "13 folders (recursed) + 64 loose files. PII: Josean DL.jpeg, Yordanis DL.pdf, Personal Budgetting/Budget Sheet.xlsx, report.pdf (driver MVR) -> 06 PII. Client files routed to existing 01 Clients/<name> subfolders: 305 Power Corp, Rolando's HVAC, AJF Roofing, G & D Mechanical, EMP 3 Solutions, Absolute Air Solutions, Central Comfort Air Conditioning, Apogee HVAC Solutions. Non-matching-client quotes/COIs (Clayton Mechanical, N-MET, BDR, Techno HVAC, A-O, Air Innovations, Main Street America, Express Roofing, De Mayo, Stolar/Binder, MF Invest) -> 07 To Review. Lead/prospect lists (HVAC Orlando, Tampa hvac accounts, Roofing/Electrical contractors list, Markets List, Registration List, Condo Insurance Clients) -> 04 Sales & Marketing/Lead Lists. Onboarding/training day folders (0505 huddle, 2nd day, 0501, Documents from 1st Day, Day 3, Day 4, New folder, FORMS apogee, Marketing Meeting 0428, Training Day 6+, Applications for Contractors, Select Construction Vertical Videos/Work Sample) -> 04 Sales & Marketing/USI Training. Skipped: DeepClean Community/Module 1 (empty scaffolding), PASS.pdf + US Assure DB Info.pdf (0-byte)."
+  },
+  "scope_4_work_folder_extras": {
+    "status": "partial",
+    "detail": "TASKS (David Stuff + Donte Stuff loose files) + GRADUATION PACKET (root xlsx + Absolute Air Solutions Policies/Progressive Policy.pdf routed to client) -> 04 Sales & Marketing/Internal, complete. Insurance Company Logod (17 carrier logo files) -> 05 Templates & Resources/Logos, complete. zzzExtra Shit: root loose files + Lists subfolder (7 lead-list files) -> 07 To Review / 04 Sales & Marketing/Lead Lists, complete. NOT recursed due to call budget: zzzExtra Shit/HVAC Contractors we write (10 client-name subfolders, likely COIs/policies per prospect), Carriers For HVAC, Templates, Resources, Safety Resources & Sub Agreements, The Barthet Law Firm, aaaaaaa - data from chinita, zzzzzzzz, Drop in Materials, and Lists/Sample Assignment List + Cab Report List + First List of leads for VA subfolders. These remain uncopied - flagging for a follow-up pass."
+  },
   "pii_flagged": [
     {"file": "Engagement Day - 05-18-26.m4a", "dest": "06 Personal & PII - RESTRICTED", "reason": "personal engagement recording, not business"},
     {"file": "Iconbrickell Condominium No. ONE TWO THREE.pdf", "dest": "06 Personal & PII - RESTRICTED", "reason": "personal condo document"}
@@ -60,6 +67,6 @@
     {"folder": "Old Documents/Prospect prep notes", "reason": "owned by another agent"},
     {"folder": "Old Documents/MOD PULLS", "reason": "owned by another agent"}
   ],
-  "api_call_count": 133,
+  "api_call_count": 385,
   "checkpoint_note": "categories_manifest.json did not exist prior to this task; created fresh as checkpoint. Call count is running tally of all search/copy/create calls made."
 }

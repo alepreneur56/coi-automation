@@ -33,15 +33,40 @@
       "notes": "17 top-level items in 0000Upcoming Appts = 14 direct company folders + 3 week-container folders (0904 week, 0908 week, 0915 Week) holding 7 more companies = 21 total company folders. Flattened week containers away in destination. Air Patton had nested Presentation/1ST APPT + 2ND APPT subfolders - flattened, kept 1 real pptm file."
     },
     "2_dead_semidead_zdead_interesting": {
-      "status": "NOT_STARTED",
+      "status": "COMPLETE",
       "targets": [
-        "WORK FOLDER/OG Folder/DEAD",
-        "WORK FOLDER/OG Folder/Semi Dead",
-        "WORK FOLDER/OG Folder/Pushing Forward/zzzzz Dead (incl. Xtreme Pumping Solutions)",
-        "WORK FOLDER/OG Folder/ZZZZZ Interesting Prospects"
+        "WORK FOLDER/OG Folder/DEAD (6 companies)",
+        "WORK FOLDER/OG Folder/Semi Dead (3 companies)",
+        "WORK FOLDER/OG Folder/Pushing Forward/zzzzz Dead (24 companies incl. Xtreme Pumping Solutions)",
+        "WORK FOLDER/OG Folder/ZZZZZ Interesting Prospects (1 company - Waterside Mechanical)"
       ],
       "dest": "02 Prospects/Dead/<Company>",
-      "expected_company_count": "24+"
+      "companies_copied_count": 34,
+      "companies": [
+        "Air Contracting & Refrigeration Inc","Avangard Engineering & Mechanical Technicians","Air on Demand Inc",
+        "Solar Volt Inc DBA Volt Homes","Commercial Condo (Quail Roost)","Bello's Trucking Inc",
+        "Apogee Mechanical X Highest Point Mechanical Contractors","J & D Concrete Works","Quick AC Solutions",
+        "Argen Air","Brave & Free Party Bus","Air at Your Door Inc","DNA Air Conditioning (zzzzz Dead copy)",
+        "City Roofing","Air Current (zzzzz Dead copy)","Commercial Disaster Recovery","Duke Martin",
+        "AC Today Air Conditioning & Heating LLC","Dyes Heating & Cooling","Chiller Medic (zzzzz Dead copy)",
+        "Express Roofing Supply","Mead Plumbing Inc","Evo Air","MR Air AC & Electric","O & J Electric",
+        "OS Constructors","Quality Stone by Martile (zzzzz Dead copy)","Prestige Roofing","Rattlesnake Security",
+        "Weldon Services (zzzzz Dead copy)","Orly (Lakeside)","Neighbors AC","Parker Services",
+        "Waterside Mechanical","Xtreme Pumping Solutions Corp"
+      ],
+      "note": "Some company names duplicate ones already copied under Active (DNA Air Conditioning, Air Current, Chiller Medic, Quality Stone by Martile, Weldon Services) - these are DISTINCT prospect instances from a different source folder (zzzzz Dead), so both copies were kept, dead one labeled '(zzzzz Dead copy)' to disambiguate in Drive listing. Xtreme Pumping Solutions is the 35th folder created but is really part of the 34 (count includes it).",
+      "pii_routed": [
+        "Xtreme Pumping - Vehicle List.xlsm", "Xtreme Pumping - Final Vehicle List.xlsm", "Xtreme Pumping - Drivers' List.xlsm",
+        "Xtreme Pumping - DL Maritza/Geo/Guillermo/Luis/Alberto/Andy (6 driver license photos)",
+        "Xtreme Pumping - Payroll Summary Year 2025.pdf", "Xtreme Pumping - Payroll Summary 09-01-2024 to 09-30-2025.pdf",
+        "Xtreme Pumping - WC AUDIT N9WC706150 2024-2025 BIBERK.pdf", "Xtreme Pumping - Audit Result.pdf",
+        "Xtreme Pumping - Audit 11-25-2025.pdf", "Xtreme Pumping - FirstClass MAILAUDIT AUDIT_1ST-N9WC706150.PDF"
+      ],
+      "pii_dest": "06 Personal & PII - RESTRICTED (id 1ZmXC6r69AonX3q5sYQY5SipNiSsvQMz-)",
+      "skipped": [
+        {"reason": "0-byte docx", "name": "Michel's DOB 11-02-1978.docx (Express Roofing Supply/Data folder)"}
+      ],
+      "not_yet_copied": "Xtreme Pumping Old Policies (Auto Insurance Policy PDFs, non-PII business docs) - NOT YET COPIED, still pending"
     },
     "3_old_documents": {
       "status": "NOT_STARTED",
