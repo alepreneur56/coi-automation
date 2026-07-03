@@ -186,9 +186,68 @@ def _cov_field(cov, keys, default="not stated"):
     return default
 
 
+def build_endorsement_section(attached_names, endorsement_flags, endorsement_notes):
+    """HTML block describing the A9 endorsement outcome. Empty string when
+    there is nothing to say (feature off or no demands)."""
+    if not (attached_names or endorsement_flags or endorsement_notes):
+        return ""
+    parts = ["<hr><p><b>Endorsement documentation (A9)</b></p>"]
+    if attached_names:
+        parts.append("<p><b>Attached (blanket, on file):</b></p><ul>")
+        for n in attached_names:
+            parts.append(f"<li>{n}</li>")
+        parts.append("</ul>")
+    if endorsement_flags:
+        parts.append("<p><b>NEEDS CARRIER ENDORSEMENT REQUEST (scheduled, not "
+                     "blanket — nothing attached):</b></p><ul>")
+        for f in endorsement_flags:
+            parts.append(f"<li>{f.get('description') or f.get('type')}</li>")
+        parts.append("</ul>")
+    if endorsement_notes:
+        parts.append("<p><b>Notes (demanded but not attachable):</b></p><ul>")
+        for n in endorsement_notes:
+            parts.append(f"<li>{n}</li>")
+        parts.append("</ul>")
+    return "".join(parts)
+
+
+def _send_producer_endorsement_note(graph, client_name, decision, dry_run):
+    """Internal note to the producer when a delivery had endorsement flags
+    (scheduled — carrier request needed) or notes (demanded but no PDF on
+    file / not on file). Goes to PRODUCER_CC_EMAIL directly; like the
+    complex-review email it is internal and never test-redirected. Only ever
+    called when ENDORSEMENTS_ENABLED put endorsement keys on the decision."""
+    flags = decision.get("endorsement_flags") or []
+    notes = decision.get("endorsement_notes") or []
+    if not (flags or notes):
+        return None
+
+    body = (
+        f"<p><b>Endorsement attention needed — {client_name}</b></p>"
+        + build_endorsement_section([], flags, notes)
+        + "<p><i>The COI itself was delivered per the normal flow; this note "
+        "covers only the endorsement documentation the request demanded.</i></p>"
+    )
+    note_obj = {
+        "subject": f"Endorsement attention needed: {client_name}",
+        "body": {"contentType": "HTML", "content": body},
+        "toRecipients": [{"emailAddress": {"address": config.PRODUCER_CC_EMAIL}}],
+    }
+    if dry_run:
+        return {"dry_run": True, "would_send_to": config.PRODUCER_CC_EMAIL,
+                "flag_count": len(flags), "note_count": len(notes)}
+    ok, resp = graph.send_mail(note_obj)
+    result = {"sent": ok, "to": config.PRODUCER_CC_EMAIL,
+              "flag_count": len(flags), "note_count": len(notes)}
+    if not ok:
+        result["error"] = resp.text[:500]
+    return result
+
+
 def build_complex_review_body(client_name, request_summary, review_summary,
                               coverage_analysis, send_completed_coi_to,
-                              original_client_sender, original_client_name):
+                              original_client_sender, original_client_name,
+                              endorsement_section=""):
     """Review email body sent to Alejandro — same layout as the validated
     Pipedream version."""
     parts = [
@@ -239,6 +298,9 @@ def build_complex_review_body(client_name, request_summary, review_summary,
         notes = (coverage_analysis.get("notes") or "").strip()
         if notes:
             parts.append(f"<p><b>Additional notes:</b><br>{notes}</p>")
+
+    if endorsement_section:
+        parts.append(endorsement_section)
 
     parts.append(
         "<hr>"
@@ -325,6 +387,8 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
         pdf_paths = decision.get("pdf_paths", [])
         is_revision = bool(decision.get("is_revision", False))
         third_party = parsed.get("send_completed_coi_to")
+        # A9 — present only when ENDORSEMENTS_ENABLED planned something
+        endorsement_paths = decision.get("endorsement_pdf_paths") or []
 
         if not pdf_paths:
             return {"sent": False, "type": "pdf_reply", "error": "No pdf_paths provided"}
@@ -348,6 +412,9 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             intro_line = f"Adjunto encontrará {descriptor} para {client_name}."
             if holder_line:
                 intro_line += f"<br>Cert holder: {holder_line}."
+            if endorsement_paths:
+                intro_line += ("<br>También adjuntamos la documentación de los "
+                               "endosos solicitados.")
             body_html = with_signature(
                 f"<p>{recipient_first},</p>"
                 f"<p>{intro_line}</p>"
@@ -359,6 +426,9 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             intro_line = f"Attached please find {descriptor} for {client_name}."
             if holder_line:
                 intro_line += f"<br>Cert holder: {holder_line}."
+            if endorsement_paths:
+                intro_line += ("<br>The requested endorsement documentation "
+                               "is attached as well.")
             body_html = with_signature(
                 f"<p>{recipient_first},</p>"
                 f"<p>{intro_line}</p>"
@@ -370,13 +440,21 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             "body": {"contentType": "HTML", "content": body_html},
             "toRecipients": [{"emailAddress": {"address": e}} for e in to_list],
             "ccRecipients": [{"emailAddress": {"address": e}} for e in cc_list],
-            "attachments": [_file_attachment(p) for p in pdf_paths] + signature_attachments(),
+            "attachments": [_file_attachment(p) for p in pdf_paths + endorsement_paths]
+                           + signature_attachments(),
         }
 
         if dry_run:
-            return {"sent": False, "dry_run": True, "type": "pdf_reply",
-                    "would_send_to": to_list, "would_cc": cc_list,
-                    "attachments": [os.path.basename(p) for p in pdf_paths]}
+            result = {"sent": False, "dry_run": True, "type": "pdf_reply",
+                      "would_send_to": to_list, "would_cc": cc_list,
+                      "attachments": [os.path.basename(p) for p in pdf_paths]}
+            if endorsement_paths:
+                result["endorsement_attachments"] = [
+                    os.path.basename(p) for p in endorsement_paths]
+            note = _send_producer_endorsement_note(graph, client_name, decision, dry_run)
+            if note:
+                result["producer_endorsement_note"] = note
+            return result
 
         ok, resp = graph.reply_to_message(original_msg_id, message_obj)
         result = {
@@ -392,6 +470,13 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             "third_party_added": bool(third_party),
             "attachment_count": len(pdf_paths),
         }
+        if endorsement_paths:
+            result["endorsement_attachment_count"] = len(endorsement_paths)
+            result["endorsement_attachments"] = [
+                os.path.basename(p) for p in endorsement_paths]
+        note = _send_producer_endorsement_note(graph, client_name, decision, dry_run)
+        if note:
+            result["producer_endorsement_note"] = note
         if not ok:
             result["error"] = f"Graph API returned {resp.status_code}"
             result["response"] = resp.text[:500]
@@ -448,6 +533,16 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             results["review_email_error"] = "No pdf_paths to attach"
             return results
 
+        # A9 — present only when ENDORSEMENTS_ENABLED planned something.
+        # Endorsement PDFs go on the REVIEW email (Alejandro forwards
+        # manually), never straight to the client from this lane.
+        endorsement_paths = decision.get("endorsement_pdf_paths") or []
+        endorsement_section = build_endorsement_section(
+            [os.path.basename(p) for p in endorsement_paths],
+            decision.get("endorsement_flags") or [],
+            decision.get("endorsement_notes") or [],
+        )
+
         review_body_html = build_complex_review_body(
             client_name=client_name,
             request_summary=decision.get("request_summary", ""),
@@ -456,9 +551,18 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             send_completed_coi_to=decision.get("send_completed_coi_to"),
             original_client_sender=original_client_sender,
             original_client_name=original_client_name,
+            endorsement_section=endorsement_section,
         )
 
-        review_attachments = [_file_attachment(p) for p in pdf_paths]
+        if endorsement_section:
+            results["endorsement_attachments"] = [
+                os.path.basename(p) for p in endorsement_paths]
+            results["endorsement_flag_count"] = len(
+                decision.get("endorsement_flags") or [])
+            results["endorsement_note_count"] = len(
+                decision.get("endorsement_notes") or [])
+
+        review_attachments = [_file_attachment(p) for p in pdf_paths + endorsement_paths]
         # Also attach the ORIGINAL contract / requirements docs that came in
         # with the client email so Alejandro can review them himself.
         forwarded_originals = []

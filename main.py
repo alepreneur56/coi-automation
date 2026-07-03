@@ -141,7 +141,7 @@ def process_message(graph, msg, dry_run=False):
         usage=ai_result.get("cache_usage"),
     )
 
-    decision = decide_action(ai_result)
+    decision = decide_action(ai_result, attachments_result)
     state.log_event(
         "action_decided",
         msg_id=msg_id,

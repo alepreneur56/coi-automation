@@ -119,6 +119,18 @@ COST_OUTPUT_PER_MTOK = _float_opt("COST_OUTPUT_PER_MTOK")
 ZIP_LOOKUP = _bool("ZIP_LOOKUP", False)
 
 # ---------------------------------------------------------------------------
+# Endorsement attachments — A9 (see endorsements.py)
+# ---------------------------------------------------------------------------
+# When true, COI requests that demand endorsement documentation (AI copy,
+# waiver of subrogation, P&NC wording, notice of cancellation, per-project
+# aggregate) get the matching blanket endorsement PDFs attached to the
+# delivery email. Scheduled (per-holder) endorsements are NEVER attached —
+# they produce a producer flag instead (Rolando's auto AI rule). Default off.
+ENDORSEMENTS_ENABLED = _bool("ENDORSEMENTS_ENABLED", False)
+# Where the per-client endorsement PDFs live: endorsements/<client_id>/*.pdf
+ENDORSEMENTS_DIR = os.environ.get("ENDORSEMENTS_DIR", os.path.join(BASE_DIR, "endorsements"))
+
+# ---------------------------------------------------------------------------
 # Runtime
 # ---------------------------------------------------------------------------
 POLL_INTERVAL_SECONDS = int(os.environ.get("POLL_INTERVAL_SECONDS", "60"))

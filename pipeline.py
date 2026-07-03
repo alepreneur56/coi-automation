@@ -14,6 +14,7 @@ import re
 from coi_engine import process_request
 
 import config
+import endorsements
 import state
 import ziplookup
 
@@ -121,7 +122,31 @@ def _try_zip_autofill(parsed, sender=None):
     return parsed
 
 
-def decide_action(ai_result):
+def _endorsement_extras(parsed, attachments_result, sender=None):
+    """A9: when ENDORSEMENTS_ENABLED, detect demanded endorsements and plan
+    attachments/flags/notes. Returns a dict of extra decision keys or None.
+    Fully inert when the flag is off (default) — TEST_MODE and all existing
+    behavior are unchanged. Never raises."""
+    if not config.ENDORSEMENTS_ENABLED:
+        return None
+    extras = endorsements.plan_for_decision(parsed, attachments_result)
+    if extras:
+        try:
+            state.log_event(
+                "endorsements_planned",
+                sender=sender,
+                client_id=parsed.get("client_id"),
+                demanded=extras.get("endorsement_demands"),
+                attach_count=len(extras.get("endorsement_pdf_paths") or []),
+                scheduled_flag_count=len(extras.get("endorsement_flags") or []),
+                note_count=len(extras.get("endorsement_notes") or []),
+            )
+        except Exception:
+            pass
+    return extras
+
+
+def decide_action(ai_result, attachments_result=None):
     parsed = ai_result.get("parsed")
 
     # If the classifier failed (no parsed JSON), pass through error details
@@ -197,9 +222,12 @@ def decide_action(ai_result):
             return {"action": "error", "reason": "coi_engine produced no PDFs"}
 
         client_name = parsed.get("client_canonical_name", "Client")
+        endorsement_extras = _endorsement_extras(
+            parsed, attachments_result, sender=sender_email
+        )
 
         if is_complex_review:
-            return {
+            decision = {
                 "action": "send_complex_review",
                 "classification": classification,
                 "client_name": client_name,
@@ -212,8 +240,11 @@ def decide_action(ai_result):
                 "request_summary": parsed.get("original_request_summary") or "",
                 "send_completed_coi_to": parsed.get("send_completed_coi_to"),
             }
+            if endorsement_extras:
+                decision.update(endorsement_extras)
+            return decision
 
-        return {
+        decision = {
             "action": "send_pdf",
             "classification": classification,
             "is_revision": is_revision,
@@ -222,6 +253,9 @@ def decide_action(ai_result):
             "pdf_paths": output_files,
             "to": sender_email,
         }
+        if endorsement_extras:
+            decision.update(endorsement_extras)
+        return decision
 
     # Unknown classification (defensive)
     return {

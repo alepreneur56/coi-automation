@@ -1,0 +1,634 @@
+{
+  "registry_version": "1.0",
+  "_meta": {
+    "generated": "2026-07-03",
+    "purpose": "A9 — per-client inventory of endorsements on file, consumed by endorsements.py to decide which endorsement PDFs to attach to outgoing COI delivery emails. Kept as a SIBLING of coi_client_registry.json on purpose: the client registry is injected verbatim into every classifier API call, and endorsement data must not bloat or perturb that prompt.",
+    "source": "training/endorsements/endorsement_inventory.json + ENDORSEMENT_INVENTORY.md (A9 scaffold, 2026-07-03, incl. Alex's 07-02/07-03 reinstatement confirmations) — see those files for full evidence citations.",
+    "status_values": {
+      "blanket": "Endorsement applies automatically to any party required by written contract — safe to attach the endorsement PDF for any certificate holder.",
+      "scheduled": "Endorsement names specific parties only. NEVER auto-attach for a new holder — a new carrier change endorsement is needed first; surface a producer flag instead.",
+      "none": "Confirmed NOT on file (carrier endorsement schedule checked). Demanding parties need a producer conversation, not an attachment.",
+      "unverified": "Existence/blanket status not confirmed at the endorsement-form level. Treat as not attachable until verified."
+    },
+    "pdf_convention": "PDFs live at endorsements/<client_id>/<pdf_filename>. Attach logic requires status=blanket AND the file actually present on disk; a blanket entry whose PDF is not yet on file produces a producer note instead of an attachment.",
+    "hard_rules": [
+      "AJF Roofing: historical certs showing GAF as additional insured on every COI were a MISTAKE (Alex, 2026-07-03). Never encode any GAF-on-AJF pattern anywhere — this registry is holder-agnostic by design and must stay that way.",
+      "Rolando's HVAC: auto-line AI/WOS/P&NC is SCHEDULED (per-holder Florida change endorsements on Ascendant CA-74829-0), not blanket. Never auto-attach for a new holder; flag that a carrier endorsement request is needed (Alex, 2026-07-03)."
+    ]
+  },
+  "clients": {
+    "305_power_corp": {
+      "endorsements": [
+        {
+          "endorsement_id": "305_gl_ai",
+          "type": "additional_insured",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "FCG 1029 (Clear Blue)",
+          "form_title": "Additional Insured - By Written Contract (automatic)",
+          "pdf_filename": "305_gl_ai.pdf",
+          "confidence": "high",
+          "notes": "CG 20 10/20 37 equivalent; carrier dec read directly."
+        },
+        {
+          "endorsement_id": "305_gl_wos",
+          "type": "waiver_of_subrogation",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 24 04 (Clear Blue)",
+          "form_title": "Waiver of Transfer of Rights of Recovery Against Others to Us (Blanket)",
+          "pdf_filename": "305_gl_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "305_gl_pnc",
+          "type": "primary_noncontributory",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Primary & Non-Contributory (template boilerplate; no standalone form cited)",
+          "pdf_filename": null,
+          "confidence": "medium",
+          "notes": "No standalone P&NC endorsement form number cited in reconciliation."
+        },
+        {
+          "endorsement_id": "305_auto_ai",
+          "type": "additional_insured",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket Additional Insured (Progressive Express)",
+          "pdf_filename": "305_auto_ai.pdf",
+          "confidence": "high",
+          "notes": "Confirmed via Progressive dec 03/04/2026 ($75 fee line); no standalone endorsement PDF located yet."
+        },
+        {
+          "endorsement_id": "305_auto_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket Waiver of Subrogation (Progressive Express)",
+          "pdf_filename": "305_auto_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "305_excess_ai",
+          "type": "additional_insured",
+          "line": "Excess",
+          "status": "blanket",
+          "form_number": "CX 00 01 Sec I.1.d (follow-form)",
+          "form_title": "AI follows underlying GL form",
+          "pdf_filename": null,
+          "confidence": "medium",
+          "notes": "Follow-form, no standalone endorsement to attach."
+        },
+        {
+          "endorsement_id": "305_excess_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Excess",
+          "status": "none",
+          "form_number": null,
+          "form_title": "NO waiver-of-subrogation endorsement on the excess forms schedule",
+          "pdf_filename": null,
+          "confidence": "high",
+          "notes": "ACTIVE TEMPLATE BUG: template boilerplate claims umbrella waiver but the excess forms schedule has none. Do not certify excess/umbrella waiver until fixed."
+        },
+        {
+          "endorsement_id": "305_wc_wos",
+          "type": "waiver_of_subrogation",
+          "line": "WC",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket Waiver of Subrogation (LUBA, $0 premium line on quote 183678)",
+          "pdf_filename": "305_wc_wos.pdf",
+          "confidence": "medium",
+          "notes": "Bound policy is an unreadable scan; blanket status rests on the LUBA quote."
+        }
+      ],
+      "client_notes": [
+        "GL + Excess expire 07/15/2026, renewal not yet bound — re-verify forms after renewal."
+      ]
+    },
+    "rolandos_hvac": {
+      "endorsements": [
+        {
+          "endorsement_id": "rolandos_gl_ai",
+          "type": "additional_insured",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 20 10_B (Trisura)",
+          "form_title": "Additional Insured - Owners, Lessees or Contractors (blanket written-contract)",
+          "pdf_filename": "rolandos_gl_ai.pdf",
+          "confidence": "high",
+          "notes": "Archive holds a 4-page bundled 'GL Blanket AI, PNCB, WOS End.pdf' (scan) — Alex may supply that as the PDF."
+        },
+        {
+          "endorsement_id": "rolandos_gl_pnc",
+          "type": "primary_noncontributory",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 20 01_B (Trisura)",
+          "form_title": "Primary and Noncontributory - Other Insurance Condition",
+          "pdf_filename": "rolandos_gl_pnc.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "rolandos_gl_wos",
+          "type": "waiver_of_subrogation",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 24 04_B (Trisura)",
+          "form_title": "Waiver of Transfer of Rights of Recovery (Blanket)",
+          "pdf_filename": "rolandos_gl_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "rolandos_auto_ai",
+          "type": "additional_insured",
+          "line": "Auto",
+          "status": "scheduled",
+          "form_number": "CA 20 48 02 99 (Ascendant, per-holder Designated Insured change endorsement)",
+          "form_title": "Designated Insured (SCHEDULED — names one certificate holder at a time)",
+          "pdf_filename": null,
+          "confidence": "high",
+          "notes": "HARD RULE (Alex 2026-07-03): never auto-attach. Each new holder needs a new Florida policy-change endorsement from the carrier — flag for a carrier endorsement request instead."
+        },
+        {
+          "endorsement_id": "rolandos_auto_pnc",
+          "type": "primary_noncontributory",
+          "line": "Auto",
+          "status": "scheduled",
+          "form_number": "Change Endorsement No. 5 on CA-74829-0",
+          "form_title": "Primary and Non-Contributory (SCHEDULED per-holder change endorsement)",
+          "pdf_filename": null,
+          "confidence": "high",
+          "notes": "Same scheduled pattern as the auto AI — flag, do not attach."
+        },
+        {
+          "endorsement_id": "rolandos_auto_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Auto",
+          "status": "scheduled",
+          "form_number": "Change Endorsement No. 4 on CA-74829-0",
+          "form_title": "Waiver of Subrogation (SCHEDULED per-holder change endorsement)",
+          "pdf_filename": null,
+          "confidence": "high",
+          "notes": "Same scheduled pattern as the auto AI — flag, do not attach."
+        }
+      ],
+      "client_notes": [
+        "WC: no current policy on our book (AmTrust TWC4577701 expired 03/23/2026; per 07-03 update, Rolando's WC is another broker's line). No WC endorsement evidence applies."
+      ]
+    },
+    "emp3_solutions": {
+      "endorsements": [
+        {
+          "endorsement_id": "emp3_gl_ai",
+          "type": "additional_insured",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 20 10 04 13",
+          "form_title": "Additional Insured - Owners, Lessees or Contractors (blanket wording)",
+          "pdf_filename": "emp3_gl_ai.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "emp3_gl_pnc",
+          "type": "primary_noncontributory",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 20 01 04 13",
+          "form_title": "Primary and Noncontributory - Other Insurance Condition",
+          "pdf_filename": "emp3_gl_pnc.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "emp3_gl_wos",
+          "type": "waiver_of_subrogation",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 24 04 05 09",
+          "form_title": "Waiver of Transfer of Rights of Recovery Against Others to Us (Blanket)",
+          "pdf_filename": "emp3_gl_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "emp3_auto_ai",
+          "type": "additional_insured",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket Additional Insureds (Infinity/Kemper policy-change 'No to Yes' eff 11/06/2025)",
+          "pdf_filename": "emp3_auto_ai.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "emp3_auto_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket Waiver of Subrogations (Infinity/Kemper policy-change eff 11/06/2025)",
+          "pdf_filename": "emp3_auto_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "emp3_wc_wos",
+          "type": "waiver_of_subrogation",
+          "line": "WC",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "Template marks SUBR WVD but LUBA endorsement schedule shows NO WC 00 03 13",
+          "pdf_filename": null,
+          "confidence": "medium",
+          "notes": "Systemic LUBA WC pattern (also G&D, possibly 305): template assumes a blanket WC waiver that the carrier schedule doesn't show. Do not attach or certify until Alex resolves."
+        }
+      ],
+      "client_notes": [
+        "No umbrella/excess policy exists — template boilerplate referencing umbrella waiver is stale."
+      ]
+    },
+    "central_comfort_ac": {
+      "endorsements": [
+        {
+          "endorsement_id": "central_gl_ai",
+          "type": "additional_insured",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Automatic Additional Insured by written contract (COI-sourced; UFG BOP dec unreadable)",
+          "pdf_filename": "central_gl_ai.pdf",
+          "confidence": "medium",
+          "notes": "Form number never directly sighted — 47.8MB unreadable scan; 3 agreeing docs corroborate."
+        },
+        {
+          "endorsement_id": "central_gl_pnc",
+          "type": "primary_noncontributory",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "BP 71 74 08 15 (UFG BOP-Pro)",
+          "form_title": "Primary and Non-Contributory - Businessowners Liability Coverage",
+          "pdf_filename": "central_gl_pnc.pdf",
+          "confidence": "medium",
+          "notes": null
+        },
+        {
+          "endorsement_id": "central_gl_wos",
+          "type": "waiver_of_subrogation",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket Waiver of Subrogation (COI/template wording; not form-verified)",
+          "pdf_filename": "central_gl_wos.pdf",
+          "confidence": "medium",
+          "notes": null
+        },
+        {
+          "endorsement_id": "central_wc_wos",
+          "type": "waiver_of_subrogation",
+          "line": "WC",
+          "status": "blanket",
+          "form_number": "WC 00 03 13",
+          "form_title": "Waiver of Our Right to Recover From Others (Blanket)",
+          "pdf_filename": "central_wc_wos.pdf",
+          "confidence": "high",
+          "notes": "Read directly from carrier Information Page (1.4%/$342 premium line)."
+        }
+      ],
+      "client_notes": [
+        "No Commercial Auto or Umbrella/Excess policy exists for this client."
+      ]
+    },
+    "gd_mechanical": {
+      "endorsements": [
+        {
+          "endorsement_id": "gd_gl_ai",
+          "type": "additional_insured",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Automatic Additional Insured (COI description-of-operations wording only)",
+          "pdf_filename": "gd_gl_ai.pdf",
+          "confidence": "medium",
+          "notes": "Endorsement forms inside the 150-page BOP not individually verified."
+        },
+        {
+          "endorsement_id": "gd_gl_pnc",
+          "type": "primary_noncontributory",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Primary & Non-Contributory (COI wording only)",
+          "pdf_filename": "gd_gl_pnc.pdf",
+          "confidence": "medium",
+          "notes": null
+        },
+        {
+          "endorsement_id": "gd_gl_wos",
+          "type": "waiver_of_subrogation",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket Waiver (COI wording only)",
+          "pdf_filename": "gd_gl_wos.pdf",
+          "confidence": "medium",
+          "notes": null
+        },
+        {
+          "endorsement_id": "gd_auto_ai",
+          "type": "additional_insured",
+          "line": "Auto",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "AI asserted on COI block only; current-term (05/03/2026-05/03/2027) declarations missing entirely",
+          "pdf_filename": null,
+          "confidence": "low",
+          "notes": "Pull the 26-27 Kemper/Infinity renewal declarations before trusting."
+        },
+        {
+          "endorsement_id": "gd_auto_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Auto",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "Waiver asserted on COI block only; current term unverified",
+          "pdf_filename": null,
+          "confidence": "low",
+          "notes": null
+        },
+        {
+          "endorsement_id": "gd_umbrella_ai",
+          "type": "additional_insured",
+          "line": "Umbrella",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "Follow-form over UFG BOP; no standalone AI/WOS endorsement cited",
+          "pdf_filename": null,
+          "confidence": "medium",
+          "notes": null
+        },
+        {
+          "endorsement_id": "gd_wc_wos",
+          "type": "waiver_of_subrogation",
+          "line": "WC",
+          "status": "none",
+          "form_number": null,
+          "form_title": "NO WC 00 03 13 on the carrier endorsement schedule (read in full)",
+          "pdf_filename": null,
+          "confidence": "high",
+          "notes": "Template marks SUBR WVD anyway — same systemic LUBA pattern as EMP3. CRITICAL template error flagged in reconciliation."
+        }
+      ],
+      "client_notes": [
+        "Two conflicting template lineages exist (repo vs Drive 'New Template with the New Auto policy') — affects trust in boilerplate."
+      ]
+    },
+    "absolute_air_solutions": {
+      "endorsements": [
+        {
+          "endorsement_id": "absolute_auto_ai",
+          "type": "additional_insured",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket AI (Infinity primary auto, policy change eff 11/03/2025)",
+          "pdf_filename": "absolute_auto_ai.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "absolute_auto_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": null,
+          "form_title": "Blanket WOS (Infinity primary auto, policy change eff 11/03/2025)",
+          "pdf_filename": "absolute_auto_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        }
+      ],
+      "client_notes": [
+        "GL/WC/Umbrella are other brokers' lines (per 07-03 update) — no endorsement evidence on our book.",
+        "Secondary Progressive auto policy 872005650 has NO AI/waiver (ADDL N / SUBR N) and disputed binding status."
+      ]
+    },
+    "ajf_roofing": {
+      "endorsements": [
+        {
+          "endorsement_id": "ajf_gl_ai",
+          "type": "additional_insured",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CNA75079XX (3-22)",
+          "form_title": "Blanket Additional Insured - Owners, Lessees or Contractors - with Products-Completed Operations",
+          "pdf_filename": "ajf_gl_ai.pdf",
+          "confidence": "high",
+          "notes": "Full endorsement text read directly from 'AJF COI NV2A with All Endorsements.pdf'."
+        },
+        {
+          "endorsement_id": "ajf_gl_pnc",
+          "type": "primary_noncontributory",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CNA75079XX (3-22) Section VI",
+          "form_title": "Primary and Noncontributory Insurance (Other Insurance condition amendment)",
+          "pdf_filename": "ajf_gl_pnc.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "ajf_gl_wos",
+          "type": "waiver_of_subrogation",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CNA74705XX (1-15), Item 25",
+          "form_title": "Waiver of Subrogation - Blanket (Contractors' GL Extension Endorsement)",
+          "pdf_filename": "ajf_gl_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "ajf_auto_ai",
+          "type": "additional_insured",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": "CNA63359XX (04-2012)",
+          "form_title": "Contractors Extended Coverage Endorsement - Business Auto Plus (blanket written-contract AI)",
+          "pdf_filename": "ajf_auto_ai.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "ajf_auto_pnc",
+          "type": "primary_noncontributory",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": "CNA63359XX (04-2012)",
+          "form_title": "Primary and non-contributory (Other Insurance amendment)",
+          "pdf_filename": "ajf_auto_pnc.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "ajf_auto_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Auto",
+          "status": "blanket",
+          "form_number": "CNA63359XX (04-2012)",
+          "form_title": "Transfer Of Rights Of Recovery Against Others To Us (blanket waiver amendment)",
+          "pdf_filename": "ajf_auto_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "ajf_umbrella_ai",
+          "type": "additional_insured",
+          "line": "Umbrella",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "AI via follow-form inference only — no standalone umbrella AI endorsement sighted",
+          "pdf_filename": null,
+          "confidence": "medium",
+          "notes": null
+        },
+        {
+          "endorsement_id": "ajf_umbrella_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Umbrella",
+          "status": "blanket",
+          "form_number": "Condition W (follow-form)",
+          "form_title": "Blanket waiver by written contract (umbrella condition W)",
+          "pdf_filename": null,
+          "confidence": "medium",
+          "notes": "No standalone endorsement to attach — condition inside the umbrella form."
+        },
+        {
+          "endorsement_id": "ajf_wc_wos",
+          "type": "waiver_of_subrogation",
+          "line": "WC",
+          "status": "blanket",
+          "form_number": "WC 00 03 13 (04-1984)",
+          "form_title": "Waiver of Our Right to Recover From Others Endorsement",
+          "pdf_filename": "ajf_wc_wos.pdf",
+          "confidence": "high",
+          "notes": "Full text read directly; 'Blanket Subrogation Waiver-2%' premium line corroborates."
+        }
+      ],
+      "client_notes": [
+        "HARD RULE (Alex 2026-07-03): historical AJF certs listing GAF as additional insured on every COI were a MISTAKE. Never encode or automate any GAF-as-holder/GAF-as-AI pattern for this client."
+      ]
+    },
+    "apogee_hvac": {
+      "endorsements": [
+        {
+          "endorsement_id": "apogee_gl_ai",
+          "type": "additional_insured",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 20 10 / CG 20 37 (MS Transverse)",
+          "form_title": "Additional Insured - Owners, Lessees or Contractors",
+          "pdf_filename": "apogee_gl_ai.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "apogee_gl_pnc",
+          "type": "primary_noncontributory",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 20 01 (MS Transverse)",
+          "form_title": "Primary and Noncontributory - Other Insurance Condition",
+          "pdf_filename": "apogee_gl_pnc.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "apogee_gl_wos",
+          "type": "waiver_of_subrogation",
+          "line": "GL",
+          "status": "blanket",
+          "form_number": "CG 24 53 (MS Transverse)",
+          "form_title": "Waiver of Transfer of Rights of Recovery Against Others to Us (automatic)",
+          "pdf_filename": "apogee_gl_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "endorsement_id": "apogee_excess_ai",
+          "type": "additional_insured",
+          "line": "Excess",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "Follow-form only — never verified at endorsement-form level (both Lexington and Scottsdale layers)",
+          "pdf_filename": null,
+          "confidence": "low",
+          "notes": null
+        },
+        {
+          "endorsement_id": "apogee_excess_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Excess",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "Never verified at endorsement-form level (both excess layers)",
+          "pdf_filename": null,
+          "confidence": "low",
+          "notes": null
+        },
+        {
+          "endorsement_id": "apogee_auto_ai",
+          "type": "additional_insured",
+          "line": "Auto",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "AI status unknown — Infinity dec is an unreadable scan",
+          "pdf_filename": null,
+          "confidence": "low",
+          "notes": null
+        },
+        {
+          "endorsement_id": "apogee_auto_wos",
+          "type": "waiver_of_subrogation",
+          "line": "Auto",
+          "status": "unverified",
+          "form_number": null,
+          "form_title": "Waiver status unknown — Infinity dec is an unreadable scan",
+          "pdf_filename": null,
+          "confidence": "low",
+          "notes": null
+        },
+        {
+          "endorsement_id": "apogee_wc_wos",
+          "type": "waiver_of_subrogation",
+          "line": "WC",
+          "status": "blanket",
+          "form_number": "WC 00 03 13",
+          "form_title": "Waiver of Our Right to Recover From Others (Blanket)",
+          "pdf_filename": "apogee_wc_wos.pdf",
+          "confidence": "high",
+          "notes": null
+        }
+      ],
+      "client_notes": [
+        "Alex confirmed 07-02: Apogee fully reinstated — all 5 lines in force through 12/08/2026. Prior 'in-force unverified' caveats are resolved; excess/auto endorsement-form verification is still open."
+      ]
+    },
+    "clayton_mechanical": {
+      "endorsements": [],
+      "client_notes": [
+        "Onboarded 2026-07-03 — no endorsement inventory built yet. Template marks AI/WOS on GL/Auto/Umbrella/WC but nothing is form-verified. Ask Alex for Westfield/Infinity/National Union/Technology carrier docs before adding entries."
+      ]
+    }
+  }
+}
