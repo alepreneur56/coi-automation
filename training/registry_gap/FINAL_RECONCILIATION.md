@@ -14,30 +14,27 @@ Machine-readable version with full per-field provenance: `FINAL_RECONCILIATION.j
 
 ## (a) COVERAGE ALERTS — read these first
 
+*Updated 2026-07-03 with Alex's confirmations: Apogee fully reinstated (all 5 lines in force to 12/08/26); G&D auto renewed 05/03/26-05/03/27 policy 50010517801 (renewal dec not yet in Drive — Alex to provide); EMP3 WC waiver absent from policy — Alex asking LUBA to add it, cert unchanged.*
+
 ### CRITICAL
 
-**A1. Rolando's HVAC — WC expired 03/23/2026, no replacement found.**
-AmTrust/Technology Insurance `TWC4577701` (03/23/2025–03/23/2026, EL 1M/1M/1M) lapsed **101 days ago**. No successor WC document anywhere in the client's Drive tree.
-*Evidence:* DRIVE `WC POLICY.pdf` Information Page (WC 99 00 01 B) + staleness flag "no replacement/renewal WC document found anywhere in the client folder tree."
-*Silver lining:* WC is not in the registry and not on the template, so the automation can't accidentally certify it — but the client may be bare on WC.
-→ **Confirm whether Rolando's has current WC. Decline any WC cert request until proof exists.**
+**A1. Rolando's HVAC — WC is ANOTHER BROKER'S line (Alex confirmed 2026-07-02).**
+AmTrust/Technology `TWC4577701` in our archive ended 03/23/2026; the client renewed WC through a different broker — we do not control that line. NOT a lapse and NOT our E&O exposure.
+*Registry/template note:* WC correctly absent from Rolando's template. Alex's standing rule: if a requirements doc demands WC, do NOT withhold the cert — issue our lines as always, without WC.
 
-**A2. Absolute Air — GL expired ~06/05/2026, WC expired 06/13/2026, Umbrella expired ~06/05/2026 — no renewals found.**
-- WC: RetailFirst `520-51006`, dec page reads 06/13/2025–06/13/2026 (file title says 06-05 — the dec wins). Expired **19 days ago**.
-- GL + Umbrella (Nationwide): dates from file titles only (dec pages would not extract — policy numbers/limits unknown, LOW confidence), both sitting in the OLD folder with **no 26-27 renewal anywhere** in the tree.
-- The **only verifiably in-force coverage** today is the Infinity auto `50026705601` (through 08/27/2026).
-*Evidence:* DRIVE `WC - Retail First- 06-05-25-26.pdf` Information Page; `GL - NW - 06-05-25-26.pdf` / `UMB - NW - 06-05-25-26.pdf` extraction failures + staleness flags.
-→ **Ask the client: did GL/WC/Umbrella/Property/IM renew for 26-27, or is the account auto-only now?** (Registry/templates are auto-only, so the automation isn't exposed.)
+**A2. Absolute Air — GL/WC/Umbrella are ANOTHER BROKER'S lines (Alex confirmed 2026-07-02).**
+The expired Nationwide GL/Umbrella and RetailFirst WC in the archive belong to the incumbent broker; Alex holds only the auto line (Infinity `50026705601`, in force through 08/27/2026).
+*Opportunity flag:* Alex plans to pitch the other lines at the 08/27/2026 auto renewal. Registry/templates are auto-only — correct as-is.
 
 **A3. 305 Power — GL + Excess expire 07/15/2026 (13 days), renewals QUOTED NOT BOUND.**
 Clear Blue GL `BGFL9010651400` and Excess `BXFL9000890400` both end 07/15/2026. Drive has only **Obsidian Specialty quotes** (RT-Obsidian GL + XS Revised, 05/14/2026); the cost-comparison workbook (06/05/2026) still lists Clear Blue as "Current". Note the Obsidian GL quote carries a **$5,000 per-occurrence deductible** vs the current $0.
 *Evidence:* DRIVE 305 Power found_docs + staleness flags.
-→ **Confirm binding before 07/15. No COI dated on/after 07/15/2026 until new policy numbers are loaded.**
+→ **Alex status (07/02): actively working additional quotes.** Load the bound policy numbers into registry+template before issuing any COI dated on/after 07/15/2026.
 
 **A4. Rolando's HVAC — GL expires 07/15/2026 (13 days), renewal QUOTED NOT BOUND.**
 Trisura `NRG-DBG-GL15062` ends 07/15/2026. Renewal quote `SUB1737578-01` exists in **two versions with very different premiums**: 06/10/2026 ($50,027.25) and 06/30/2026 V2 ($69,874.33, revised exposures). No binder in Drive.
 *Evidence:* DRIVE `Trisura Renewal Quote.pdf` + `Renewal Quote V2.pdf`.
-→ **Confirm which version binds and get the binder before 07/15.**
+→ **Alex status (07/02): latest quote received; binding meeting with the client next week.** Load bound numbers before any COI dated on/after 07/15/2026.
 
 **A5. Apogee — GL + both excess layers may have died 05/01/2026 (IPFS non-payment).**
 IPFS intent-to-cancel FLS-305556 (04/13/2026): MS Transverse GL + Lexington + Scottsdale cancel 05/01/2026 unless $4,006.56 paid. Archive ends 04/27; Drive (today) shows the policy docs but **no evidence of payment, cancellation, or reinstatement either way**.
