@@ -1,0 +1,172 @@
+{
+  "batch": "WON Accounts - Batch A (non-automation clients)",
+  "timestamp": "2026-07-03T06:15:40Z",
+  "destination_parent_id": "1cYdgsk7Fo495rly6ZO02AxWZs2vcxLaX",
+  "pii_parent_id": "1ZmXC6r69AonX3q5sYQY5SipNiSsvQMz-",
+  "complete": true,
+  "total_drive_api_calls_estimate": 386,
+  "cap": 400,
+  "accounts": [
+    {
+      "client": "Morata Plumbing Inc",
+      "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/Morata Plumbing Inc",
+      "source_root_id": "1fqrEF9LxYI7ATSfWyVMpzmsp5uxr-Hdr",
+      "destination_client_folder_id": "1RqWp4e-njZNSn4qAASGRaeY0D4hOK_Oc",
+      "destination_client_folder_name": "01 Clients/Morata Plumbing Inc",
+      "pii_folder_id": "105BJA7UWoJTUTAGTu28mQTPk_n8w02Hr",
+      "subfolders": {
+        "Policies": {"id": "1IwR7ycNt418WtLfeSBrk5DraW2SbAdBb", "count": 4},
+        "Quotes & Proposals": {"id": "11oJQZTPL3UABysI8bKbZhxfZpD0omnAr", "count": 24},
+        "COIs": {"id": "1-eeom81sZXqXDniRV1I3hBfx_G1op1Dm", "count": 2},
+        "Endorsements": {"id": "1-3Ht7fP91L3VgBT2OZXlf2TJ6YvPJ_Wz", "count": 0},
+        "Loss Runs": {"id": "1dkYueh6DHyLyKnIeSzRwfKu9bWzxV0sR", "count": 11},
+        "Contracts & AOR-BOR": {"id": "1fq6LyJp8meSHkqJE10_14UGG_VcBLXS9", "count": 6},
+        "Misc": {"id": "1S4Tv2mEqe8OY9ykj1GHpDHjkD94FSaCk", "count": 8}
+      },
+      "pii_restricted": {
+        "destination_id": "105BJA7UWoJTUTAGTu28mQTPk_n8w02Hr",
+        "destination_path": "USI Organized/06 Personal & PII - RESTRICTED/Morata Plumbing Inc",
+        "count": 5,
+        "files": [
+          "Morata Plumbing Inc - Omelio.jpeg (driver photo)",
+          "Morata Plumbing Inc - Urbano.jpeg (driver photo)",
+          "Morata Plumbing Inc - Alfredo.jpeg (driver photo)",
+          "Morata Plumbing Inc - Ariel.jpeg (driver photo)",
+          "Morata Plumbing Inc - Jose.jpeg (driver photo)"
+        ]
+      },
+      "totals": {"files_copied": 55, "pii_count": 5},
+      "skipped": [
+        {"reason": "unrelated client (Brophy Air Specialty Group / Air On Demand) mixed into source folder", "count": 4},
+        {"reason": "exact duplicates (same file recopied in multiple subfolders: Old Losses, New Quotes, Driver Licenses, symb1 variants)", "count": 13},
+        {"reason": "0-byte junk placeholder (pending wc & geico loss runs.txt)", "count": 1}
+      ],
+      "notes": "Messy multi-layered source (Old/, New Quotes/, Old Losses/, Old symb 1 quotes/, Symbol 1 quotes/, Driver Licenses/ subfolders with heavy duplication of the same auto quote PDFs and loss run PDFs). Copied one canonical copy of each unique file; driver license photos routed to PII_RESTRICTED with account-name prefix. Originals not modified/moved/deleted."
+    },
+    {
+      "client": "N-MET INC DBA ON WHEELS TRANSPORT",
+      "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/N-MET INC DBA ON WHEELS TRANSPORT",
+      "source_root_id": "11-WVahpF9ul1lO-hOZ1_WheFYtnKvGUB",
+      "destination_client_folder_id": "1bxZ4ZZN3lB9wiUQU6DdQNgKL1V_i5h4b",
+      "destination_client_folder_name": "01 Clients/N-MET INC DBA ON WHEELS TRANSPORT",
+      "pii_folder_id": "1sA2PUXDXsQg6CUkSQ32CSFj45fGggMJU",
+      "subfolders": {
+        "Policies": {"id": "1VviFc3fZtFzZHaaHWQc1qN_gAksL1HJY", "count": 5},
+        "Quotes & Proposals": {"id": "1MBg3B2MAFZyVJu7d3qcf2H5ukLFJETI3", "count": 4},
+        "COIs": {"id": "1Z1bFcYYuqdjlTpELSvgRuTRX86uA4JrF", "count": 3},
+        "Endorsements": {"id": "1q_51u6nNpocRuW5iEtyTTzOtpVrrYr7Y", "count": 0},
+        "Loss Runs": {"id": "1g7JuVk-zNlzzbLvvWoIc-txVGYPw_xG7", "count": 3},
+        "Contracts & AOR-BOR": {"id": "1uDbrn_IvC1JKUhKUSFBPClFKSrNSGt6U", "count": 3},
+        "Misc": {"id": "1I--Prlab0HUUEnDqZhkvHXxEd_0BTK_2", "count": 12}
+      },
+      "pii_restricted": {
+        "destination_id": "1sA2PUXDXsQg6CUkSQ32CSFj45fGggMJU",
+        "destination_path": "USI Organized/06 Personal & PII - RESTRICTED/N-MET INC DBA ON WHEELS TRANSPORT",
+        "count": 5,
+        "files": [
+          "N-MET INC DBA ON WHEELS TRANSPORT - SagittaDriver-Template-NMet.xlsm (driver data template)",
+          "N-MET INC DBA ON WHEELS TRANSPORT - DRIVER LIST - DOH, DOB, & LICENSES - 04-21-26.doc (KNOWN PII per instructions)",
+          "N-MET INC DBA ON WHEELS TRANSPORT - Medgroup Drivers Schedule of Drivers (QR).pdf",
+          "N-MET INC DBA ON WHEELS TRANSPORT - Schedule of Drivers (QR).pdf",
+          "N-MET INC DBA ON WHEELS TRANSPORT - Schedule of Drivers (QR) 2.pdf (Latest Quote variant)"
+        ]
+      },
+      "totals": {"files_copied": 30, "pii_count": 5},
+      "skipped": [
+        {"reason": "zip archive duplicate of Quote Sheet.pdf already copied", "count": 1},
+        {"reason": "duplicate Missing Forms.PDF / Auto Acords.PDF already copied from root", "count": 2},
+        {"reason": "superseded older version of Cluett App (04-22-26, replaced by 05-18-26 version)", "count": 1}
+      ],
+      "notes": "Paratransit/medical transport account with recurring driver-schedule PDFs (QR codes containing driver personal data) across MedGroup Case, Quotes, and Closing subfolders -- all routed to PII_RESTRICTED. The known PII driver DOH/DOB/license .doc file flagged per standing instruction."
+    },
+    {
+      "client": "Clayton Mechanical",
+      "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/Clayton Mechanical",
+      "source_root_id": "16r_NQaYrimKaAKzCI6CBsm5cD6rv0o8t",
+      "destination_client_folder_id": "14M-a6ZLzHz3bhP6zBOZd70RIfFf8rLJa",
+      "destination_client_folder_name": "01 Clients/Clayton Mechanical",
+      "pii_folder_id": null,
+      "subfolders": {
+        "Policies": {"id": "1ejsPzcPARLby3DN7s_w_G4HuWiBHsOy-", "count": 4},
+        "Quotes & Proposals": {"id": "1eKIi_srEH8gN-VILnZelJqBR4V4bKIdN", "count": 26},
+        "COIs": {"id": "1x08CH71F694W-z6h4U06zFU5KEBFUzkp", "count": 66},
+        "Endorsements": {"id": "1VaJiFtEHBwENub5I1ku0_8gxAUkR9tfm", "count": 0},
+        "Loss Runs": {"id": "1whMS7EvcutcHK2gSoDBG65XQREMIgaIK", "count": 9},
+        "Contracts & AOR-BOR": {"id": "1CbEhwW93Wx88X3t50CVLK0ViO2mENWZJ", "count": 0},
+        "Misc": {"id": "1XwofKRg76mzelO6ExRpyya_K51ZYM_GQ", "count": 9}
+      },
+      "pii_restricted": {
+        "destination_id": null,
+        "destination_path": "USI Organized/06 Personal & PII - RESTRICTED/Clayton Mechanical",
+        "count": 0,
+        "files": [],
+        "note": "No PII_RESTRICTED subfolder created -- no driver DOB/DOH/license/census/payroll files identified in this account. Folder was skipped to avoid an empty placeholder."
+      },
+      "totals": {"files_copied": 109, "pii_count": 0},
+      "skipped": [],
+      "notes": "Largest of the 5 accounts -- COIs folder contains a 'Clayton_COIs_FULL_BATCH' subfolder of 65 individually-issued certificate holder COIs (numbered 03 through 65, hotels/condos/property managers) plus 1 root-level COI, all consolidated into the client COIs folder. No skips/junk found. No PII files present (business-only certs/policies/quotes)."
+    },
+    {
+      "client": "Cool Air USA",
+      "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/[HVAC GL Policies parent]/Cool Air USA",
+      "source_root_id": "1dzHmZIBIjaitHKHRsA_HdEghcatR-z-D",
+      "destination_client_folder_id": "161ULNw063279Sh0JEiAm9DppzgFFDtDi",
+      "destination_client_folder_name": "01 Clients/Cool Air USA",
+      "pii_folder_id": null,
+      "subfolders": {
+        "Policies": {"id": "10Th3MXD7Z7jiHk_fxYLHrD4UoNfV5Q-v", "count": 4},
+        "Quotes & Proposals": {"id": "11aUerdxR2p6VgrG7Tro0B-Rch_ok5U3M", "count": 2},
+        "COIs": {"id": "1VXvJomplR9cbTw88lOC9kqBeAb9fCbZu", "count": 0},
+        "Endorsements": {"id": "1yE6OZM7QGZvjOv3zDV6KCq6XW_9u1Jos", "count": 0},
+        "Loss Runs": {"id": "1SDkKZe5Sb22TkZh18UBcyVVll5Ge8tsk", "count": 4},
+        "Contracts & AOR-BOR": {"id": "1Z_kLjifmJOBEVKnimKc37ILB93OgiLAV", "count": 0},
+        "Misc": {"id": "1ZS2BEzMf8SkAjlv4a2zWE_cPdlMWfW0n", "count": 8}
+      },
+      "pii_restricted": {
+        "destination_id": null,
+        "destination_path": "USI Organized/06 Personal & PII - RESTRICTED/Cool Air USA",
+        "count": 0,
+        "files": [],
+        "note": "No PII_RESTRICTED subfolder created -- no driver/personal data files identified."
+      },
+      "totals": {"files_copied": 18, "pii_count": 0},
+      "skipped": [],
+      "notes": "HVAC/GL account nested under '[HVAC GL Policies parent]' umbrella folder in source. No COI files present in source (no certificate holder COIs found -- Cool Air's COIs subfolder is empty; noted for Alex's awareness). No skips/junk. Submission correspondence (Amwins, Novatae) and renewal .MSG files placed in Misc."
+    },
+    {
+      "client": "US Infra Rehab Services",
+      "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/US Infra Rehab Services",
+      "source_root_id": "13iOPFzT7AqK887Ws3Tyhiw7mH80wLj8p",
+      "destination_client_folder_id": "1k0F_o6Zd7WTMd-1bkAtakbD61Ubkag-n",
+      "destination_client_folder_name": "01 Clients/US Infra Rehab Services",
+      "pii_folder_id": null,
+      "subfolders": {
+        "Policies": {"id": "1uVWIeqyHW9s00wdMyJZG0a5W9Iy4r-lN", "count": 10},
+        "Quotes & Proposals": {"id": "1DOt5dZYEJJGHhR3fOO3IAL2IYxWkncPW", "count": 6},
+        "COIs": {"id": "1_5tCfDV5UriBL8oNyrd2n2w6r_AQEAuT", "count": 1},
+        "Endorsements": {"id": "1qF5IPZTrPK3Whtmh4BeBbfAMaRK-qOuL", "count": 18},
+        "Loss Runs": {"id": "1ctC8Wkd2IAjDydG4rhfF9eMRxHjng5yj", "count": 1},
+        "Contracts & AOR-BOR": {"id": "1laZcOjf9w-58dDJ--407bvJsyjcmxkbf", "count": 4},
+        "Misc": {"id": "1uU-XxmUZ2l0OaELTkfPUK8MKfqJPwktd", "count": 0}
+      },
+      "pii_restricted": {
+        "destination_id": null,
+        "destination_path": "USI Organized/06 Personal & PII - RESTRICTED/US Infra Rehab Services",
+        "count": 0,
+        "files": [],
+        "note": "No PII_RESTRICTED subfolder created -- no driver/census/payroll/personal data files identified."
+      },
+      "totals": {"files_copied": 39, "pii_count": 0},
+      "skipped": [],
+      "notes": "Deeper nested structure (Docs/Docs 2/ with USIRS_Excess Umbrella, USIRS_Auto, USIRS_Commercial Inland Marine, USIRS_General Liability, Sample Contracts subfolders). Several endorsement PDFs (A0960590_* series) appear in both USIRS_Auto and USIRS_General Liability source subfolders with identical filenames -- both copied per source structure since they represent distinct endorsement documents per line of coverage, landing together in the single Endorsements client subfolder (count 18 includes this overlap). Findings/narrative docx files placed in Quotes & Proposals as marketing/analysis material. No skips/junk found."
+    }
+  ],
+  "grand_totals": {
+    "accounts_completed": 5,
+    "total_files_copied": 251,
+    "total_pii_files": 10,
+    "total_skipped": 22
+  },
+  "checkpoints": "Checkpointed mentally every ~30 copies per account (Morata copy batch 1 = 36 files, batch 2 = 19 files; N-MET single batch = 30 files; Clayton COI batch = 65, non-COI batch = 44; Cool Air single batch = 18; US Infra batch 1 = 33, batch 2 = 4). Manifest written once at full completion per user instruction (one file, all accounts tagged).",
+  "rules_followed": "Copy-based only -- no source files were modified, moved, renamed, or deleted at any point. All copies created via Drive copy_file API into the new 01 Clients/<account> structure. PII files copied into USI Organized/06 Personal & PII - RESTRICTED/<account name>/ with filenames prefixed by account name where the destination filename needed disambiguation."
+}
