@@ -1,14 +1,28 @@
 # Distilled Rules v2 — WORKING DRAFT (partial export, 2026-07-03)
 
 Distilled from `training/library/coi_review_decisions_partial_2026-07-03.json`
-(65 decisions of 156 graded COIs) joined against `training/graded_cois.json`.
-**Alex is NOT done grading.** This draft exists so Prompt v2 assembly is fast
-when the final export lands. Nothing here has been applied to
-`coi_system_prompt.txt`, and `build_training_library.py` has NOT been run on
-this export.
+(65 decisions of 156 graded COIs) joined against `training/graded_cois.json`,
+**extended the same evening by batch 2**
+(`coi_review_decisions_partial2_2026-07-03.json`, cumulative 113 entries — see
+the "Batch 2" section). **Alex is NOT done grading** (44 undecided remain).
+This draft exists so Prompt v2 assembly is fast when the final export lands.
+Nothing here has been applied to `coi_system_prompt.txt`, and
+`build_training_library.py` has NOT been run on these exports.
 
 Verdict/problem context comes from the automated grader; "Alex" quotes are his
 free-text notes verbatim (typos preserved where meaning matters).
+
+## GLOBAL APPROVE CAVEAT — read before building anything from decisions
+
+Every "approve" in BOTH exports is **"approve modulo old-template DoO
+wording."** Alex marked many batch-2 approves without re-noting the
+old-template Description-of-Operations issue each time, but every
+approved/agreed record in these batches carries old-template DoO text (P3
+warning, 0% template-sentence match). An approve endorses the
+holder/content/handling decisions ONLY — it never endorses the old DoO text.
+`build_training_library.py` (and any few-shot mining) must NOT treat approve
+as blessing old DoO wording; the current templates' wording always supersedes
+(R3, Section 4, and the batch-2 era-caveat extension).
 
 ---
 
@@ -157,7 +171,8 @@ library, benchmarks, and any few-shot mining — permanently.
 - Confidence: **explicit**.
 - Destination: **library-builder hygiene** (exclusion list), not prompt.
 - Supporting hashes: `aeb41861`, `7330722f` (both ajf_roofing "AJF Roofing_Test Entity Inc.pdf", thread "ajf roofing coi - test entity inc."). Alex: "this is from when i was onboarding two virtual assistants and training them on how to do COIs."
-- Undecided records that match the same pattern and should get the same treatment when Alex confirms: `6fe46263ce` (absolute_air "Test Entity Inc"), `575cc1e474` (central_comfort "Test Entity Inc"), `07dfc07db3` (emp3 "Test Entity Inc"), `a80aeca048` (gd_mechanical "Test Entity Inc"), `69653becd2`/`ef9c62fc18` (rolandos "Test Entity"). Don't pre-empt his grading; just don't be surprised.
+- **CONFIRMED by Alex in batch 2:** `69653becd2`/`ef9c62fc18` (rolandos "Test Entity", the 2026-01-14 02:32 and 02:49 sends) are test sends from VA onboarding — move from "expected" to the confirmed exclusion list (first attempt's DoO missed the Test Entity AI wording; the second corrected it — neither is training data).
+- Still-undecided records matching the same pattern: `6fe46263ce` (absolute_air "Test Entity Inc"), `575cc1e474` (central_comfort "Test Entity Inc"), `07dfc07db3` (emp3 "Test Entity Inc"), `a80aeca048` (gd_mechanical "Test Entity Inc"). Don't pre-empt his grading; just don't be surprised.
 - Related noise: the 41-skip Rolando's "Next Insurance — congrats, your business is covered" batch (insurer-generated certs, no request context). `build_training_library.py` already filters that thread via `JUNK_SUBJECT`/`JUNK_BODY`; his mass-skip confirms the filter is right.
 
 ### R9 — Multi-entity holder with a designated MAIN entity listed on top
@@ -243,6 +258,58 @@ before encoding.
 - **Bucket:** few-shot negative/no-action example — teaches the classifier that "COI attached + our client sending it" is not "reference COI attached → complex review" (today's ABSOLUTE RULE would wrongly wake Alejandro for every FYI CC).
 - **Walkthrough agenda:** how to distinguish our-own-delivered-COI attachments from prior-broker/sample COIs (history DB lookup is the obvious hook); whether monitor-only needs its own classification label.
 
+### Batch-2 additions (evening export 2026-07-03) — cases 3.4-3.9
+
+### 3.4 `47c8666db5d727f071646f539151543a13c577b7` — AJF Miami-Dade: requirements-doc fulfillment gold example
+
+- **Record:** ajf_roofing, `2026 Miami Dade COI - AJF.pdf`, **Sent Items** 2026-02-04 16:48:17. Decision: **approve**. Grader verdict: correct (P2 + P3 warns).
+- **Holder box:** `Miami-Dade County / 111 NW 1st Street / Suite 2340 / Miami FL 33128` — government holder with full address.
+- **DoO (as issued):** "This certificate is issued for insured operations usual to roofing. Lic#CC1331111. The Automobile Liability policy includes an automatic Additional Insured endorsement that provides Additional Insured status to Miami-Dade County, its officers, employees, agents, and instrumentalities when there is a written contract that requires such status... The General Liability, Umbrella Liability, Auto Liability and Employer's Liability policies provide a Blanket Waiver of Subrogation when required by written contract..."
+- **Alex's note (verbatim, caps his):** "FLAG THIS ONE TO COME BACK TO AND EXPLAIN THIS IS A REQUIREMENTS DOC GOOD EXAMPLE"
+- **Why it matters:** this is the model for how a REQUIREMENTS DOCUMENT drives the certificate — holder identity + full address, auto-liability AI endorsement language naming the county's officers/employees/agents/instrumentalities, and a blanket waiver spanning GL/Umbrella/Auto/EL. The empty requirements-PDF bucket in `PROMPT_INTEGRATION_PLAN.md` has been waiting for exactly this example.
+- **Walkthrough agenda:** (1) have Alex narrate how the requirements doc maps to each DoO element; (2) settle the license discrepancy — the DoO reads **CC1331111** but the registry/grader expects **CCC1331111** (that's the P2 warn); whichever Alex confirms becomes a registry correction; (3) promote to few-shot only after this walkthrough (hold until then).
+
+### 3.5 `deeaccf0b79f65bcec315df6c777cc01cf169e77` (+ `5314cf3c0f0e79b16e21121146c9083ef03e5f9b`) — LaGreca / Presidential Place: two-additional-insured holder-box construction
+
+- **Record:** apogee_hvac, `PP_APOGEE_GL COI.pdf`, 2026-01-09 18:09:05. Decision: **disagree**. Grader verdict: correct — **the verdict is invalid: the PDF is third-party issued**, not team output (see batch-2 provenance era caveat).
+- **Request (Janice Lacayo, Apogee):** "Please send me an updated COI for: LaGreca Construction, LLC / 12565 Orange Dr – Suite 401C / Davie, FL 33330. And add Presidential Place Condominium Association, Inc. and LaGreca Construction, LLC are included as additional insured."
+- **Alex's note (verbatim):** "this coi was issued by someone else. flag this request as the way it should be created is as follows: in description of ops show that both are additional insured and in certain holder put condo name then on the next line la greca... then on the other lines below just hte address for la greca."
+- **Correct construction (his dictation):** DoO states BOTH entities are additional insured; holder box = Presidential Place Condominium Association, Inc. on line 1, LaGreca Construction, LLC on line 2, then ONLY LaGreca's address below. The few-shot example must be built from this dictation, NOT from the graded PDF (third-party artifact).
+- **Companion:** `5314cf3c0f` (`PP_APOGEE_LaGreca Construction, LLC.pdf`, 2026-01-12) — Alex: "same as prior request." Rides along with this walkthrough; no independent rules.
+- **Walkthrough agenda:** does the condo-then-contractor stacking generalize to any request where two entities are AI and one (the contractor) is the certificate recipient, or is it per-request? Related to R9 (main-entity-on-top) but distinct — confirm the discriminator.
+
+### 3.6 `c6b9dffa7df557f46682283ef34a9f0a5c2794fa` — Tamarac Building Department: originating request missing (join reused Ruiz Electric)
+
+- **Record:** emp3_solutions, `EMP 3 Solutions COI_Tamarac Building Department.pdf`, 2026-02-26 14:56:38. Decision: **disagree**. Grader verdict: questionable (P9: holder not in request text).
+- **Request excerpt shown to Alex:** Renier Portieles' "Ruiz Electric Corporation" request — the SAME byte-identical excerpt the join attached to all four EMP 3 records spanning Feb 2-26 (see the join-audit item in the batch-2 code/routing rules). The real Tamarac request was never surfaced.
+- **Alex's note (verbatim):** "i dont see the reqeust for this coi...."
+- **This is a cannot-grade, not a verdict inversion.** The disagree targets the missing request, not the certificate.
+- **Walkthrough agenda:** after the join fix, locate the real originating request for the Tamarac cert (holder text also carries a `RYD Construction LLC / 1450 Madruga Ave Suite 204` block stacked above the Tamarac lines — figure out whether that's a real multi-holder or a template-crop artifact) — or confirm the cert was issued without an email request. Excluded from training until resolved.
+
+### 3.7 `9ffede76860755505aed57d51c0a1b7cdf313003` — Central Comfort / Axis on Brickell: request email missing from the joined thread
+
+- **Record:** central_comfort_ac, `Central Comfort AC COI_Axis on Brickell II Condominium Association, Inc..pdf`, 2026-01-23 18:02:35. Decision: **approve**. Grader verdict: questionable.
+- **What the joined thread shows:** only Jade's "Received, will work on it right away!" reply to Gina Ramos plus Alex's forwarded "COI Requests Instructions" broadcast — Gina's actual request email is absent.
+- **Alex's note (verbatim):** "i dont see the request email but the coi is correct - agree - would only change in that we now have new template with new description of operations box."
+- **Artifact warning:** the graded holder text starts with leftover placeholder lines (`ABC Holder 2 / 3031 sw 11th street / Miami, FL 33135`) above the real Axis on Brickell entity stack — grading/extraction artifact, same family as the GAF template-crop blocks.
+- **Walkthrough agenda:** recover Gina's actual request email before using this as a request→COI pair; until then it's an output-format reference only (multi-entity Axis stack), with the placeholder lines stripped.
+
+### 3.8 `2a3496ee0894a9d40dc7dc28c2d616722c9fdcbd` — Charlotte County revision pair: timestamp inconsistency
+
+- **Record:** rolandos_hvac, `Rolando's HVAC COI_Charlotte County Community Development.pdf`, message_date **2026-02-04 14:52:57**. Decision: **skip**, note "read 72".
+- **The problem:** Alex (in the `2d4cb8e5` note) identifies this cert as the correct fulfillment of the Charlotte County revision request (holder changed to Charlotte County Community Development) — but the revision request is dated **2026-02-05 14:50:55**, i.e. the fulfillment email predates the request by ~24h. Likely a typo, timezone artifact, or join mis-pairing.
+- **Second artifact in the same record:** the holder box carries a `Main Street Renewal and Amherst Group Properties, LLC / c/o VendorShield...` block stacked above the Charlotte County lines — the same cross-client carryover text that Jade's known-error cert contained. Confirm what the actual delivered PDF's holder box says.
+- **Tooling note (applies to all "read N" notes):** Alex's cross-references like "read 72" are review-UI positions and do NOT match export key order (this note sits at position 77/113). Resolve "read N" references by thread/content match, never by index.
+- **Walkthrough agenda:** confirm real request→fulfillment ordering with Alex; only then store the Charlotte County revision pair as a few-shot.
+
+### 3.9 `09660cff352bcce1b8e821f9233a0d072c6302fd` — Absolute Air / AIO Realty: is auto-only AI+waiver right, or should GL show too?
+
+- **Record:** absolute_air_solutions, `Absolute Air Solutions_AIO Realty & Property Management..pdf`, 2026-01-12 20:21:16. Decision: **skip**. Grader verdict: correct.
+- **DoO (as issued):** "Additional Insured and waiver of subrogation applies to commercial auto policy per blanket additional insured and blanket waiver of subrogation endorsement."
+- **Alex's note (verbatim):** "i cannot see gl attachd coi..... withohut that i cannot verify if one or the other is right..."
+- **The open question:** AI + waiver of subrogation on the commercial auto policy only — correct (R10: we control only auto for Absolute Air, GL sits with another broker), or should the GL COI the client attached have driven something more? Cannot be answered without the GL attachment in hand — which the join didn't surface (full-attachment-set join fix, batch-2 code/routing rules).
+- **Walkthrough agenda:** pull the original email's GL attachment, then have Alex rule. Also feeds the uncontrolled-lines open question (#1 in the NEW open questions).
+
 ---
 
 ## 4. Template-era caveats — NOT rules for Prompt v2
@@ -287,7 +354,7 @@ the thought in the final pass.
 
 ## 5. What the final export changes / noise notes
 
-- The 41 bare skips are overwhelmingly the Rolando's Next-Insurance renewal batch (auto-generated certs against a "no action required" insurer email — no request to learn from). Expect the final export to add real decisions mostly on the 91 undecided, which skew toward 305 Power (12), AJF (24), Central Comfort (16), Rolando's (21).
+- The 41 bare skips are overwhelmingly the Rolando's Next-Insurance renewal batch (auto-generated certs against a "no action required" insurer email — no request to learn from). ~~Expect the final export to add real decisions mostly on the 91 undecided, which skew toward 305 Power (12), AJF (24), Central Comfort (16), Rolando's (21).~~ **Batch-2 update:** 44 undecided remain, now skewing toward 305 Power (12, untouched), AJF (12), Rolando's (8); most of the rest are template files and Test Entity noise — see Section 7.
 - Three undecided records are already-known era pieces (`1dc5e61eb` incorrect, `22a6c8f7d` incorrect, `bde0ba3bc` incorrect) — likely negative-example material once decided.
 
 ---
@@ -318,51 +385,393 @@ the thought in the final pass.
    "lines we don't control never block a cert" rule, but the registry has no
    machine-readable controlled-lines field to hang either rule on.
 
+### NEW open questions for Alex (batch 2, 2026-07-03 evening — items 1-3 above stay resolved)
+
+1. **Uncontrolled-lines behavior is now three-way:** PROJECT_BRIEF (2026-07-02)
+   says issue our lines and never withhold (silently), the Central Comfort note
+   (`6850567d96`) says just skip the auto portion, and the Rolando's WC note
+   (`6f7ec428db`) says auto-reply that the other broker will send the COI with
+   the missing lines — Alex needs to pick one behavior (or make it a
+   per-account registry setting), and the referral reply is new client-facing
+   wording that resolved contradiction #3 currently back-burners.
+2. **Limits-shortfall routing (ASPCA note, `e687487fc6`):** "create and send to
+   ME, not the insured, with the non-compliance list" vs PROJECT_BRIEF "lines
+   we don't control never block a cert — do not withhold, do not bounce" — Alex
+   must define the boundary: does hold-for-Alejandro apply only when limits on
+   lines WE control fall short, or also when the request demands lines/coverages
+   another broker holds (which the brief says to issue-and-send without)?
+3. **Missing holder address:** Alex's new notes say "I would have asked for the
+   address" (Fort Myers `a213395cf3`, Central Comfort 02-12-26 `170c3fac53`),
+   but the established PROJECT_BRIEF rule says look it up first via Sunbiz and
+   only ask if lookup fails — confirm the resolution order (holder-address DB,
+   then registry lookup, then ask requester) and whether the bot sends the
+   ask-back or the case routes to Alejandro.
+
+---
+
+## Batch 2 — evening export 2026-07-03
+
+Source: `coi_review_decisions_partial2_2026-07-03.json` — cumulative 113
+entries (48 new/changed since the morning export). Every rule below was
+verified against the per-record context; two candidate hashes arrived
+corrupted from the extractor and were corrected against the canonical export
+(`0d2d18ea…d118fa2a4d`, `170c3fac…bd827c02d9c`). Duplicates of existing
+rules/lanes are omitted (already covered: ack-only replies → thank_you lane;
+emp3 new template → current-template era; Test Entity confirmations → folded
+into R8 above). Confidence legend as in Section 2. Rules whose behavior is
+**BLOCKED** on a NEW open question are marked; do not encode until Alex rules.
+
+### New prompt rules
+
+- **B1. Match each COI to the specific request it answers** *(explicit —
+  `5ba7e65a2f`)*: when a client has multiple open COI requests, answer each one
+  individually; never grade or fulfil one COI against a different request. (The
+  APC-ASBF, LP cert answers Lorena Leyva's 2026-01-28 20:07:10 request.
+  Historically mostly a review-join failure, but a valid live rule for
+  multi-request threads.)
+- **B2. Entity vs job-site address** *(inferred — `5ba7e65a2f`)*: when a
+  request contains both a corporate entity (name + address) and a separate
+  job-site/project address, the entity is the certificate holder and the
+  job-site address goes in the DoO box as the project address. (Generalized
+  from the explicit OONTIDE/Lake Emma correction; get Alex's nod at
+  prompt-integration time.)
+- **B3. Identify the insured per request, not per bucket** *(inferred —
+  `5ba7e65a2f`)*: the classifier must identify the insured/client from request
+  content and sender (e.g. sender domain), never inherit it from the thread,
+  batch, or bucket the message arrived under — mixed-insured batches occur in
+  practice (the dsegre mix-up).
+- **B4. Mine the full thread history** *(explicit — `475aaac23b`)*: extract
+  certificate-holder details from the whole thread, not only the newest
+  message/attachments; a reply claiming a missing attachment is not a blocker
+  when the needed info is quoted in the thread text (Port St. Lucie: the
+  correct holder was already in the thread).
+- **B5. Never falsify or inflate coverage** *(explicit — `e687487fc6`)*: the
+  certificate always shows the client's ACTUAL policy limits, even when the
+  requester asks for higher limits or coverages the policies don't carry. Not
+  written anywhere in PROJECT_BRIEF today — make it an explicit hard rule.
+- **B6. Extract demanded limits and enumerate shortfalls** *(explicit —
+  `e687487fc6`)*: the classifier must extract the limits/coverages a request
+  demands, compare against the client's actual limits, and enumerate every
+  shortfall (the non-compliance list) whenever the request can't be fully
+  satisfied. Feeds the route-to-Alejandro payload (B-C1).
+- **B7. QR code = third-party provenance** *(explicit — `2d4cb8e56d`)*: "we
+  never put qr code on COIs" — a QR code on a certificate identifies it as
+  another carrier/agency's output, never a team deliverable. Usable as a
+  provenance heuristic when classifying attachments.
+- **B8. DoO cross-client validation check** *(inferred — `2d4cb8e56d`,
+  `ec2148617e`)*: the DoO on a generated COI must reference the CURRENT
+  request's holder/client; flag any COI whose DoO names entities from a
+  different client or request (cross-client carryover — Jade's demonstrated
+  human error). Cheap engine/pipeline assertion.
+- **B9. Two-AI + contractor-recipient holder construction** *(explicit —
+  `deeaccf0b7`, `5314cf3c0f`)*: when a request adds two entities as additional
+  insured and one (the contractor) is the certificate recipient: DoO states
+  BOTH are additional insured; holder box shows condo/association name on
+  line 1, contractor name on line 2, then only the contractor's address.
+  (Dictated for the LaGreca case; generalization is walkthrough 3.5's
+  question.)
+- **B10. Revision specifics live in ANY attachment type** *(explicit —
+  `093b31d417`)*: when a COI is bounced back or a revision requested, the
+  specifics may be in the email body, an attached PDF, or an attached
+  photo/image (portal error screenshot); check all attachment types before
+  deciding what to change or concluding the request is unspecific. (General
+  statement of R2's photo-sample and R9/3.2's picture-list cases.)
+- **B11. BLOCKED — uncontrolled-lines referral reply** *(explicit —
+  `6f7ec428db`; NEW open question #1)*: when asked for lines the registry says
+  we don't control, reply that we do not control those policies and the broker
+  who does will send the COI with the missing lines — do NOT attempt a COI
+  showing those lines. Implies a new classifier category + auto-reply route.
+  Three behaviors now exist for uncontrolled lines and the wording is
+  back-burnered — route these to Alejandro until Alex rules.
+- **B12. BLOCKED — missing-holder-address resolution order** *(explicit —
+  `a213395cf3`, `170c3fac53`; NEW open question #3)*: when the holder's mailing
+  address is missing, resolve before issuing — proposed order: holder-address
+  DB, then state-registry lookup (Sunbiz), then ask the requester. Ordering and
+  who asks (bot vs Alejandro) pending Alex; government departments aren't on
+  Sunbiz, so the tiers likely coexist.
+
+### New code/routing changes
+
+- **B-C1. Limits-shortfall routing** *(explicit — `e687487fc6`)*: when a
+  generated COI does not meet all requested limits/requirements, do NOT send
+  to the requester — route to Alejandro with the itemized non-compliance list
+  so he can take it to the client (accept as-is vs buy additional coverage).
+  Boundary with PROJECT_BRIEF's "lines we don't control never block a cert"
+  needs his call — NEW open question #2.
+- **B-C2. Certificate-holder address database** *(explicit — `a213395cf3`)*:
+  build it and have the pipeline consult it before any lookup/ask-back; known
+  holders resolve automatically. (Alex explicitly names the database and the
+  pain — digging through old COIs.) Seed entry in the account facts below.
+- **B-C3. Flatten COI PDFs before sending** *(explicit — `f64b2f7ed4`,
+  `b319d3c3a3`)*: COIs must be non-editable on delivery; `coi_engine.py` needs
+  a flatten output mode. If a recipient bounces a COI solely because the file
+  is editable, re-emit the identical COI flattened and resend — no content
+  changes, not a new request (branch remains for legacy editable certs in the
+  wild).
+- **B-C4. NDR bounce handling** *(explicit — `635cfb7825`, `b319d3c3a3`)*:
+  a bounced send is not complete — notify the client contact on the thread,
+  ask for/confirm the correct recipient address, then resend. Reply wording
+  should come from Alex's real Laritza email (few-shot below); until blessed,
+  route bounces to Alejandro per resolved contradiction #3.
+
+### New account-specific facts
+
+- **central_comfort_ac controlled lines** *(explicit — `6850567d96`)*: we do
+  not control all lines — auto is with State Farm and the State Farm agent
+  delivers auto certificates. For this account, skip the auto-coverage portion
+  of any request: issue the COI for the lines we control only. Alex scoped
+  this to "this account" — do NOT generalize (see NEW open question #1).
+  Record controlled vs uncontrolled lines in `coi_client_registry.json` (the
+  controlled_lines field contradiction #5 already calls for).
+- **dsegre@ajfroofingfl.com → AJF Roofing** *(explicit — `5ba7e65a2f`)*:
+  requests from this address are for insured AJF Roofing, not Rolando's HVAC,
+  even when they surface in another client's thread/bucket; the 2026-01-27
+  21:09:15 request is a simple COI for AJF Roofing.
+- **Laritza — Rolando's HVAC point of contact** *(inferred — `635cfb7825`,
+  `b319d3c3a3`)*: for COI requests and delivery-address questions.
+- **Holder-address DB seed** *(inferred — `a213395cf3`)*: City of Fort Myers
+  Building Department = 1825 Hendry St #101, Fort Myers, FL 33901 (recurring
+  holder for rolandos_hvac permitting work). Address comes from the approved
+  record's holder_text, not Alex's note verbatim — verify against the PDF when
+  seeding.
+- **central_comfort_ac property-manager bundles** *(inferred — `0d2d18ea04`,
+  `5ceca3b253`)*: requests via property managers (e.g. KW Property Management)
+  often bundle multiple condo associations in one ask; expect splits per
+  name+address pair. Registry note, not a hard rule.
+
+### New few-shot candidates
+
+All subject to the GLOBAL APPROVE CAVEAT / era caveats (old-DoO wording never
+copied into examples; substitute current-template DoO where noted).
+
+1. **Amendment (add project info to DoO):** the 2026-02-11 18:50:20 "AJF
+   ROOFING- BURRIS" Romy reply paired with the original approved 2026-02-10
+   AJF COIs *(inferred — `cecbe4dd0e`, `9a8f218b94`)*.
+2. **Entity + job-site address:** Office - Rolandoshvac 2026-02-12 18:22:24 →
+   holder OONTIDE SERVICE CORPORATION USA INC., 1603 Capitol Ave. Ste 310
+   A465, Cheyenne, WY 82001; 2255 Lake Emma Rd, Lake Mary, FL 32746 as project
+   address in DoO *(explicit — `5ba7e65a2f`)*.
+3. **Simple single-holder request:** dsegre@ajfroofingfl.com 2026-01-27
+   21:09:15 (AJF Roofing) *(inferred — `5ba7e65a2f`)*. The same note also
+   calls "Lorena Leyva 2026-01-15 15:42:17 COI" a simple request — retrievable
+   as a second simple example.
+4. **Mine-the-thread-history:** the "Re: COI for the City of Port St Lucie -
+   sample coi 5" thread (Alejandro Bello 2026-01-12 22:49:01 forward, incl.
+   the "there no file in this email" reply) *(inferred — `475aaac23b`)*. Swap
+   in current-template DoO before use.
+5. **Clean simple-request pair:** Renier Portieles' Ruiz Electric request
+   paired with the approved EMP 3 COI, new-template DoO substituted *(inferred
+   — `c62d239c8a`)*.
+6. **CONDITIONAL — EMP 3 holder-change trio:** Procontractors, Polk County
+   BOCC, Trent F Condominium *(inferred — `6260a6691a`, `4b7724de2d`,
+   `16ff8b2ded`)* — ONLY after the join fix verifies each record's real
+   originating request (all three carry P9 + the mis-joined shared excerpt).
+7. **Limits-shortfall exemplar:** Central Comfort / ASPCA — accurate
+   non-inflated COI + route-to-Alejandro escalation with itemized shortfalls
+   *(inferred — `e687487fc6`)*. Finalize after NEW open question #2.
+8. **Charlotte County initial request (positive):** the 2026-02-02 17:41:32
+   "Re: COI TO Charlotte County" delivery — NOT the 17:35:18 wrong-DoO version
+   *(explicit — `2d4cb8e56d`, `83d16111ad`)*.
+9. **HOLD — Charlotte County revision pair:** revision request (holder →
+   Charlotte County Community Development) fulfilled by `2a3496ee08`
+   *(explicit — `2d4cb8e56d`, `2a3496ee08`)*. Hold until the timestamp
+   inconsistency is resolved (walkthrough 3.8).
+10. **DoO-construction exemplar:** Atrium Development Group COI (rolandos,
+    2026-02-23), amended to add waiver-of-subrogation and Auto wording before
+    use as the gold example *(inferred — `e20d0499ff`)*.
+11. **Uncontrolled-line referral:** Beth-Ann Reed / Palmwood Construction WC
+    follow-up receiving the broker-referral response (not a COI regeneration)
+    *(inferred — `6f7ec428db`)*. BLOCKED on NEW open question #1.
+12. **Split-into-separate-COIs:** KW Property Management / ICON BAY thread
+    (Central Comfort), incl. the ask-back for a missing holder address
+    *(inferred — `0d2d18ea04`, `5ceca3b253`)*. Pair with the corrected split
+    OUTPUT, not the raw graded PDF — its holder box contains leftover
+    placeholder text ("ABC Holder 2 / 3031 sw 11th street").
+13. **Multi-entity single-address formatting:** Four Seasons Residences cert
+    (Central Comfort — seven entities stacked in the holder box, one address)
+    *(inferred — `3442bac323`)*.
+14. **Output-format only:** Central Comfort COI 02-12-26 multi-entity holder
+    box (partnership + trusts stacked, license + project address in DoO)
+    *(inferred — `170c3fac53`)*. Re-extract holder text from the PDF first
+    (OCR garbage on the last entity); no request email exists ("I CANNOT SEE
+    SAMPLE") so it cannot be a request→COI pair.
+15. **Revision-specifics-in-an-image:** AJF Roofing / City of North Miami
+    bounce-back thread (vague email text; image002 contains the rejection
+    error naming the missing DoO info) *(explicit — `093b31d417`)*. Classifier
+    training ONLY — the delivered PDF never fixed the missing DoO info (era
+    caveat), so it is NOT a correct-output exemplar.
+16. **Two-AI holder construction:** LaGreca Construction / Presidential Place
+    Condominium, built from Alex's dictated construction — NOT from the
+    delivered PDF, which was third-party issued *(explicit — `deeaccf0b7`,
+    `5314cf3c0f`)*. See walkthrough 3.5.
+17. **Vehicle proof-of-insurance (canonical):** Absolute Air Solutions vehicle
+    COI (holder "Proof of Insurance", DoO = business name + license CMC1249546
+    + 2024 Chevrolet Express VIN + Kemper carrier) *(inferred — `2abbf4c08a`)*.
+    Structure only, not boilerplate wording. Refines R7 — see refinements.
+18. **HOLD — requirements-doc fulfillment:** AJF Miami-Dade COI *(explicit —
+    `47c8666db5`)*. Promote only after walkthrough 3.4.
+19. **Bounce-notification tone template:** Alex's real email to Laritza ("the
+    email bounced back... resend me where to send it to") *(inferred —
+    `635cfb7825`, `b319d3c3a3`)*. Client-facing wording — needs Alex's
+    blessing before the pipeline sends it (contradiction #3 posture).
+
+### New era caveats
+
+- **Batch-2 old-DoO extension** *(explicit)*: ALL approves/agrees in this
+  batch carry old-template DoO wording (P3, 0% template match); the decisions
+  grade holder/content handling only and never endorse the old DoO text. Zero
+  future rules derive from old-DoO observations. Extends the Section 4 table
+  with: `5ba7e65a2f`, `475aaac23b`, `c62d239c8a`, `6260a6691a`, `4b7724de2d`,
+  `16ff8b2ded`, `e687487fc6`, `9ffede7686`, `e20d0499ff`, `a213395cf3`,
+  `f64b2f7ed4`, `6850567d96`, `b319d3c3a3`, `0d2d18ea04`, `5ceca3b253`,
+  `3442bac323`, `2abbf4c08a`, `47c8666db5`, `170c3fac53`, `093b31d417`.
+  (Consolidates ~10 per-record era-caveat candidates into one hash-list
+  extension.)
+- **Provenance — third-party PDFs graded as ours** *(explicit)*: `COI
+  (39).pdf` (Charlotte County, 2026-02-02 17:21:52) is the EXPIRING CARRIER's
+  cert, and the Apogee/LaGreca PDFs were issued by someone else — none are
+  team output. Exclude as team deliverables and **invalidate the "correct"
+  machine verdict on `2d4cb8e56d`**. Adds `2d4cb8e56d`, `deeaccf0b7`,
+  `5314cf3c0f` to the Section 1 "what you're showing is what the CLIENT sent"
+  artifact list.
+- **Jade's known human error — negative example only** *(explicit —
+  `2d4cb8e56d`, `ec2148617e`)*: the 2026-02-02 17:35:18 Charlotte County
+  delivery has the correct holder but a DoO carried over from Main Street
+  Renewal/Amherst (another client). Treat only as a negative example (feeds
+  B8).
+
+### Refinements to R1-R10 (and PROJECT_BRIEF / draft sections)
+
+- **→ `coi_revision_request` lane (classifier taxonomy):** *(explicit —
+  `cecbe4dd0e`, `9a8f218b94`)* when a requester replies to an already-issued
+  COI with additional project information, treat it as an AMENDMENT of the
+  same certificate: reissue with the project info added to the DoO box,
+  changing nothing else. Delivery still follows build-then-approve (resolved
+  contradiction #1) — no conflict.
+- **→ R3 / current-template DoO standard:** *(explicit — `e20d0499ff`)* DoO
+  content standard confirmed and extended: include the insured's license
+  number, project name, and project address; and when we control lines beyond
+  GL, include the corresponding wording (waiver of subrogation, Auto
+  liability) rather than GL additional-insured language only. Largely embodied
+  in the new templates; keep one prompt line so generation never regresses.
+- **→ R7 (vehicle proof-of-insurance):** *(explicit — `2abbf4c08a`)* Alex's
+  note upgrades R7 from inferred one-off to an explicit general rule "for this
+  kind of cois": holder box reads "Proof of Insurance" unless the
+  request/requirements specify a holder; DoO includes vehicle details
+  (year/make/model, VIN, carrier) alongside business name and license number.
+  Resolves R7's open question — a defined request type, not a one-off;
+  auto-issue vs route still per current posture. The Absolute Air record is
+  the cleaner exemplar vs R7's `f4abacce` (keep both or prefer the new one).
+- **→ R10 / contradiction #5 (controlled-lines registry field):** *(explicit —
+  `e20d0499ff`, `6f7ec428db`)* rolandos_hvac: we control General Liability and
+  Auto (waiver-of-subrogation wording available on controlled lines) but NOT
+  Workers Compensation. Extends the controlled_lines field from absolute_air
+  to rolandos; PROJECT_BRIEF already cites Rolando's WC as another broker's
+  line.
+- **→ R1 (Romy as AJF requester):** *(inferred — `cecbe4dd0e`, `9a8f218b94`)*
+  Romy is also a known FOLLOW-UP contact on AJF certificate requests (3055
+  Burris Owner, LLC project); replies from Romy with project details are
+  legitimate amendment requests.
+- **→ PROJECT_BRIEF batch-split rule:** *(explicit — `0d2d18ea04`,
+  `5ceca3b253`)* when a request asks for multiple holder names EACH WITH ITS
+  OWN ADDRESS on a single COI, issue separate COIs — one per name+address pair
+  — **even if the requester explicitly asked for one combined certificate**
+  (adds the override-the-literal-ask clause).
+- **→ PROJECT_BRIEF multi-holder plural/box-capacity rules:** *(explicit —
+  `3442bac323`, `170c3fac53`)* the complement: multiple related entities
+  sharing ONE address (holder + additional-insured list at the same location)
+  → stack all names in the holder box with the single address on ONE COI — do
+  not split. Makes the shared-vs-distinct-address discriminator explicit.
+- **→ A6b forwarded-thread parsing:** B4 (mine the full thread) extends the
+  existing forwarded-thread work *(explicit — `475aaac23b`)*.
+- **→ Walkthrough 3.3 our-own-COI detection hook:** *(inferred —
+  `2d4cb8e56d`)* before treating any COI PDF found in a thread as team-issued,
+  run a provenance check (sending address, producer box, QR-code presence — B7)
+  — in both the training-data joiner and any pipeline step reading COIs from
+  inbound email. The `COI (39).pdf` mis-join (expiring-carrier cert graded as
+  team output) proves the failure mode.
+- **→ Walkthrough 3.1/3.2 image-extraction gap:** *(inferred — `093b31d417`)*
+  concrete code task: `attachments.py` / `pipeline.py` must download inline
+  and attached images (image002-style embedded screenshots) and pass them into
+  classification context; photo-only revision specifics are otherwise
+  invisible.
+- **→ Section 1 grading-artifact warning / library-builder hygiene:**
+  *(explicit — `6260a6691a`, `4b7724de2d`, `c6b9dffa7d`, `16ff8b2ded`,
+  `323dceccb3`, `02120fd922`, `29d60080bd`, `09660cff35`, `9ffede7686`,
+  `6f7ec428db`, `170c3fac53`)* audit and fix the review-export join
+  (`join_batch2.py` / export pipeline): all four EMP 3 records spanning Feb
+  2-26 share a byte-identical "Ruiz Electric" request excerpt with uniform P9
+  warnings (the join reuses one email across attachments — verified against
+  the per-record context). Also: attach the FULL COI attachment set (all
+  pages/GL sections) per record, and auto-tag records whose originating
+  request can't be found as **"no-request"** so they're excluded from
+  grading/training instead of wasting Alex's time. Bounce-containing threads
+  (`635cfb7825`) should be annotated as non-clean sends. Tooling: resolve
+  Alex's "read N" cross-references by thread/content match, never index (see
+  walkthrough 3.8).
+
 ---
 
 ## 7. Status counts and what remains
 
-### Decisions (65 of 156)
+### Decisions — cumulative after batch 2 (2026-07-03 evening)
 
-| decision | count | with note |
-|---|---|---|
-| approve | 4 | 4 |
-| disagree | 16 | 16 |
-| skip | 44 | 3 |
-| (note only, no decision) | 1 | 1 |
-| **total decided** | **65** | **24** |
+| decision | count |
+|---|---|
+| approve | 32 |
+| disagree | 24 |
+| skip | 56 |
+| (note only, no decision) | 1 (`cb95b6a2`, unchanged) |
+| **total entries** | **113** (48 new/changed vs the morning export) |
 
-Undecided: **91**.
+Undecided: **44 of 156**. Note: Alex intentionally skipped ALL Section-2
+template-quality entries in this pass — the remaining skips are deliberate
+deferrals, not accidents. The `COI Template` records among the undecided
+(`392b5c100a`, `f8cb4f9924`, `bf5db1481b`, `8b0d36044a`, `a68c8e53a2`,
+`cb95b6a2`) are template files, not deliveries, and four Test Entity records
+remain undecided (expected R8 noise).
 
-### Undecided hashes (short hash, grader verdict, filename)
+<details><summary>Superseded batch-1 counts (65 decided: 4 approve / 16 disagree / 44 skip / 1 note-only; 91 undecided)</summary>
+Kept for the diff trail only — the batch-2 export is cumulative and every
+batch-1 decision carried forward unchanged.
+</details>
 
-**305_power_corp (12):** `71cfc6ae44` correct — City of South Miami · `c99847d590` correct — Bengoa Construction · `d81a8d47f0` correct — City of South Miami V2 · `78e062009b` correct — Rycon Construction · `a98358d385` correct — City of Miami · `54843fb79d` questionable — Lake Point Tower · `f5fe3fba54` questionable — Stratus · `73c45015e6` correct — Johnson Controls · `d20f2a65ea` correct — BelleTowers KW · `c3bc36c9f5` correct — City of Hallandale Beach · `fb2df53365` questionable — City of Homestead · `076c335396` questionable — Miami Dade County Building Dept
+### Undecided hashes after batch 2 (short hash, grader verdict, filename)
 
-**absolute_air_solutions (5):** `09660cff35` correct — AIO Realty & Property Management · `6fe46263ce` questionable — Test Entity Inc (likely R8 noise) · `2abbf4c08a` correct — Absolute Air Solutions LLC CMC1249546 · `392b5c100a` correct — COI Template · `87eb2ef6e7` correct — Progressive COI
+**305_power_corp (12 — the whole client remains untouched):** `71cfc6ae44` correct — City of South Miami · `c99847d590` correct — Bengoa Construction · `d81a8d47f0` correct — City of South Miami V2 · `78e062009b` correct — Rycon Construction · `a98358d385` correct — City of Miami · `54843fb79d` questionable — Lake Point Tower · `f5fe3fba54` questionable — Stratus · `73c45015e6` correct — Johnson Controls · `d20f2a65ea` correct — BelleTowers KW · `c3bc36c9f5` correct — City of Hallandale Beach · `fb2df53365` questionable — City of Homestead · `076c335396` questionable — Miami Dade County Building Dept
 
-**ajf_roofing (24):** `093b31d417` correct — Palm Beach County · `8c818892d9` correct — ACORD Form 20250113 · `08a7ada42a` correct — Tribridge Residential · `3cfa88b15b` questionable — Camcon Group · `0a5ef21c4e` correct — GAF · `6b8e1d9083` correct — 3055 Burris Owner 8.23.24 · `cecbe4dd0e` correct — 3055 Burris Owner LLC · `9a8f218b94` questionable — Denver CMC Colorado Center · `0f8d8a222f` correct — 26-27 CNA 3055 Burris · `2ac897aa0e` questionable — 26-27 CNA Denver CMC · `34e94ff5c6` correct — 26-27 CNA Newmar Building · `335384739d` questionable — Biscayne Beach Miami Condo · `47c8666db5` correct — 2026 Miami Dade COI · `65c6ef070e` correct — 3055 Burris Owner LLC V2 · `20cc60f280` correct — 3055 Burris Owner LLC · `24fadcd33b` questionable — Denver CMC Colorado Center · `4bfd3b671e` questionable — Pembroke Pines · `d5fe5a8a87` correct — Premier Group With All Endorsements · `4ede7f19a2` correct — Alen Construction Group · `3729073e35` correct — NV2A with All Endorsements · `5a057c893e` correct — Lee Construction Group · `01b771e154` correct — Mutiny Hotel · `b1fb11e927` correct — COI 04-16-2026 · `1dc5e61ebe` incorrect — Dadeland Intermodel NV2A Updated COI
+**absolute_air_solutions (3):** `6fe46263ce` questionable — Test Entity Inc (likely R8 noise) · `392b5c100a` correct — COI Template · `87eb2ef6e7` correct — Progressive COI
 
-**apogee_hvac (3):** `deeaccf0b7` correct — PP_APOGEE_GL COI · `5314cf3c0f` correct — LaGreca Construction · `22a6c8f7de` incorrect — City of Fort Lauderdale
+**ajf_roofing (12):** `08a7ada42a` correct — Tribridge Residential · `3cfa88b15b` questionable — Camcon Group · `0a5ef21c4e` correct — GAF · `20cc60f280` correct — 3055 Burris Owner LLC · `24fadcd33b` questionable — Denver CMC Colorado Center · `d5fe5a8a87` correct — Premier Group With All Endorsements · `4ede7f19a2` correct — Alen Construction Group · `3729073e35` correct — NV2A with All Endorsements · `5a057c893e` correct — Lee Construction Group · `01b771e154` correct — Mutiny Hotel · `b1fb11e927` correct — COI 04-16-2026 · `1dc5e61ebe` incorrect — Dadeland Intermodel NV2A Updated COI
 
-**central_comfort_ac (16):** `575cc1e474` correct — Test Entity Inc (likely R8 noise) · `0d2d18ea04` correct — ICON BAY · `5ceca3b253` correct — KW PROPERTY MANAGEMENT · `9ffede7686` questionable — Axis on Brickell II · `19ff37831d` correct — Waterview · `b0558f373b` correct — Riviera at Coral Lakes · `6850567d96` questionable — Icon Bay KW · `3442bac323` correct — Four Seasons Residences · `6dfb9151b8` correct — Searchkings · `e687487fc6` questionable — ASPCA · `f8cb4f9924` correct — COI Template · `170c3fac53` correct — COI 02-12-26 · `323dceccb3` correct — COI BH · `02120fd922` correct — COI 042426 · `29d60080bd` correct — COI 042426 · `3ef695b3ed` questionable — COI 2
+**apogee_hvac (1):** `22a6c8f7de` incorrect — City of Fort Lauderdale
 
-**emp3_solutions (7):** `07dfc07db3` correct — Test Entity Inc (likely R8 noise) · `c62d239c8a` questionable — Ruiz Electric · `6260a6691a` questionable — Procontractors · `4b7724de2d` questionable — Polk County BoCC · `c6b9dffa7d` questionable — Tamarac Building Dept · `16ff8b2ded` questionable — Trent F Condominium · `bf5db1481b` correct — COI Template
+**central_comfort_ac (3):** `575cc1e474` correct — Test Entity Inc (likely R8 noise) · `f8cb4f9924` correct — COI Template · `3ef695b3ed` questionable — COI 2
+
+**emp3_solutions (2):** `07dfc07db3` correct — Test Entity Inc (likely R8 noise) · `bf5db1481b` correct — COI Template
 
 **gd_mechanical (3):** `a80aeca048` questionable — Test Entity Inc (likely R8 noise) · `def0e9223f` questionable — Seminole County · `8b0d36044a` correct — COI Template
 
-**rolandos_hvac (21):** `475aaac23b` questionable — City of Port St. Lucie · `69653becd2` questionable — Test Entity (likely R8 noise) · `ef9c62fc18` questionable — Test Entity (likely R8 noise) · `5ba7e65a2f` questionable — APC-ASBF LP · `f64b2f7ed4` questionable — Playland LLC · `2d4cb8e56d` correct — COI (39) · `ec2148617e` questionable — Charlotte County · `83d16111ad` questionable — Charlotte County · `2a3496ee08` questionable — Charlotte County Community Development · `6f7ec428db` questionable — Pasco County · `b319d3c3a3` correct — Marion County · `e20d0499ff` questionable — Atrium Development · `a213395cf3` questionable — City of Fort Myers Building Dept · `94c536cc26` questionable — Noontide Service · `c5ffbd7209` correct — City of Ocala · `dd1d2cc760` correct — Hernando County · `e859acb1a9` correct — Citrus Holdings · `635cfb7825` correct — Goodleap LLC · `a68c8e53a2` correct — Template · `bde0ba3bca` incorrect — City of Pinellas Park 04202026 · `a82173c078` correct — City of Seminole
+**rolandos_hvac (8):** `94c536cc26` questionable — Noontide Service · `c5ffbd7209` correct — City of Ocala · `dd1d2cc760` correct — Hernando County · `e859acb1a9` correct — Citrus Holdings · `cb95b6a28a` incorrect — COI Template GL & CA (the note-without-decision) · `a68c8e53a2` correct — Template · `bde0ba3bca` incorrect — City of Pinellas Park 04202026 · `a82173c078` correct — City of Seminole
 
 ### Checklist when the FINAL export lands
 
 1. **Re-run the join** (final export × `graded_cois.json`) — confirm 0 unknown hashes and that every previously decided hash kept its decision (diff against this partial).
 2. **Re-run the distillation on new notes** — extend/adjust Sections 2-4; especially watch the 91 currently undecided for new rule material (305 Power WC certs and the AJF endorsement certs are untapped).
 3. **Sanitize before building:** re-tag the cannot-grade disagrees (Section 1) as skip/needs-discussion, resolve `cb95b6a2`'s missing decision, drop the R8 noise hashes, and fix/flag the four sample-COI-artifact records so `effective_verdict()` doesn't invert them.
+   **Batch-2 additions to the re-tag list:**
+   - `c6b9dffa7d` (disagree, verdict=questionable) — pure cannot-grade: "i dont see the reqeust for this coi...." Re-tag as no-request/needs-discussion, not verdict-inverted.
+   - `6f7ec428db` (disagree, verdict=questionable) — partial cannot-grade: "this COI is correct but i am not seeing the request for it only its delivery." The disagree carries the uncontrolled-lines referral rule (B11), NOT a verdict inversion.
+   - **Silent-inversion hazards — verdict=correct + disagree where the disagree does NOT mean the COI verdict was wrong:** `2d4cb8e56d` (disagree = provenance: the PDF is the expiring carrier's cert — exclude, don't invert), `deeaccf0b7` (disagree = third-party PDF + construction dictation — exclude, don't invert), `635cfb7825` (disagree = the send bounced, COI itself fine — annotate non-clean send), `093b31d417` (disagree = image-extraction lesson; note literally says "disregard..." — era caveat, new template already covers it).
+   - **No-request records to auto-tag and exclude:** `323dceccb3`, `02120fd922`, `29d60080bd` (all "no request can be seen on the emails associated..."), plus `9ffede7686` and `170c3fac53` (approved but no request visible — output-format reference only) and `09660cff35` (skip, GL attachment missing — walkthrough 3.9).
 4. **Run** `.venv/bin/python training/build_training_library.py --decisions <final export>` → review `TRAINING_LIBRARY.md` + `PROMPT_INTEGRATION_PLAN.md`; hand-write examples for the empty buckets (requirements-PDF, endorsements, specific-language, Spanish per SESSION_HANDOFF).
-5. **Assemble Prompt v2:** mined examples + authored examples v2 + Alex's rules (this doc Sections 2-3 once walked through + PROJECT_BRIEF 2026-07-02 issuance rules), respecting the contradiction flags in Section 6 (Alex decides #1-#3 first).
+5. **Assemble Prompt v2:** mined examples + authored examples v2 + Alex's rules (this doc Sections 2-3 + the Batch 2 section, once walked through + PROJECT_BRIEF 2026-07-02 issuance rules), respecting Section 6: original contradictions #1-#3 are RESOLVED, but the three NEW open questions (uncontrolled lines, shortfall boundary, address-resolution order) block B11, B12, B-C1 and few-shots 7/11 until Alex rules.
 6. **Benchmark gate (verified against current docs):** every prompt change must run `training/benchmark_classifier.py` and beat the prior score. Current documented bar (PROJECT_BRIEF/SESSION_HANDOFF, 26-case set): **≥20/26 classification, 15/15 holder name, 13/14 address**. The set has since grown to **36 cases** (benchmark_extra_cases.json); the current run in `training/benchmark_results.json` (2026-07-03, claude-sonnet-4-5) scores **31/36 classification_ok** (13/36 strict), 18/19 holder name, 15/17 holder address, 25/33 client — so the practical Prompt v2 gate is **beat 31/36 on the 36-case set with no extraction regressions**, plus pipeline harness 13/13. Note `benchmark_results.json` is currently modified-uncommitted in the repo; confirm that run is the intended baseline before gating on it.
 7. **Update PROJECT_BRIEF** with whatever new permanent rules Alex ratifies (R1-R6, R10), and copy forward to the Cowork folder per the dual-location note in CLAUDE.md.
 
 ---
 
-*Draft generated 2026-07-03 by Claude Code from the partial export. Working
-draft only — supersede with the final-export version.*
+*Draft generated 2026-07-03 by Claude Code from the partial export; extended
+the same evening with the verified batch-2 findings
+(`coi_review_decisions_partial2_2026-07-03.json`). Working draft only —
+supersede with the final-export version.*
