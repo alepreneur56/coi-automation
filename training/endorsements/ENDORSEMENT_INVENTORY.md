@@ -1,3 +1,5 @@
+> UPDATE 2026-07-03: Alex confirmed (07-02 evening) Apogee was fully reinstated — all 5 lines in force through 12/08/2026. The 'in-force unverified' caveats below predate that confirmation. Rolando's WC and Absolute Air GL/WC/Umbrella are other brokers' lines.
+
 # Endorsement Inventory (A9 scaffold) — PROPOSAL ONLY
 
 Generated 2026-07-03. Nothing in this file or `endorsement_inventory.json` has been written to `coi_client_registry.json`, `templates/`, or `coi_system_prompt.txt`. This is source material for a future auto-issue rule.
