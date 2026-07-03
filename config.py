@@ -109,6 +109,16 @@ COST_CACHED_INPUT_PER_MTOK = _float_opt("COST_CACHED_INPUT_PER_MTOK")
 COST_OUTPUT_PER_MTOK = _float_opt("COST_OUTPUT_PER_MTOK")
 
 # ---------------------------------------------------------------------------
+# ZIP lookup (see ziplookup.py)
+# ---------------------------------------------------------------------------
+# When true, missing-ZIP "coi_request_incomplete" replies get a best-effort
+# ZIP lookup (Zippopotam.us, free/no-key) attempted before the client is
+# asked. Auto-fills ONLY when the city+state maps to exactly one ZIP;
+# otherwise behavior is unchanged (ask the client). Never blocks or crashes
+# the pipeline on lookup failure. Default off.
+ZIP_LOOKUP = _bool("ZIP_LOOKUP", False)
+
+# ---------------------------------------------------------------------------
 # Runtime
 # ---------------------------------------------------------------------------
 POLL_INTERVAL_SECONDS = int(os.environ.get("POLL_INTERVAL_SECONDS", "60"))
