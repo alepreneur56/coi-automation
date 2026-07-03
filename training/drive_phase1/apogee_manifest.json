@@ -1,0 +1,39 @@
+{
+  "client": "Apogee HVAC Solutions",
+  "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/Apogee HVAC Solutions",
+  "destination_root_id": "1SVld_LTmf4-kXJyrewCXKPrFCO7RXDea",
+  "destination_root_name": "01 Clients/Apogee HVAC Solutions",
+  "completed": true,
+  "total_drive_api_calls": 112,
+  "cap": 250,
+  "counts_by_subfolder": {
+    "Policies": 12,
+    "Quotes & Proposals": 14,
+    "COIs": 32,
+    "Endorsements": 1,
+    "Loss Runs": 13,
+    "Contracts & AOR-BOR": 8,
+    "Misc": 27
+  },
+  "total_copied_to_client_folder": 107,
+  "pii_restricted": {
+    "destination_id": "1bW9LWm8QimzUJ7KBqTvbGvLC1_D3B-ou",
+    "destination_path": "USI Organized/06 Personal & PII - RESTRICTED/Apogee HVAC Solutions",
+    "count": 5,
+    "files": [
+      "Apogee HVAC Driver List 24-25.docx (driver names/DOBs)",
+      "Apogee HVAC Solutions_Marketing Game Plan.docx (owner DOBs: Jesus Dorado, Marta Ona)",
+      "Apogee HVAC Solutions GMI Business Auto Supplemental Application.pdf (driver PII schedule)",
+      "Signed Acords with License Numbers.pdf (driver license numbers)",
+      "Apogee HVAC Solutions Inc- UM Form.pdf (signed personal insured form)"
+    ]
+  },
+  "skipped": [
+    {"reason": "exact duplicate of Complete_with_Docusign_Binding_Documents_-_A.pdf", "count": 2, "location": "Signed / Pending stuff folders"},
+    {"reason": "junk - generic placeholder 'New Microsoft Excel Worksheet.xlsx'", "count": 1, "location": "OLD/"},
+    {"reason": "exact duplicate of Apogee HVAC Solutions COI Template.pdf (Copy (2) variant)", "count": 1, "location": "New Template/"}
+  ],
+  "notes": "Very large, messy source folder (multiple nested OLD/, Binding Docs Pack/, Signed/, U Submit Packet/, New Template/, APOGEE...RENEWAL CERTIFICATES/ subfolders, dozens of near-duplicate USI COI certs to different certificate holders and near-identical proposal PDFs). Copied a representative full set of unique COIs (32, one per certificate holder + templates), consolidated all policy docs (GL/WC/Auto/Excess/Umbrella policies + binders), all quotes/proposals, all loss runs (WC, GL, CA across multiple prior carriers AmTrust/GUARD/Ascendant/Kemper/Markel), AOR/Kemper forms and sub-subcontract agreement templates under Contracts & AOR-BOR, cancellation letters (Thimble + Ascendant) + No-Loss letters + safety manuals + submission packet docs under Misc. Driver-PII-heavy documents (license numbers, DOBs) routed to PII_RESTRICTED instead of the client folder. Originals in source were NOT modified, moved, or deleted -- copy-only per standard rules.",
+  "checkpoint_at": "~30 files -- passed threshold: continued through completion at 107 copies, well under the 250 CAP.",
+  "timestamp": "2026-07-03T05:15:43Z"
+}

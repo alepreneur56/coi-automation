@@ -1,0 +1,32 @@
+{
+  "client": "Absolute Air Solutions",
+  "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/Absolute Air Solutions",
+  "source_root_id": "1RdPyt4qhbiWek1NMNdZbIZiONPxmV8QO",
+  "destination_parent_id": "1cYdgsk7Fo495rly6ZO02AxWZs2vcxLaX",
+  "destination_client_folder_id": "13GNboYBhcb6RIemmBlU72l2kg_1ziWJL",
+  "pii_folder_id": "1zX8CIPqBI7gvEvrOjfdP1nbujOI6eeS7",
+  "complete": true,
+  "subfolders": {
+    "Policies": {"id": "1mKx7iEwd-dg456VumTtLE6-wG9qNfBm5", "count": 10},
+    "Quotes & Proposals": {"id": "1y7AG5QExzmeMtugoA3pg1zJ1XrvgCGD8", "count": 15},
+    "COIs": {"id": "1QztESucGxEojSLP4NoMCc37BP94VSEUi", "count": 14},
+    "Endorsements": {"id": "1ce2R0JY2583F_lRNezEWB74-xj8bQsIy", "count": 1},
+    "Loss Runs": {"id": "1XzJuCj0vRSedeWrDZ2YpW3L6EN7M-LIh", "count": 5},
+    "Contracts & AOR-BOR": {"id": "1Bnjjf07rix5ynfHoI0YCF6IZ0RIjjotZ", "count": 8},
+    "Misc": {"id": "1lWIOV9YeJuU1Iyz5ost2xSKUs_DR6Ztt", "count": 7},
+    "PII_RESTRICTED (under 06 Personal & PII - RESTRICTED / Absolute Air Solutions)": {"id": "1zX8CIPqBI7gvEvrOjfdP1nbujOI6eeS7", "count": 2}
+  },
+  "totals": {
+    "files_copied": 62,
+    "subfolder_count": 7,
+    "pii_count": 2
+  },
+  "notes": [
+    "One unintended duplicate: 'GL - NW - 06-05-25-26.pdf' (source id 18ed7c9V76QNc4BmOzXFUFqIGmp426g_R) was copied twice into Policies by mistake (copies 1IKWhgp0QX80S70GelM0LjR8-uIyL1Sxh and 1-VQG0mYZWLpPhK_erJDjxEcGw_J6jJnS). Both are harmless duplicates of the same source; not deleted per copy-based/non-destructive rule -- flagging for Alex's awareness rather than auto-removing.",
+    "'FCCI Contr. & Auto Sup Ap.pdf' appears twice in Contracts & AOR-BOR under the same filename but from two distinct source files (OLD/New folder id 1Fuizk8cbZFlBEyYc3AdY23yxfmm4l64i, and Apps/Docs from insured id 16LqDtK6Lkcboe5dleRFvzz8EJoL2Sfpo) -- legitimately different documents (different agent name, employee count, license state fields), not a duplicate.",
+    "'25-26 Estimate Proposal Absolute Air Solutions.xlsx' and '1 Pager - Absolute Air Solutions.pdf' each appear twice in Quotes & Proposals from two distinct source locations (Finalist Presentation root vs New finalist with updated Kemper Quote subfolder) -- different revisions of the estimate, kept both intentionally.",
+    "COIs 25-26.zip (44.9MB) copied as-is into COIs; not unzipped.",
+    "PII flagged: Kemper Application (contains driver names, DOBs, license numbers for 14 individuals) and voided check (bank routing/account numbers) -- both routed to 06 Personal & PII - RESTRICTED / Absolute Air Solutions instead of the client's Contracts or Misc folder.",
+    "No junk/skipped files identified -- every file in the source tree was insurance-relevant (policies, COIs, endorsements, loss runs, quotes/proposals, BOR/AOR letters, applications, presentations, or internal revenue/timeline tracking sheets filed to Misc)."
+  ]
+}

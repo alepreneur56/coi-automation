@@ -1,0 +1,213 @@
+{
+  "client": "EMP 3 Solutions",
+  "source_root": "WORK FOLDER/OG Folder/Pushing Forward/0000000 WON/EMP3 Solutions",
+  "source_root_id": "17wSWwDzswrNF9bUygNatr3KwZCjDxCnu",
+  "dest_client_folder_id": "1IerVSI035KKA9e6MGj8Xv0lLCWsJZHrq",
+  "dest_subfolders": {
+    "Policies": "1JpN_JIv4vH70_8ywnc32umKR_s9HSRFV",
+    "Quotes & Proposals": "1a9rkYWjpw-ynI7fgGCei-13FvkdaIfBc",
+    "COIs": "1xQuK2l7n4jfQVmEZY_550xdT1PLp5UPD",
+    "Endorsements": "1SWRhnQFQc2-6kJGL7P-AR131HSMW1tld",
+    "Loss Runs": "1VTQwsRxRUHYfeTltRP1I0x0fvTbpkdWM",
+    "Contracts & AOR-BOR": "1cxyYGdDxwyXosto07UUKm57CLmVHwdY6",
+    "Misc": "1KJm_scMBnrwKll_2gill0EgxfqeGyvAc",
+    "PII_RESTRICTED": "1ZmXC6r69AonX3q5sYQY5SipNiSsvQMz-"
+  },
+  "files": [
+    {
+      "id": "1F7tePfIrm90G0qRmn-hK0zSoDTM06drX",
+      "name": "EMP 3 Solutions Account Narrative.docx",
+      "source_path": "OLD/",
+      "dest": "Misc",
+      "copied": true
+    },
+    {
+      "id": "1jZuyzbU3yVD810kpKaJ9JNsbayWwWLxb",
+      "name": "Signed Kemper Application.pdf",
+      "source_path": "OLD/",
+      "dest": "PII_RESTRICTED",
+      "reason": "contains driver names, DOBs, license numbers",
+      "copied": true
+    },
+    {
+      "id": "1QXiyZp78t35EYB1GJnrZhvUBVa1IpOV6",
+      "name": "NCCI MOD Authorization Letter.pdf",
+      "source_path": "OLD/",
+      "dest": "Contracts & AOR-BOR",
+      "copied": true
+    },
+    {
+      "id": "1mvc3S3sUiwmihdzCWOuPjdtLZJhuQ-Oq",
+      "name": "Loss Run Request Letter - EMP 3 Solutions.pdf",
+      "source_path": "OLD/",
+      "dest": "Loss Runs",
+      "copied": true
+    },
+    {
+      "id": "1-6jvQ4VCtc9vNguGOg9wL03mYbLFp-QF",
+      "name": "Loss Run Request Letter - EMP 3 Solutions.doc",
+      "source_path": "OLD/",
+      "dest": "Loss Runs",
+      "copied": true
+    },
+    {
+      "id": "1znwbZUgpcK1VecVe5Nng8E7fCf_9TH1Z",
+      "name": "Broker of record letter Current Program - EMP 3 Solutions.pdf",
+      "source_path": "OLD/",
+      "dest": "Contracts & AOR-BOR",
+      "copied": true
+    },
+    {
+      "id": "1YWtSaCgTjNMLfb4hK8NRycKx0q79uxuQ",
+      "name": "Broker of Record letter ALL MARKETS -  EMP 3 Solutions.pdf",
+      "source_path": "OLD/",
+      "dest": "Contracts & AOR-BOR",
+      "copied": true
+    },
+    {
+      "id": "1D8U1tGOGQ5GeCmt8iPJNnia1IQkfRO73",
+      "name": "Broker of record letter Current Program - EMP 3 Solutions.doc",
+      "source_path": "OLD/",
+      "dest": "Contracts & AOR-BOR",
+      "copied": true
+    },
+    {
+      "id": "148QNeMGLvg0gaDTawCm7v8yi8q8PWUa1",
+      "name": "Broker of Record letter ALL MARKETS -  EMP 3 Solutions.docx",
+      "source_path": "OLD/",
+      "dest": "Contracts & AOR-BOR",
+      "copied": true
+    },
+    {
+      "id": "1hbQE5VV-3YDQPGVPpf5kIbQ24EGCFmkD",
+      "name": "EMP3 Solutions - 10YRS Mod History.pdf",
+      "source_path": "OLD/",
+      "dest": "Misc",
+      "copied": true
+    },
+    {
+      "id": "1eki9IL9ueFxIPRtc2ea9t9WYlvy_0VVw",
+      "name": "EMP 3 Solutions 1st appt presentation.pptm",
+      "source_path": "OLD/",
+      "dest": "Misc",
+      "copied": true
+    },
+    {
+      "id": "1L56O9Yz_tKT9ZVkmszp4wr0H3m6zYTN3",
+      "name": "EMP3 Solutions Estimate.xlsx",
+      "source_path": "OLD/",
+      "dest": "Quotes & Proposals",
+      "copied": true
+    },
+    {
+      "id": "1efQOPf3PQZuOWo-ReE20RIDfwUBeOzh3",
+      "name": "EMP 3 Solutions COI - City of Boca.pdf",
+      "source_path": "COI/",
+      "dest": "COIs",
+      "copied": true
+    },
+    {
+      "id": "1beIdXK1RoiJY_3YfYZNNVQE_im9Vhj2D",
+      "name": "EMP 3 Solutions COI - Midtown Doral Building 4.pdf",
+      "source_path": "COI/",
+      "dest": "COIs",
+      "copied": true
+    },
+    {
+      "id": "1wR1OCcJH4pygBG96oHFrox_R7qg7yEPN",
+      "name": "EMP 3 Solutions COI Weston Gardens.pdf",
+      "source_path": "COI/",
+      "dest": "COIs",
+      "copied": true
+    },
+    {
+      "id": "1zXYdU1GrfCm4lG7aCSZvtP7kEeLJoJwG",
+      "name": "EMP 3 Solutions COI Template.pdf",
+      "source_path": "Polciies/",
+      "dest": "COIs",
+      "copied": true
+    },
+    {
+      "id": "1maCuqmxbTL25K2gzxj7PGJZefxZ0Uz1Y",
+      "name": "Kemper Full Policy Without Blanket Endorsements.pdf",
+      "source_path": "Polciies/",
+      "dest": "Policies",
+      "copied": true
+    },
+    {
+      "id": "1etKrZ3ffKRkMK3TfXJHcFodhL7ViH2Bn",
+      "name": "Latest Auto Dec Page Kemper with Blanket Endorsements.pdf",
+      "source_path": "Polciies/",
+      "dest": "Endorsements",
+      "copied": true
+    },
+    {
+      "id": "1nGhC_SIo8u2967_8T4VpoSn9BSL8XARu",
+      "name": "EMP 3 Solutions GL Loss Runs & GL Policy with Trisura.zip",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Loss Runs",
+      "copied": true
+    },
+    {
+      "id": "1J9ynWeTU63Y0PekRS-e_l14KG_Hw6Q2T",
+      "name": "GL Novatae Policy.pdf",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Policies",
+      "copied": true
+    },
+    {
+      "id": "12sQFzHwc7HQi_FbQ_I_lbWPjJlhqNfnb",
+      "name": "WC LUBA POLICY.PDF",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Policies",
+      "copied": true
+    },
+    {
+      "id": "1HLzh_wADcr1sp6uQ5rWISXPC-WlJNWKi",
+      "name": "PTCGL00000038103.PDF",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Policies",
+      "copied": true
+    },
+    {
+      "id": "13rjf5sdvd-5LHmAuaQgPsJOfPAtj9f6r",
+      "name": "PTCGL00000038100.PDF",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Policies",
+      "copied": true
+    },
+    {
+      "id": "1gUC_ZBwVwDphNyCBiI_fV6UwN0dFPdMe",
+      "name": "PTC-GL-000000381-01.PDF",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Policies",
+      "copied": true
+    },
+    {
+      "id": "1ya9RNSpr5kUB1kOkUXvynQWHwbZNab7p",
+      "name": "PTCGL00000038102.PDF",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Policies",
+      "copied": true
+    },
+    {
+      "id": "12iasUOjIC-qyW3cOkRBCBSsX1yOZkGRe",
+      "name": "Markel 19-20.pdf",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Loss Runs",
+      "copied": true
+    },
+    {
+      "id": "1pEObpOWh9P03LgwfaR4G7WeazAJvRsmv",
+      "name": "Markel 20-21.pdf",
+      "source_path": "Polciies/GL Loss Runs & GL Policy with Trisura/",
+      "dest": "Loss Runs",
+      "copied": true
+    }
+  ],
+  "skipped": [],
+  "calls_used_before_copy_phase": 15,
+  "calls_used_checkpoint": 35,
+  "calls_used_final": 42,
+  "complete": true
+}
