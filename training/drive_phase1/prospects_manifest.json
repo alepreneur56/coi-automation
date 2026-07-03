@@ -69,12 +69,25 @@
       "not_yet_copied": "Xtreme Pumping Old Policies (Auto Insurance Policy PDFs, non-PII business docs) - NOT YET COPIED, still pending"
     },
     "3_old_documents": {
-      "status": "NOT_STARTED",
+      "status": "COMPLETE",
       "targets": [
         "Old Documents/Prospect prep notes (15 companies)",
-        "Old Documents/MOD PULLS"
+        "Old Documents/MOD PULLS (1 company - Miami Water & Air Inc, no name match to existing folders, routed to MOD PULLS subfolder)"
       ],
-      "dest": "02 Prospects/Dead/<Company> (merge MOD PULLS by name match, else 02 Prospects/Dead/MOD PULLS/)"
+      "dest": "02 Prospects/Dead/<Company>",
+      "companies_copied": [
+        "Air Contracting & Refrigeration (Prospect Prep Notes copy)", "247 Restoration Pro", "Century Fire",
+        "Air on Demand (Prospect Prep Notes copy)", "Aqua Pro Plumbing Contractors", "Del Toro Rain Gutters",
+        "Forklifts Parts & Equipment Import & Export", "Harpers Air", "Gables Air Conditioning (Prospect Prep Notes copy)",
+        "Must Air USA", "Morata Plumbing", "Prestige Roofing (Prospect Prep Notes copy)", "No Drip Plumbing Inc",
+        "South Florida Air Conditioning & Refrigeration", "Todd King's Heating & Air Conditioning", "MOD PULLS"
+      ],
+      "companies_count": 16,
+      "skipped": [
+        {"reason": "webpage-asset folder (Property Search_files)", "location": "Harpers Air", "note": "explicitly named in task instructions as skip example"},
+        {"reason": "0-byte docx", "name": "Del Toro Rain Gutters.docx"},
+        {"reason": "0-byte docx", "name": "New Microsoft Word Document.docx (Prospect prep notes root)"}
+      ]
     }
   },
   "pii_routing_rule": "06 Personal & PII - RESTRICTED with 'Xtreme Pumping -' prefix (or appropriate company prefix) for: driver license scans, payroll summaries, WC AUDIT w/ payroll, DL/DOB/census/payroll files",
