@@ -1,0 +1,177 @@
+{
+  "scope": "WON accounts batch B + shared folders (Southeast Florida Mechanical, Air Contracting & Refrigeration, Krishnaprasad Enterprises, EZ Electric, Air Innovations of FL, ERSI, AC Pros Of Florida, Reyes Construction, HVAC GL Policies and Quotes shared folder, COI Templates from ZZZZZZ + VA STUFF)",
+  "owner": "alepreneur56@gmail.com",
+  "source_root": "WORK FOLDER/OG Folder/Pushing Forward",
+  "destination_root": "USI Organized (12oczaMqp1iJDtuddqHEUO-oYO-0KcbcT)",
+  "completed": true,
+  "cap": 400,
+  "total_drive_api_calls_used": 152,
+  "checkpoint_note": "Passed 30-file checkpoint early (Southeast Florida Mechanical + Air Contracting complete by ~call 50); continued through all scope items without issue, finished well under CAP.",
+  "accounts": {
+    "Southeast Florida Mechanical": {
+      "destination_id": "1I49Mc2cBc54ikU-oBxfEKKeMAFcfymTf",
+      "destination_path": "01 Clients/Southeast Florida Mechanical",
+      "subfolders_created": ["Misc", "Loss Runs"],
+      "files_copied": 4,
+      "pii_count": 0,
+      "notes": "Small account -- 2 first-appt presentations, 1 NCCI Mod History, 1 Market Research doc. All non-sensitive."
+    },
+    "Air Contracting & Refrigeration": {
+      "destination_id": "1YMXQcblB2bgviCBphVlKJ62wF2Bg-O3g",
+      "destination_path": "01 Clients/Air Contracting & Refrigeration",
+      "subfolders_created": ["Policies", "Quotes & Proposals", "Loss Runs", "Contracts & AOR-BOR", "Misc"],
+      "files_copied": 14,
+      "pii_count": 3,
+      "pii_destination": "06 Personal & PII - RESTRICTED/Air Contracting & Refrigeration (1l19mMtXenthDTxiauGPtIfoZD9QWpqZk)",
+      "pii_files": [
+        "Air Contracting - Auto Insurance Accidents (driver names).pdf",
+        "Air Contracting - Drivers License Vehicle Information (PII).xlsx",
+        "Air Contracting - Drivers' Licenses (PII scans).zip"
+      ],
+      "notes": "Also picked up 1 misfiled file (Clayton Mechanical - Timeline of Services.xlsx) found inside Air Contracting's Finalist subfolder -- copied to Quotes & Proposals with a note in the filename flagging the misfile; original left untouched in source."
+    },
+    "Krishnaprasad Enterprises Inc": {
+      "destination_id": "1oDAwP9Z4phJr-eOFdxV3DOW2wicD0sdP",
+      "destination_path": "01 Clients/Krishnaprasad Enterprises Inc",
+      "subfolders_created": ["Policies"],
+      "files_copied": 1,
+      "pii_count": 0,
+      "notes": "Single file: Carly Builders Risk PolicyPackage PDF."
+    },
+    "EZ Electric": {
+      "destination_id": "1bt0gNGXTNBgBj8BIXdVXGl1fIEYxQqqO",
+      "destination_path": "01 Clients/EZ Electric",
+      "subfolders_created": ["Misc"],
+      "files_copied": 1,
+      "pii_count": 0,
+      "notes": "Single file: 1st-appt presentation pptm."
+    },
+    "Air Innovations of FL": {
+      "destination_id": "1QNE_7cv1SKxp8cyvYtjQpYhcQB9MB3j7",
+      "destination_path": "01 Clients/Air Innovations of FL",
+      "subfolders_created": ["COIs", "Contracts & AOR-BOR", "Quotes & Proposals", "Loss Runs", "Misc"],
+      "files_copied": 10,
+      "pii_count": 0,
+      "notes": "COI (Jim Ringler), 2 BOR letters + loss run request letter, GL/Auto estimation PDF+xlsx+msg, MOD Worksheet + Mod History + Risk History (NCCI), 2 first-appt presentations."
+    },
+    "ERSI": {
+      "destination_id": "1RNY2BZBo9--PFpDf8Q2DbyWsZ1qnoJgB",
+      "destination_path": "01 Clients/ERSI",
+      "subfolders_created": ["Contracts & AOR-BOR", "Misc"],
+      "files_copied": 2,
+      "pii_count": 1,
+      "pii_destination": "06 Personal & PII - RESTRICTED/ERSI (1-Svvu2zseWq2nOtEEW6Mvrp4hr8sTQaA)",
+      "pii_files": ["ERSI - PFStatement (blank personal financial statement form).pdf"],
+      "notes": "2 contractor questionnaires (tagged + Hamilton Dorsey Alston version) to Contracts & AOR-BOR. PFStatement.pdf is a blank Personal Financial Statement form (unfilled SSN/DOB fields) -- routed to PII_RESTRICTED out of caution since it's a PFS document type."
+    },
+    "AC Pros Of Florida": {
+      "destination_id": "1us_CJihxYzb2my5Q_bpk44KmRH6tfIBK",
+      "destination_path": "01 Clients/AC Pros Of Florida",
+      "subfolders_created": ["Misc"],
+      "files_copied": 2,
+      "pii_count": 0,
+      "notes": "2 first-appt presentation pptm files (autosaved + final version)."
+    },
+    "N-MET-adjacent leftovers": {
+      "found": false,
+      "notes": "N-MET INC DBA ON WHEELS TRANSPORT already has its own mature, separately-organized folder structure elsewhere in Drive (COIs, loss runs, account narrative, auto findings docs, etc.) -- appears to already be a fully onboarded client outside this WON sweep's scope. No orphaned/leftover N-MET files found sitting loose in the 0000000 WON root that needed sweeping. Treated as out of scope / already handled."
+    }
+  },
+  "reyes_construction": {
+    "destination_client_id": "1ayGESNVqgr693vZZDsfbwgcQXPdPLOYy",
+    "destination_client_path": "01 Clients/Reyes Construction",
+    "subfolders_created": ["Policies", "Contracts & AOR-BOR", "Misc"],
+    "work_files_copied": 10,
+    "work_files": [
+      "Reyes Construction Insurance Summary.xlsx",
+      "REYES_QUALITY_GL_highlightable.pdf",
+      "Policies Excel.xlsx",
+      "REYES QUALITY - WORKERS COMP - POLICY - 06-25-2026.pdf",
+      "2710 LE JEUNE - POLICY GL 2026.pdf",
+      "Progressive Declarations Page.pdf",
+      "645 NE 115 ST - Liability - Next - signed.pdf (commercial liability, kept in WORK despite residential-looking address)",
+      "Progressive BOR.pdf",
+      "Reyes Construction Policies Excel.png",
+      "REYES POLICIES.zip (bulk archive, mixed content, kept as-is per copy-only rule)"
+    ],
+    "personal_files_copied": 10,
+    "personal_destination": "06 Personal & PII - RESTRICTED/Reyes Construction (16ZlutSe5nEdqjU0Tc18XgYQCQ1t1QdCb)",
+    "personal_files": [
+      "Reyes personal - 645 NE -POLICY 2025-2026.pdf",
+      "Reyes personal - 2700 S Rd -FULL POLICY 2026-2027.pdf",
+      "Reyes personal - 8350 SW 193 ST - WIND POLICY 2025-2026.pdf",
+      "Reyes personal - 8350 SW 193 ST - HAZARD POLICY.pdf",
+      "Reyes personal - 739 NE 111 ST - POLIZA FLOOD.pdf",
+      "Reyes personal - 739 NE 111 ST - POLIZA BUILDER RISK.pdf",
+      "Reyes personal - RaulReyes - Exemption - 06-06-2026.pdf",
+      "Reyes personal - 820 NE 111 - BUILDER RISK - 2026-07-02.pdf",
+      "Reyes personal - 820 NE 111 - FLOOD - 0003306916 - 2026-08-24.pdf",
+      "Reyes personal - 2710 LE JEUNE - BUILDER RISK POLICY 2026.pdf",
+      "Reyes personal - 645 NE 115 ST - Flood - Wright - signed.pdf"
+    ],
+    "personal_files_count_note": "11 personal files copied (task estimated ~19; actual source folder had fewer distinct residential property/flood/builder's-risk documents than estimated -- all property/flood/builder's-risk + the exemption letter that existed in REYES POLICIES were captured).",
+    "skipped": []
+  },
+  "hvac_gl_policies_shared_folder": {
+    "destination_id": "1sXVSVsuSxzwyu93nTTMbWqf6CUm_JZfY",
+    "destination_path": "03 Carriers & Markets/HVAC GL Policies and Quotes",
+    "files_copied": 28,
+    "notes": "All 28 GL quote/policy PDFs for multiple HVAC clients (Apogee, Rolando's, Central Comfort, Absolute Air, G&D Mechanical, EMP3, AJF/Brophy, Chiller Medic, Air At Your Door, ac tech professionals, Techno HVAC, etc.) copied as-is into 03 Carriers & Markets per scope -- this is a carrier/market reference folder, not client-specific, so no per-client subdivision was applied."
+  },
+  "coi_templates": {
+    "destination_id": "1jbLvE_JSMMg_jHZjExALCSa36rpYErIe",
+    "destination_path": "05 Templates & Resources/COI Templates",
+    "zzzzzz_files_copied": 9,
+    "zzzzzz_files": [
+      "Apogee HVAC Solutions COI Template.pdf",
+      "Central Comfort Air Conditioning Inc COI.pdf",
+      "AJF Roofing Inc COI Template.pdf",
+      "Rolando's HVAC COI Template.pdf",
+      "Absolute Air Solutions COI Symbol 1- Copy.pdf",
+      "Absolute Air Solutions COI Symbol 789.pdf",
+      "G & D Mechanical Services COI Template.pdf",
+      "EMP 3 Solutions Template.pdf",
+      "305 Power WC COI Template.pdf"
+    ],
+    "older_templates_subfolder_id": "1BEL-M4-QLEAvoBZ_MTJBlOjNWj28TcOQ",
+    "older_templates_destination_path": "05 Templates & Resources/COI Templates/Older Templates",
+    "older_templates_files_copied": 11,
+    "older_templates_source": "111111 VA STUFF/COI Templates (8 per-client subfolders)",
+    "older_templates_files": [
+      "Central Comfort AC COI Template.pdf",
+      "AJF Roofing Inc COI Template CNA.pdf",
+      "Absolute Air Solutions COI Template Symbol 1.pdf",
+      "Absolute Air Solutions COI Template Symbol 7,8,9.pdf",
+      "EMP 3 Solutions COI Template.pdf",
+      "Apogee HVAC Solutions Template COI.pdf",
+      "COI - Morata Plumbing 25-26 - University of Miami.pdf",
+      "G&D Mechanical COI Template.pdf",
+      "Rolando's HVAC GL Blanket AI, PNCB, WOS End.pdf",
+      "Rolando's HVAC COI Template.pdf",
+      "Rolando's HVAC Auto Endorsements.pdf"
+    ],
+    "instructions_doc_copied": true,
+    "instructions_doc_destination": "05 Templates & Resources/COI Templates/Instructions for COI & Client Information.docx",
+    "instructions_doc_source_note": "Found duplicated across multiple per-client subfolders (Absolute Air's VA STUFF folder, and legacy per-client copies elsewhere); copied the version from the WON-tree VA STUFF/COI Templates/Absolute Air Solutions subfolder as the canonical instance since it's under the sweep's source root."
+  },
+  "pii_restricted_summary": {
+    "root": "06 Personal & PII - RESTRICTED (1ZmXC6r69AonX3q5sYQY5SipNiSsvQMz-)",
+    "new_subfolders_this_batch": [
+      "Air Contracting & Refrigeration (3 files)",
+      "ERSI (1 file)",
+      "Reyes Construction (11 files, prefixed 'Reyes personal -')"
+    ],
+    "total_pii_files_this_batch": 15
+  },
+  "skipped_junk": [],
+  "totals": {
+    "won_accounts_files_copied": 34,
+    "reyes_files_copied": 20,
+    "hvac_gl_shared_folder_files_copied": 28,
+    "coi_templates_files_copied": 21,
+    "grand_total_files_copied": 103,
+    "pii_files_within_total": 15
+  },
+  "originals_modified_moved_or_deleted": false,
+  "timestamp": "2026-07-03T06:01:00Z"
+}

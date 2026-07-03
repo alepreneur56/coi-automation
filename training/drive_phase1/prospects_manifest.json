@@ -1,0 +1,57 @@
+{
+  "task": "Copy prospect archive into 02 Prospects (Active/Dead) - copy-based reorg, originals untouched",
+  "target_02_prospects_id": "1op3PGaMBXZc0McBSMhMTKwV43zMyyEp8",
+  "target_active_id": "162aWXX26RIMF_LYOnupDpPPlfujSU1nU",
+  "target_dead_id": "1X2WOZTcIMmWm0JZGT-1ZhK3CpLqWeLzr",
+  "calls_used_estimate": 68,
+  "cap": 450,
+  "sections": {
+    "1_upcoming_appts": {
+      "status": "COMPLETE",
+      "source_folder": "WORK FOLDER/OG Folder/0000Upcoming Appts",
+      "source_id": "1P-p3j9HwWOvPR04VEt_NcQrR9wQEO3II",
+      "dest": "02 Prospects/Active/<Company>",
+      "companies_copied": [
+        "AC Pros of Florida", "Air Current", "Cozy Climate", "Billy Graham",
+        "Air Patton Inc", "Blair Air Conditioning & Heating Service LLC",
+        "DC AC Air Conditioning & Heating", "DNA Air Conditioning",
+        "Weldon Services Inc (Weldon Plumbing Heating & Air Condit)",
+        "Air Today Heating & Cooling", "Wind Chill LLC", "G & D Mechanical",
+        "Kenneth J Bowen LLC DBA Bowen Cooling", "Quality Stone by Martile",
+        "Continental Air Conditioning", "Rolando's HVAC LLC",
+        "Whaley Heating Air Conditioning & Insulation",
+        "Universal Air Conditioning Corp", "Weldon Services",
+        "Gables Air Conditioning Corp", "Chiller Medic"
+      ],
+      "companies_count": 21,
+      "files_copied": 45,
+      "skipped": [
+        {"reason": "0-byte junk txt", "name": "DIFF PRESENTATION FOR DIFF TYPE OF ACCTS.txt (Air Patton 1ST APPT subfolder)", "id": "1K_oeaWY2wQbi1__ug-PIpVnciP01aETz"},
+        {"reason": "0-byte junk txt", "name": "DIFF PRESENTATION FOR DIFF TYPE OF ACCTS.txt (Air Patton 2ND APPT subfolder)", "id": "1PFmetOkOrbTOevzordsxeo93aA3QdXmP"}
+      ],
+      "pii_found": [],
+      "notes": "17 top-level items in 0000Upcoming Appts = 14 direct company folders + 3 week-container folders (0904 week, 0908 week, 0915 Week) holding 7 more companies = 21 total company folders. Flattened week containers away in destination. Air Patton had nested Presentation/1ST APPT + 2ND APPT subfolders - flattened, kept 1 real pptm file."
+    },
+    "2_dead_semidead_zdead_interesting": {
+      "status": "NOT_STARTED",
+      "targets": [
+        "WORK FOLDER/OG Folder/DEAD",
+        "WORK FOLDER/OG Folder/Semi Dead",
+        "WORK FOLDER/OG Folder/Pushing Forward/zzzzz Dead (incl. Xtreme Pumping Solutions)",
+        "WORK FOLDER/OG Folder/ZZZZZ Interesting Prospects"
+      ],
+      "dest": "02 Prospects/Dead/<Company>",
+      "expected_company_count": "24+"
+    },
+    "3_old_documents": {
+      "status": "NOT_STARTED",
+      "targets": [
+        "Old Documents/Prospect prep notes (15 companies)",
+        "Old Documents/MOD PULLS"
+      ],
+      "dest": "02 Prospects/Dead/<Company> (merge MOD PULLS by name match, else 02 Prospects/Dead/MOD PULLS/)"
+    }
+  },
+  "pii_routing_rule": "06 Personal & PII - RESTRICTED with 'Xtreme Pumping -' prefix (or appropriate company prefix) for: driver license scans, payroll summaries, WC AUDIT w/ payroll, DL/DOB/census/payroll files",
+  "skip_rule": "webpage-asset folders (e.g. *_files), .url stubs, 0-byte files -> log SKIPPED:reason, do not copy"
+}

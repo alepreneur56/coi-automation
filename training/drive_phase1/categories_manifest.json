@@ -1,0 +1,65 @@
+{
+  "task": "Copy remaining category material - Old Documents, More bullshit files, Other Desktop Files, WORK FOLDER extras",
+  "started": "2026-07-03",
+  "top_level_ids": {
+    "01 Clients": "1cYdgsk7Fo495rly6ZO02AxWZs2vcxLaX",
+    "03 Carriers & Markets": "1lACAw0KrYtqhG71cn5phGNolaynYvuPm",
+    "04 Sales & Marketing": "1EAQoqX_SkOWTwxCn2IYT9AeoNQIDSMZE",
+    "05 Templates & Resources": "16tAlQQga0LiTev0n2rMv_DSVuIzxmWuv",
+    "06 Personal & PII - RESTRICTED": "1ZmXC6r69AonX3q5sYQY5SipNiSsvQMz-",
+    "07 To Review": "1b2m5Dp5JndLccMbHOgrh4IxJh5oN0ZFu"
+  },
+  "client_folder_ids": {
+    "305 Power Corp": "1uPVdAb1taQ-pmbOkUPSDAC-mqLedEktF",
+    "305 Power Corp (dup)": "1U4HBnG5IjjH-perPokZ2_afHE-QmDZbZ",
+    "Central Comfort Air Conditioning": "1cuvaPqYHAYaInBbMncd62pIZrTcYNXGy",
+    "Apogee HVAC Solutions": "1SVld_LTmf4-kXJyrewCXKPrFCO7RXDea",
+    "Absolute Air Solutions": "13GNboYBhcb6RIemmBlU72l2kg_1ziWJL",
+    "G & D Mechanical": "1RK_U6fnPmrojceppiXiMA2ocm0kVkMax",
+    "Rolando's HVAC": "1j0_CP0fUO-pzlthR7ZPTAO5ZQDvayjyO",
+    "EMP 3 Solutions": "1IerVSI035KKA9e6MGj8Xv0lLCWsJZHrq",
+    "AJF Roofing": "1QdETtqbLnSPb3qcyOo8Wn5kx2Du6BW87"
+  },
+  "created_subfolders": {
+    "04 Sales & Marketing/Call Recordings": "1djbRIzTA8tzj5tLFh4YqMqOHIZslxVRv",
+    "04 Sales & Marketing/Huddles": "1ke0hLaqpA6nH93lP9n-_CdoLKF0z8Nye",
+    "04 Sales & Marketing/SWP Presentations": "1KIhnMRVMeh4HkHm_8e_WWtHDXLI8n6B0",
+    "04 Sales & Marketing/Hiring VA": "1PU3SEhFAANnkoiRsghRAA6eJtzSwyTbW",
+    "04 Sales & Marketing/26-27 Business Plan": "1ihHA52yhyBR8ysTKmUMn_PoOkSCA3ohp",
+    "04 Sales & Marketing/26-27 Business Plan/OneNote Backup": "1rO4ZlbY01XCCxGPiUzFNcevYS0NR_otA",
+    "04 Sales & Marketing/OneNote Notebooks": "14rN4j7dAkhY-Sfv1mSdPQSf3-HyIiD7y",
+    "04 Sales & Marketing/Industry Trends": "1NJZGbrtbUPdlljjXc_7Eja4CT8cYUJkO",
+    "04 Sales & Marketing/Internal": "1dswZcAnyncwu7yCuQHS_y9TwT6fYxPyB",
+    "04 Sales & Marketing/Lead Lists": "1_txuZMY6bzVZ9iMfdl0BSmLqsZJUo8U7",
+    "04 Sales & Marketing/Pitch Decks": "10w-PjszKhjZ8aj4YbKvc8Hy66BrKctHl",
+    "04 Sales & Marketing/USI Training": "1JHrB1_B8JUwf8fGZ8lsNY8V13i34wpm-",
+    "05 Templates & Resources/Logos": "1xCwFffO4zQ89qqd-At0FPmUSZGoVaPUH"
+  },
+  "scope_1_old_documents": {
+    "status": "complete except OneNote Notebooks (8 .url stubs - SKIPPED per rule)",
+    "excluded_per_task": ["Prospect prep notes", "MOD PULLS", "My Data Sources (not in scope list, left untouched)"],
+    "copied_count": 46,
+    "detail": "22 Sound recordings m4a (21 to Call Recordings, 1 Engagement Day to PII), 8 Huddles docx, 5 SWP pptx, 3 Hiring VA files, 2 26-27 Business Plan (doc + OneNote pkg), 1 Industry Trends pdf, 1 Ins Co Client Portals pdf (placed in 03 root), 3 loose-file client-facing docs (Carrier Contacts xlsx, Construction Producers xlsx -> 03 Carriers; List of Cert Holders xlsx -> 05 Templates), Iconbrickell condo pdf -> PII, EMR Letter AJF -> AJF Roofing client folder, Exclusion for Jeff.pdf + GAIC-GPL Stolar.doc -> 07 To Review (unclassifiable/non-scope-client), Cheat Sheet/Objections/Daily Notes docx -> 04 Sales & Marketing root (cold call training material)"
+  },
+  "scope_2_more_bullshit_files": {
+    "status": "complete",
+    "total_files": 39,
+    "copied_count": 27,
+    "skipped_count": 12,
+    "detail": "5 lead/export files -> Lead Lists; 7 pptm pitch decks -> Pitch Decks; Loss Runs Req Ltr (2 files) + List of Cert Holders -> 05 Templates; Reyes Construction Insurance Summary.xlsx (no client folder exists) + hello.docx + color scheme.docx + Business Card Form -> 07 To Review; Markeitng & Carrier Notes, Document.docx, SWP Experience Mod Paul.pptx, Call Logs.xlsx, Random calls 0430.docx, Cold Calling Notes.docx, Team Huddle.docx, Pitch Spanish.docx -> 04 Sales & Marketing root",
+    "skipped": "10 .url stubs + 2 zero-byte docx (Pitch English.docx, 0429 meeting.docx)"
+  },
+  "scope_3_other_desktop_files": {"status": "in_progress"},
+  "scope_4_work_folder_extras": {"status": "not started"},
+  "pii_flagged": [
+    {"file": "Engagement Day - 05-18-26.m4a", "dest": "06 Personal & PII - RESTRICTED", "reason": "personal engagement recording, not business"},
+    {"file": "Iconbrickell Condominium No. ONE TWO THREE.pdf", "dest": "06 Personal & PII - RESTRICTED", "reason": "personal condo document"}
+  ],
+  "skipped": [
+    {"folder": "Old Documents/OneNote Notebooks", "reason": "8 .url shortcut stubs, SKIP rule"},
+    {"folder": "Old Documents/Prospect prep notes", "reason": "owned by another agent"},
+    {"folder": "Old Documents/MOD PULLS", "reason": "owned by another agent"}
+  ],
+  "api_call_count": 133,
+  "checkpoint_note": "categories_manifest.json did not exist prior to this task; created fresh as checkpoint. Call count is running tally of all search/copy/create calls made."
+}
