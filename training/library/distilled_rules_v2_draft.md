@@ -775,3 +775,92 @@ batch-1 decision carried forward unchanged.
 the same evening with the verified batch-2 findings
 (`coi_review_decisions_partial2_2026-07-03.json`). Working draft only —
 supersede with the final-export version.*
+
+## 2026-07-04 rulings (Alex, voice session)
+
+### (a) Global uncontrolled-lines rule — issue + referral
+
+When a request demands a line we do NOT control: **ISSUE our cert normally**
+and include the referral line in the reply. Never hold the cert over an
+uncontrolled line. Approved referral wording (#1, approved 2026-07-04):
+
+> "Please note our office handles the [controlled lines] policies. The
+> [missing line] certificate will come from the broker who handles that
+> policy."
+
+Per-account overrides may be set later via `override_referral_behavior` on a
+client in the registry. Per-client controlled/uncontrolled rulings (encoded in
+the proposed registry, see `coi_client_registry.proposed_controlled_lines.json`):
+
+| Client | Controlled | Uncontrolled (broker note) |
+|---|---|---|
+| 305 Power Corp | GL, Auto, Excess, WC | Bonding (handled in-house by Alejandro's team; route bonding requests to Alejandro) |
+| Rolando's HVAC | GL, Auto | WC (another broker) |
+| EMP 3 Solutions | GL, Auto, WC | none |
+| Central Comfort AC | GL, WC, Property | Auto (StateFarm) |
+| G&D Mechanical | BOP (GL + Property + Cyber bundled), Auto, Umbrella, WC | none |
+| Absolute Air Solutions | Auto ONLY | GL, WC, Umbrella (prior broker) |
+| AJF Roofing | GL, Auto, Umbrella, WC (all CNA) | Bonds (not done by us) |
+| Apogee HVAC | GL, Auto, Excess, WC | Bonding (third-party associate; no upsell) |
+| Clayton Mechanical | BOP (GL + some Property), Auto, Umbrella, WC | none |
+
+### (b) Limits shortfall on controlled lines — NEVER hold
+
+When the requestor demands higher limits than the policy carries on a line we
+DO control: never hold the cert. Three emails go out:
+
+1. **Cert out normally** to the requestor, showing the TRUE limits.
+2. **Separate client email** — "shoot me a call" framing, WITHOUT copying the
+   third party. Approved client-email draft:
+
+   > "[Name], we sent the certificate to [requestor]. It shows $1,000,000 per
+   > occurrence because that is what your policy currently carries. They are
+   > requesting $2,000,000. Give me a call when you get a chance so we can go
+   > over the best next step. Regards,"
+
+3. **Alex gets a non-compliance breakdown** (internal).
+
+### (c) Ancillary lines the client doesn't carry
+
+EPLI / pollution / cyber / crane / professional and similar ancillary
+requirements the client simply doesn't carry: send the cert normally, one
+delivery email, Alex gets a non-compliance email. Future: a master-bypass
+list of never-applicable requirements so these stop generating noise.
+
+### (d) Rolando's scheduled-auto SOP
+
+- The COI is NEVER held over the scheduled-auto AI endorsement.
+- Auto-fire a carrier request email, subject:
+  `REF: Rolando's HVAC - [auto policy #] - Endorsement Request - Additional Insured`
+  to `endorsements@ascendantgroup.com` + `alejandro.bello@usi.com`
+  (both addresses pending final confirmation).
+- AI-database dedupe — don't re-request an endorsement for a holder already in
+  the database (bulk seed list coming from Alex).
+- NEVER edit an existing endorsement PDF's name/date — Alex explicitly
+  scratched that idea.
+
+### (e) Grading status
+
+Grading STOPPED at 112 by decision; the remaining 44 get folded in later.
+Walkthroughs deferred.
+
+### (f) B11/B12 open questions from batch 2 — RESOLVED
+
+- B11 (uncontrolled lines) resolved by ruling (a) above.
+- B12 (missing holder address) resolved: resolution order is
+  history DB -> Sunbiz -> bot asks the requester.
+
+### (g) Follow-form excess entries
+
+Note-only, no attachment.
+
+### (h) 305 excess-WOS decision — PENDING
+
+Fix the template vs buy the endorsement: not yet decided.
+
+### (i) Alex's own follow-ups
+
+- Email LUBA carriers to confirm blanket WC WOS (EMP3 / G&D / 305).
+- Send policy docs + blanket forms.
+- Send Rolando's bulk AI list (for the dedupe database).
+- Confirm the Ascendant endorsement email addresses.
