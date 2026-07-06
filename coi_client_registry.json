@@ -9,6 +9,7 @@
     "contact_phone": "786-355-0449",
     "contact_email": "Alejandro.bello@usi.com"
   },
+  "uncontrolled_lines_policy": "GLOBAL: when a request demands a line we do not control, ISSUE our cert normally and include the referral line in the reply. Referral wording (approved 2026-07-04): 'Please note our office handles the [controlled lines] policies. The [missing line] certificate will come from the broker who handles that policy.' Per-account overrides may be set later via override_referral_behavior on a client.",
   "clients": [
     {
       "client_id": "305_power_corp",
@@ -18,6 +19,18 @@
         "305power",
         "tres cero cinco power",
         "power corp"
+      ],
+      "controlled_lines": [
+        "GL",
+        "Auto",
+        "Excess",
+        "WC"
+      ],
+      "uncontrolled_lines": [
+        {
+          "line": "Bonding",
+          "broker_note": "handled in-house by Alejandro's team; route bonding requests to Alejandro"
+        }
       ],
       "insured_address": "14028 SW 140TH BAY 14, Miami, FL 33186",
       "trade": "Electrical Contractor",
@@ -141,6 +154,16 @@
         "rolando's",
         "hvac de rolando"
       ],
+      "controlled_lines": [
+        "GL",
+        "Auto"
+      ],
+      "uncontrolled_lines": [
+        {
+          "line": "WC",
+          "broker_note": "another broker"
+        }
+      ],
       "contact_emails": [
         "leyva.lrolandoshvac@gmail.com"
       ],
@@ -233,6 +256,12 @@
         "emp 3 solutions",
         "emp3solutions"
       ],
+      "controlled_lines": [
+        "GL",
+        "Auto",
+        "WC"
+      ],
+      "uncontrolled_lines": [],
       "insured_address": "3440 NW 73rd Ave, Miami, FL 33122",
       "trade": "HVAC Contractor",
       "templates": [
@@ -295,6 +324,17 @@
         "central comfort air conditioning",
         "aire central comfort",
         "central air"
+      ],
+      "controlled_lines": [
+        "GL",
+        "WC",
+        "Property"
+      ],
+      "uncontrolled_lines": [
+        {
+          "line": "Auto",
+          "broker_note": "StateFarm"
+        }
       ],
       "insured_address": "12320 SW 129th Ct, Miami, Miami, FL 33186",
       "trade": "HVAC Contractor",
@@ -395,6 +435,13 @@
         "g y d mechanical",
         "g y d"
       ],
+      "controlled_lines": [
+        "BOP (GL + Property + Cyber bundled)",
+        "Auto",
+        "Umbrella",
+        "WC"
+      ],
+      "uncontrolled_lines": [],
       "insured_address": "14449 Mandolin Dr, Orlando, FL 32837",
       "trade": "HVAC Contractor",
       "license_number": "CAC1815707",
@@ -457,6 +504,23 @@
         "absolute hvac",
         "absolute",
         "aire absoluto"
+      ],
+      "controlled_lines": [
+        "Auto"
+      ],
+      "uncontrolled_lines": [
+        {
+          "line": "GL",
+          "broker_note": "prior broker"
+        },
+        {
+          "line": "WC",
+          "broker_note": "prior broker"
+        },
+        {
+          "line": "Umbrella",
+          "broker_note": "prior broker"
+        }
       ],
       "insured_address": "PO Box 6930, North Port, FL 34290",
       "trade": "HVAC Contractor",
@@ -542,6 +606,18 @@
         "ajf roofing inc",
         "techado ajf"
       ],
+      "controlled_lines": [
+        "GL",
+        "Auto",
+        "Umbrella",
+        "WC"
+      ],
+      "uncontrolled_lines": [
+        {
+          "line": "Bonds",
+          "broker_note": "not done by us"
+        }
+      ],
       "insured_address": "7495 NW 7th Street, Suite 10, Miami, FL 33126",
       "trade": "Roofing Contractor",
       "license_number": "CCC1331111",
@@ -603,6 +679,18 @@
         "apogee hvac",
         "apogee hvac solutions",
         "apogee solutions"
+      ],
+      "controlled_lines": [
+        "GL",
+        "Auto",
+        "Excess",
+        "WC"
+      ],
+      "uncontrolled_lines": [
+        {
+          "line": "Bonding",
+          "broker_note": "third-party associate; no upsell"
+        }
       ],
       "insured_address": "640 S Miami Avenue, Suite 201, Miami FL 33130",
       "trade": "HVAC Contractor",
@@ -678,6 +766,13 @@
         "clayton air and heating inc",
         "clayton hvac"
       ],
+      "controlled_lines": [
+        "BOP (GL + some Property)",
+        "Auto",
+        "Umbrella",
+        "WC"
+      ],
+      "uncontrolled_lines": [],
       "contact_emails": [],
       "contact_domains": [
         "claytonmechanical.com"

@@ -864,3 +864,52 @@ Fix the template vs buy the endorsement: not yet decided.
 - Send policy docs + blanket forms.
 - Send Rolando's bulk AI list (for the dedupe database).
 - Confirm the Ascendant endorsement email addresses.
+
+### (j) Umbrella / Excess interchangeable (Alex, 2026-07-04 — recorded 2026-07-06)
+
+Requirement docs use "umbrella" and "excess" interchangeably; either satisfies
+either. Only when the requirement explicitly names the underlying lines
+("umbrella over GL, comp and auto") does the distinction matter — then compare
+against the client's actual policy structure. Encoded in Prompt v2
+(CONTROLLED AND UNCONTROLLED LINES section).
+
+---
+
+## PROMPT V2 — ASSEMBLED 2026-07-06
+
+Prompt v2 was assembled from this draft on 2026-07-06 (branch `feat/prompt-v2`):
+
+- **Re-tag applied** to a WORKING COPY of the batch-2 export
+  (`coi_review_decisions_retagged_2026-07-06.json`): the 15 cannot-grade /
+  artifact / silent-inversion hazard hashes from the re-tag checklist were
+  re-tagged `skip` (original decisions preserved under `_retag`). Alex's raw
+  export is untouched.
+- **`build_training_library.py` run** on the re-tagged decisions: 2 positives
+  mined (Riviera at Coral Lakes body-only — used as RC-1; the NV2A team case's
+  auto-derived output predated the R5 team ruling, so it was hand-reworked
+  into the team-sender example) + 4 negatives (Sandy Lane held back per R9
+  walkthrough-pending; Notowitz and Barron folded into the attached-COI
+  rules/examples; G&D vehicle folded into R7's prompt section).
+- **Encoded in `coi_system_prompt.txt`:** BUILD-THEN-APPROVE (`requires_approval`)
+  for clean attached-COI + @usi.com team senders + vehicle proof-of-insurance;
+  CONTROLLED AND UNCONTROLLED LINES (ruling (a) referral field
+  `uncontrolled_lines_requested`, ruling (b) `limits_shortfall`, ruling (c)
+  `ancillary_missing`, ruling (d) `carrier_endorsement_request`, ruling (j)
+  umbrella/excess); non-COI service + bonding → question/Alejandro hand-off (R4);
+  FYI-forward monitor rule (R6); revision-lane tightening (attached expiring
+  cert ≠ revision; delivery-problem/bounce reports = revision, never question;
+  B10 any-attachment revision specifics; amendment refinement); B12 address
+  resolution order (history → Sunbiz → ask); B1/B3/B4 (per-request matching,
+  per-request insured ID incl. signature blocks, mine the full thread);
+  requirements docs supply project name/address; R3 wording-supersedes;
+  B5 never falsify limits; R7 vehicle proof-of-insurance; entity+affiliates +
+  ACORD-edition bypass; 7 real-case examples (RC-1..RC-7) incl. the spanish_1
+  fix (RC-2).
+- **Registry paired:** `controlled_lines`/`uncontrolled_lines` +
+  `uncontrolled_lines_policy` merged into `coi_client_registry.json` on top of
+  the 2026-07-06 template/DoO state (purely additive merge).
+- **NOT encoded (still blocked/deferred):** R9 main-entity-on-top (walkthrough
+  pending), walkthrough 3.1-3.9 open items, B-C2 holder-address DB (code task),
+  B-C3 flatten mode (code task), B-C4 NDR wording (needs Alex's blessing),
+  sender-side referral/shortfall/ancillary/carrier-SOP emails (flows code
+  task — the prompt only emits the signals).

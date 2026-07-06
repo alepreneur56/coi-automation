@@ -1,11 +1,9 @@
 # Prompt Integration Plan — few-shot training examples
 
-> NOTE: this run used SYNTHETIC decisions (training/library/synthetic_decisions.json). Regenerate from Alex's real export before integrating.
-
-How the 5 positive examples and 5 negative examples in
+How the 2 positive examples and 4 negative examples in
 `training/library/training_examples.json` should be inserted into
 `coi_system_prompt.txt`. This plan does NOT modify the prompt; apply it as a
-separate, reviewed edit. Empty buckets this run: requirements_pdf_attached, complex_endorsements, specific_language, spanish.
+separate, reviewed edit. Empty buckets this run: requirements_pdf_attached, reference_coi_attached, complex_endorsements, specific_language, spanish.
 
 ## Where
 
@@ -68,7 +66,7 @@ These historical requests were mishandled. Never reproduce these outcomes.
 4. Do not include Alex's raw notes, file hashes, or historical_resolution
    fields in the prompt — they are provenance, kept in
    training_examples.json only.
-5. Token budget: 5 examples plus negatives is roughly 4-6k tokens.
+5. Token budget: 2 examples plus negatives is roughly 4-6k tokens.
    The system prompt is cached (the launchd service keeps it warm), so the
    cost impact is one cache write per deploy. If trimming is needed, drop
    to 2 per bucket starting from body_only_request — per

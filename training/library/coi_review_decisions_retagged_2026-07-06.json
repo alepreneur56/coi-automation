@@ -1,0 +1,476 @@
+{
+ "b93578b8d8afeb3f0cd4e4bb9996e53a450fed39": {
+  "decision": "disagree",
+  "note": "so the client sent us an old coi from their prior broker with the cert holder info. I dont see here our reply but first thing is to notice that the agent and agency is different thus this is an example coi taht we need to use as help to make the coi we will devlier to client. Thus we should have created a coi that inlcuded the cert holder info. regarding the description of ops page this is an old coi with a less sophisticated wording thus our wording would supersede."
+ },
+ "82f41dd8c71999705370a85268aeaa08bfa6ac6f": {
+  "decision": "disagree",
+  "note": "everything here is good except we should use our more sophisticated description of ops wording which to be fair the reason this coi didnt include it is because here at this specific moment in time we only controlled the comp and didnt have a template cert made with the right wording.... and license number...."
+ },
+ "b5214dc0efe50b67426f2c6154da8e4f848b75eb": {
+  "decision": "skip",
+  "note": "i can only see delivered coi i cannot see what the request was.... thus i cannot deduse wheather this is right or wrong",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "cannot-grade: request not visible",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "492ab96f9b08ea7ff5f42c460ce9a43727500c1c": {
+  "decision": "skip",
+  "note": "i can only see delivered coi i cannot see what the request was.... thus i cannot deduse wheather this is right or wrong. what I can say is that the template i had here was not good and was missing license number and ai and waiver of subrogation wording. FYI for absolute air i only control the auto",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "cannot-grade: request not visible (era caveat)",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "28d4217dba5773541654f6d279e3b27b2d52044b": {
+  "note": "i can only see delivered coi i cannot see what the request was.... thus i cannot deduse wheather this is right or wrong. what I can say is that the template i had here was not good and was missing license number and ai and waiver of subrogation wording. ",
+  "decision": "skip",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "cannot-grade: request not visible (era caveat)",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "cb95b6a28ae054ef8205e39202734c49bd8027d3": {
+  "note": "i can only see delivered coi i cannot see what the request was.... thus i cannot deduse wheather this is right or wrong. what I can say is that the template i had here was not good and was missing license number and ai and waiver of subrogation wording.  "
+ },
+ "f4abacce9384b425d25ac586fd7a13a2e850765d": {
+  "decision": "disagree",
+  "note": "this is a very specifc case where the COI was issued for G&D Mechanical showing proof of insurance for a new vehicle they had purchased so they could take it off the lot."
+ },
+ "b5b0502dbbf3a163dd92fed36a3465186a31975f": {
+  "decision": "skip",
+  "note": "i can only see delivered coi i cannot see what the request was.... thus i cannot deduse wheather this is right or wrong. what I can say is that the template i had here was not good and was missing license number and ai and waiver of subrogation wording. ",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "cannot-grade: request not visible (era caveat)",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "e9dd589b42ff791405168d91979f4d3e70ad3149": {
+  "decision": "approve",
+  "note": "I agree with the resutl except there should have been different wording on the description of operations. also we are missing the first attachment that romy sent which included an old coi with the cert holder info which is where Katherin found the info for the cert holder...."
+ },
+ "41667af32483a5b4a1f00b9bbcc5495ac5620125": {
+  "decision": "disagree",
+  "note": "the deliverd and the request have nothing to do with each other. the request is for cancellation letters and cancelling policies requests to us and to sttefarm..... thus if we get a request like that - alejadnro will get back to you! whcih btw we will not because i have my clients sent only coi requests at the moment to the specified address. only down the line will I add endorsements as well.... the coi on the deliverd is correct but not for this request it is correct for the request that asked for this coi."
+ },
+ "7f8f08829851347d359992d71283e868d4803721": {
+  "decision": "skip",
+  "note": "this is a great exmaple but the request and deliverd "
+ },
+ "6746cee9a44b5cd24cca05c5b130b987f4939379": {
+  "note": "this is the correct COI for the request that came in at: 2026-02-23 15:08:16 - the only thing i would improve is the formatting of the text in the description of operations but that is something that you already have and at that time the template i was using was different.",
+  "decision": "approve"
+ },
+ "8f838c3e200a8c14fd87ea2044676f2b1dc954cc": {
+  "decision": "skip"
+ },
+ "3e89666fa969b96873b642c14ee5e58c7d41f26c": {
+  "decision": "skip"
+ },
+ "34d67164299fa07bcc54ff040ba5d6135d5a384d": {
+  "decision": "skip"
+ },
+ "6d144fffe28c1a5dd1de013b87fd8f511ed5c170": {
+  "decision": "skip"
+ },
+ "927ae296bc679c998ce72f46ca3a26d473c81507": {
+  "decision": "skip",
+  "note": "i created a coi for this. the one you are showing is the one the client sent. this should have been handled by providing coi of the line i control the auto and copy the cert holder from the coi the insured is sending which is of the broker they currently have. ",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "artifact: graded PDF is the client-sent prior-broker COI",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "c4314db21c7e73262d9060e1a813f36b5ee171ed": {
+  "note": "andrea vargas fucking works on my team same as katherin molina and christian devilme and other people with @usi EMAILS....... the coi is correct - this is one of the most complex scenarios though for this you would create it on the backend and you will always send it to me and i will need to approve before you send out to client and requestor.",
+  "decision": "disagree"
+ },
+ "def0bbd795b81497f354b6ee16e66462b0bdaadd": {
+  "note": "this is the coi they sent with request whcih is a sample coi from requestor to showcase what hte coi should look like....",
+  "decision": "skip",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "artifact: graded PDF is the requestor sample COI",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "d5fb0b80b99d682e889ef1f425d189bcd3c326fb": {
+  "decision": "approve",
+  "note": "this is the coi we sent and this is correct. it was using old description of ops text but cert holder which is the most important part is correct.f"
+ },
+ "a5b8ea2fdfbb24a4b100983bb1b98c6438cee150": {
+  "decision": "skip",
+  "note": "i do not see the request where insured asked for this coi thus i cannot fully verify accuracy same way I dont see the delivered coi for the request with a shit ton of certificate holder names.....  Gina Ramos 2026-02-18 15:26:39 URGENT RUSH RUSH",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "cannot-grade: request/delivery pairing not visible",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "75827b73d2c9eb0e51ae1a4fc38a7ae747501e25": {
+  "note": "this is the coi from the request.... i made and sent janice a coi that copied the cert holder info from this one and had the description of ops text from the template....",
+  "decision": "skip",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "artifact: graded PDF is the COI from the request",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "07dd5ddb3028ad5adf3c340fcbe46a52c0bc26ec": {
+  "decision": "skip"
+ },
+ "412dc147c1279b276a65e5dc0c09a4add75be615": {
+  "decision": "skip"
+ },
+ "e614656e47e4177822979785151b201994298432": {
+  "decision": "skip"
+ },
+ "a8c80d22e445ff4005ea0a33b6cf63110d1a23b4": {
+  "decision": "skip"
+ },
+ "ffdea7dc6954b4e1833f85def5f72b6cbfcde093": {
+  "decision": "skip"
+ },
+ "c1ac2efef08e8e2ef960fb270334f80dac71c526": {
+  "decision": "skip"
+ },
+ "809a8f0c5964494f64fd0fbf8677f5baf6aed8c8": {
+  "decision": "skip"
+ },
+ "6671223f1dbc1e2eb5ac269005e144d46cc9b1e3": {
+  "decision": "skip"
+ },
+ "a861e2571870dacd15e7f75ff8bf459631a1fba2": {
+  "decision": "skip"
+ },
+ "04e739cf6f89397da829deb2bb6f8f8d10181875": {
+  "decision": "skip"
+ },
+ "4c01049baf215c6bb1e2c0ad338a12c14ef7b63f": {
+  "decision": "skip"
+ },
+ "37715d31e446d6809b38a3fd605e263a0b1b34c4": {
+  "decision": "skip"
+ },
+ "75a6fc4ec4dce796a1fc4bb40c7aca3a0c61f3b9": {
+  "decision": "skip"
+ },
+ "ac20ced92cb0c8874eb4f7ea67a967349541d0b2": {
+  "decision": "skip"
+ },
+ "6a5fdab6f09c3864e2c3f913bfa8822d6ed29157": {
+  "decision": "skip"
+ },
+ "a52a4e875f5700bcd987a97c68a14d24148a9fac": {
+  "decision": "skip"
+ },
+ "65130f9a2018515b673df23262b5bbe298cfe6b0": {
+  "decision": "skip"
+ },
+ "923662c5e3f26307f5e97edd36ef718f991595b3": {
+  "decision": "skip"
+ },
+ "2763f987375608970f37a865480a91f21bc68a9a": {
+  "decision": "skip"
+ },
+ "3d80b23c3af8b5dbb4f7bf43c023022c122f4117": {
+  "decision": "skip"
+ },
+ "b1c1c725209fb3b5647954a7ba025edcc6ca90ce": {
+  "decision": "skip"
+ },
+ "7e8e057bd170d8a11425bb7e886ad197577f0667": {
+  "decision": "skip"
+ },
+ "f9731b2ddcdf9d15d11ea7e94c86c7f771d777f4": {
+  "decision": "skip"
+ },
+ "d6624c42f1e50f42046fbe98f3c5ea7b2da3a1b2": {
+  "decision": "skip"
+ },
+ "5be24957612b7b04897cc239dbbac60de2d1bc55": {
+  "decision": "skip"
+ },
+ "cd6d116196d067b90ef6efb9775392f802257a61": {
+  "decision": "skip"
+ },
+ "4d60a3b579e1caafe48981748825084a79c322ec": {
+  "decision": "skip"
+ },
+ "41b94c9fc59c197e8372f03fe5fa11803e35202f": {
+  "decision": "skip"
+ },
+ "f47db21a75b5796676ae8f5f7a445c3d7cec07b9": {
+  "decision": "skip"
+ },
+ "a76b562dce351ed813f8ddf1fba0b695986cc1c3": {
+  "decision": "skip"
+ },
+ "f8b7d56f21fe2bf53c7dc209610ad5e096610e71": {
+  "decision": "skip"
+ },
+ "33ba0be5ea0e2e5284c7bb65f3110b487aeaac09": {
+  "decision": "skip"
+ },
+ "dc4c9e81f4afafb5b6163077526827b7ccb19cc3": {
+  "decision": "skip"
+ },
+ "c935c91cbd1b5562f7273117b50ae4804e75b2f5": {
+  "decision": "skip"
+ },
+ "c54bb245e3a8b6866b16173c90525715c88dee81": {
+  "decision": "skip"
+ },
+ "2419e191ac2327754afbc22a2e7d50381175f98d": {
+  "decision": "skip"
+ },
+ "a08a2184c1bb41ebce134625e58e33934b66ac62": {
+  "decision": "skip"
+ },
+ "aeb418615496c70bada564e6081a4af674e774b0": {
+  "decision": "skip",
+  "note": "this is from when i was onboarding two virtual assisstants and training them on how to do COIs"
+ },
+ "7330722f3cea2d28fad1e1780a7aeac4d74ff23f": {
+  "decision": "skip",
+  "note": "samase as prior one- i was testing for onboarding virtual assistants"
+ },
+ "4deafa0d6c452c8ab8e29b26e65cf53017e8e999": {
+  "decision": "skip",
+  "note": "what you are showing here is what the client sent instead of what me or my team sent. all good. the procedure would have been to look at the first coi sample and create a new one with our template and change the cert holder info and do the same for the other attached coi in request email and send both cois to insured or requestor in one go. also lets say for example there were endorsements attached in the cois romy sent as samples then we would use the templates we have for AJF with endorsements....",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "artifact: graded PDF is what the client sent",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "eb87397afe10bc5e79de589d46e8269411e2065e": {
+  "note": "This one is a great example to run through - the client sent the request and the sample coi was a picture - we grab the cert holder info and put it in our coi. in this specific case the coi had a project name and project address section. i am not sure if our template does have for this but if it didnt then we would create them if yes just copy the values. regarding the wording about the project data on the description of ops box we would make sure that it is equivalent or less than what we have in the template and we could issue. if it has stuff we dont have or need to request by endorsement the funnel to me with notes and let client know endorsements on the way  when you go over this note remember to rbing it up as we need to run through a few of these specific examples as the formatting in the description of operations box might change on the incoming requests ",
+  "decision": "approve"
+ },
+ "1cfcc4b5ae58b77e589bf8c2228f2423ec037a9d": {
+  "note": "this one is another very specifc example that I would like to revisit - big picutre i sent a coi and it was bounced back and insured reached out that it was missing some stuff. from the requester email you can see the coi i originally made which only had one entity in the cert holder box. when you look at the picture attached there are all the entities that need to be in the cert holder box as well as the emails says the main entity to list on top - sandy lane.....",
+  "decision": "disagree"
+ },
+ "fd77cf88659ada95562ac150092802d3af7107ec": {
+  "note": "the coi is correct. however i dont have the request email for the coi.... this is actually not a request email but an email where the insured sends coi to requester and ccs me so if there are any revisions i can quickly jump in",
+  "decision": "disagree"
+ },
+ "cecbe4dd0ef0593bbb2e81e77d64ad7e7a977416": {
+  "decision": "approve",
+  "note": "this is good. then we got reply from Romy with additional info that project info needed to be added. at that point is just add the rpoject info to description of ops box - email with taht request = 2026-02-11 18:50:20 AJF ROOFING- BURRIS"
+ },
+ "9a8f218b94058281914dbaeee9731dcb82aa4a81": {
+  "decision": "approve",
+  "note": "this is good. then we got reply from Romy with additional info that project info needed to be added. at that point is just add the rpoject info to description of ops box - email with taht request = 2026-02-11 18:50:20 AJF ROOFING- BURRIS"
+ },
+ "5ba7e65a2f995c4db7f8c05bd1306a153023c24c": {
+  "decision": "disagree",
+  "note": "completely disagree - this coi is not one of the ones being requested...... ( well it is the one being requested for Lorena Leyva 2026-01-28 20:07:10 COI. and for that request it is right except that we now have a bettter description of opps wording. regarding the other requests: Office - Rolandoshvac 2026-02-12 18:22:24 COI - OONTIDE SERVICE CORPORATION USA INC. 1603 CAPITOL AVE. STE 310 A465 CHEYENNE, WY 82001 is the cert holder and 2255 Lake Emma Rd Lake Mary, FL 32746 woud be the project address on the description of operations box. there is another request - dsegre@ajfroofingfl.com 2026-01-27 21:09:15 COI that is for a completely different insured ( ajf roofing) and that is a simple coi request. same as for this other simple coi request: Lorena Leyva 2026-01-15 15:42:17 COI"
+ },
+ "475aaac23bc6bf8206661e0f61bc177cce03e78c": {
+  "note": "this one - Alejandro Bello 2026-01-12 22:49:01 Re: COI for the City of Port St Lucie. - sample coi 5 - I had forwarded coi request to my team and forgot to include attachment....  but reality was if you look on history of email no attachment was needed as the info was in the thread: City of Port St. Lucie Building Department. 121 Southwest Port Saint Lucie Boulevard Building B. Port St. Lucie FL 34984. and the coi issued is correct, except for description of operations box whcih is now different in new template.",
+  "decision": "disagree"
+ },
+ "c62d239c8a1273ba341dce5e69f9b05b86855502": {
+  "decision": "approve",
+  "note": "agree - would only change in that we now have new template with new description of operations box."
+ },
+ "6260a6691afa16f0d1462dbd620d5b802218bfc4": {
+  "decision": "approve",
+  "note": "agree - would only change in that we now have new template with new description of operations box."
+ },
+ "4b7724de2db10bd9662d2094e2104c2d576ece76": {
+  "decision": "approve",
+  "note": "agree - would only change in that we now have new template with new description of operations box."
+ },
+ "c6b9dffa7df557f46682283ef34a9f0a5c2794fa": {
+  "decision": "skip",
+  "note": "i dont see the reqeust for this coi....",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "cannot-grade: originating request never surfaced (join reuse)",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "16ff8b2deda4725b16c000e29224e5afaeddc452": {
+  "note": "agree - would only change in that we now have new template with new description of operations box.",
+  "decision": "approve"
+ },
+ "e687487fc60b71eb50199bd11184087039fe714a": {
+  "note": "the coi sent doesnt have all the limits requested.... this is good because it doesnt falsify information but when something like this happens it needs to be created and sent to me not to insured along with what is non-compliant so i can send to client and have them talk to customer and see if they accept as is or if they dont whether it makes sense for client to get additional coverage or not....",
+  "decision": "approve"
+ },
+ "9ffede76860755505aed57d51c0a1b7cdf313003": {
+  "decision": "approve",
+  "note": "i dont see the request email but the coi is correct - agree - would only change in that we now have new template with new description of operations box."
+ },
+ "2d4cb8e56d89ab2b5ce25113ad616c11fabe69c9": {
+  "decision": "skip",
+  "note": "this charlotte county coi is from the expiring carrier not from my team..... we never put qr code on COIs. also the coi that was delivered by jade on 2026-02-02 17:35:18 Re: COI TO Charlotte County - is wrong - cert holder info is good but the description of operations is wrong she made the mistake and kept info from another client.... the one delivered on this email: 2026-02-02 17:41:32 Re: COI TO Charlotte County - that one corrected the description of ops mistake. and then this email comes back with a revision request: 2026-02-05 14:50:55 RE: COI TO Charlotte County and it is correctly fullfilled by the  2026-02-04 14:52:57 Re: COI TO Charlotte County coi deliverd and then we get one more email just acknowleging delivery. there are other cois below which are the ones I talk about here i will just skip them....",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "provenance: expiring carrier cert, not team output",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "ec2148617e8e061571b999fe9d90adecee429fb5": {
+  "decision": "skip",
+  "note": "read 72"
+ },
+ "83d16111ad8adfc605fbfdffc88052eeac96182c": {
+  "decision": "skip",
+  "note": "read 72"
+ },
+ "2a3496ee0894a9d40dc7dc28c2d616722c9fdcbd": {
+  "decision": "skip",
+  "note": "read 72"
+ },
+ "e20d0499ffdf4ee2475b4cc63c8068f4f3ea2471": {
+  "decision": "approve",
+  "note": "by this point my team was getting much better this is almost perfect - i would just have also included wording for the waiver of subrogation and auto since we controlled it already. but the license number project and address are great!"
+ },
+ "6f7ec428db598ed2e6ff3ef239deaf3a721c0768": {
+  "decision": "skip",
+  "note": "this COI is correct but i am not seeing the request for it only its delivery. also there is a message asking for the comp and i dont control the comp - in cases where I am asked for lines I dont control reply back that I do not control those insurance policies and that the broker who does will send them the coi with lines they are missing.",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "partial cannot-grade; carries B11 rule (encoded in prompt), not a verdict inversion",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "2ac897aa0ebab15d1d83c06aadfbfd9911653827": {
+  "decision": "approve"
+ },
+ "a213395cf3028efe57361c15cf3aaef30944f838": {
+  "decision": "approve",
+  "note": "i would only change that I would have asked for the address and then created and sent - once i have databse of addresses done this can be handled this way as i HAD TO LOOK FOR AN OLD COI THAT HAD THE CITY OF FORT MYERS BUILDING DEPT ADDRESS...."
+ },
+ "4bfd3b671e22bb3a4259c960411b511544b0788a": {
+  "decision": "approve"
+ },
+ "335384739dc59d799cad61c9837a58d09278d47d": {
+  "decision": "approve"
+ },
+ "69653becd240850485cae51e6ca6fa180ac1038f": {
+  "decision": "skip",
+  "note": "this was a test email - fyi though description of ops was incorrect...."
+ },
+ "ef9c62fc18ff68164a8d66ac5634c066187274d3": {
+  "note": "this was a test and description of ops this time was correct",
+  "decision": "skip"
+ },
+ "f64b2f7ed4e20edfe1e461f92751f2aba5867452": {
+  "decision": "approve",
+  "note": "the coi is correct jsut that the pock county bldg team wanted the file to not be editable at which point i had to make a change and resent but the actual structure of the coi was correct. if this ever happens just revise coi to be non-editable and resend. this is one of thoe one in a million case scenarios"
+ },
+ "6850567d96a39047e3ffc9af98849f657591d6d6": {
+  "decision": "approve",
+  "note": "this is an easy one - one thing to highlight is that i dont control all lines for this account and the coi is asking for other coverages such as the auto which statefarm has though you can skip any auto requests for this account since the auto will be delivered by statefarm agent"
+ },
+ "6b8e1d9083c2f4e255998b52416221347eec25f6": {
+  "decision": "approve"
+ },
+ "093b31d41705e7c1d49761eb7c47a203dad801b7": {
+  "decision": "skip",
+  "note": "not sure - seems like the city bounced back coi and something needed to be added but daniela doesnt specify what needed to be added..... disregard if you look at image002 it shows error message saying there is some info that needs to be in the descrtiption of ops section that wasnt on first coi delivered. new template already includes this so this wont be an issue but this helps you understand when a coi is bounced back and anyone asks for revision revision specificcs could be in text in email, in pdf, in photo..... FYI the coi here ddidnt fix desctiption of ops missing info...",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "image-extraction lesson / era caveat, not a verdict inversion",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "6dfb9151b8889a30e627539871f212bdbaf20d59": {
+  "decision": "approve"
+ },
+ "deeaccf0b79f65bcec315df6c777cc01cf169e77": {
+  "decision": "skip",
+  "note": "this coi was issued by someone else. flag this request as the way it should be created is as follows: in description of ops show that both are additional insured and in certain holder put condo name then on the next line la greca... then on the other lines below just hte address for la greca.",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "provenance: third-party PDF; construction dictation encoded as prompt rule B9",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "5314cf3c0f0e79b16e21121146c9083ef03e5f9b": {
+  "decision": "skip",
+  "note": "same as prior request"
+ },
+ "2abbf4c08ae7f760b2b5cc1c5fb5ace36e777e5d": {
+  "decision": "approve",
+  "note": "this is that type of coithat is proof of insurance for getting vehicle. this is correct - for this kind of cois you put certain holder as proof of insurance unless otherwise specified in requirements or request and include the vehicle info in the desctiption of ops along business name and license number."
+ },
+ "0f8d8a222f80b032a4b1f1c0ce1baae652880a4a": {
+  "decision": "skip"
+ },
+ "65c6ef070ee85cc4cbd8688a3047af0891ae4746": {
+  "decision": "approve"
+ },
+ "34e94ff5c613883e75422efd77dde4193be2f6d1": {
+  "decision": "approve"
+ },
+ "47c8666db5d727f071646f539151543a13c577b7": {
+  "decision": "approve",
+  "note": "FLAG THIS ONE TO COME BACK TO AND EXPLAIN THIS IS A REQUIREMENTS DOC GOOD EXAMPLE"
+ },
+ "170c3fac53c0ee9d3ef1c5082e712bd827c02d9c": {
+  "note": "I CANNOT SEE SAMPLE BUT SEEMS LIKE THE ADDRESS WAS MISSING AND REQUESTED AND THE COI COMPLETED I LIKE HOW IT HAS ALL THE ENTITIES TOGETHER IN THAT CERT HOLDER BOX. AS IT SHOULD BE",
+  "decision": "approve"
+ },
+ "323dceccb3e602437b87d0a7937dd7bd539a87a7": {
+  "decision": "skip",
+  "note": "no request can be seen on the emails associated..."
+ },
+ "02120fd922145d65aa2ed536aaded83b11ada5bc": {
+  "note": "no request can be seen on the emails associated...",
+  "decision": "skip"
+ },
+ "29d60080bded39c8497ceb79a27de5d455acd049": {
+  "decision": "skip",
+  "note": "no request can be seen on the emails associated..."
+ },
+ "09660cff352bcce1b8e821f9233a0d072c6302fd": {
+  "decision": "skip",
+  "note": "i cannot see gl attachd coi..... withohut that i cannot verify if one or the other is right..."
+ },
+ "19ff37831dfe48bf7391e9e73f88ad99d4cd2466": {
+  "decision": "approve"
+ },
+ "635cfb7825bb7b75a12f9b2c9e758fee1501cfea": {
+  "decision": "skip",
+  "note": "there is an email here where i send to laritza that the email bounced back.... to resend me where to send it to.",
+  "_retag": {
+   "original_decision": "disagree",
+   "reason": "non-clean send: NDR bounce, COI itself fine",
+   "retagged": "2026-07-06 per distilled_rules_v2_draft.md re-tag checklist"
+  }
+ },
+ "b319d3c3a362bcf7a19f7ef20325cc38cd8c67e6": {
+  "note": "already discussed that it bounced becasue it was editable at which point make the pdf uneditable and resend.",
+  "decision": "approve"
+ },
+ "b0558f373bd17c63a0bcce2644f45d50533d669f": {
+  "decision": "approve"
+ },
+ "8c818892d95884b4b0060a1f1d3bc5af3e057a27": {
+  "decision": "skip"
+ },
+ "0d2d18ea04cb89dd5dff489bc8fe22d118fa2a4d": {
+  "decision": "approve",
+  "note": "well handled insured is asking for both names and aboth addresses on one coi when in reality should be two separate cois one for each name and address"
+ },
+ "5ceca3b253b248f2f8babe7da5a7dabff06801ad": {
+  "note": "well handled insured is asking for both names and aboth addresses on one coi when in reality should be two separate cois one for each name and address",
+  "decision": "approve"
+ },
+ "3442bac32318f5e094894a7ac88d5ea9d7cdda06": {
+  "decision": "approve",
+  "note": "well done - look at how all the entities are onthe cert holder box and only one address! great job "
+ }
+}
