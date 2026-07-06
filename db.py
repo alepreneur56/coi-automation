@@ -17,6 +17,7 @@ CLI:
     python3 db.py lookup "Some Holder Name" [client_id]
 """
 
+import json
 import os
 import re
 import sqlite3
@@ -58,6 +59,20 @@ CREATE TABLE IF NOT EXISTS cois (
     request_excerpt TEXT                -- backfill only
 );
 CREATE INDEX IF NOT EXISTS idx_cois_holder_name_norm ON cois (holder_name_norm);
+
+CREATE TABLE IF NOT EXISTS auto_ai_endorsements (
+    id              INTEGER PRIMARY KEY,
+    created_ts      TEXT,
+    client_id       TEXT,               -- 'rolandos_hvac' (only client with scheduled auto AI today)
+    holder_name     TEXT,
+    holder_name_norm TEXT,              -- lowercased, punctuation stripped
+    address         TEXT,
+    status          TEXT,               -- 'requested' (carrier email fired) | 'endorsed' (confirmed on policy)
+    source          TEXT,               -- 'live' or 'bulk_import'
+    msg_id          TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_auto_ai_client_holder
+    ON auto_ai_endorsements (client_id, holder_name_norm);
 """
 
 
@@ -253,6 +268,134 @@ def history_hints(candidate_name, client_id=None, limit=3, conn=None, db_path=No
 
 
 # ---------------------------------------------------------------------------
+# AUTO-AI ENDORSEMENTS (Rolando's scheduled-auto SOP — see flows.py)
+# ---------------------------------------------------------------------------
+
+def ai_endorsement_lookup(client_id, holder_name, conn=None, db_path=None):
+    """Existing endorsement row for this holder, or None.
+
+    Match rule: significant-token SET equality (generic tokens like inc/llc
+    stripped), so 'City of Tampa, Inc.' matches 'City of Tampa' but NOT
+    'City of Tampa Parks Department'. Conservative on purpose — a near-miss
+    fires a duplicate carrier request rather than silently skipping one."""
+    want = set(significant_tokens(holder_name))
+    if not want:
+        return None
+    own_conn = conn is None
+    if own_conn:
+        conn = connect(db_path)
+    try:
+        rows = conn.execute(
+            "SELECT * FROM auto_ai_endorsements WHERE client_id = ? "
+            "ORDER BY created_ts DESC",
+            (client_id,),
+        ).fetchall()
+    finally:
+        if own_conn:
+            conn.close()
+    for row in rows:
+        if set(significant_tokens(row["holder_name"])) == want:
+            return dict(row)
+    return None
+
+
+def record_ai_endorsement(client_id, holder_name, address=None,
+                          status="requested", source="live", msg_id=None,
+                          created_ts=None, conn=None, db_path=None):
+    """Insert one auto-AI endorsement row. Returns the new row id."""
+    own_conn = conn is None
+    if own_conn:
+        conn = connect(db_path)
+    try:
+        cur = conn.execute(
+            """INSERT INTO auto_ai_endorsements
+               (created_ts, client_id, holder_name, holder_name_norm,
+                address, status, source, msg_id)
+               VALUES (?,?,?,?,?,?,?,?)""",
+            (
+                created_ts or _utc_now_iso(),
+                client_id,
+                holder_name,
+                normalize_holder(holder_name),
+                address,
+                status,
+                source,
+                msg_id,
+            ),
+        )
+        if own_conn:
+            conn.commit()
+        return cur.lastrowid
+    finally:
+        if own_conn:
+            conn.close()
+
+
+def import_ai_endorsements(path, client_id="rolandos_hvac", status="endorsed",
+                           db_path=None):
+    """Bulk-import Alex's already-endorsed holder list into the auto-AI table.
+
+    Accepts:
+      - CSV with a 'holder_name' header column (optional 'address' and
+        'status' columns), or a headerless single-column CSV of names.
+      - JSON: a list of strings, or a list of {"holder_name": ...,
+        "address": ..., "status": ...} objects.
+
+    Rows whose holder already exists (token match) are skipped. Imported
+    rows default to status='endorsed', source='bulk_import'.
+    Returns (imported_count, skipped_count).
+    """
+    import csv
+
+    entries = []
+    if path.lower().endswith(".json"):
+        with open(path, "r") as f:
+            data = json.load(f)
+        for item in data:
+            if isinstance(item, str):
+                entries.append({"holder_name": item})
+            elif isinstance(item, dict) and item.get("holder_name"):
+                entries.append(item)
+    else:
+        with open(path, "r", newline="") as f:
+            reader = csv.reader(f)
+            rows = [r for r in reader if any(cell.strip() for cell in r)]
+        if rows and "holder_name" in [c.strip().lower() for c in rows[0]]:
+            header = [c.strip().lower() for c in rows[0]]
+            for r in rows[1:]:
+                rec = dict(zip(header, (c.strip() for c in r)))
+                if rec.get("holder_name"):
+                    entries.append(rec)
+        else:
+            for r in rows:
+                if r and r[0].strip():
+                    entries.append({"holder_name": r[0].strip(),
+                                    "address": r[1].strip() if len(r) > 1 else None})
+
+    conn = connect(db_path)
+    imported = skipped = 0
+    try:
+        for rec in entries:
+            name = rec["holder_name"]
+            if ai_endorsement_lookup(client_id, name, conn=conn):
+                skipped += 1
+                continue
+            record_ai_endorsement(
+                client_id=client_id,
+                holder_name=name,
+                address=rec.get("address") or None,
+                status=rec.get("status") or status,
+                source="bulk_import",
+                conn=conn,
+            )
+            imported += 1
+        conn.commit()
+    finally:
+        conn.close()
+    return imported, skipped
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -275,7 +418,26 @@ def _cli(argv):
         print()
         print(history_hints(name, client_id=client_id))
         return 0
-    print('Usage: python3 db.py lookup "Some Holder Name" [client_id]')
+    if len(argv) >= 2 and argv[0] == "import-auto-ai":
+        path = argv[1]
+        client_id = argv[2] if len(argv) > 2 else "rolandos_hvac"
+        imported, skipped = import_ai_endorsements(path, client_id=client_id)
+        print(f"Imported {imported} holder(s), skipped {skipped} already-known "
+              f"holder(s) into auto_ai_endorsements (client={client_id})")
+        return 0
+    if len(argv) >= 2 and argv[0] == "ai-lookup":
+        name = argv[1]
+        client_id = argv[2] if len(argv) > 2 else "rolandos_hvac"
+        row = ai_endorsement_lookup(client_id, name)
+        if row:
+            print(f"FOUND: {row['holder_name']} status={row['status']} "
+                  f"source={row['source']} recorded={row['created_ts']}")
+        else:
+            print(f"No auto-AI record for: {name} (client={client_id})")
+        return 0
+    print('Usage: python3 db.py lookup "Some Holder Name" [client_id]\n'
+          '       python3 db.py import-auto-ai <file.csv|file.json> [client_id]\n'
+          '       python3 db.py ai-lookup "Holder Name" [client_id]')
     return 1
 
 

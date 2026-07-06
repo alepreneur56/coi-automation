@@ -111,6 +111,13 @@ def build_daily_digest(date_str, logs_dir=None):
     order = []    # msg_ids in first-seen order
     errors = []   # processing_error / poll_error events
     classifier_calls = 0
+    # MVP flow emails (see flows.py) — counted for the digest
+    flow_counts = {
+        "referral_appended": 0,
+        "shortfall_client_email": 0,
+        "noncompliance_email": 0,
+        "carrier_endorsement_email": 0,
+    }
     totals = {
         "input_tokens": 0,
         "cache_creation_input_tokens": 0,
@@ -151,6 +158,8 @@ def build_daily_digest(date_str, logs_dir=None):
             row["send_error"] = ev.get("error")
         elif name in ("processing_error", "poll_error"):
             errors.append(ev)
+        elif name in flow_counts:
+            flow_counts[name] += 1
 
     n_emails = len(order)
     n_errors = len(errors)
@@ -243,6 +252,23 @@ def build_daily_digest(date_str, logs_dir=None):
             )
     else:
         parts.append('<p style="color: #666;">None.</p>')
+
+    # Flow emails (referral / shortfall / non-compliance / carrier request)
+    if any(flow_counts.values()):
+        parts.append('<h3 style="margin: 16px 0 8px;">Flow emails</h3>')
+        parts.append('<table style="border-collapse: collapse;">')
+        for label, key in (
+            ("Referral lines appended", "referral_appended"),
+            ("Shortfall client emails", "shortfall_client_email"),
+            ("Non-compliance emails (Alejandro)", "noncompliance_email"),
+            ("Carrier endorsement requests", "carrier_endorsement_email"),
+        ):
+            if flow_counts[key]:
+                parts.append(
+                    f'<tr><td style="{cell}">{label}</td>'
+                    f'<td style="{cell} text-align: right;">{flow_counts[key]}</td></tr>'
+                )
+        parts.append("</table>")
 
     # Token usage
     parts.append('<h3 style="margin: 16px 0 8px;">Token usage</h3>')
