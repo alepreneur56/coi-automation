@@ -19,6 +19,8 @@ import base64
 import os
 
 import config
+import flows
+import state
 from language import detect_spanish
 
 ADMIN_INBOX_EMAIL = config.COI_MAILBOX
@@ -280,6 +282,13 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
     # ------------------------------------------------------------------
     if action == "send_reply":
         reply_text = decision.get("reply_text", "")
+        # MVP flows: referral line for uncontrolled-line demands. English
+        # only — Spanish replies skip it (wording pending Alex approval) and
+        # the info goes to Alejandro via flows.run_post_send_flows instead.
+        reply_is_spanish = detect_spanish(new_email.get("subject"),
+                                          (new_email.get("body") or {}).get("content"))
+        reply_text, referral_appended = flows.append_referral_to_text(
+            reply_text, parsed, reply_is_spanish)
         html_body = with_signature(reply_text.replace("\n", "<br>"))
 
         to_lower = (original_client_sender or "").lower()
@@ -302,6 +311,15 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
                     "reply_text": reply_text}
 
         ok, resp = graph.reply_to_message(original_msg_id, message_obj)
+        if ok:
+            if referral_appended:
+                state.log_event("referral_appended", msg_id=original_msg_id,
+                                type="reply", client=parsed.get("client_id"))
+            # Only the Spanish-referral producer note applies to text replies
+            # (delivery=False) — shortfall/ancillary/carrier are cert-delivery
+            # flows and never fire here.
+            flows.run_post_send_flows(graph, new_email, parsed, decision,
+                                      delivery=False)
         result = {
             "sent": ok,
             "type": "reply",
@@ -343,6 +361,12 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
         is_spanish = detect_spanish(new_email.get("subject"),
                                      (new_email.get("body") or {}).get("content"))
 
+        # MVP flows: referral line for uncontrolled-line demands, appended
+        # before 'Regards,'. English only — Spanish deliveries skip it
+        # (wording pending Alex approval); flows.run_post_send_flows sends
+        # the referral info to Alejandro instead.
+        referral_line = None if is_spanish else flows.build_referral_line(parsed)
+
         if is_spanish:
             descriptor = "el Certificado de Seguro revisado" if is_revision else "el Certificado de Seguro"
             intro_line = f"Adjunto encontrará {descriptor} para {client_name}."
@@ -359,10 +383,12 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
             intro_line = f"Attached please find {descriptor} for {client_name}."
             if holder_line:
                 intro_line += f"<br>Cert holder: {holder_line}."
+            referral_html = f"<p>{referral_line}</p>" if referral_line else ""
             body_html = with_signature(
                 f"<p>{recipient_first},</p>"
                 f"<p>{intro_line}</p>"
                 "<p>Let us know if you need anything else.</p>"
+                f"{referral_html}"
                 "<p>Regards,</p>"
             )
 
@@ -379,6 +405,15 @@ def execute_action(graph, new_email, thread_messages, attachments_result,
                     "attachments": [os.path.basename(p) for p in pdf_paths]}
 
         ok, resp = graph.reply_to_message(original_msg_id, message_obj)
+        if ok:
+            if referral_line:
+                state.log_event("referral_appended", msg_id=original_msg_id,
+                                type="pdf_reply", client=parsed.get("client_id"))
+            # Post-delivery flows (shortfall / ancillary / carrier request /
+            # Spanish-referral note). The cert is already out — flows never
+            # hold it and never raise.
+            flows.run_post_send_flows(graph, new_email, parsed, decision,
+                                      delivery=True)
         result = {
             "sent": ok,
             "type": "pdf_reply",

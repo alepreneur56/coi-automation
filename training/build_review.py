@@ -36,7 +36,8 @@ IDX_PATH = os.path.join(BASE, "training", "corpus_index.json")
 OUT_PATH = os.path.join(BASE, "training", "coi_review.html")
 
 DPI = 120
-TEAM_HINTS = ("alejandro bello", "jade harris", "laura rodriguez")
+TEAM_HINTS = ("alejandro bello", "jade harris", "laura rodriguez",
+              "andrea vargas", "katherin molina", "christian devilme")
 
 
 def full_regions(page):
@@ -141,6 +142,8 @@ def render_coi_crops(path):
 def is_team_message(msg):
     frm = (msg.get("from") or "").lower()
     if "(sent)" in frm or msg.get("folder") == "Sent Items":
+        return True
+    if "@usi.com" in frm:
         return True
     if any(h in frm for h in TEAM_HINTS):
         return True

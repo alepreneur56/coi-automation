@@ -109,6 +109,16 @@ COST_CACHED_INPUT_PER_MTOK = _float_opt("COST_CACHED_INPUT_PER_MTOK")
 COST_OUTPUT_PER_MTOK = _float_opt("COST_OUTPUT_PER_MTOK")
 
 # ---------------------------------------------------------------------------
+# MVP flows (see flows.py) — Rolando's scheduled-auto AI carrier request.
+# Addresses pending final confirmation from Alex (2026-07-04 ruling d);
+# TEST_MODE redirects these like every other send.
+# ---------------------------------------------------------------------------
+ROLANDOS_ENDORSEMENT_TO = os.environ.get(
+    "ROLANDOS_ENDORSEMENT_TO", "endorsements@ascendantgroup.com")
+ROLANDOS_ENDORSEMENT_CC = os.environ.get(
+    "ROLANDOS_ENDORSEMENT_CC", "alejandro.bello@usi.com")
+
+# ---------------------------------------------------------------------------
 # ZIP lookup (see ziplookup.py)
 # ---------------------------------------------------------------------------
 # When true, missing-ZIP "coi_request_incomplete" replies get a best-effort
