@@ -48,7 +48,7 @@
             },
             "description_of_operations": {
               "editable": true,
-              "current_value": "Electrical Contractor - License Number: EC13004447\nProject name & Address ( If Applicable)\nGeneral Liability & Commercial Auto policies includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. General Liability policy applies on a primary & non-contributory basis. A Blanket Waiver of Subrogation applies for General Liability, Umbrella, and Employer's Liability policies.",
+              "current_value": "Electrical Contractor - License Number: EC13004447\nProject name & Address ( If Applicable)\nGeneral Liability & Commercial Auto policies includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. General Liability policy applies on a primary & non-contributory basis. A Blanket Waiver of Subrogation applies for General Liability and Employer's Liability policies. Excess Liability policy follows form.",
               "notes": "If client provides a project name and address, insert it after 'Project name & Address ( If Applicable)'. Do not alter the boilerplate language."
             }
           },
@@ -172,7 +172,7 @@
             },
             "description_of_operations": {
               "editable": true,
-              "current_value": "HVAC Contractor License Number: CAC1815707\nProject name & Address ( If Applicable)\nGeneral Liability & Commercial Auto policies includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. General Liability policy applies on a primary & non-contributory basis. A Blanket Waiver of Subrogation applies for General Liability and Commercial Auto policies.",
+              "current_value": "HVAC Contractor License Number: CAC1815707\nProject name & Address ( If Applicable)\nGeneral Liability policy includes an automatic Additional Insured endorsement that provides Additional Insured status to the Certificate Holder as required by written contract. Additional Insured status on the Commercial Auto policy is added by endorsement as required by written contract. General Liability policy applies on a primary & non-contributory basis. A Blanket Waiver of Subrogation applies for General Liability and Commercial Auto policies.",
               "notes": "If client provides a project name and address, insert it after 'Project name & Address ( If Applicable)'. Do not alter the rest of the boilerplate language."
             }
           },
@@ -209,9 +209,9 @@
             {
               "line": "Commercial Auto",
               "insurer_letter": "A",
-              "policy_number": "CA-74829",
+              "policy_number": "CA-74829-0",
               "eff_date": "12/15/2025",
-              "exp_date": "12/25/2026",
+              "exp_date": "12/15/2026",
               "addl_insured": true,
               "subr_wvd": true,
               "limits": {
