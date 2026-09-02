@@ -875,8 +875,8 @@
               "subr_wvd": true,
               "occur": true,
               "limits": {
-                "each_occurrence": "2,000,000",
-                "aggregate": "2,000,000"
+                "each_occurrence": "3,000,000",
+                "aggregate": "3,000,000"
               }
             },
             {
